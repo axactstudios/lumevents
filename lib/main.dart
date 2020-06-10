@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:lumevents/NavBar/navBarItems.dart';
 import 'package:lumevents/NavPages/home.dart';
 import 'package:lumevents/NavPages/ideas.dart';
 import 'package:lumevents/NavPages/more.dart';
@@ -37,7 +38,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return PersistentTabView(
       controller: _controller,
-      items: _navBarsItems(),
+      items: navBarItems,
       screens: _buildScreens(),
       showElevation: true,
       navBarCurve: NavBarCurve.upperCorners,
@@ -54,34 +55,5 @@ class _MyHomePageState extends State<MyHomePage> {
 
   List<Widget> _buildScreens() {
     return [HomePage(), IdeasPage(), PlanPage(), MorePage()];
-  }
-
-  List<PersistentBottomNavBarItem> _navBarsItems() {
-    return [
-      PersistentBottomNavBarItem(
-        icon: Icon(FontAwesomeIcons.home),
-        title: ("Home"),
-        activeColor: Color(0xFFFF0060),
-        inactiveColor: Colors.black87,
-      ),
-      PersistentBottomNavBarItem(
-        icon: Icon(FontAwesomeIcons.lightbulb),
-        title: ("Ideas"),
-        activeColor: Color(0xFFFF0060),
-        inactiveColor: Colors.black87,
-      ),
-      PersistentBottomNavBarItem(
-        icon: Icon(FontAwesomeIcons.tasks),
-        title: ("Plan"),
-        activeColor: Color(0xFFFF0060),
-        inactiveColor: Colors.black87,
-      ),
-      PersistentBottomNavBarItem(
-        icon: Icon(FontAwesomeIcons.cog),
-        title: ("More"),
-        activeColor: Color(0xFFFF0060),
-        inactiveColor: Colors.black87,
-      ),
-    ];
   }
 }
