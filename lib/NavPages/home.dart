@@ -10,8 +10,6 @@ class HomePage extends StatefulWidget {
   _HomePageState createState() => _HomePageState();
 }
 
-Color col = Color(0xFFFF4B8F);
-dynamic ExampleNumber = 12345;
 List<String> _cities = [
   'All Cities',
   'Delhi NCR',
@@ -23,14 +21,16 @@ List<String> _cities = [
 class _HomePageState extends State<HomePage> {
   String selectedValue, _currentItemSelected = 'All Cities';
   Widget _currentScreenToShow = AllCitiesScreen();
-  final List<DropdownMenuItem> items = [];
 
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
           appBar: AppBar(
-            backgroundColor: col,
+
+            backgroundColor: Color(0xFFFF4B8F),
+
+
             actions: <Widget>[
               Theme(
                 child: DropdownButtonHideUnderline(
