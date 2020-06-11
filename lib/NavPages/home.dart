@@ -1,32 +1,74 @@
 import 'package:flutter/material.dart';
-import 'package:lumevents/NavPages/more.dart';
-import 'package:persistent_bottom_nav_bar/persistent-tab-view.widget.dart';
+import 'package:lumevents/HomePageScreens/allCitiesScreen.dart';
+import 'package:lumevents/HomePageScreens/delhiNCRScreen.dart';
+import 'package:lumevents/HomePageScreens/jaipurScreen.dart';
+import 'package:lumevents/HomePageScreens/kolkataScreen.dart';
+import 'package:lumevents/HomePageScreens/udaipurScreen.dart';
 
 class HomePage extends StatefulWidget {
   @override
   _HomePageState createState() => _HomePageState();
 }
 
+Color col = Color(0xFFFF4B8F);
+dynamic ExampleNumber = 12345;
+List<String> _cities = [
+  'All Cities',
+  'Delhi NCR',
+  'Jaipur',
+  'Kolkata',
+  'Udaipur',
+];
+
 class _HomePageState extends State<HomePage> {
+  String selectedValue, _currentItemSelected = 'All Cities';
+  Widget _currentScreenToShow = AllCitiesScreen();
+  final List<DropdownMenuItem> items = [];
+
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: Colors.blue,
-      child: Center(
-        child: FlatButton(
-          color: Colors.red,
-          child: Text('Go To Next'),
-          onPressed: () {
-            pushNewScreen(
-              context,
-              screen: MorePage(),
-              platformSpecific:
-                  false, // OPTIONAL VALUE. False by default, which means the bottom nav bar will persist
-              withNavBar: true, // OPTIONAL VALUE. True by default.
-            );
-          },
-        ),
-      ),
+    return SafeArea(
+      child: Scaffold(
+          appBar: AppBar(
+            backgroundColor: col,
+            actions: <Widget>[
+              Theme(
+                child: DropdownButtonHideUnderline(
+                  child: DropdownButton(
+                    items: _cities.map((String dropDownStringItem) {
+                      return DropdownMenuItem<String>(
+                        child: Text(
+                          dropDownStringItem,
+                          style: TextStyle(
+                              color: Colors.white, fontFamily: 'sf_pro'),
+                        ),
+                        value: dropDownStringItem,
+                      );
+                    }).toList(),
+                    onChanged: (String newValueSelected) {
+                      setState(() {
+                        _currentItemSelected = newValueSelected;
+                        if (_currentItemSelected == _cities[0]) {
+                          _currentScreenToShow = AllCitiesScreen();
+                        } else if (_currentItemSelected == _cities[1]) {
+                          _currentScreenToShow = DelhiNCRScreen();
+                        } else if (_currentItemSelected == _cities[2]) {
+                          _currentScreenToShow = JaipurScreen();
+                        } else if (_currentItemSelected == _cities[3]) {
+                          _currentScreenToShow = KolkataScreen();
+                        } else if (_currentItemSelected == _cities[4]) {
+                          _currentScreenToShow = UdaipurScreen();
+                        }
+                      });
+                    },
+                    value: _currentItemSelected,
+                  ),
+                ),
+                data: ThemeData.dark(),
+              ),
+            ],
+          ),
+          body: _currentScreenToShow),
     );
   }
 }
