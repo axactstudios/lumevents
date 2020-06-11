@@ -4,8 +4,6 @@ import 'package:lumevents/HomePageScreens/delhiNCRScreen.dart';
 import 'package:lumevents/HomePageScreens/jaipurScreen.dart';
 import 'package:lumevents/HomePageScreens/kolkataScreen.dart';
 import 'package:lumevents/HomePageScreens/udaipurScreen.dart';
-import 'package:lumevents/NavPages/more.dart';
-import 'package:persistent_bottom_nav_bar/persistent-tab-view.widget.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -23,12 +21,16 @@ List<String> _cities = [
 class _HomePageState extends State<HomePage> {
   String selectedValue, _currentItemSelected = 'All Cities';
   Widget _currentScreenToShow = AllCitiesScreen();
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
           appBar: AppBar(
+
             backgroundColor: Color(0xFFFF4B8F),
+
+
             actions: <Widget>[
               Theme(
                 child: DropdownButtonHideUnderline(
