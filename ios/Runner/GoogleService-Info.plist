@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>207309147462-61m9r7ho6cug6f75mpad1ljd3mbpveql.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.207309147462-61m9r7ho6cug6f75mpad1ljd3mbpveql</string>
+	<key>API_KEY</key>
+	<string>AIzaSyAKEcE7kiwFBWOL6XCH_OEZqZ7wDBEAeQc</string>
+	<key>GCM_SENDER_ID</key>
+	<string>207309147462</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.axactstudios.lumevents</string>
+	<key>PROJECT_ID</key>
+	<string>lumevents-48ff2</string>
+	<key>STORAGE_BUCKET</key>
+	<string>lumevents-48ff2.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:207309147462:ios:cf69d002fdf50ecd54e947</string>
+	<key>DATABASE_URL</key>
+	<string>https://lumevents-48ff2.firebaseio.com</string>
+</dict>
+</plist>

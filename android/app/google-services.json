@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "207309147462",
+    "firebase_url": "https://lumevents-48ff2.firebaseio.com",
+    "project_id": "lumevents-48ff2",
+    "storage_bucket": "lumevents-48ff2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:207309147462:android:bc8ce6f2d40fde6c54e947",
+        "android_client_info": {
+          "package_name": "com.axactstudios.lumevents"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "207309147462-kn9u3bqs62679i61p850qinvso4qu2o2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCd0WgxAq9lobBjFhxiryvIrRKoJi2rxb4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "207309147462-kn9u3bqs62679i61p850qinvso4qu2o2.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "207309147462-61m9r7ho6cug6f75mpad1ljd3mbpveql.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.axactstudios.lumevents"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
