@@ -33,39 +33,46 @@ class _HomePageState extends State<HomePage> {
             title: Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                SearchableDropdown(
-                  menuBackgroundColor: Color(0xFFFF4B8F),
-                  iconEnabledColor: Colors.white,
-                  iconDisabledColor: Colors.white,
-                  items: _cities.map((String dropDownStringItem) {
-                    return DropdownMenuItem<String>(
-                      child: Text(
-                        dropDownStringItem,
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontFamily: 'sf_pro',
-                            fontWeight: FontWeight.bold),
-                      ),
-                      value: dropDownStringItem,
-                    );
-                  }).toList(),
-                  onChanged: (String newValueSelected) {
-                    setState(() {
-                      _currentItemSelected = newValueSelected;
-                      if (_currentItemSelected == _cities[0]) {
-                        _currentScreenToShow = AllCitiesScreen();
-                      } else if (_currentItemSelected == _cities[1]) {
-                        _currentScreenToShow = DelhiNCRScreen();
-                      } else if (_currentItemSelected == _cities[2]) {
-                        _currentScreenToShow = JaipurScreen();
-                      } else if (_currentItemSelected == _cities[3]) {
-                        _currentScreenToShow = KolkataScreen();
-                      } else if (_currentItemSelected == _cities[4]) {
-                        _currentScreenToShow = UdaipurScreen();
-                      }
-                    });
-                  },
-                  value: _currentItemSelected,
+                Container(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.all(Radius.circular(15)),
+                    color: Colors.white.withOpacity(0.75),
+                  ),
+                  child: SearchableDropdown(
+                    menuBackgroundColor: Colors.white,
+                    iconEnabledColor: Color(0xFFFF124D),
+                    iconDisabledColor: Color(0xFFFF124D),
+                    items: _cities.map((String dropDownStringItem) {
+                      return DropdownMenuItem<String>(
+                        child: Text(
+                          dropDownStringItem,
+                          style: TextStyle(
+                              color: Color(0xFFFF124D),
+                              fontFamily: 'nunito',
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold),
+                        ),
+                        value: dropDownStringItem,
+                      );
+                    }).toList(),
+                    onChanged: (String newValueSelected) {
+                      setState(() {
+                        _currentItemSelected = newValueSelected;
+                        if (_currentItemSelected == _cities[0]) {
+                          _currentScreenToShow = AllCitiesScreen();
+                        } else if (_currentItemSelected == _cities[1]) {
+                          _currentScreenToShow = DelhiNCRScreen();
+                        } else if (_currentItemSelected == _cities[2]) {
+                          _currentScreenToShow = JaipurScreen();
+                        } else if (_currentItemSelected == _cities[3]) {
+                          _currentScreenToShow = KolkataScreen();
+                        } else if (_currentItemSelected == _cities[4]) {
+                          _currentScreenToShow = UdaipurScreen();
+                        }
+                      });
+                    },
+                    value: _currentItemSelected,
+                  ),
                 ),
               ],
             ),

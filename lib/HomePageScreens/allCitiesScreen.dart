@@ -1,10 +1,7 @@
 import 'dart:async';
-import 'package:dropdown_banner/dropdown_banner.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:getflutter/components/card/gf_card.dart';
-import 'package:getflutter/getflutter.dart';
 import 'package:liquid_pull_to_refresh/liquid_pull_to_refresh.dart';
 import 'package:lumevents/classes/Trending.dart';
 import 'package:lumevents/classes/Events.dart';
@@ -779,414 +776,551 @@ class _AllCitiesScreenState extends State<AllCitiesScreen> {
   }
 
   Widget UIIdeas(String name, imageUrl, description, imageBy) {
-    return ListView(
-      shrinkWrap: true,
-      children: [
-        Container(
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.all(Radius.circular(50)),
-            color: Colors.white,
-          ),
-          child: Padding(
-            padding: const EdgeInsets.all(35),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
+    return Container(
+      decoration: BoxDecoration(
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black26,
+              blurRadius: 30.0, // soften the shadow
+              spreadRadius: 3.0, //extend the shadow
+              offset: Offset(
+                0.0, // Move to right 10  horizontally
+                0.0, // Move to bottom 10 Vertically
+              ),
+            )
+          ],
+          color: Colors.white,
+          borderRadius: BorderRadius.all(Radius.circular(10))),
+      margin: EdgeInsets.fromLTRB(20, 20, 20, 40),
+      padding: EdgeInsets.all(15),
+      height: height,
+      width: width,
+      child: Column(
+        children: <Widget>[
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    IconButton(
-                      icon: Icon(Icons.arrow_back_ios),
-                      onPressed: () {
-                        Navigator.pop(context, true);
-                      },
-                    ),
-                    Text(
-                      name,
-                      style: TextStyle(
-                          color: Colors.pinkAccent,
-                          fontSize: 30,
-                          fontWeight: FontWeight.bold),
-                      textAlign: TextAlign.center,
-                    ),
-                  ],
-                ),
-                SizedBox(
-                  height: 30,
-                ),
-                Image.network(
-                  imageUrl,
-                  alignment: Alignment.centerRight,
-                ),
-                SizedBox(
-                  height: 30,
-                ),
                 Text(
-                  'Image by',
+                  name,
                   style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 20,
-                      fontWeight: FontWeight.normal),
-                  textAlign: TextAlign.right,
-                ),
-                Text(
-                  imageBy,
-                  style: TextStyle(
-                      color: Colors.pinkAccent,
+                      color: Color(0xFFFF124D),
+                      fontFamily: 'nunito',
                       fontSize: 30,
                       fontWeight: FontWeight.bold),
-                  textAlign: TextAlign.end,
+                  textAlign: TextAlign.center,
                 ),
-                SizedBox(
-                  height: 30,
-                ),
-                Text(
-                  description,
-                  style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 15,
-                      fontWeight: FontWeight.normal),
-                  textAlign: TextAlign.end,
-                ),
-                SizedBox(
-                  height: 30,
-                ),
-                InkWell(
-                  onTap: () {
-                    DropdownBanner.showBanner(
-                      text: 'Go to $imageBy',
-                      color: Colors.red,
-                      textStyle: TextStyle(color: Colors.white),
-                    );
-                  },
-                  child: Card(
-                    color: Colors.pinkAccent,
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(10))),
-                    child: Padding(
-                      padding: EdgeInsets.all(15),
-                      child: Text(
-                        "View Vendor",
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold),
-                        textAlign: TextAlign.center,
-                      ),
-                    ),
+                IconButton(
+                  icon: Icon(
+                    Icons.keyboard_arrow_down,
+                    size: 40,
                   ),
+                  onPressed: () {
+                    Navigator.pop(context, true);
+                  },
                 ),
-                SizedBox(
-                  height: 15,
-                ),
-                InkWell(
-                  onTap: null,
-                  child: Card(
-                    color: Colors.pinkAccent,
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(10))),
-                    child: Padding(
-                      padding: EdgeInsets.all(15),
-                      child: Text(
-                        "Want the same for your wedding?\nGet in Touch Now",
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 12,
-                            fontWeight: FontWeight.w700),
-                        textAlign: TextAlign.center,
+              ],
+            ),
+          ),
+          Expanded(
+            child: ListView(
+              shrinkWrap: true,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(20),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: [
+                      Container(
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.all(Radius.circular(5)),
+                          child: Image.network(
+                            imageUrl,
+                            alignment: Alignment.center,
+                            fit: BoxFit.fill,
+                          ),
+                        ),
                       ),
-                    ),
+                      SizedBox(
+                        height: 15,
+                      ),
+                      Text(
+                        'Presented by',
+                        style: TextStyle(
+                            color: Colors.black,
+                            fontFamily: 'nunito',
+                            fontSize: 20,
+                            fontWeight: FontWeight.normal),
+                        textAlign: TextAlign.left,
+                      ),
+                      Text(
+                        imageBy,
+                        style: TextStyle(
+                            color: Color(0xFFFF124D),
+                            fontFamily: 'nunito',
+                            fontSize: 30,
+                            fontWeight: FontWeight.bold),
+                        textAlign: TextAlign.start,
+                      ),
+                      SizedBox(
+                        height: 15,
+                      ),
+                      Text(
+                        'Description-',
+                        style: TextStyle(
+                            color: Colors.black,
+                            fontFamily: 'nunito',
+                            fontSize: 20,
+                            fontWeight: FontWeight.normal),
+                        textAlign: TextAlign.left,
+                      ),
+                      Text(
+                        description,
+                        style: TextStyle(
+                            color: Color(0xFF808080),
+                            fontFamily: 'nunito',
+                            fontSize: 18,
+                            fontWeight: FontWeight.normal),
+                        textAlign: TextAlign.start,
+                      ),
+                      SizedBox(
+                        height: 30,
+                      ),
+                      InkWell(
+                        onTap: null,
+                        child: Card(
+                          color: Colors.pinkAccent,
+                          shape: RoundedRectangleBorder(
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(10))),
+                          child: Padding(
+                            padding: EdgeInsets.all(10),
+                            child: Text(
+                              'Add to wishlist',
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontFamily: 'nunito',
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.bold),
+                              textAlign: TextAlign.center,
+                            ),
+                          ),
+                        ),
+                      ),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      InkWell(
+                        onTap: null,
+                        child: Card(
+                          color: Colors.pinkAccent,
+                          shape: RoundedRectangleBorder(
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(10))),
+                          child: Padding(
+                            padding: EdgeInsets.all(10),
+                            child: Text(
+                              "View Vendor",
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontFamily: 'nunito',
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.bold),
+                              textAlign: TextAlign.center,
+                            ),
+                          ),
+                        ),
+                      ),
+                      SizedBox(
+                        height: 10,
+                      ),
+                    ],
                   ),
                 ),
               ],
             ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 
   Widget UIEvents(String name, imageUrl, description, client, city) {
-    return ListView(
-      shrinkWrap: true,
-      children: [
-        Container(
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.all(Radius.circular(50)),
-            color: Colors.white,
-          ),
-          child: Padding(
-            padding: const EdgeInsets.all(35),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
+    return Container(
+      decoration: BoxDecoration(
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black26,
+              blurRadius: 30.0, // soften the shadow
+              spreadRadius: 3.0, //extend the shadow
+              offset: Offset(
+                0.0, // Move to right 10  horizontally
+                0.0, // Move to bottom 10 Vertically
+              ),
+            )
+          ],
+          color: Colors.white,
+          borderRadius: BorderRadius.all(Radius.circular(10))),
+      margin: EdgeInsets.fromLTRB(20, 20, 20, 40),
+      padding: EdgeInsets.all(15),
+      height: height,
+      width: width,
+      child: Column(
+        children: <Widget>[
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    IconButton(
-                      icon: Icon(Icons.arrow_back_ios),
-                      onPressed: () {
-                        Navigator.pop(context, true);
-                      },
-                    ),
-                    Text(
-                      name,
-                      style: TextStyle(
-                          color: Colors.pinkAccent,
-                          fontSize: 30,
-                          fontWeight: FontWeight.bold),
-                      textAlign: TextAlign.center,
-                    ),
-                  ],
-                ),
-                SizedBox(
-                  height: 30,
-                ),
-                Image.network(
-                  imageUrl,
-                  alignment: Alignment.centerRight,
-                ),
-                SizedBox(
-                  height: 30,
-                ),
                 Text(
-                  'Client Name',
+                  name,
                   style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 20,
-                      fontWeight: FontWeight.normal),
-                  textAlign: TextAlign.right,
-                ),
-                Text(
-                  client,
-                  style: TextStyle(
-                      color: Colors.pinkAccent,
+                      color: Color(0xFFFF124D),
+                      fontFamily: 'nunito',
                       fontSize: 30,
                       fontWeight: FontWeight.bold),
-                  textAlign: TextAlign.end,
+                  textAlign: TextAlign.center,
                 ),
-                SizedBox(
-                  height: 15,
-                ),
-                Text(
-                  'City',
-                  style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 20,
-                      fontWeight: FontWeight.normal),
-                  textAlign: TextAlign.right,
-                ),
-                Text(
-                  city,
-                  style: TextStyle(
-                      color: Colors.pinkAccent,
-                      fontSize: 30,
-                      fontWeight: FontWeight.bold),
-                  textAlign: TextAlign.end,
-                ),
-                SizedBox(
-                  height: 30,
-                ),
-                Text(
-                  description,
-                  style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 15,
-                      fontWeight: FontWeight.normal),
-                  textAlign: TextAlign.end,
-                ),
-                SizedBox(
-                  height: 30,
-                ),
-                InkWell(
-                  onTap: null,
-                  child: Card(
-                    color: Colors.pinkAccent,
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(30))),
-                    child: Padding(
-                      padding: EdgeInsets.all(15),
-                      child: Text(
-                        "View Top Vendors for\n"
-                        "same designs",
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 15,
-                            fontWeight: FontWeight.bold),
-                        textAlign: TextAlign.center,
-                      ),
-                    ),
+                IconButton(
+                  icon: Icon(
+                    Icons.keyboard_arrow_down,
+                    size: 40,
                   ),
+                  onPressed: () {
+                    Navigator.pop(context, true);
+                  },
                 ),
-                SizedBox(
-                  height: 15,
-                ),
-                InkWell(
-                  onTap: null,
-                  child: Card(
-                    color: Colors.pinkAccent,
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(30))),
-                    child: Padding(
-                      padding: EdgeInsets.all(15),
-                      child: Text(
-                        "Want the same for your wedding?\nGet in Touch Now",
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 12,
-                            fontWeight: FontWeight.w700),
-                        textAlign: TextAlign.center,
+              ],
+            ),
+          ),
+          Expanded(
+            child: ListView(
+              shrinkWrap: true,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(20),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: [
+                      Container(
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.all(Radius.circular(5)),
+                          child: Image.network(
+                            imageUrl,
+                            alignment: Alignment.center,
+                            fit: BoxFit.fill,
+                          ),
+                        ),
                       ),
-                    ),
+                      SizedBox(
+                        height: 15,
+                      ),
+                      Text(
+                        'Client-',
+                        style: TextStyle(
+                            color: Colors.black,
+                            fontFamily: 'nunito',
+                            fontSize: 20,
+                            fontWeight: FontWeight.normal),
+                        textAlign: TextAlign.left,
+                      ),
+                      Text(
+                        client,
+                        style: TextStyle(
+                            color: Color(0xFFFF124D),
+                            fontFamily: 'nunito',
+                            fontSize: 30,
+                            fontWeight: FontWeight.bold),
+                        textAlign: TextAlign.start,
+                      ),
+                      Text(
+                        'City-',
+                        style: TextStyle(
+                            color: Colors.black,
+                            fontFamily: 'nunito',
+                            fontSize: 20,
+                            fontWeight: FontWeight.normal),
+                        textAlign: TextAlign.left,
+                      ),
+                      Text(
+                        city,
+                        style: TextStyle(
+                            color: Color(0xFFFF124D),
+                            fontFamily: 'nunito',
+                            fontSize: 26,
+                            fontWeight: FontWeight.bold),
+                        textAlign: TextAlign.start,
+                      ),
+                      SizedBox(
+                        height: 15,
+                      ),
+                      Text(
+                        'Description-',
+                        style: TextStyle(
+                            color: Colors.black,
+                            fontFamily: 'nunito',
+                            fontSize: 20,
+                            fontWeight: FontWeight.normal),
+                        textAlign: TextAlign.left,
+                      ),
+                      Text(
+                        description,
+                        style: TextStyle(
+                            color: Color(0xFF808080),
+                            fontFamily: 'nunito',
+                            fontSize: 18,
+                            fontWeight: FontWeight.normal),
+                        textAlign: TextAlign.start,
+                      ),
+                      SizedBox(
+                        height: 30,
+                      ),
+                      InkWell(
+                        onTap: null,
+                        child: Card(
+                          color: Colors.pinkAccent,
+                          shape: RoundedRectangleBorder(
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(10))),
+                          child: Padding(
+                            padding: EdgeInsets.all(10),
+                            child: Text(
+                              'Add to wishlist',
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontFamily: 'nunito',
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.bold),
+                              textAlign: TextAlign.center,
+                            ),
+                          ),
+                        ),
+                      ),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      InkWell(
+                        onTap: null,
+                        child: Card(
+                          color: Colors.pinkAccent,
+                          shape: RoundedRectangleBorder(
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(10))),
+                          child: Padding(
+                            padding: EdgeInsets.all(10),
+                            child: Text(
+                              "View Vendor",
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontFamily: 'nunito',
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.bold),
+                              textAlign: TextAlign.center,
+                            ),
+                          ),
+                        ),
+                      ),
+                      SizedBox(
+                        height: 10,
+                      ),
+                    ],
                   ),
                 ),
               ],
             ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 
   Widget UIVideos(String name, imageUrl, description, client, city) {
-    return ListView(
-      shrinkWrap: true,
-      children: [
-        Container(
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.all(Radius.circular(50)),
-            color: Colors.white,
-          ),
-          child: Padding(
-            padding: const EdgeInsets.all(35),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
+    return Container(
+      decoration: BoxDecoration(
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black26,
+              blurRadius: 30.0, // soften the shadow
+              spreadRadius: 3.0, //extend the shadow
+              offset: Offset(
+                0.0, // Move to right 10  horizontally
+                0.0, // Move to bottom 10 Vertically
+              ),
+            )
+          ],
+          color: Colors.white,
+          borderRadius: BorderRadius.all(Radius.circular(10))),
+      margin: EdgeInsets.fromLTRB(20, 20, 20, 40),
+      padding: EdgeInsets.all(15),
+      height: height,
+      width: width,
+      child: Column(
+        children: <Widget>[
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    IconButton(
-                      icon: Icon(Icons.arrow_back_ios),
-                      onPressed: () {
-                        Navigator.pop(context, true);
-                      },
-                    ),
-                    Text(
-                      name,
-                      style: TextStyle(
-                          color: Colors.pinkAccent,
-                          fontSize: 30,
-                          fontWeight: FontWeight.bold),
-                      textAlign: TextAlign.center,
-                    ),
-                  ],
-                ),
-                SizedBox(
-                  height: 30,
-                ),
-                Image.network(
-                  imageUrl,
-                  alignment: Alignment.centerRight,
-                ),
-                SizedBox(
-                  height: 30,
-                ),
                 Text(
-                  'Client Name',
+                  name,
                   style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 20,
-                      fontWeight: FontWeight.normal),
-                  textAlign: TextAlign.right,
-                ),
-                Text(
-                  client,
-                  style: TextStyle(
-                      color: Colors.pinkAccent,
+                      color: Color(0xFFFF124D),
+                      fontFamily: 'nunito',
                       fontSize: 30,
                       fontWeight: FontWeight.bold),
-                  textAlign: TextAlign.end,
+                  textAlign: TextAlign.center,
                 ),
-                SizedBox(
-                  height: 15,
-                ),
-                Text(
-                  'City',
-                  style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 20,
-                      fontWeight: FontWeight.normal),
-                  textAlign: TextAlign.right,
-                ),
-                Text(
-                  city,
-                  style: TextStyle(
-                      color: Colors.pinkAccent,
-                      fontSize: 30,
-                      fontWeight: FontWeight.bold),
-                  textAlign: TextAlign.end,
-                ),
-                SizedBox(
-                  height: 30,
-                ),
-                Text(
-                  description,
-                  style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 15,
-                      fontWeight: FontWeight.normal),
-                  textAlign: TextAlign.end,
-                ),
-                SizedBox(
-                  height: 30,
-                ),
-                InkWell(
-                  onTap: null,
-                  child: Card(
-                    color: Colors.pinkAccent,
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(30))),
-                    child: Padding(
-                      padding: EdgeInsets.all(15),
-                      child: Text(
-                        "View Top Vendors for\n"
-                        "same designs",
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 15,
-                            fontWeight: FontWeight.bold),
-                        textAlign: TextAlign.center,
-                      ),
-                    ),
+                IconButton(
+                  icon: Icon(
+                    Icons.keyboard_arrow_down,
+                    size: 40,
                   ),
+                  onPressed: () {
+                    Navigator.pop(context, true);
+                  },
                 ),
-                SizedBox(
-                  height: 15,
-                ),
-                InkWell(
-                  onTap: null,
-                  child: Card(
-                    color: Colors.pinkAccent,
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(30))),
-                    child: Padding(
-                      padding: EdgeInsets.all(15),
-                      child: Text(
-                        "Want the same for your wedding?\nGet in Touch Now",
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 12,
-                            fontWeight: FontWeight.w700),
-                        textAlign: TextAlign.center,
+              ],
+            ),
+          ),
+          Expanded(
+            child: ListView(
+              shrinkWrap: true,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(20),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: [
+                      Container(
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.all(Radius.circular(5)),
+                          child: Image.network(
+                            imageUrl,
+                            alignment: Alignment.center,
+                            fit: BoxFit.fill,
+                          ),
+                        ),
                       ),
-                    ),
+                      SizedBox(
+                        height: 15,
+                      ),
+                      Text(
+                        'Client-',
+                        style: TextStyle(
+                            color: Colors.black,
+                            fontFamily: 'nunito',
+                            fontSize: 20,
+                            fontWeight: FontWeight.normal),
+                        textAlign: TextAlign.left,
+                      ),
+                      Text(
+                        client,
+                        style: TextStyle(
+                            color: Color(0xFFFF124D),
+                            fontFamily: 'nunito',
+                            fontSize: 30,
+                            fontWeight: FontWeight.bold),
+                        textAlign: TextAlign.start,
+                      ),
+                      Text(
+                        'City-',
+                        style: TextStyle(
+                            color: Colors.black,
+                            fontFamily: 'nunito',
+                            fontSize: 20,
+                            fontWeight: FontWeight.normal),
+                        textAlign: TextAlign.left,
+                      ),
+                      Text(
+                        city,
+                        style: TextStyle(
+                            color: Color(0xFFFF124D),
+                            fontFamily: 'nunito',
+                            fontSize: 26,
+                            fontWeight: FontWeight.bold),
+                        textAlign: TextAlign.start,
+                      ),
+                      SizedBox(
+                        height: 15,
+                      ),
+                      Text(
+                        'Description-',
+                        style: TextStyle(
+                            color: Colors.black,
+                            fontFamily: 'nunito',
+                            fontSize: 20,
+                            fontWeight: FontWeight.normal),
+                        textAlign: TextAlign.left,
+                      ),
+                      Text(
+                        description,
+                        style: TextStyle(
+                            color: Color(0xFF808080),
+                            fontFamily: 'nunito',
+                            fontSize: 18,
+                            fontWeight: FontWeight.normal),
+                        textAlign: TextAlign.start,
+                      ),
+                      SizedBox(
+                        height: 30,
+                      ),
+                      InkWell(
+                        onTap: null,
+                        child: Card(
+                          color: Colors.pinkAccent,
+                          shape: RoundedRectangleBorder(
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(10))),
+                          child: Padding(
+                            padding: EdgeInsets.all(10),
+                            child: Text(
+                              'Add to wishlist',
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontFamily: 'nunito',
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.bold),
+                              textAlign: TextAlign.center,
+                            ),
+                          ),
+                        ),
+                      ),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      InkWell(
+                        onTap: null,
+                        child: Card(
+                          color: Colors.pinkAccent,
+                          shape: RoundedRectangleBorder(
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(10))),
+                          child: Padding(
+                            padding: EdgeInsets.all(10),
+                            child: Text(
+                              "View Vendor",
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontFamily: 'nunito',
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.bold),
+                              textAlign: TextAlign.center,
+                            ),
+                          ),
+                        ),
+                      ),
+                      SizedBox(
+                        height: 10,
+                      ),
+                    ],
                   ),
                 ),
               ],
             ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }
