@@ -1,1 +1,0 @@
-All the errors faced during project development and their solutions
