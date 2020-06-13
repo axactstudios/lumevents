@@ -11,4 +11,6 @@ Drop down changed to searchable one, Backend configured, made json database for 
 buckets in storage categorized by pages and cities, All cities page image retriving from database, featured videos left, 
 opening details bottom sheet on clicking item.
 13 June 2020, 04:58 P.M.-
-All cities page UI redifined and UITrends details bottom sheet rebuilt
+All cities page UI redifined and UITrends details bottom sheet rebuilt.
+13 June 2020, 05:34 P.M.-
+json Database and storage buckets made for Ideas page.
