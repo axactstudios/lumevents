@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:dropdown_banner/dropdown_banner.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -81,9 +82,10 @@ class _AllCitiesScreenState extends State<AllCitiesScreen> {
     Timer(const Duration(seconds: 3), () {
       completer.complete();
     });
-
-    getDatabaseRef("Trending", trends);
-    getDatabaseRef("TopIdeas", ideas);
+    setState(() {
+      getDatabaseRef("Trending", trends);
+      getDatabaseRef("TopIdeas", ideas);
+    });
 
     return completer.future.then<void>((_) {});
   }
@@ -111,48 +113,79 @@ class _AllCitiesScreenState extends State<AllCitiesScreen> {
               ),
             ),
             Container(
-                height: 200,
-                child: trends.length == 0
-                    ? Center(
-                        child: SpinKitWave(
-                          size: 30,
-                          color: Colors.pinkAccent.withOpacity(0.7),
-                        ),
-                      )
-                    : ListView.builder(
-                        scrollDirection: Axis.horizontal,
-                        itemCount: trends.length,
-                        itemBuilder: (BuildContext context, int index) {
-                          return InkWell(
-                            splashColor: Colors.pinkAccent.withOpacity(0.3),
-                            highlightColor: Colors.pinkAccent.withOpacity(0.3),
-                            onTap: () {
-                              scaffoldState.currentState
-                                  .showBottomSheet((context) {
-                                return StatefulBuilder(builder:
-                                    (BuildContext context, StateSetter state) {
-                                  return UITrends(
-                                      trends[index].name,
-                                      trends[index].imageUrl,
-                                      trends[index].description,
-                                      trends[index].imageBy);
-                                });
+              height: 244,
+              child: trends.length == 0
+                  ? Center(
+                      child: SpinKitWave(
+                        size: 30,
+                        color: Colors.pinkAccent.withOpacity(0.7),
+                      ),
+                    )
+                  : ListView.builder(
+                      scrollDirection: Axis.horizontal,
+                      itemCount: trends.length,
+                      itemBuilder: (BuildContext context, int index) {
+                        return InkWell(
+                          splashColor: Colors.transparent,
+                          highlightColor: Colors.transparent,
+                          onTap: () {
+                            scaffoldState.currentState
+                                .showBottomSheet((context) {
+                              return StatefulBuilder(builder:
+                                  (BuildContext context, StateSetter state) {
+                                return UITrends(
+                                    trends[index].name,
+                                    trends[index].imageUrl,
+                                    trends[index].description,
+                                    trends[index].imageBy);
                               });
-                            },
-                            child: Container(
-                              decoration: BoxDecoration(
-                                  color: Colors.red,
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(30))),
-                              margin: EdgeInsets.all(20),
-                              child: Image.network(
-                                trends[index].imageUrl,
-                                fit: BoxFit.fill,
-                              ),
+                            });
+                          },
+                          child: Container(
+                            padding: EdgeInsets.all(2),
+                            height: 204,
+                            decoration: BoxDecoration(
+                                color: Color(0xFFFF4B8F),
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(10))),
+                            margin: EdgeInsets.all(20),
+                            child: Column(
+                              children: <Widget>[
+                                Container(
+                                  height: 150,
+                                  child: ClipRRect(
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(10)),
+                                    child: Image.network(
+                                      trends[index].imageUrl,
+                                      fit: BoxFit.fill,
+                                    ),
+                                  ),
+                                ),
+                                Spacer(),
+                                Text(
+                                  'Image By',
+                                  style: TextStyle(
+                                      color: Colors.white,
+                                      fontFamily: 'nunito',
+                                      fontSize: 18),
+                                ),
+                                Text(
+                                  '${trends[index].imageBy}',
+                                  style: TextStyle(
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.bold,
+                                      fontFamily: 'nunito',
+                                      fontSize: 18),
+                                ),
+                                Spacer(),
+                              ],
                             ),
-                          );
-                        },
-                      )),
+                          ),
+                        );
+                      },
+                    ),
+            ),
             Padding(
               padding: const EdgeInsets.only(top: 15.0, left: 15, bottom: 0),
               child: Text(
@@ -164,7 +197,7 @@ class _AllCitiesScreenState extends State<AllCitiesScreen> {
               ),
             ),
             Container(
-              height: 200,
+              height: 244,
               child: trends.length == 0
                   ? Center(
                       child: SpinKitWave(
@@ -177,8 +210,8 @@ class _AllCitiesScreenState extends State<AllCitiesScreen> {
                       itemCount: ideas.length,
                       itemBuilder: (BuildContext context, int index) {
                         return InkWell(
-                          splashColor: Colors.pinkAccent.withOpacity(0.3),
-                          highlightColor: Colors.pinkAccent.withOpacity(0.3),
+                          splashColor: Colors.transparent,
+                          highlightColor: Colors.transparent,
                           onTap: () {
                             scaffoldState.currentState
                                 .showBottomSheet((context) {
@@ -193,14 +226,44 @@ class _AllCitiesScreenState extends State<AllCitiesScreen> {
                             });
                           },
                           child: Container(
+                            padding: EdgeInsets.all(2),
+                            height: 204,
                             decoration: BoxDecoration(
-                                color: Colors.red,
+                                color: Color(0xFFFF4B8F),
                                 borderRadius:
-                                    BorderRadius.all(Radius.circular(30))),
+                                    BorderRadius.all(Radius.circular(10))),
                             margin: EdgeInsets.all(20),
-                            child: Image.network(
-                              ideas[index].imageUrl,
-                              fit: BoxFit.fill,
+                            child: Column(
+                              children: <Widget>[
+                                Container(
+                                  height: 150,
+                                  child: ClipRRect(
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(10)),
+                                    child: Image.network(
+                                      ideas[index].imageUrl,
+                                      fit: BoxFit.fill,
+                                    ),
+                                  ),
+                                ),
+                                Spacer(),
+                                Text(
+                                  'Image By',
+                                  style: TextStyle(
+                                      color: Colors.white,
+                                      fontFamily: 'nunito',
+                                      fontSize: 18),
+                                ),
+                                Text(
+                                  '${trends[index].imageBy}',
+                                  style: TextStyle(
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.bold,
+                                      fontFamily: 'nunito',
+                                      fontSize: 18),
+                                ),
+                                Spacer(),
+                              ],
                             ),
                           ),
                         );
@@ -218,7 +281,7 @@ class _AllCitiesScreenState extends State<AllCitiesScreen> {
               ),
             ),
             Container(
-              height: 200,
+              height: 244,
               child: trends.length == 0
                   ? Center(
                       child: SpinKitWave(
@@ -231,8 +294,8 @@ class _AllCitiesScreenState extends State<AllCitiesScreen> {
                       itemCount: events.length,
                       itemBuilder: (BuildContext context, int index) {
                         return InkWell(
-                          splashColor: Colors.pinkAccent.withOpacity(0.3),
-                          highlightColor: Colors.pinkAccent.withOpacity(0.3),
+                          splashColor: Colors.transparent,
+                          highlightColor: Colors.transparent,
                           onTap: () {
                             scaffoldState.currentState
                                 .showBottomSheet((context) {
@@ -248,14 +311,44 @@ class _AllCitiesScreenState extends State<AllCitiesScreen> {
                             });
                           },
                           child: Container(
+                            padding: EdgeInsets.all(2),
+                            height: 204,
                             decoration: BoxDecoration(
-                                color: Colors.red,
+                                color: Color(0xFFFF4B8F),
                                 borderRadius:
-                                    BorderRadius.all(Radius.circular(30))),
+                                    BorderRadius.all(Radius.circular(10))),
                             margin: EdgeInsets.all(20),
-                            child: Image.network(
-                              events[index].imageUrl,
-                              fit: BoxFit.fill,
+                            child: Column(
+                              children: <Widget>[
+                                Container(
+                                  height: 150,
+                                  child: ClipRRect(
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(10)),
+                                    child: Image.network(
+                                      events[index].imageUrl,
+                                      fit: BoxFit.fill,
+                                    ),
+                                  ),
+                                ),
+                                Spacer(),
+                                Text(
+                                  'Image By',
+                                  style: TextStyle(
+                                      color: Colors.white,
+                                      fontFamily: 'nunito',
+                                      fontSize: 18),
+                                ),
+                                Text(
+                                  '${events[index].name}',
+                                  style: TextStyle(
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.bold,
+                                      fontFamily: 'nunito',
+                                      fontSize: 18),
+                                ),
+                                Spacer(),
+                              ],
                             ),
                           ),
                         );
@@ -273,7 +366,7 @@ class _AllCitiesScreenState extends State<AllCitiesScreen> {
               ),
             ),
             Container(
-              height: 200,
+              height: 244,
               child: trends.length == 0
                   ? Center(
                       child: SpinKitWave(
@@ -286,8 +379,8 @@ class _AllCitiesScreenState extends State<AllCitiesScreen> {
                       itemCount: vids.length,
                       itemBuilder: (BuildContext context, int index) {
                         return InkWell(
-                          splashColor: Colors.pinkAccent.withOpacity(0.3),
-                          highlightColor: Colors.pinkAccent.withOpacity(0.3),
+                          splashColor: Colors.transparent,
+                          highlightColor: Colors.transparent,
                           onTap: () {
                             scaffoldState.currentState
                                 .showBottomSheet((context) {
@@ -295,6 +388,7 @@ class _AllCitiesScreenState extends State<AllCitiesScreen> {
                                   (BuildContext context, StateSetter state) {
                                 return UIVideos(
                                     vids[index].name,
+                                    //TODO:Change trends to vids
                                     trends[index].imageUrl,
                                     vids[index].description,
                                     vids[index].client,
@@ -303,14 +397,45 @@ class _AllCitiesScreenState extends State<AllCitiesScreen> {
                             });
                           },
                           child: Container(
+                            padding: EdgeInsets.all(2),
+                            height: 204,
                             decoration: BoxDecoration(
-                                color: Colors.red,
+                                color: Color(0xFFFF4B8F),
                                 borderRadius:
-                                    BorderRadius.all(Radius.circular(30))),
+                                    BorderRadius.all(Radius.circular(10))),
                             margin: EdgeInsets.all(20),
-                            child: Image.network(
-                              trends[index].imageUrl,
-                              fit: BoxFit.fill,
+                            child: Column(
+                              children: <Widget>[
+                                Container(
+                                  height: 150,
+                                  child: ClipRRect(
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(10)),
+                                    child: Image.network(
+                                      //TODO:Change trends to vids
+                                      trends[index].imageUrl,
+                                      fit: BoxFit.fill,
+                                    ),
+                                  ),
+                                ),
+                                Spacer(),
+                                Text(
+                                  'Image By',
+                                  style: TextStyle(
+                                      color: Colors.white,
+                                      fontFamily: 'nunito',
+                                      fontSize: 18),
+                                ),
+                                Text(
+                                  '${vids[index].name}',
+                                  style: TextStyle(
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.bold,
+                                      fontFamily: 'nunito',
+                                      fontSize: 18),
+                                ),
+                                Spacer(),
+                              ],
                             ),
                           ),
                         );
@@ -519,11 +644,17 @@ class _AllCitiesScreenState extends State<AllCitiesScreen> {
                   height: 30,
                 ),
                 InkWell(
-                  onTap: null,
+                  onTap: () {
+                    DropdownBanner.showBanner(
+                      text: 'Go to $imageBy',
+                      color: Colors.red,
+                      textStyle: TextStyle(color: Colors.white),
+                    );
+                  },
                   child: Card(
                     color: Colors.pinkAccent,
                     shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(30))),
+                        borderRadius: BorderRadius.all(Radius.circular(10))),
                     child: Padding(
                       padding: EdgeInsets.all(15),
                       child: Text(
@@ -545,7 +676,7 @@ class _AllCitiesScreenState extends State<AllCitiesScreen> {
                   child: Card(
                     color: Colors.pinkAccent,
                     shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(30))),
+                        borderRadius: BorderRadius.all(Radius.circular(10))),
                     child: Padding(
                       padding: EdgeInsets.all(15),
                       child: Text(
