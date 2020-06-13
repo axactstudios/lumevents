@@ -3,6 +3,8 @@ import 'package:dropdown_banner/dropdown_banner.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:getflutter/components/card/gf_card.dart';
+import 'package:getflutter/getflutter.dart';
 import 'package:liquid_pull_to_refresh/liquid_pull_to_refresh.dart';
 import 'package:lumevents/classes/Trending.dart';
 import 'package:lumevents/classes/Events.dart';
@@ -14,7 +16,7 @@ class AllCitiesScreen extends StatefulWidget {
 }
 
 final scaffoldState = GlobalKey<ScaffoldState>();
-
+double width, height;
 String str = 'Trending';
 List<Trending> trends = [];
 List<Trending> ideas = [];
@@ -92,6 +94,8 @@ class _AllCitiesScreenState extends State<AllCitiesScreen> {
 
   @override
   Widget build(BuildContext context) {
+    width = MediaQuery.of(context).size.width;
+    height = MediaQuery.of(context).size.height;
     return Scaffold(
       key: scaffoldState,
       body: LiquidPullToRefresh(
@@ -113,7 +117,7 @@ class _AllCitiesScreenState extends State<AllCitiesScreen> {
               ),
             ),
             Container(
-              height: 244,
+              height: 270,
               child: trends.length == 0
                   ? Center(
                       child: SpinKitWave(
@@ -145,14 +149,70 @@ class _AllCitiesScreenState extends State<AllCitiesScreen> {
                             padding: EdgeInsets.all(2),
                             height: 204,
                             decoration: BoxDecoration(
-                                color: Color(0xFFFF4B8F),
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: Colors.black26,
+                                    blurRadius: 20.0, // soften the shadow
+                                    spreadRadius: 3.0, //extend the shadow
+                                    offset: Offset(
+                                      10.0, // Move to right 10  horizontally
+                                      20.0, // Move to bottom 10 Vertically
+                                    ),
+                                  )
+                                ],
+                                color: Colors.white,
                                 borderRadius:
                                     BorderRadius.all(Radius.circular(10))),
-                            margin: EdgeInsets.all(20),
+                            margin: EdgeInsets.fromLTRB(20, 10, 10, 40),
                             child: Column(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: <Widget>[
                                 Container(
+                                  padding: EdgeInsets.all(5),
+                                  height: 60,
+                                  width: 250,
+                                  child: Row(
+                                    children: <Widget>[
+                                      CircleAvatar(
+                                        backgroundImage:
+                                            NetworkImage(ideas[0].imageUrl),
+                                        backgroundColor: Colors.white,
+                                      ),
+                                      SizedBox(
+                                        width: 10,
+                                      ),
+                                      Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: <Widget>[
+                                          Text(
+                                            'Presented By',
+                                            style: TextStyle(
+                                                color: Colors.black,
+                                                fontFamily: 'nunito',
+                                                fontSize: 18),
+                                          ),
+                                          Container(
+                                            width: 180,
+                                            child: Text(
+                                              '${trends[index].imageBy}',
+                                              style: TextStyle(
+                                                  color: Colors.black,
+                                                  fontWeight: FontWeight.bold,
+                                                  fontFamily: 'nunito',
+                                                  fontSize: 18),
+                                              overflow: TextOverflow.fade,
+                                              softWrap: false,
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                Container(
                                   height: 150,
+                                  width: 250,
                                   child: ClipRRect(
                                     borderRadius:
                                         BorderRadius.all(Radius.circular(10)),
@@ -162,23 +222,6 @@ class _AllCitiesScreenState extends State<AllCitiesScreen> {
                                     ),
                                   ),
                                 ),
-                                Spacer(),
-                                Text(
-                                  'Image By',
-                                  style: TextStyle(
-                                      color: Colors.white,
-                                      fontFamily: 'nunito',
-                                      fontSize: 18),
-                                ),
-                                Text(
-                                  '${trends[index].imageBy}',
-                                  style: TextStyle(
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.bold,
-                                      fontFamily: 'nunito',
-                                      fontSize: 18),
-                                ),
-                                Spacer(),
                               ],
                             ),
                           ),
@@ -197,8 +240,8 @@ class _AllCitiesScreenState extends State<AllCitiesScreen> {
               ),
             ),
             Container(
-              height: 244,
-              child: trends.length == 0
+              height: 270,
+              child: ideas.length == 0
                   ? Center(
                       child: SpinKitWave(
                         size: 30,
@@ -229,14 +272,70 @@ class _AllCitiesScreenState extends State<AllCitiesScreen> {
                             padding: EdgeInsets.all(2),
                             height: 204,
                             decoration: BoxDecoration(
-                                color: Color(0xFFFF4B8F),
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: Colors.black26,
+                                    blurRadius: 20.0, // soften the shadow
+                                    spreadRadius: 3.0, //extend the shadow
+                                    offset: Offset(
+                                      10.0, // Move to right 10  horizontally
+                                      20.0, // Move to bottom 10 Vertically
+                                    ),
+                                  )
+                                ],
+                                color: Colors.white,
                                 borderRadius:
                                     BorderRadius.all(Radius.circular(10))),
-                            margin: EdgeInsets.all(20),
+                            margin: EdgeInsets.fromLTRB(20, 10, 10, 40),
                             child: Column(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: <Widget>[
                                 Container(
+                                  padding: EdgeInsets.all(5),
+                                  height: 60,
+                                  width: 250,
+                                  child: Row(
+                                    children: <Widget>[
+                                      CircleAvatar(
+                                        backgroundImage:
+                                            NetworkImage(ideas[0].imageUrl),
+                                        backgroundColor: Colors.white,
+                                      ),
+                                      SizedBox(
+                                        width: 10,
+                                      ),
+                                      Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: <Widget>[
+                                          Text(
+                                            'Presented By',
+                                            style: TextStyle(
+                                                color: Colors.black,
+                                                fontFamily: 'nunito',
+                                                fontSize: 18),
+                                          ),
+                                          Container(
+                                            width: 180,
+                                            child: Text(
+                                              '${ideas[index].imageBy}',
+                                              style: TextStyle(
+                                                  color: Colors.black,
+                                                  fontWeight: FontWeight.bold,
+                                                  fontFamily: 'nunito',
+                                                  fontSize: 18),
+                                              overflow: TextOverflow.fade,
+                                              softWrap: false,
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                Container(
                                   height: 150,
+                                  width: 250,
                                   child: ClipRRect(
                                     borderRadius:
                                         BorderRadius.all(Radius.circular(10)),
@@ -246,23 +345,6 @@ class _AllCitiesScreenState extends State<AllCitiesScreen> {
                                     ),
                                   ),
                                 ),
-                                Spacer(),
-                                Text(
-                                  'Image By',
-                                  style: TextStyle(
-                                      color: Colors.white,
-                                      fontFamily: 'nunito',
-                                      fontSize: 18),
-                                ),
-                                Text(
-                                  '${trends[index].imageBy}',
-                                  style: TextStyle(
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.bold,
-                                      fontFamily: 'nunito',
-                                      fontSize: 18),
-                                ),
-                                Spacer(),
                               ],
                             ),
                           ),
@@ -281,8 +363,8 @@ class _AllCitiesScreenState extends State<AllCitiesScreen> {
               ),
             ),
             Container(
-              height: 244,
-              child: trends.length == 0
+              height: 270,
+              child: events.length == 0
                   ? Center(
                       child: SpinKitWave(
                         size: 30,
@@ -314,14 +396,70 @@ class _AllCitiesScreenState extends State<AllCitiesScreen> {
                             padding: EdgeInsets.all(2),
                             height: 204,
                             decoration: BoxDecoration(
-                                color: Color(0xFFFF4B8F),
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: Colors.black26,
+                                    blurRadius: 20.0, // soften the shadow
+                                    spreadRadius: 3.0, //extend the shadow
+                                    offset: Offset(
+                                      10.0, // Move to right 10  horizontally
+                                      20.0, // Move to bottom 10 Vertically
+                                    ),
+                                  )
+                                ],
+                                color: Colors.white,
                                 borderRadius:
                                     BorderRadius.all(Radius.circular(10))),
-                            margin: EdgeInsets.all(20),
+                            margin: EdgeInsets.fromLTRB(20, 10, 10, 40),
                             child: Column(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: <Widget>[
                                 Container(
+                                  padding: EdgeInsets.all(5),
+                                  height: 60,
+                                  width: 250,
+                                  child: Row(
+                                    children: <Widget>[
+                                      CircleAvatar(
+                                        backgroundImage:
+                                            NetworkImage(ideas[0].imageUrl),
+                                        backgroundColor: Colors.white,
+                                      ),
+                                      SizedBox(
+                                        width: 10,
+                                      ),
+                                      Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: <Widget>[
+                                          Text(
+                                            'Presented By',
+                                            style: TextStyle(
+                                                color: Colors.black,
+                                                fontFamily: 'nunito',
+                                                fontSize: 18),
+                                          ),
+                                          Container(
+                                            width: 180,
+                                            child: Text(
+                                              '${events[index].client}',
+                                              style: TextStyle(
+                                                  color: Colors.black,
+                                                  fontWeight: FontWeight.bold,
+                                                  fontFamily: 'nunito',
+                                                  fontSize: 18),
+                                              overflow: TextOverflow.fade,
+                                              softWrap: false,
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                Container(
                                   height: 150,
+                                  width: 250,
                                   child: ClipRRect(
                                     borderRadius:
                                         BorderRadius.all(Radius.circular(10)),
@@ -331,23 +469,6 @@ class _AllCitiesScreenState extends State<AllCitiesScreen> {
                                     ),
                                   ),
                                 ),
-                                Spacer(),
-                                Text(
-                                  'Image By',
-                                  style: TextStyle(
-                                      color: Colors.white,
-                                      fontFamily: 'nunito',
-                                      fontSize: 18),
-                                ),
-                                Text(
-                                  '${events[index].name}',
-                                  style: TextStyle(
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.bold,
-                                      fontFamily: 'nunito',
-                                      fontSize: 18),
-                                ),
-                                Spacer(),
                               ],
                             ),
                           ),
@@ -366,8 +487,8 @@ class _AllCitiesScreenState extends State<AllCitiesScreen> {
               ),
             ),
             Container(
-              height: 244,
-              child: trends.length == 0
+              height: 270,
+              child: vids.length == 0
                   ? Center(
                       child: SpinKitWave(
                         size: 30,
@@ -388,8 +509,8 @@ class _AllCitiesScreenState extends State<AllCitiesScreen> {
                                   (BuildContext context, StateSetter state) {
                                 return UIVideos(
                                     vids[index].name,
-                                    //TODO:Change trends to vids
-                                    trends[index].imageUrl,
+//TODO:Change trends to vids
+                                    vids[index].imageUrl,
                                     vids[index].description,
                                     vids[index].client,
                                     vids[index].city);
@@ -400,41 +521,79 @@ class _AllCitiesScreenState extends State<AllCitiesScreen> {
                             padding: EdgeInsets.all(2),
                             height: 204,
                             decoration: BoxDecoration(
-                                color: Color(0xFFFF4B8F),
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: Colors.black26,
+                                    blurRadius: 20.0, // soften the shadow
+                                    spreadRadius: 3.0, //extend the shadow
+                                    offset: Offset(
+                                      10.0, // Move to right 10  horizontally
+                                      20.0, // Move to bottom 10 Vertically
+                                    ),
+                                  )
+                                ],
+                                color: Colors.white,
                                 borderRadius:
                                     BorderRadius.all(Radius.circular(10))),
-                            margin: EdgeInsets.all(20),
+                            margin: EdgeInsets.fromLTRB(20, 10, 10, 40),
                             child: Column(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: <Widget>[
                                 Container(
+                                  padding: EdgeInsets.all(5),
+                                  height: 60,
+                                  width: 250,
+                                  child: Row(
+                                    children: <Widget>[
+                                      CircleAvatar(
+                                        backgroundImage:
+                                            NetworkImage(ideas[0].imageUrl),
+                                        backgroundColor: Colors.white,
+                                      ),
+                                      SizedBox(
+                                        width: 10,
+                                      ),
+                                      Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: <Widget>[
+                                          Text(
+                                            'Presented By',
+                                            style: TextStyle(
+                                                color: Colors.black,
+                                                fontFamily: 'nunito',
+                                                fontSize: 18),
+                                          ),
+                                          Container(
+                                            width: 180,
+                                            child: Text(
+                                              '${vids[index].client}',
+                                              style: TextStyle(
+                                                  color: Colors.black,
+                                                  fontWeight: FontWeight.bold,
+                                                  fontFamily: 'nunito',
+                                                  fontSize: 18),
+                                              overflow: TextOverflow.fade,
+                                              softWrap: false,
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                Container(
                                   height: 150,
+                                  width: 250,
                                   child: ClipRRect(
                                     borderRadius:
                                         BorderRadius.all(Radius.circular(10)),
                                     child: Image.network(
-                                      //TODO:Change trends to vids
-                                      trends[index].imageUrl,
+                                      vids[index].imageUrl,
                                       fit: BoxFit.fill,
                                     ),
                                   ),
                                 ),
-                                Spacer(),
-                                Text(
-                                  'Image By',
-                                  style: TextStyle(
-                                      color: Colors.white,
-                                      fontFamily: 'nunito',
-                                      fontSize: 18),
-                                ),
-                                Text(
-                                  '${vids[index].name}',
-                                  style: TextStyle(
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.bold,
-                                      fontFamily: 'nunito',
-                                      fontSize: 18),
-                                ),
-                                Spacer(),
                               ],
                             ),
                           ),
@@ -449,124 +608,173 @@ class _AllCitiesScreenState extends State<AllCitiesScreen> {
   }
 
   Widget UITrends(String name, imageUrl, description, imageBy) {
-    return ListView(
-      shrinkWrap: true,
-      children: [
-        Container(
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.all(Radius.circular(50)),
-            color: Colors.white,
-          ),
-          child: Padding(
-            padding: const EdgeInsets.all(35),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
+    return Container(
+      decoration: BoxDecoration(
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black26,
+              blurRadius: 30.0, // soften the shadow
+              spreadRadius: 3.0, //extend the shadow
+              offset: Offset(
+                0.0, // Move to right 10  horizontally
+                0.0, // Move to bottom 10 Vertically
+              ),
+            )
+          ],
+          color: Colors.white,
+          borderRadius: BorderRadius.all(Radius.circular(10))),
+      margin: EdgeInsets.fromLTRB(20, 20, 20, 40),
+      padding: EdgeInsets.all(15),
+      height: height,
+      width: width,
+      child: Column(
+        children: <Widget>[
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    IconButton(
-                      icon: Icon(Icons.arrow_back_ios),
-                      onPressed: () {
-                        Navigator.pop(context, true);
-                      },
-                    ),
-                    Text(
-                      name,
-                      style: TextStyle(
-                          color: Colors.pinkAccent,
-                          fontSize: 30,
-                          fontWeight: FontWeight.bold),
-                      textAlign: TextAlign.center,
-                    ),
-                  ],
-                ),
-                SizedBox(
-                  height: 30,
-                ),
-                Image.network(
-                  imageUrl,
-                  alignment: Alignment.centerRight,
-                ),
-                SizedBox(
-                  height: 30,
-                ),
                 Text(
-                  'Image by',
+                  name,
                   style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 20,
-                      fontWeight: FontWeight.normal),
-                  textAlign: TextAlign.right,
-                ),
-                Text(
-                  imageBy,
-                  style: TextStyle(
-                      color: Colors.pinkAccent,
+                      color: Color(0xFFFF124D),
+                      fontFamily: 'nunito',
                       fontSize: 30,
                       fontWeight: FontWeight.bold),
-                  textAlign: TextAlign.end,
+                  textAlign: TextAlign.center,
                 ),
-                SizedBox(
-                  height: 30,
-                ),
-                Text(
-                  description,
-                  style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 15,
-                      fontWeight: FontWeight.normal),
-                  textAlign: TextAlign.end,
-                ),
-                SizedBox(
-                  height: 30,
-                ),
-                InkWell(
-                  onTap: null,
-                  child: Card(
-                    color: Colors.pinkAccent,
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(30))),
-                    child: Padding(
-                      padding: EdgeInsets.all(15),
-                      child: Text(
-                        "View Vendor",
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold),
-                        textAlign: TextAlign.center,
-                      ),
-                    ),
+                IconButton(
+                  icon: Icon(
+                    Icons.keyboard_arrow_down,
+                    size: 40,
                   ),
+                  onPressed: () {
+                    Navigator.pop(context, true);
+                  },
                 ),
-                SizedBox(
-                  height: 15,
-                ),
-                InkWell(
-                  onTap: null,
-                  child: Card(
-                    color: Colors.pinkAccent,
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(30))),
-                    child: Padding(
-                      padding: EdgeInsets.all(15),
-                      child: Text(
-                        "Want the same for your wedding?\nGet in Touch Now",
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 12,
-                            fontWeight: FontWeight.w700),
-                        textAlign: TextAlign.center,
+              ],
+            ),
+          ),
+          Expanded(
+            child: ListView(
+              shrinkWrap: true,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(20),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: [
+                      Container(
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.all(Radius.circular(5)),
+                          child: Image.network(
+                            imageUrl,
+                            alignment: Alignment.center,
+                            fit: BoxFit.fill,
+                          ),
+                        ),
                       ),
-                    ),
+                      SizedBox(
+                        height: 15,
+                      ),
+                      Text(
+                        'Presented by',
+                        style: TextStyle(
+                            color: Colors.black,
+                            fontFamily: 'nunito',
+                            fontSize: 20,
+                            fontWeight: FontWeight.normal),
+                        textAlign: TextAlign.left,
+                      ),
+                      Text(
+                        imageBy,
+                        style: TextStyle(
+                            color: Color(0xFFFF124D),
+                            fontFamily: 'nunito',
+                            fontSize: 30,
+                            fontWeight: FontWeight.bold),
+                        textAlign: TextAlign.start,
+                      ),
+                      SizedBox(
+                        height: 15,
+                      ),
+                      Text(
+                        'Description-',
+                        style: TextStyle(
+                            color: Colors.black,
+                            fontFamily: 'nunito',
+                            fontSize: 20,
+                            fontWeight: FontWeight.normal),
+                        textAlign: TextAlign.left,
+                      ),
+                      Text(
+                        description,
+                        style: TextStyle(
+                            color: Color(0xFF808080),
+                            fontFamily: 'nunito',
+                            fontSize: 18,
+                            fontWeight: FontWeight.normal),
+                        textAlign: TextAlign.start,
+                      ),
+                      SizedBox(
+                        height: 30,
+                      ),
+                      InkWell(
+                        onTap: null,
+                        child: Card(
+                          color: Colors.pinkAccent,
+                          shape: RoundedRectangleBorder(
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(10))),
+                          child: Padding(
+                            padding: EdgeInsets.all(10),
+                            child: Text(
+                              'Add to wishlist',
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontFamily: 'nunito',
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.bold),
+                              textAlign: TextAlign.center,
+                            ),
+                          ),
+                        ),
+                      ),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      InkWell(
+                        onTap: null,
+                        child: Card(
+                          color: Colors.pinkAccent,
+                          shape: RoundedRectangleBorder(
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(10))),
+                          child: Padding(
+                            padding: EdgeInsets.all(10),
+                            child: Text(
+                              "View Vendor",
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontFamily: 'nunito',
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.bold),
+                              textAlign: TextAlign.center,
+                            ),
+                          ),
+                        ),
+                      ),
+                      SizedBox(
+                        height: 10,
+                      ),
+                    ],
                   ),
                 ),
               ],
             ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 
