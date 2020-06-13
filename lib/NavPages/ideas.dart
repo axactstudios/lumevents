@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:getflutter/getflutter.dart';
 import 'package:lumevents/IdeaPageTabViews/ideasTab.dart';
+import 'package:lumevents/IdeaPageTabViews/realEventsTab.dart';
 
 class IdeasPage extends StatefulWidget {
   @override
@@ -45,13 +46,7 @@ class _IdeasPageState extends State<IdeasPage> {
         ),
       ],
       tabBarView: GFTabBarView(
-        children: <Widget>[
-          IdeasTab(),
-          Container(
-            child: Icon(Icons.directions_bus),
-            color: Colors.blue,
-          ),
-        ],
+        children: <Widget>[IdeasTab(), RealEventsTab()],
       ),
     ));
   }
