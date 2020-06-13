@@ -75,6 +75,7 @@ class _AllCitiesScreenState extends State<AllCitiesScreen> {
   @override
   void initState() {
     super.initState();
+
     getDatabaseRef("Trending", trends);
     getDatabaseRef("TopIdeas", ideas);
     getDatabaseRef1("Events", events);
@@ -435,8 +436,8 @@ class _AllCitiesScreenState extends State<AllCitiesScreen> {
                                   child: Row(
                                     children: <Widget>[
                                       CircleAvatar(
-                                        backgroundImage:
-                                            NetworkImage(ideas[0].imageUrl),
+                                        backgroundImage: NetworkImage(
+                                            events[index].imageUrl),
                                         backgroundColor: Colors.white,
                                       ),
                                       SizedBox(
@@ -604,13 +605,12 @@ class _AllCitiesScreenState extends State<AllCitiesScreen> {
                                   height: 150,
                                   width: 250,
                                   child: ClipRRect(
-                                    borderRadius:
-                                        BorderRadius.all(Radius.circular(10)),
-                                    child: Image.network(
-                                      vids[index].imageUrl,
-                                      fit: BoxFit.fill,
-                                    ),
-                                  ),
+                                      borderRadius:
+                                          BorderRadius.all(Radius.circular(10)),
+                                      child: Image.network(
+                                        events[index].imageUrl,
+                                        fit: BoxFit.fill,
+                                      )),
                                 ),
                               ],
                             ),

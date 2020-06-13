@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:lumevents/HomePageScreens/allCitiesScreen.dart';
-import 'package:lumevents/HomePageScreens/delhiNCRScreen.dart';
-import 'package:lumevents/HomePageScreens/jaipurScreen.dart';
-import 'package:lumevents/HomePageScreens/kolkataScreen.dart';
-import 'package:lumevents/HomePageScreens/udaipurScreen.dart';
+import 'package:lumevents/HomePageScreens/citySpecificScreen.dart';
+
 import 'package:searchable_dropdown/searchable_dropdown.dart';
 
 class HomePage extends StatefulWidget {
@@ -61,13 +59,13 @@ class _HomePageState extends State<HomePage> {
                         if (_currentItemSelected == _cities[0]) {
                           _currentScreenToShow = AllCitiesScreen();
                         } else if (_currentItemSelected == _cities[1]) {
-                          _currentScreenToShow = DelhiNCRScreen();
+                          _currentScreenToShow = CitySpecificScreen("DelhiNCR");
                         } else if (_currentItemSelected == _cities[2]) {
-                          _currentScreenToShow = JaipurScreen();
+                          _currentScreenToShow = CitySpecificScreen(_cities[2]);
                         } else if (_currentItemSelected == _cities[3]) {
-                          _currentScreenToShow = KolkataScreen();
+                          _currentScreenToShow = CitySpecificScreen(_cities[3]);
                         } else if (_currentItemSelected == _cities[4]) {
-                          _currentScreenToShow = UdaipurScreen();
+                          _currentScreenToShow = CitySpecificScreen(_cities[4]);
                         }
                       });
                     },
