@@ -109,6 +109,7 @@ class _AllCitiesScreenState extends State<AllCitiesScreen> {
                 'Trending',
                 style: TextStyle(
                     fontSize: 24,
+                    color: Color(0xFFFF124D),
                     fontFamily: 'nunito',
                     fontWeight: FontWeight.bold),
               ),
@@ -231,6 +232,7 @@ class _AllCitiesScreenState extends State<AllCitiesScreen> {
               child: Text(
                 'Top Ideas',
                 style: TextStyle(
+                    color: Color(0xFFFF124D),
                     fontSize: 24,
                     fontFamily: 'nunito',
                     fontWeight: FontWeight.bold),
@@ -354,6 +356,7 @@ class _AllCitiesScreenState extends State<AllCitiesScreen> {
               child: Text(
                 'Events Powered By Us',
                 style: TextStyle(
+                    color: Color(0xFFFF124D),
                     fontSize: 24,
                     fontFamily: 'nunito',
                     fontWeight: FontWeight.bold),
@@ -478,6 +481,7 @@ class _AllCitiesScreenState extends State<AllCitiesScreen> {
               child: Text(
                 'Featured Videos',
                 style: TextStyle(
+                    color: Color(0xFFFF124D),
                     fontSize: 24,
                     fontFamily: 'nunito',
                     fontWeight: FontWeight.bold),
