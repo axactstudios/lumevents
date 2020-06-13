@@ -1,8 +1,12 @@
-11 June 12:51 AM-
+11 June, 2020, 12:51 P.M.-
 First commit, Bottom Nav bar added
-11 June 5:12 PM-
+11 June, 2020, 5:12 P.M.-
 Dropdown button for city selection added.
-12 June 12:52 AM-
+12 June, 2020, 12:52 A.M.-
 Dropdown rebuilt due to cocoapods error.
-12 June 10:00 PM-
-Pull down to refresh added to all cities screen
+12 June 2020, 10:00 P.M.-
+Pull down to refresh added to all cities screen, not functional.
+13 June 2020, 5:50 A.M.-
+Drop down changed to searchable one, Backend configured, made json database for all cities and landing page, created different
+buckets in storage categorized by pages and cities, All cities page image retriving from database, featured videos left, 
+opening details bottom sheet on clicking item.
