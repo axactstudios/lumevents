@@ -10,3 +10,5 @@ Pull down to refresh added to all cities screen, not functional.
 Drop down changed to searchable one, Backend configured, made json database for all cities and landing page, created different
 buckets in storage categorized by pages and cities, All cities page image retriving from database, featured videos left, 
 opening details bottom sheet on clicking item.
+13 June 2020, 04:58 P.M.-
+All cities page UI redifined and UITrends details bottom sheet rebuilt
