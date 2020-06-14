@@ -63,7 +63,6 @@ class _IdeasTabState extends State<IdeasTab> {
   @override
   void initState() {
     super.initState();
-    getDatabaseRef("Birthdays", bday);
   }
 
   double height, width;
@@ -251,6 +250,7 @@ class _CardScrollWidgetState extends State<CardScrollWidget> {
   void initState() {
     super.initState();
     getDatabaseRef("Birthdays", bday);
+    getDatabaseRef("Corporate", corp);
   }
 
   var currentPage = 4 - 1.0;
