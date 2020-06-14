@@ -1,8 +1,10 @@
 import 'dart:async';
 import 'dart:math';
 
+import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:liquid_pull_to_refresh/liquid_pull_to_refresh.dart';
+import 'package:lumevents/classes/Trending.dart';
 
 class IdeasTab extends StatefulWidget {
   @override
@@ -25,7 +27,42 @@ class _IdeasTabState extends State<IdeasTab> {
     return completer.future.then<void>((_) {});
   }
 
+  List<Trending> bday = [];
+  List<Trending> wed = [];
+  List<Trending> corp = [];
+  List<Trending> private = [];
+  List<Trending> other = [];
+
   var currentPage = 4 - 1.0;
+  getDatabaseRef(String type, List<Trending> arr) async {
+    DatabaseReference dbref = FirebaseDatabase.instance
+        .reference()
+        .child("Ideas")
+        .child("Ideas")
+        .child(type)
+        .child("Images");
+    await dbref.once().then((DataSnapshot snap) {
+      // ignore: non_constant_identifier_names
+      var KEYS = snap.value.keys;
+      // ignore: non_constant_identifier_names
+      var DATA = snap.value;
+      arr.clear();
+      for (var key in KEYS) {
+        Trending d = new Trending(DATA[key]['Name'], DATA[key]['ImageUrl'],
+            DATA[key]['Description'], DATA[key]['ImageBy']);
+        arr.add(d);
+      }
+      setState(() {
+        print(arr.length);
+      });
+    });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    getDatabaseRef("Birthdays", bday);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -42,7 +79,7 @@ class _IdeasTabState extends State<IdeasTab> {
         color: Colors.pink.withOpacity(0.5),
         onRefresh: _handleRefresh,
         child: Container(
-          color: Colors.teal,
+          color: Color(0xFFFF4B8F),
           child: SingleChildScrollView(
             child: Column(
               children: <Widget>[
@@ -50,7 +87,7 @@ class _IdeasTabState extends State<IdeasTab> {
                   padding: EdgeInsets.symmetric(horizontal: 20.0),
                   child: Text("Trending",
                       style: TextStyle(
-                        color: Colors.black,
+                        color: Colors.white,
                         fontSize: 46.0,
                         fontFamily: "Calibre-Semibold",
                         letterSpacing: 1.0,
@@ -131,12 +168,60 @@ class _IdeasTabState extends State<IdeasTab> {
   }
 }
 
-class CardScrollWidget extends StatelessWidget {
+class CardScrollWidget extends StatefulWidget {
   var currentPage;
+  CardScrollWidget(this.currentPage);
+
+  @override
+  _CardScrollWidgetState createState() => _CardScrollWidgetState();
+}
+
+class _CardScrollWidgetState extends State<CardScrollWidget> {
   var padding = 20.0;
+
   var verticalInset = 20.0;
 
-  CardScrollWidget(this.currentPage);
+  List<Trending> bday = [];
+
+  List<Trending> wed = [];
+
+  List<Trending> corp = [];
+
+  List<Trending> private = [];
+
+  List<Trending> other = [];
+
+  getDatabaseRef(String type, List<Trending> arr) async {
+    DatabaseReference dbref = FirebaseDatabase.instance
+        .reference()
+        .child("Ideas")
+        .child("Ideas")
+        .child(type)
+        .child("Images");
+    await dbref.once().then((DataSnapshot snap) {
+      // ignore: non_constant_identifier_names
+      var KEYS = snap.value.keys;
+      // ignore: non_constant_identifier_names
+      var DATA = snap.value;
+      arr.clear();
+      for (var key in KEYS) {
+        Trending d = new Trending(DATA[key]['Name'], DATA[key]['ImageUrl'],
+            DATA[key]['Description'], DATA[key]['ImageBy']);
+        arr.add(d);
+      }
+      setState(() {
+        print(arr.length);
+      });
+    });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    getDatabaseRef("Birthdays", bday);
+  }
+
+  var currentPage = 4 - 1.0;
 
   @override
   Widget build(BuildContext context) {
@@ -158,7 +243,7 @@ class CardScrollWidget extends StatelessWidget {
         List<Widget> cardList = new List();
 
         for (var i = 0; i < 4; i++) {
-          var delta = i - currentPage;
+          var delta = i - widget.currentPage;
           bool isOnRight = delta > 0;
 
           var start = padding +
@@ -186,7 +271,20 @@ class CardScrollWidget extends StatelessWidget {
                   child: Stack(
                     fit: StackFit.expand,
                     children: <Widget>[
-                      Image.asset('hysgudfsyu', fit: BoxFit.cover),
+                      Positioned.fill(
+                        child: PageView.builder(
+                          itemCount: bday.length,
+                          reverse: true,
+                          itemBuilder: (context, index) {
+                            return Container(
+                              child: Image.network(
+                                bday[index].imageUrl,
+                                fit: BoxFit.values[1],
+                              ),
+                            );
+                          },
+                        ),
+                      ),
                       Align(
                         alignment: Alignment.bottomLeft,
                         child: Column(
