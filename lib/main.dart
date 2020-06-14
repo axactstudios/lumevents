@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lumevents/MainPage.dart';
 import 'package:lumevents/NavBar/navBarItems.dart';
 import 'package:lumevents/NavPages/home.dart';
 import 'package:lumevents/NavPages/ideas.dart';
@@ -18,7 +19,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData(),
-      home: MyHomePage(),
+      home: MainPage(),
     );
   }
 }
