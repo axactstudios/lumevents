@@ -43,7 +43,7 @@ void setIdentifier(String check) {
     _currentCategory = databaseIdentifiers[2];
   } else if (check == "Photographer") {
     _currentCategory = databaseIdentifiers[3];
-  } else if (check == "Music/Dance") {
+  } else if (check == "Music/\nDancer") {
     _currentCategory = databaseIdentifiers[4];
   } else if (check == "Makeup") {
     _currentCategory = databaseIdentifiers[5];
@@ -125,6 +125,16 @@ class _CityVendorScreenState extends State<CityVendorScreen> {
       key: scaffoldState,
       appBar: AppBar(
         backgroundColor: Colors.teal,
+        actions: <Widget>[
+          InkWell(
+            onTap: () {
+              setState(() {
+                print('State refreshed');
+              });
+            },
+            child: Icon(Icons.refresh),
+          )
+        ],
       ),
       body: LiquidPullToRefresh(
         color: Colors.pink.withOpacity(0.5),
@@ -134,9 +144,16 @@ class _CityVendorScreenState extends State<CityVendorScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
-              Text(
-                'Vendors Available',
-                style: TextStyle(fontSize: 24),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Text(
+                  'Vendors Available',
+                  style: TextStyle(
+                      fontSize: 24,
+                      fontWeight: FontWeight.bold,
+                      color: Color(0xFFFF124D),
+                      fontFamily: 'nunito'),
+                ),
               ),
               Container(
                 height: height - 200,
