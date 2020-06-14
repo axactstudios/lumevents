@@ -4,6 +4,7 @@ import 'dart:math';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:liquid_pull_to_refresh/liquid_pull_to_refresh.dart';
+import 'package:lumevents/HomePageScreens/DetailsPullUps/uiTrends.dart';
 import 'package:lumevents/classes/Trending.dart';
 
 class IdeasTab extends StatefulWidget {
@@ -34,6 +35,7 @@ class _IdeasTabState extends State<IdeasTab> {
   List<Trending> other = [];
 
   var currentPage = 4 - 1.0;
+  var currentPage1 = 4 - 1.0;
   getDatabaseRef(String type, List<Trending> arr) async {
     DatabaseReference dbref = FirebaseDatabase.instance
         .reference()
@@ -64,12 +66,21 @@ class _IdeasTabState extends State<IdeasTab> {
     getDatabaseRef("Birthdays", bday);
   }
 
+  double height, width;
   @override
   Widget build(BuildContext context) {
-    PageController controller = PageController(initialPage: 4 - 1);
+    width = MediaQuery.of(context).size.width;
+    height = MediaQuery.of(context).size.height;
+    PageController controller = new PageController(initialPage: 4 - 1);
     controller.addListener(() {
       setState(() {
         currentPage = controller.page;
+      });
+    });
+    PageController controller1 = new PageController(initialPage: 4 - 1);
+    controller.addListener(() {
+      setState(() {
+        currentPage1 = controller.page;
       });
     });
 
@@ -98,11 +109,29 @@ class _IdeasTabState extends State<IdeasTab> {
                     CardScrollWidget(currentPage),
                     Positioned.fill(
                       child: PageView.builder(
-                        itemCount: 4,
+                        itemCount: bday.length,
                         controller: controller,
                         reverse: true,
                         itemBuilder: (context, index) {
-                          return Container();
+                          return InkWell(
+                              onTap: () {
+                                scaffoldState.currentState
+                                    .showBottomSheet((context) {
+                                  return StatefulBuilder(builder:
+                                      (BuildContext context,
+                                          StateSetter state) {
+                                    return UITrends(
+                                        bday[index].name,
+                                        bday[index].imageUrl,
+                                        bday[index].description,
+                                        bday[index].imageBy,
+                                        context,
+                                        height,
+                                        width);
+                                  });
+                                });
+                              },
+                              child: Container());
                         },
                       ),
                     )
@@ -147,18 +176,21 @@ class _IdeasTabState extends State<IdeasTab> {
                 SizedBox(
                   height: 20.0,
                 ),
-                Row(
+                Stack(
                   children: <Widget>[
-                    Padding(
-                      padding: EdgeInsets.only(left: 18.0),
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(20.0),
-                        child: Image.asset("assets/image_02.jpg",
-                            width: 296.0, height: 222.0),
+                    CardScrollWidget(currentPage1),
+                    Positioned.fill(
+                      child: PageView.builder(
+                        itemCount: 4,
+                        controller: controller1,
+                        reverse: true,
+                        itemBuilder: (context, index) {
+                          return Container();
+                        },
                       ),
                     )
                   ],
-                )
+                ),
               ],
             ),
           ),
