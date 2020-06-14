@@ -2,6 +2,7 @@ import 'dart:async';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:getflutter/components/image/gf_image_overlay.dart';
 import 'package:liquid_pull_to_refresh/liquid_pull_to_refresh.dart';
 import 'package:lumevents/classes/Trending.dart';
 import 'package:lumevents/classes/Events.dart';
@@ -121,7 +122,7 @@ class _AllCitiesScreenState extends State<AllCitiesScreen> {
               ),
             ),
             Container(
-              height: 270,
+              height: 330,
               child: trends.length == 0
                   ? Center(
                       child: SpinKitWave(
@@ -154,7 +155,7 @@ class _AllCitiesScreenState extends State<AllCitiesScreen> {
                           },
                           child: Container(
                             padding: EdgeInsets.all(2),
-                            height: 204,
+                            height: 234,
                             decoration: BoxDecoration(
                                 boxShadow: [
                                   BoxShadow(
@@ -177,7 +178,7 @@ class _AllCitiesScreenState extends State<AllCitiesScreen> {
                                 Container(
                                   padding: EdgeInsets.all(5),
                                   height: 60,
-                                  width: 250,
+                                  width: 310,
                                   child: Row(
                                     children: <Widget>[
                                       CircleAvatar(
@@ -200,7 +201,8 @@ class _AllCitiesScreenState extends State<AllCitiesScreen> {
                                                 fontSize: 18),
                                           ),
                                           Container(
-                                            width: 180,
+                                            width: 240,
+                                            color: Colors.white,
                                             child: Text(
                                               '${trends[index].imageBy}',
                                               style: TextStyle(
@@ -218,14 +220,40 @@ class _AllCitiesScreenState extends State<AllCitiesScreen> {
                                   ),
                                 ),
                                 Container(
-                                  height: 150,
-                                  width: 250,
+                                  height: 210,
+                                  width: 310,
                                   child: ClipRRect(
                                     borderRadius:
                                         BorderRadius.all(Radius.circular(10)),
-                                    child: Image.network(
-                                      trends[index].imageUrl,
-                                      fit: BoxFit.fill,
+                                    child: GFImageOverlay(
+                                      height: 200,
+                                      width: 300,
+                                      child: Column(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.end,
+                                        children: <Widget>[
+                                          Padding(
+                                            padding: const EdgeInsets.all(8.0),
+                                            child: Text(
+                                              trends[index].description,
+                                              style: TextStyle(
+                                                  color: Colors.white,
+                                                  fontSize: 20,
+                                                  fontWeight: FontWeight.bold,
+                                                  fontFamily: 'nunito'),
+                                              overflow: TextOverflow.fade,
+                                              softWrap: false,
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                      colorFilter: new ColorFilter.mode(
+                                          Colors.black.withOpacity(0.3),
+                                          BlendMode.darken),
+                                      borderRadius:
+                                          BorderRadius.all(Radius.circular(10)),
+                                      image:
+                                          NetworkImage(trends[index].imageUrl),
                                     ),
                                   ),
                                 ),
@@ -248,7 +276,7 @@ class _AllCitiesScreenState extends State<AllCitiesScreen> {
               ),
             ),
             Container(
-              height: 270,
+              height: 330,
               child: ideas.length == 0
                   ? Center(
                       child: SpinKitWave(
@@ -281,7 +309,7 @@ class _AllCitiesScreenState extends State<AllCitiesScreen> {
                           },
                           child: Container(
                             padding: EdgeInsets.all(2),
-                            height: 204,
+                            height: 234,
                             decoration: BoxDecoration(
                                 boxShadow: [
                                   BoxShadow(
@@ -304,7 +332,7 @@ class _AllCitiesScreenState extends State<AllCitiesScreen> {
                                 Container(
                                   padding: EdgeInsets.all(5),
                                   height: 60,
-                                  width: 250,
+                                  width: 310,
                                   child: Row(
                                     children: <Widget>[
                                       CircleAvatar(
@@ -327,7 +355,7 @@ class _AllCitiesScreenState extends State<AllCitiesScreen> {
                                                 fontSize: 18),
                                           ),
                                           Container(
-                                            width: 180,
+                                            width: 240,
                                             child: Text(
                                               '${ideas[index].imageBy}',
                                               style: TextStyle(
@@ -345,14 +373,40 @@ class _AllCitiesScreenState extends State<AllCitiesScreen> {
                                   ),
                                 ),
                                 Container(
-                                  height: 150,
-                                  width: 250,
+                                  height: 210,
+                                  width: 310,
                                   child: ClipRRect(
                                     borderRadius:
                                         BorderRadius.all(Radius.circular(10)),
-                                    child: Image.network(
-                                      ideas[index].imageUrl,
-                                      fit: BoxFit.fill,
+                                    child: GFImageOverlay(
+                                      height: 200,
+                                      width: 300,
+                                      child: Column(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.end,
+                                        children: <Widget>[
+                                          Padding(
+                                            padding: const EdgeInsets.all(8.0),
+                                            child: Text(
+                                              ideas[index].description,
+                                              style: TextStyle(
+                                                  color: Colors.white,
+                                                  fontSize: 20,
+                                                  fontWeight: FontWeight.bold,
+                                                  fontFamily: 'nunito'),
+                                              overflow: TextOverflow.fade,
+                                              softWrap: false,
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                      colorFilter: new ColorFilter.mode(
+                                          Colors.black.withOpacity(0.3),
+                                          BlendMode.darken),
+                                      borderRadius:
+                                          BorderRadius.all(Radius.circular(10)),
+                                      image:
+                                          NetworkImage(ideas[index].imageUrl),
                                     ),
                                   ),
                                 ),
@@ -375,7 +429,7 @@ class _AllCitiesScreenState extends State<AllCitiesScreen> {
               ),
             ),
             Container(
-              height: 270,
+              height: 330,
               child: events.length == 0
                   ? Center(
                       child: SpinKitWave(
@@ -409,7 +463,7 @@ class _AllCitiesScreenState extends State<AllCitiesScreen> {
                           },
                           child: Container(
                             padding: EdgeInsets.all(2),
-                            height: 204,
+                            height: 234,
                             decoration: BoxDecoration(
                                 boxShadow: [
                                   BoxShadow(
@@ -432,7 +486,7 @@ class _AllCitiesScreenState extends State<AllCitiesScreen> {
                                 Container(
                                   padding: EdgeInsets.all(5),
                                   height: 60,
-                                  width: 250,
+                                  width: 310,
                                   child: Row(
                                     children: <Widget>[
                                       CircleAvatar(
@@ -455,7 +509,7 @@ class _AllCitiesScreenState extends State<AllCitiesScreen> {
                                                 fontSize: 18),
                                           ),
                                           Container(
-                                            width: 180,
+                                            width: 240,
                                             child: Text(
                                               '${events[index].client}',
                                               style: TextStyle(
@@ -473,14 +527,40 @@ class _AllCitiesScreenState extends State<AllCitiesScreen> {
                                   ),
                                 ),
                                 Container(
-                                  height: 150,
-                                  width: 250,
+                                  height: 210,
+                                  width: 310,
                                   child: ClipRRect(
                                     borderRadius:
                                         BorderRadius.all(Radius.circular(10)),
-                                    child: Image.network(
-                                      events[index].imageUrl,
-                                      fit: BoxFit.fill,
+                                    child: GFImageOverlay(
+                                      height: 200,
+                                      width: 300,
+                                      child: Column(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.end,
+                                        children: <Widget>[
+                                          Padding(
+                                            padding: const EdgeInsets.all(8.0),
+                                            child: Text(
+                                              events[index].description,
+                                              style: TextStyle(
+                                                  color: Colors.white,
+                                                  fontSize: 20,
+                                                  fontWeight: FontWeight.bold,
+                                                  fontFamily: 'nunito'),
+                                              overflow: TextOverflow.fade,
+                                              softWrap: false,
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                      colorFilter: new ColorFilter.mode(
+                                          Colors.black.withOpacity(0.3),
+                                          BlendMode.darken),
+                                      borderRadius:
+                                          BorderRadius.all(Radius.circular(10)),
+                                      image:
+                                          NetworkImage(events[index].imageUrl),
                                     ),
                                   ),
                                 ),
@@ -503,7 +583,7 @@ class _AllCitiesScreenState extends State<AllCitiesScreen> {
               ),
             ),
             Container(
-              height: 270,
+              height: 330,
               child: vids.length == 0
                   ? Center(
                       child: SpinKitWave(
@@ -538,7 +618,7 @@ class _AllCitiesScreenState extends State<AllCitiesScreen> {
                           },
                           child: Container(
                             padding: EdgeInsets.all(2),
-                            height: 204,
+                            height: 234,
                             decoration: BoxDecoration(
                                 boxShadow: [
                                   BoxShadow(
@@ -561,7 +641,7 @@ class _AllCitiesScreenState extends State<AllCitiesScreen> {
                                 Container(
                                   padding: EdgeInsets.all(5),
                                   height: 60,
-                                  width: 250,
+                                  width: 310,
                                   child: Row(
                                     children: <Widget>[
                                       CircleAvatar(
@@ -584,7 +664,7 @@ class _AllCitiesScreenState extends State<AllCitiesScreen> {
                                                 fontSize: 18),
                                           ),
                                           Container(
-                                            width: 180,
+                                            width: 240,
                                             child: Text(
                                               '${vids[index].client}',
                                               style: TextStyle(
@@ -602,15 +682,42 @@ class _AllCitiesScreenState extends State<AllCitiesScreen> {
                                   ),
                                 ),
                                 Container(
-                                  height: 150,
-                                  width: 250,
+                                  height: 210,
+                                  width: 310,
                                   child: ClipRRect(
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(10)),
+                                    child: GFImageOverlay(
+                                      height: 200,
+                                      width: 300,
+                                      child: Column(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.end,
+                                        children: <Widget>[
+                                          Padding(
+                                            padding: const EdgeInsets.all(8.0),
+                                            child: Text(
+                                              vids[index].description,
+                                              style: TextStyle(
+                                                  color: Colors.white,
+                                                  fontSize: 20,
+                                                  fontWeight: FontWeight.bold,
+                                                  fontFamily: 'nunito'),
+                                              overflow: TextOverflow.fade,
+                                              softWrap: false,
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                      colorFilter: new ColorFilter.mode(
+                                          Colors.black.withOpacity(0.3),
+                                          BlendMode.darken),
                                       borderRadius:
                                           BorderRadius.all(Radius.circular(10)),
-                                      child: Image.network(
-                                        events[index].imageUrl,
-                                        fit: BoxFit.fill,
-                                      )),
+                                      image:
+                                          NetworkImage(events[index].imageUrl),
+                                    ),
+                                  ),
                                 ),
                               ],
                             ),
