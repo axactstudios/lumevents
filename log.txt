@@ -16,7 +16,9 @@ All cities page UI done and UITrends details bottom sheet UI done.
 json Database and storage buckets made for Ideas page.
 13 June 2020, 06:00 P.M.-
 All details bottom sheets UI done.
-13 June 2020, 08:19 PM-
+13 June 2020, 08:19 P.M.-
 Ideas Page basic layout done, Code restructured, New folders made.
-14 June 2020, 03:19 AM-
+14 June 2020, 03:19 A.M.-
 City specific screens done with test images, Tried video player but failed.
+14 June 2020, 03:45 A.M.-
+Lum Events Business app completed with UI(in record 10 hours).
