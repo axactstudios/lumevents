@@ -9,6 +9,7 @@ import 'package:persistent_bottom_nav_bar/models/persistent-bottom-nav-bar-style
 import 'package:persistent_bottom_nav_bar/models/persistent-nav-bar-scaffold.widget.dart';
 import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
 import 'package:persistent_bottom_nav_bar/persistent-tab-view.widget.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 void main() {
   runApp(MyApp());
@@ -54,5 +55,12 @@ class _MyHomePageState extends State<MyHomePage> {
 
   List<Widget> _buildScreens() {
     return [HomePage(), IdeasPage(), PlanPage(), MorePage()];
+  }
+}
+
+class MainScreen extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container();
   }
 }

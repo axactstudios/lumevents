@@ -3,50 +3,65 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:lumevents/NavPages/home.dart';
 import 'package:lumevents/authentication/LoginPage.dart';
+import 'package:lumevents/main.dart';
 
 class MainPage extends StatelessWidget {
+  final FirebaseAuth mAuth = FirebaseAuth.instance;
+  FirebaseUser mCurrentUser;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.pinkAccent.withOpacity(0.7),
-      ),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[
-          Center(
-            child: RaisedButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => LoginPage()),
-                );
-              },
-              color: Colors.pinkAccent.withOpacity(0.7),
-              child: Text(
-                'Log in',
-                style: TextStyle(color: Colors.white),
+      body: Container(
+        decoration: BoxDecoration(
+          image: const DecorationImage(
+              image: AssetImage('images/background2.jpg'), fit: BoxFit.cover),
+        ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: <Widget>[
+            SizedBox(height: 550),
+            Padding(
+              padding: const EdgeInsets.all(45.0),
+              child: RaisedButton(
+                onPressed: () async {
+                  mCurrentUser = await mAuth.currentUser();
+                  mCurrentUser != null
+                      ? Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => MyHomePage()),
+                        )
+                      : Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => LoginPage()),
+                        );
+//                  Navigator.push(
+//                    context,
+//                    MaterialPageRoute(builder: (context) => LoginPage()),
+//                  );
+                },
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(25.0),
+                  side: BorderSide(color: Colors.white),
+                ),
+                color: Color(0xFFFF124D),
+                child: Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: Text(
+                    'Explore the magic of Lum Events',
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontFamily: 'nunito',
+                        fontWeight: FontWeight.bold,
+                        fontSize: 16),
+                  ),
+                ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
-    );
-  }
-}
-
-class MainScreen extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return StreamBuilder(
-      stream: FirebaseAuth.instance.onAuthStateChanged,
-      builder: (context, AsyncSnapshot<FirebaseUser> snapshot) {
-        if (!snapshot.hasData || snapshot.data == null) {
-          return LoginPage();
-        } else {
-          return HomePage();
-        }
-      },
     );
   }
 }
