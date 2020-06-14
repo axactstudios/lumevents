@@ -22,7 +22,7 @@ String pUrl =
     "https://firebasestorage.googleapis.com/v0/b/lumevents-48ff2.appspot.com/o/Home%2FAll%20Cities%2FTrending%2FUnknown-3.png?alt=media&token=9b6c8c33-73ac-4cf4-9b6f-8a93d3b79d92";
 
 class _CitySpecificScreenState extends State<CitySpecificScreen> {
-  getDatabaseRef(List<Trending> arr) async {
+  getDatabaseRef(List<Trending> trends) async {
     DatabaseReference dbref = FirebaseDatabase.instance
         .reference()
         .child("Home")
@@ -126,7 +126,7 @@ class _CitySpecificScreenState extends State<CitySpecificScreen> {
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: <Widget>[
                 _retCatrgory(
-                  'Vendors',
+                  'Venues',
                   pUrl,
                   widget.city,
                   context,
