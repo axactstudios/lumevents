@@ -23,8 +23,8 @@ List<PersistentBottomNavBarItem> navBarItems = [
     inactiveColor: Colors.black87,
   ),
   PersistentBottomNavBarItem(
-    icon: Icon(FontAwesomeIcons.cog),
-    title: ("More"),
+    icon: Icon(Icons.account_circle),
+    title: ("Profile"),
     activeColor: Color(0xFFFF0060),
     inactiveColor: Colors.black87,
   ),
