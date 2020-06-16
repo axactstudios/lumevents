@@ -1,0 +1,188 @@
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
+import 'package:lumevents/main.dart';
+import 'package:firebase_database/firebase_database.dart';
+
+class ProfileSetup extends StatefulWidget {
+  @override
+  _ProfileSetupState createState() => _ProfileSetupState();
+}
+
+class _ProfileSetupState extends State<ProfileSetup> {
+  final dbRef = FirebaseDatabase.instance.reference();
+  final FirebaseAuth mAuth = FirebaseAuth.instance;
+
+  TextEditingController _nameController;
+  TextEditingController _numberController;
+  TextEditingController _emailController;
+
+  var _selection = ['Bride', 'Groom', 'Other'];
+  String role;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    _nameController = TextEditingController(text: "");
+    _numberController = TextEditingController(text: "+91");
+    _emailController = TextEditingController(text: "");
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Padding(
+        padding: const EdgeInsets.all(10.0),
+        child: Column(
+          children: <Widget>[
+            SizedBox(
+              height: 250.0,
+            ),
+            Text(
+              'Set up your profile',
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 30.0,
+                fontFamily: 'nunito',
+                color: Color(0xFFFF124D),
+              ),
+            ),
+            const SizedBox(
+              height: 10.0,
+              width: 175.0,
+              child: Divider(
+                thickness: 0.8,
+                color: Color(0xFFFF124D),
+              ),
+            ),
+            SizedBox(
+              height: 10.0,
+            ),
+            TextField(
+              controller: _nameController,
+              decoration: InputDecoration(
+                  enabledBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(28.0),
+                  ),
+                  hintStyle: TextStyle(
+                      color: Color(0xFFFF124D),
+                      fontFamily: 'nunito',
+                      fontWeight: FontWeight.bold),
+                  hintText: "Enter your full name"),
+            ),
+            const SizedBox(
+              height: 10.0,
+            ),
+            TextField(
+              controller: _numberController,
+              decoration: InputDecoration(
+                  enabledBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(28.0),
+                  ),
+                  hintStyle: TextStyle(
+                      color: Color(0xFFFF124D),
+                      fontFamily: 'nunito',
+                      fontWeight: FontWeight.bold),
+                  hintText: "Enter your contact number"),
+            ),
+            const SizedBox(
+              height: 10.0,
+            ),
+            TextField(
+              controller: _emailController,
+              decoration: InputDecoration(
+                  enabledBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(28.0),
+                  ),
+                  hintStyle: TextStyle(
+                      color: Color(0xFFFF124D),
+                      fontFamily: 'nunito',
+                      fontWeight: FontWeight.bold),
+                  hintText: "Enter your email"),
+            ),
+            const SizedBox(
+              height: 10.0,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Text(
+                  'Select your role :',
+                  style: TextStyle(
+                      fontFamily: 'nunito',
+                      color: Color(0xFFFF124D),
+                      fontWeight: FontWeight.bold,
+                      fontSize: 15.0),
+                ),
+                SizedBox(
+                  width: 15.0,
+                ),
+                DropdownButton<String>(
+                  items: _selection.map((String dropdownStringItem) {
+                    return DropdownMenuItem<String>(
+                      value: dropdownStringItem,
+                      child: Text(
+                        dropdownStringItem,
+                        style: TextStyle(
+                            fontFamily: 'nunito',
+                            color: Color(0xFFFF124D),
+                            fontWeight: FontWeight.bold,
+                            fontSize: 15.0),
+                      ),
+                    );
+                  }).toList(),
+                  onChanged: (String newValueSelected) {
+                    setState(() {
+                      role = newValueSelected;
+                    });
+                  },
+                  value: role,
+                ),
+              ],
+            ),
+            const SizedBox(
+              height: 10.0,
+            ),
+            RaisedButton(
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(20.0),
+                side: BorderSide(color: Colors.white),
+              ),
+              color: Color(0xFFFF124D),
+              child: Padding(
+                padding: const EdgeInsets.all(10.0),
+                child: Text(
+                  'Submit',
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontFamily: 'nunito',
+                      fontWeight: FontWeight.bold,
+                      fontSize: 16),
+                ),
+              ),
+              onPressed: () async {
+                writeData();
+
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => MyHomePage()),
+                );
+              },
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  void writeData() async {
+    final FirebaseUser user = await mAuth.currentUser();
+    String uid = user.uid;
+    dbRef.child('Users').child(uid).set({
+      'name': _nameController.text,
+      'number': _numberController.text,
+      'email': _emailController.text,
+      'role': role
+    });
+  }
+}
