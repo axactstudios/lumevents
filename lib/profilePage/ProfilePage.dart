@@ -7,6 +7,8 @@ import 'package:lumevents/profilePage/User.dart';
 import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
 
 import '../authentication/LoginPage.dart';
+import '../authentication/LoginPage.dart';
+import 'ProfileSetup.dart';
 import 'ProfileSetup.dart';
 import 'User.dart';
 import 'User.dart';
@@ -328,11 +330,8 @@ class _ProfilePageState extends State<ProfilePage> {
                         ),
                         color: Colors.pinkAccent,
                         onPressed: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => ProfileSetup()),
-                          );
+                          pushNewScreen(context,
+                              screen: ProfileSetup(), withNavBar: false);
                         },
                         child: Text(
                           'Edit Profile',
@@ -377,9 +376,9 @@ class _ProfilePageState extends State<ProfilePage> {
 
   void signOut() {
     mAuth.signOut();
-    Navigator.pushReplacement(
-      context,
-      MaterialPageRoute(builder: (context) => LoginPage()),
-    );
+    pushNewScreen(context, screen: LoginPage(), withNavBar: false);
+//    Navigator.pushReplacement(
+//      context,
+//      MaterialPageRoute(builder: (context) => LoginPage()),
   }
 }
