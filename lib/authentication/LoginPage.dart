@@ -128,35 +128,102 @@ class _LoginPageState extends State<LoginPage> {
                 },
               ),
               SizedBox(
-                height: 5.0,
+                height: 4.0,
               ),
-              RaisedButton(
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(20.0),
-                  side: BorderSide(color: Colors.white),
-                ),
-                color: Color(0xFFFF124D),
-                child: Padding(
-                  padding: const EdgeInsets.all(10.0),
-                  child: Text(
-                    'Login with Google',
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontFamily: 'nunito',
-                        fontWeight: FontWeight.bold,
-                        fontSize: 16),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  SizedBox(
+                    width: 125.5,
+                    child: Divider(
+                      color: Color(0xFFFF124D),
+                    ),
+                    height: 5.0,
                   ),
-                ),
-                onPressed: () async {
-                  bool res = await AuthProvider().loginWithGoogle();
+                  SizedBox(
+                    width: 4.0,
+                  ),
+                  Text(
+                    'Other methods',
+                    style: TextStyle(
+                      color: Color(0xFFFF124D),
+                      fontFamily: 'nunito',
+                    ),
+                  ),
+                  SizedBox(
+                    width: 4.0,
+                  ),
+                  SizedBox(
+                    width: 125.5,
+                    child: Divider(
+                      color: Color(0xFFFF124D),
+                    ),
+                    height: 5.0,
+                  ),
+                ],
+              ),
+              SizedBox(
+                height: 4.0,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: <Widget>[
+                  RaisedButton(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(20.0),
+                      side: BorderSide(color: Colors.white),
+                    ),
+                    color: Color(0xFFFF124D),
+                    child: Padding(
+                      padding: const EdgeInsets.all(10.0),
+                      child: Text(
+                        'Google',
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontFamily: 'nunito',
+                            fontWeight: FontWeight.bold,
+                            fontSize: 16),
+                      ),
+                    ),
+                    onPressed: () async {
+                      bool res = await AuthProvider().loginWithGoogle();
 
-                  if (!res) {
-                    print('Login Failed');
-                  } else {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => MyHomePage()));
-                  }
-                },
+                      if (!res) {
+                        print('Login Failed');
+                      } else {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => MyHomePage()));
+                      }
+                    },
+                  ),
+                  SizedBox(
+                    width: 0.2,
+                    child: Divider(
+                      thickness: 2.0,
+                    ),
+                  ),
+                  RaisedButton(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(20.0),
+                      side: BorderSide(color: Colors.white),
+                    ),
+                    color: Color(0xFFFF124D),
+                    child: Padding(
+                      padding: const EdgeInsets.all(10.0),
+                      child: Text(
+                        'Phone',
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontFamily: 'nunito',
+                            fontWeight: FontWeight.bold,
+                            fontSize: 16),
+                      ),
+                    ),
+                    onPressed: () {},
+                  )
+                ],
               ),
               SizedBox(
                 height: 210.0,
