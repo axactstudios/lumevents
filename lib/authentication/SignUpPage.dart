@@ -67,7 +67,7 @@ class _SignUpPageState extends State<SignUpPage> {
                 ),
               ),
               SizedBox(
-                height: 10.0,
+                height: 10.1,
               ),
               TextField(
                 controller: _emailController,
