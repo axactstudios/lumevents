@@ -28,11 +28,11 @@ class MainPage extends StatelessWidget {
                 onPressed: () async {
                   mCurrentUser = await mAuth.currentUser();
                   mCurrentUser != null
-                      ? Navigator.push(
+                      ? Navigator.pushReplacement(
                           context,
                           MaterialPageRoute(builder: (context) => MyHomePage()),
                         )
-                      : Navigator.push(
+                      : Navigator.pushReplacement(
                           context,
                           MaterialPageRoute(builder: (context) => LoginPage()),
                         );
