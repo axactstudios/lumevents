@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lumevents/profilePage/ProfilePage.dart';
 
 class MorePage extends StatefulWidget {
   @override
@@ -10,6 +11,21 @@ class _MorePageState extends State<MorePage> {
   Widget build(BuildContext context) {
     return Container(
       color: Colors.yellowAccent,
+      child: SafeArea(
+        child: Column(
+          children: <Widget>[
+            RaisedButton(
+              child: Text('Profile'),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => ProfilePage()),
+                );
+              },
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
