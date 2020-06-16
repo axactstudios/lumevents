@@ -22,3 +22,5 @@ Ideas Page basic layout done, Code restructured, New folders made.
 City specific screens done with test images, Tried video player but failed.
 14 June 2020, 03:45 A.M.-
 Lum Events Business app completed with UI(in record 10 hours).
+15 June 2020 - 
+Works stops due to incomplete data. 
