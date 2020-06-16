@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:lumevents/NavPages/home.dart';
 import '../main.dart';
+import '../main.dart';
 import 'SignUpPage.dart';
 import 'firebase_auth.dart';
 
@@ -122,7 +123,7 @@ class _LoginPageState extends State<LoginPage> {
                   if (!res) {
                     print('Login failed');
                   } else {
-                    Navigator.push(context,
+                    Navigator.pushReplacement(context,
                         MaterialPageRoute(builder: (context) => MyHomePage()));
                   }
                 },
@@ -191,7 +192,7 @@ class _LoginPageState extends State<LoginPage> {
                       if (!res) {
                         print('Login Failed');
                       } else {
-                        Navigator.push(
+                        Navigator.pushReplacement(
                             context,
                             MaterialPageRoute(
                                 builder: (context) => MyHomePage()));

@@ -13,6 +13,8 @@ import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
 import 'package:persistent_bottom_nav_bar/persistent-tab-view.widget.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
+import 'MainPage.dart';
+
 void main() {
   runApp(MyApp());
 }
@@ -22,7 +24,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData(),
-      home: MyHomePage(),
+      home: MainPage(),
     );
   }
 }

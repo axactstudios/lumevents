@@ -29,7 +29,7 @@ class _SignUpPageState extends State<SignUpPage> {
         email: _emailController.text, password: _passwordController.text);
 
     if (res != null) {
-      Navigator.push(
+      Navigator.pushReplacement(
         context,
         MaterialPageRoute(builder: (context) => ProfileSetup()),
       );
