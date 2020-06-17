@@ -1,8 +1,11 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:lumevents/NavPages/home.dart';
 import 'package:regexed_validator/regexed_validator.dart';
 import '../main.dart';
 import '../main.dart';
+import 'ForgotPassword.dart';
 import 'SignUpPage.dart';
 import 'firebase_auth.dart';
 
@@ -16,6 +19,7 @@ class _LoginPageState extends State<LoginPage> {
   TextEditingController _passwordController;
 
   final _formKey = GlobalKey<FormState>();
+  final FirebaseAuth mAuth = FirebaseAuth.instance;
 
   @override
   void initState() {
@@ -109,6 +113,21 @@ class _LoginPageState extends State<LoginPage> {
                       hintText: "Enter your password",
                       fillColor: Colors.pinkAccent),
                 ),
+                SizedBox(
+                  height: 6.0,
+                ),
+                InkWell(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => ForgotPassword()),
+                    );
+                  },
+                  child: Text(
+                    'Forgot Password?',
+                    style: TextStyle(fontFamily: 'nunito', fontSize: 15.0),
+                  ),
+                ),
                 const SizedBox(
                   height: 15.0,
                 ),
@@ -135,19 +154,24 @@ class _LoginPageState extends State<LoginPage> {
                           email: _emailController.text,
                           password: _passwordController.text);
 
-                      if (!res) {
-                        print('Login failed');
-                      } else {
+                      FirebaseUser user = await mAuth.currentUser();
+
+                      if (user.isEmailVerified) {
                         Navigator.pushReplacement(
                             context,
                             MaterialPageRoute(
                                 builder: (context) => MyHomePage()));
+                      } else {
+                        Fluttertoast.showToast(
+                            msg:
+                                'Login failed. (Verify your email if you haven\'t yet)',
+                            toastLength: Toast.LENGTH_LONG);
                       }
                     }
                   },
                 ),
                 SizedBox(
-                  height: 4.0,
+                  height: 6.0,
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -182,7 +206,7 @@ class _LoginPageState extends State<LoginPage> {
                   ],
                 ),
                 SizedBox(
-                  height: 4.0,
+                  height: 8.0,
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -208,12 +232,15 @@ class _LoginPageState extends State<LoginPage> {
                         bool res = await AuthProvider().loginWithGoogle();
 
                         if (!res) {
-                          print('Login Failed');
+                          Fluttertoast.showToast(
+                              msg: 'Login failed',
+                              toastLength: Toast.LENGTH_LONG);
                         } else {
                           Navigator.pushReplacement(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => MyHomePage()));
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => MyHomePage()),
+                          );
                         }
                       },
                     ),
@@ -245,7 +272,7 @@ class _LoginPageState extends State<LoginPage> {
                   ],
                 ),
                 SizedBox(
-                  height: 190.0,
+                  height: 180.0,
                 ),
                 Divider(
                   thickness: 1.8,
