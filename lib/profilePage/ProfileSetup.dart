@@ -1,7 +1,10 @@
+import 'package:email_validator/email_validator.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:lumevents/main.dart';
 import 'package:firebase_database/firebase_database.dart';
+import 'package:regexed_validator/regexed_validator.dart';
 
 class ProfileSetup extends StatefulWidget {
   @override
@@ -15,6 +18,8 @@ class _ProfileSetupState extends State<ProfileSetup> {
   TextEditingController _nameController;
   TextEditingController _numberController;
   TextEditingController _emailController;
+
+  final _formKey = GlobalKey<FormState>();
 
   var _selection = ['Bride', 'Groom', 'Other'];
   String role;
@@ -31,145 +36,172 @@ class _ProfileSetupState extends State<ProfileSetup> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Padding(
-        padding: const EdgeInsets.all(10.0),
-        child: Column(
-          children: <Widget>[
-            SizedBox(
-              height: 250.0,
-            ),
-            Text(
-              'Set up your profile',
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 30.0,
-                fontFamily: 'nunito',
-                color: Color(0xFFFF124D),
-              ),
-            ),
-            const SizedBox(
-              height: 10.0,
-              width: 175.0,
-              child: Divider(
-                thickness: 0.8,
-                color: Color(0xFFFF124D),
-              ),
-            ),
-            SizedBox(
-              height: 10.0,
-            ),
-            TextField(
-              controller: _nameController,
-              decoration: InputDecoration(
-                  enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(28.0),
-                  ),
-                  hintStyle: TextStyle(
-                      color: Color(0xFFFF124D),
-                      fontFamily: 'nunito',
-                      fontWeight: FontWeight.bold),
-                  hintText: "Enter your full name"),
-            ),
-            const SizedBox(
-              height: 10.0,
-            ),
-            TextField(
-              controller: _numberController,
-              decoration: InputDecoration(
-                  enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(28.0),
-                  ),
-                  hintStyle: TextStyle(
-                      color: Color(0xFFFF124D),
-                      fontFamily: 'nunito',
-                      fontWeight: FontWeight.bold),
-                  hintText: "Enter your contact number"),
-            ),
-            const SizedBox(
-              height: 10.0,
-            ),
-            TextField(
-              controller: _emailController,
-              decoration: InputDecoration(
-                  enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(28.0),
-                  ),
-                  hintStyle: TextStyle(
-                      color: Color(0xFFFF124D),
-                      fontFamily: 'nunito',
-                      fontWeight: FontWeight.bold),
-                  hintText: "Enter your email"),
-            ),
-            const SizedBox(
-              height: 10.0,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(10.0),
+          child: Form(
+            key: _formKey,
+            child: Column(
               children: <Widget>[
+                SizedBox(
+                  height: 250.0,
+                ),
                 Text(
-                  'Select your role :',
+                  'Set up your profile',
                   style: TextStyle(
-                      fontFamily: 'nunito',
-                      color: Color(0xFFFF124D),
-                      fontWeight: FontWeight.bold,
-                      fontSize: 15.0),
+                    fontWeight: FontWeight.bold,
+                    fontSize: 30.0,
+                    fontFamily: 'nunito',
+                    color: Color(0xFFFF124D),
+                  ),
+                ),
+                const SizedBox(
+                  height: 10.0,
+                  width: 175.0,
+                  child: Divider(
+                    thickness: 0.8,
+                    color: Color(0xFFFF124D),
+                  ),
                 ),
                 SizedBox(
-                  width: 15.0,
+                  height: 10.0,
                 ),
-                DropdownButton<String>(
-                  items: _selection.map((String dropdownStringItem) {
-                    return DropdownMenuItem<String>(
-                      value: dropdownStringItem,
-                      child: Text(
-                        dropdownStringItem,
-                        style: TextStyle(
-                            fontFamily: 'nunito',
-                            color: Color(0xFFFF124D),
-                            fontWeight: FontWeight.bold,
-                            fontSize: 15.0),
-                      ),
-                    );
-                  }).toList(),
-                  onChanged: (String newValueSelected) {
-                    setState(() {
-                      role = newValueSelected;
-                    });
+                TextFormField(
+                  validator: (value) {
+                    if (value.isEmpty) {
+                      return 'Please enter your name';
+                    } else {
+                      return null;
+                    }
                   },
-                  value: role,
+                  controller: _nameController,
+                  decoration: InputDecoration(
+                      enabledBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(28.0),
+                      ),
+                      hintStyle: TextStyle(
+                          color: Color(0xFFFF124D),
+                          fontFamily: 'nunito',
+                          fontWeight: FontWeight.bold),
+                      hintText: "Enter your full name"),
+                ),
+                const SizedBox(
+                  height: 10.0,
+                ),
+                TextFormField(
+                  validator: (value) {
+                    if (value.length < 13) {
+                      return 'Invalid phone number';
+                    } else {
+                      return null;
+                    }
+                  },
+                  controller: _numberController,
+                  decoration: InputDecoration(
+                      enabledBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(28.0),
+                      ),
+                      hintStyle: TextStyle(
+                          color: Color(0xFFFF124D),
+                          fontFamily: 'nunito',
+                          fontWeight: FontWeight.bold),
+                      hintText: "Enter your contact number"),
+                ),
+                const SizedBox(
+                  height: 10.0,
+                ),
+                TextFormField(
+                  validator: (value) {
+                    if (!validator.email(value)) {
+                      return 'Invalid Email';
+                    } else {
+                      return null;
+                    }
+                  },
+                  controller: _emailController,
+                  decoration: InputDecoration(
+                      enabledBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(28.0),
+                      ),
+                      hintStyle: TextStyle(
+                          color: Color(0xFFFF124D),
+                          fontFamily: 'nunito',
+                          fontWeight: FontWeight.bold),
+                      hintText: "Enter your email"),
+                ),
+                const SizedBox(
+                  height: 10.0,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    Text(
+                      'Select your role :',
+                      style: TextStyle(
+                          fontFamily: 'nunito',
+                          color: Color(0xFFFF124D),
+                          fontWeight: FontWeight.bold,
+                          fontSize: 15.0),
+                    ),
+                    SizedBox(
+                      width: 15.0,
+                    ),
+                    DropdownButton<String>(
+                      items: _selection.map((String dropdownStringItem) {
+                        return DropdownMenuItem<String>(
+                          value: dropdownStringItem,
+                          child: Text(
+                            dropdownStringItem,
+                            style: TextStyle(
+                                fontFamily: 'nunito',
+                                color: Color(0xFFFF124D),
+                                fontWeight: FontWeight.bold,
+                                fontSize: 15.0),
+                          ),
+                        );
+                      }).toList(),
+                      onChanged: (String newValueSelected) {
+                        setState(() {
+                          role = newValueSelected;
+                        });
+                      },
+                      value: role,
+                    ),
+                  ],
+                ),
+                const SizedBox(
+                  height: 10.0,
+                ),
+                RaisedButton(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(20.0),
+                    side: BorderSide(color: Colors.white),
+                  ),
+                  color: Color(0xFFFF124D),
+                  child: Padding(
+                    padding: const EdgeInsets.all(10.0),
+                    child: Text(
+                      'Submit',
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontFamily: 'nunito',
+                          fontWeight: FontWeight.bold,
+                          fontSize: 16),
+                    ),
+                  ),
+                  onPressed: () async {
+                    if (_formKey.currentState.validate()) {
+                      writeData();
+                      Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(builder: (context) => MyHomePage()),
+                      );
+                    }
+                  },
                 ),
               ],
             ),
-            const SizedBox(
-              height: 10.0,
-            ),
-            RaisedButton(
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(20.0),
-                side: BorderSide(color: Colors.white),
-              ),
-              color: Color(0xFFFF124D),
-              child: Padding(
-                padding: const EdgeInsets.all(10.0),
-                child: Text(
-                  'Submit',
-                  style: TextStyle(
-                      color: Colors.white,
-                      fontFamily: 'nunito',
-                      fontWeight: FontWeight.bold,
-                      fontSize: 16),
-                ),
-              ),
-              onPressed: () async {
-                writeData();
-
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => MyHomePage()),
-                );
-              },
-            ),
-          ],
+          ),
         ),
       ),
     );
