@@ -58,7 +58,7 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   List<Widget> _buildScreens() {
-    return [HomePage(), IdeasPage(), PlanPage(), ProfilePage()];
+    return [HomePage(), IdeasPage(), PlanPage(), MorePage()];
   }
 }
 

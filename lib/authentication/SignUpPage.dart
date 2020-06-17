@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:lumevents/authentication/LoginPage.dart';
 import 'package:lumevents/main.dart';
 import 'package:lumevents/profilePage/ProfileSetup.dart';
 import 'package:regexed_validator/regexed_validator.dart';
@@ -31,10 +33,20 @@ class _SignUpPageState extends State<SignUpPage> {
     AuthResult res = await mAuth.createUserWithEmailAndPassword(
         email: _emailController.text, password: _passwordController.text);
 
+    FirebaseUser user = await mAuth.currentUser();
+
+    try {
+      await user.sendEmailVerification();
+      Fluttertoast.showToast(msg: 'Please verify your email to login');
+    } catch (e) {
+      Fluttertoast.showToast(msg: 'Error while sending verification email');
+    }
+
     if (res != null) {
+      mAuth.signOut();
       Navigator.pushReplacement(
         context,
-        MaterialPageRoute(builder: (context) => ProfileSetup()),
+        MaterialPageRoute(builder: (context) => LoginPage()),
       );
     } else {
       print('Sign up failed');
