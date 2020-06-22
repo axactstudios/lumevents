@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:lumevents/authentication/LoginPage.dart';
 import 'package:lumevents/main.dart';
 
+// ignore: must_be_immutable
 class MainPage extends StatelessWidget {
   final FirebaseAuth mAuth = FirebaseAuth.instance;
   FirebaseUser mCurrentUser;
