@@ -1,7 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:lumevents/NavPages/home.dart';
 import 'package:lumevents/authentication/LoginPage.dart';
 import 'package:lumevents/main.dart';
 

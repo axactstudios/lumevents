@@ -117,259 +117,264 @@ class _ProfilePageState extends State<ProfilePage> {
       appBar: AppBar(
         backgroundColor: Colors.pinkAccent.withOpacity(0.7),
       ),
-      body: Container(
-        color: Colors.white,
-        child: SafeArea(
-          child: Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Padding(
-              padding: const EdgeInsets.all(12.0),
-              child: Column(
-                children: <Widget>[
-                  SizedBox(
-                    height: 100.0,
-                  ),
-                  Text(
-                    'Your Profile',
-                    style: TextStyle(
-                        fontFamily: 'nunito',
-                        fontWeight: FontWeight.bold,
-                        fontSize: 40.0,
-                        color: Colors.pinkAccent),
-                  ),
-                  SizedBox(
-                    child: Divider(
-                      color: Colors.pinkAccent,
-                      thickness: 0.5,
-                    ),
-                    width: 150.0,
-                    height: 20.0,
-                  ),
-                  SizedBox(
-                    height: 10.0,
-                  ),
-                  userData.name != null
-                      ? Card(
+      body: ListView(
+        shrinkWrap: true,
+        children: [
+          Container(
+            color: Colors.white,
+            child: SafeArea(
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Padding(
+                  padding: const EdgeInsets.all(12.0),
+                  child: Column(
+                    children: <Widget>[
+                      SizedBox(
+                        height: 100.0,
+                      ),
+                      Text(
+                        'Your Profile',
+                        style: TextStyle(
+                            fontFamily: 'nunito',
+                            fontWeight: FontWeight.bold,
+                            fontSize: 40.0,
+                            color: Colors.pinkAccent),
+                      ),
+                      SizedBox(
+                        child: Divider(
                           color: Colors.pinkAccent,
-                          child: Padding(
-                            padding: const EdgeInsets.all(12.0),
-                            child: Row(
-                              children: <Widget>[
-                                Icon(
-                                  Icons.person,
-                                  color: Colors.white,
-                                ),
-                                Text(
-                                  ' :   ',
-                                  style: TextStyle(
-                                      fontFamily: 'nunito',
-                                      fontSize: 25.0,
-                                      fontWeight: FontWeight.bold,
-                                      color: Colors.white),
-                                ),
+                          thickness: 0.5,
+                        ),
+                        width: 150.0,
+                        height: 20.0,
+                      ),
+                      SizedBox(
+                        height: 10.0,
+                      ),
+                      userData.name != null
+                          ? Card(
+                              color: Colors.pinkAccent,
+                              child: Padding(
+                                padding: const EdgeInsets.all(12.0),
+                                child: Row(
+                                  children: <Widget>[
+                                    Icon(
+                                      Icons.person,
+                                      color: Colors.white,
+                                    ),
+                                    Text(
+                                      ' :   ',
+                                      style: TextStyle(
+                                          fontFamily: 'nunito',
+                                          fontSize: 25.0,
+                                          fontWeight: FontWeight.bold,
+                                          color: Colors.white),
+                                    ),
 //                          userData.name == null
 //                              ? CircularProgressIndicator()
 //                              : userData.name,
-                                Text(
-                                  userData.name,
-                                  style: TextStyle(
-                                      fontFamily: 'nunito',
-                                      fontSize: 20.0,
-                                      fontWeight: FontWeight.bold,
-                                      color: Colors.white),
+                                    Text(
+                                      userData.name,
+                                      style: TextStyle(
+                                          fontFamily: 'nunito',
+                                          fontSize: 20.0,
+                                          fontWeight: FontWeight.bold,
+                                          color: Colors.white),
+                                    ),
+                                  ],
                                 ),
-                              ],
+                              ),
+                            )
+                          : Center(
+                              child: SpinKitWave(
+                                size: 30,
+                                color: Colors.pinkAccent.withOpacity(0.7),
+                              ),
                             ),
-                          ),
-                        )
-                      : Center(
-                          child: SpinKitWave(
-                            size: 30,
-                            color: Colors.pinkAccent.withOpacity(0.7),
-                          ),
-                        ),
-                  SizedBox(
-                    height: 15.0,
-                  ),
-                  userData.number != null
-                      ? Card(
-                          color: Colors.pinkAccent,
-                          child: Padding(
-                            padding: const EdgeInsets.all(12.0),
-                            child: Row(
-                              children: <Widget>[
-                                Icon(
-                                  Icons.phone,
-                                  color: Colors.white,
-                                ),
-                                Text(
-                                  ' :   ',
-                                  style: TextStyle(
-                                      fontFamily: 'nunito',
-                                      fontSize: 20.0,
-                                      fontWeight: FontWeight.bold,
-                                      color: Colors.white),
-                                ),
+                      SizedBox(
+                        height: 15.0,
+                      ),
+                      userData.number != null
+                          ? Card(
+                              color: Colors.pinkAccent,
+                              child: Padding(
+                                padding: const EdgeInsets.all(12.0),
+                                child: Row(
+                                  children: <Widget>[
+                                    Icon(
+                                      Icons.phone,
+                                      color: Colors.white,
+                                    ),
+                                    Text(
+                                      ' :   ',
+                                      style: TextStyle(
+                                          fontFamily: 'nunito',
+                                          fontSize: 20.0,
+                                          fontWeight: FontWeight.bold,
+                                          color: Colors.white),
+                                    ),
 //                          userData.number == null
 //                              ? CircularProgressIndicator()
 //                              : userData.number,
-                                Text(
-                                  userData.number,
-                                  style: TextStyle(
-                                      fontFamily: 'nunito',
-                                      fontSize: 20.0,
-                                      fontWeight: FontWeight.bold,
-                                      color: Colors.white),
+                                    Text(
+                                      userData.number,
+                                      style: TextStyle(
+                                          fontFamily: 'nunito',
+                                          fontSize: 20.0,
+                                          fontWeight: FontWeight.bold,
+                                          color: Colors.white),
+                                    ),
+                                  ],
                                 ),
-                              ],
+                              ),
+                            )
+                          : Center(
+                              child: SpinKitWave(
+                                size: 30,
+                                color: Colors.pinkAccent.withOpacity(0.7),
+                              ),
                             ),
-                          ),
-                        )
-                      : Center(
-                          child: SpinKitWave(
-                            size: 30,
-                            color: Colors.pinkAccent.withOpacity(0.7),
-                          ),
-                        ),
-                  SizedBox(
-                    height: 15.0,
-                  ),
-                  userData.email != null
-                      ? Card(
-                          color: Colors.pinkAccent,
-                          child: Padding(
-                            padding: const EdgeInsets.all(12.0),
-                            child: Row(
-                              children: <Widget>[
-                                Icon(
-                                  Icons.email,
-                                  color: Colors.white,
-                                ),
-                                Text(
-                                  ' :   ',
-                                  style: TextStyle(
-                                      fontFamily: 'nunito',
-                                      fontSize: 25.0,
-                                      fontWeight: FontWeight.bold,
-                                      color: Colors.white),
-                                ),
+                      SizedBox(
+                        height: 15.0,
+                      ),
+                      userData.email != null
+                          ? Card(
+                              color: Colors.pinkAccent,
+                              child: Padding(
+                                padding: const EdgeInsets.all(12.0),
+                                child: Row(
+                                  children: <Widget>[
+                                    Icon(
+                                      Icons.email,
+                                      color: Colors.white,
+                                    ),
+                                    Text(
+                                      ' :   ',
+                                      style: TextStyle(
+                                          fontFamily: 'nunito',
+                                          fontSize: 25.0,
+                                          fontWeight: FontWeight.bold,
+                                          color: Colors.white),
+                                    ),
 //                          userData.email == null
 //                              ? CircularProgressIndicator()
 //                              : userData.email,
-                                Text(
-                                  userData.email,
-                                  style: TextStyle(
-                                      fontFamily: 'nunito',
-                                      fontSize: 20.0,
-                                      fontWeight: FontWeight.bold,
-                                      color: Colors.white),
+                                    Text(
+                                      userData.email,
+                                      style: TextStyle(
+                                          fontFamily: 'nunito',
+                                          fontSize: 20.0,
+                                          fontWeight: FontWeight.bold,
+                                          color: Colors.white),
+                                    ),
+                                  ],
                                 ),
-                              ],
+                              ),
+                            )
+                          : Center(
+                              child: SpinKitWave(
+                                size: 30,
+                                color: Colors.pinkAccent.withOpacity(0.7),
+                              ),
                             ),
-                          ),
-                        )
-                      : Center(
-                          child: SpinKitWave(
-                            size: 30,
-                            color: Colors.pinkAccent.withOpacity(0.7),
-                          ),
-                        ),
-                  SizedBox(
-                    height: 15.0,
-                  ),
-                  userData.role != null
-                      ? Card(
-                          color: Colors.pinkAccent,
-                          child: Padding(
-                            padding: const EdgeInsets.all(12.0),
-                            child: Row(
-                              children: <Widget>[
-                                Icon(
-                                  Icons.pages,
-                                  color: Colors.white,
-                                ),
-                                Text(
-                                  ' :   ',
-                                  style: TextStyle(
-                                      fontFamily: 'nunito',
-                                      fontSize: 25.0,
-                                      fontWeight: FontWeight.bold,
-                                      color: Colors.white),
-                                ),
+                      SizedBox(
+                        height: 15.0,
+                      ),
+                      userData.role != null
+                          ? Card(
+                              color: Colors.pinkAccent,
+                              child: Padding(
+                                padding: const EdgeInsets.all(12.0),
+                                child: Row(
+                                  children: <Widget>[
+                                    Icon(
+                                      Icons.pages,
+                                      color: Colors.white,
+                                    ),
+                                    Text(
+                                      ' :   ',
+                                      style: TextStyle(
+                                          fontFamily: 'nunito',
+                                          fontSize: 25.0,
+                                          fontWeight: FontWeight.bold,
+                                          color: Colors.white),
+                                    ),
 //                          userData.role == null
 //                              ? CircularProgressIndicator()
 //                              : userData.role,
-                                Text(
-                                  userData.role,
-                                  style: TextStyle(
-                                      fontFamily: 'nunito',
-                                      fontSize: 20.0,
-                                      fontWeight: FontWeight.bold,
-                                      color: Colors.white),
+                                    Text(
+                                      userData.role,
+                                      style: TextStyle(
+                                          fontFamily: 'nunito',
+                                          fontSize: 20.0,
+                                          fontWeight: FontWeight.bold,
+                                          color: Colors.white),
+                                    ),
+                                  ],
                                 ),
-                              ],
+                              ),
+                            )
+                          : Center(
+                              child: SpinKitWave(
+                                size: 30,
+                                color: Colors.pinkAccent.withOpacity(0.7),
+                              ),
+                            ),
+                      SizedBox(
+                        height: 200.0,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                          RaisedButton(
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(20.0),
+                              side: BorderSide(color: Colors.white),
+                            ),
+                            color: Colors.pinkAccent,
+                            onPressed: () {
+                              pushNewScreen(context,
+                                  screen: ProfileSetup(), withNavBar: false);
+                            },
+                            child: Text(
+                              'Edit Profile',
+                              style: TextStyle(
+                                  fontFamily: 'nunito',
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 20.0,
+                                  color: Colors.white),
                             ),
                           ),
-                        )
-                      : Center(
-                          child: SpinKitWave(
-                            size: 30,
-                            color: Colors.pinkAccent.withOpacity(0.7),
+                          SizedBox(
+                            width: 40.0,
                           ),
-                        ),
-                  SizedBox(
-                    height: 200.0,
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                      RaisedButton(
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(20.0),
-                          side: BorderSide(color: Colors.white),
-                        ),
-                        color: Colors.pinkAccent,
-                        onPressed: () {
-                          pushNewScreen(context,
-                              screen: ProfileSetup(), withNavBar: false);
-                        },
-                        child: Text(
-                          'Edit Profile',
-                          style: TextStyle(
-                              fontFamily: 'nunito',
-                              fontWeight: FontWeight.bold,
-                              fontSize: 20.0,
-                              color: Colors.white),
-                        ),
-                      ),
-                      SizedBox(
-                        width: 40.0,
-                      ),
-                      RaisedButton(
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(20.0),
-                          side: BorderSide(color: Colors.white),
-                        ),
-                        color: Colors.pinkAccent,
-                        onPressed: () {
-                          signOut();
-                        },
-                        child: Text(
-                          'Sign Out',
-                          style: TextStyle(
-                              fontFamily: 'nunito',
-                              fontWeight: FontWeight.bold,
-                              fontSize: 20.0,
-                              color: Colors.white),
-                        ),
+                          RaisedButton(
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(20.0),
+                              side: BorderSide(color: Colors.white),
+                            ),
+                            color: Colors.pinkAccent,
+                            onPressed: () {
+                              signOut();
+                            },
+                            child: Text(
+                              'Sign Out',
+                              style: TextStyle(
+                                  fontFamily: 'nunito',
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 20.0,
+                                  color: Colors.white),
+                            ),
+                          ),
+                        ],
                       ),
                     ],
                   ),
-                ],
+                ),
               ),
             ),
           ),
-        ),
+        ],
       ),
     );
   }
