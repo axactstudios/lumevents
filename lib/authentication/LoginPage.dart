@@ -1,4 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:lumevents/NavPages/home.dart';
@@ -150,23 +151,7 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                   onPressed: () async {
                     if (_formKey.currentState.validate()) {
-                      bool res = await AuthProvider().signInWithEmail(
-                          email: _emailController.text,
-                          password: _passwordController.text);
-
-                      FirebaseUser user = await mAuth.currentUser();
-
-                      if (user.isEmailVerified) {
-                        Navigator.pushReplacement(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => MyHomePage()));
-                      } else {
-                        Fluttertoast.showToast(
-                            msg:
-                                'Login failed. (Verify your email if you haven\'t yet)',
-                            toastLength: Toast.LENGTH_LONG);
-                      }
+                      signIn();
                     }
                   },
                 ),
@@ -311,5 +296,80 @@ class _LoginPageState extends State<LoginPage> {
         ),
       ),
     );
+  }
+
+  void signIn() async {
+    mAuth
+        .signInWithEmailAndPassword(
+            email: _emailController.text, password: _passwordController.text)
+        .then((AuthResult) async {
+      FirebaseUser user = await FirebaseAuth.instance.currentUser();
+
+      if (!user.isEmailVerified) {
+        Fluttertoast.showToast(
+            msg: 'Please verify your email to continue',
+            toastLength: Toast.LENGTH_LONG);
+      } else {
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(builder: (context) => MyHomePage()),
+        );
+      }
+    }).catchError((err) {
+      if (err.code == "ERROR_USER_NOT_FOUND") {
+        showCupertinoDialog(
+            context: context,
+            builder: (context) {
+              return CupertinoAlertDialog(
+                title: Text(
+                    'This email is not yet registered. Please sign up first.'),
+                actions: <Widget>[
+                  CupertinoDialogAction(
+                    child: Text('OK'),
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                  )
+                ],
+              );
+            });
+      }
+      if (err.code == "ERROR_WRONG_PASSWORD") {
+        showCupertinoDialog(
+            context: context,
+            builder: (context) {
+              return CupertinoAlertDialog(
+                title:
+                    Text('Wrong password. Please enter the correct password.'),
+                actions: <Widget>[
+                  CupertinoDialogAction(
+                    child: Text('OK'),
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                  )
+                ],
+              );
+            });
+      }
+      if (err.code == "ERROR_NETWORK_REQUEST_FAILED") {
+        showCupertinoDialog(
+            context: context,
+            builder: (context) {
+              return CupertinoAlertDialog(
+                title: Text(
+                    'Your internet connection is either too slow or not available.'),
+                actions: <Widget>[
+                  CupertinoDialogAction(
+                    child: Text('OK'),
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                  )
+                ],
+              );
+            });
+      }
+    });
   }
 }

@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -30,27 +31,48 @@ class _SignUpPageState extends State<SignUpPage> {
   }
 
   void signUpWithEmailAndPassword() async {
-    AuthResult res = await mAuth.createUserWithEmailAndPassword(
-        email: _emailController.text, password: _passwordController.text);
+    await mAuth
+        .createUserWithEmailAndPassword(
+            email: _emailController.text, password: _passwordController.text)
+        .then((AuthResult) async {
+      FirebaseUser user = await mAuth.currentUser();
 
-    FirebaseUser user = await mAuth.currentUser();
+      try {
+        await user.sendEmailVerification();
+        Fluttertoast.showToast(msg: 'Please verify your email to login');
+      } catch (e) {
+        Fluttertoast.showToast(msg: 'Error while sending verification email');
+      }
 
-    try {
-      await user.sendEmailVerification();
-      Fluttertoast.showToast(msg: 'Please verify your email to login');
-    } catch (e) {
-      Fluttertoast.showToast(msg: 'Error while sending verification email');
-    }
-
-    if (res != null) {
-      mAuth.signOut();
-      Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(builder: (context) => LoginPage()),
-      );
-    } else {
-      print('Sign up failed');
-    }
+      if (user != null) {
+        mAuth.signOut();
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(builder: (context) => LoginPage()),
+        );
+      } else {
+        print('Sign up failed');
+      }
+    }).catchError((err) {
+      if (err.code == "ERROR_EMAIL_ALREADY_IN_USE") {
+        showCupertinoDialog(
+            context: context,
+            builder: (context) {
+              return CupertinoAlertDialog(
+                title: Text(
+                    'This email is already registered. Use a different email account.'),
+                actions: <Widget>[
+                  CupertinoDialogAction(
+                    child: Text('OK'),
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                  )
+                ],
+              );
+            });
+      }
+    });
   }
 
   @override
