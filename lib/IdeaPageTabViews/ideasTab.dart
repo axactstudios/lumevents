@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:lumevents/WeddingsPage.dart';
+import 'package:lumevents/IdeaPageTabViews/RealEvents/WeddingsPage.dart';
 
 class IdeasTab extends StatefulWidget {
   @override

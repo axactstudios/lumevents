@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-Widget UIWeddings(String eventName, image, desc, why, BuildContext context,
-    double height, width) {
+Widget UIWeddings(String eventName, image, desc, why, type,
+    BuildContext context, double height, width) {
   return Container(
     decoration: BoxDecoration(
         boxShadow: [
@@ -29,7 +29,7 @@ Widget UIWeddings(String eventName, image, desc, why, BuildContext context,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                'Wedding',
+                type,
                 style: TextStyle(
                     color: Color(0xFFFF124D),
                     fontFamily: 'nunito',

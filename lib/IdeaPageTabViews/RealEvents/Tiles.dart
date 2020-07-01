@@ -1,9 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:getflutter/components/image/gf_image_overlay.dart';
-import 'package:lumevents/weddingPullUpps.dart';
+import 'package:lumevents/IdeaPageTabViews/RealEvents/weddingPullUpps.dart';
 
-Widget tiles(scaffoldState, height, width, name, image, descr, why) {
+Widget tiles(scaffoldState, height, width, name, image, descr, why, type) {
   return InkWell(
     splashColor: Colors.transparent,
     highlightColor: Colors.transparent,
@@ -11,7 +11,8 @@ Widget tiles(scaffoldState, height, width, name, image, descr, why) {
       scaffoldState.currentState.showBottomSheet((context) {
         return StatefulBuilder(
             builder: (BuildContext context, StateSetter state) {
-          return UIWeddings(name, image, descr, why, context, height, width);
+          return UIWeddings(
+              name, image, descr, why, type, context, height, width);
         });
       });
     },
@@ -49,7 +50,7 @@ Widget tiles(scaffoldState, height, width, name, image, descr, why) {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
                     Text(
-                      'Event',
+                      type,
                       style: TextStyle(
                           color: Colors.black,
                           fontFamily: 'nunito',

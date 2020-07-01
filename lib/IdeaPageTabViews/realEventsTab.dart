@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../WeddingsPage.dart';
+import 'RealEvents/WeddingsPage.dart';
 
 class RealEventsTab extends StatefulWidget {
   @override
