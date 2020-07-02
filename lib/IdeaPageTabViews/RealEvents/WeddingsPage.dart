@@ -8,12 +8,22 @@ class Weddings extends StatefulWidget {
 }
 
 class _WeddingsState extends State<Weddings> {
+  List<String> imageURLs = [
+    'http://im.rediff.com/movies/2013/dec/13hrithik-sussanne-roshan1.jpg',
+    'https://i.pinimg.com/originals/10/86/d8/1086d89ff82d597b945814ea6b58c595.jpg',
+    'https://i.pinimg.com/564x/0c/a2/4c/0ca24c2794799f31618d1e57b322d498.jpg',
+    'https://archive.mid-day.com/photos/plog-content/images/b-town-specials/shaadi-no.-1-the-big-fat-weddings-of-bollywood-stars/akshay-twinkle.jpg',
+    'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTtxWTrM-y5D4VkNeeevrHhY335gXMk0YCrMg&usqp=CAU',
+    'https://1.bp.blogspot.com/-X0v_Lc2mX48/Tc2IjzaXaVI/AAAAAAAAAWM/8sBWlSeb13Q/s1600/Farah+Khan+%2526+Shirish+Kunder+Marriage+Ever+Seen+3.jpg',
+    'https://st1.photogallery.ind.sh/wp-content/uploads/indiacom/karisma-kapoor-married-sunjay-kapoor-in-2003-201703-1489737366.jpg',
+  ];
   double height, width;
 
   final scaffoldState = GlobalKey<ScaffoldState>();
 
   @override
   Widget build(BuildContext context) {
+    print(imageURLs.length.toString());
     width = MediaQuery.of(context).size.width;
     height = MediaQuery.of(context).size.height;
     return Scaffold(
@@ -28,7 +38,7 @@ class _WeddingsState extends State<Weddings> {
               height,
               width,
               'Hrithik Roshan & Sussanne’s Wedding',
-              'images/background2.jpg',
+              imageURLs[0],
               'Hrithik Roshan tied the knot with Sussanne Khan in a special ceremony held at Sussanne’s father. Sanjay Khan’s luxury spa, Golden Palms, near Bangalore. The pool in Golden Palms has something like an island at its centre. There’s a bridge extending from there to the edge of the pool. The bridge acted as the aisle,the island was the alter.The Hindu boy married themuslim girl in a Christian wedding.',
               'The entire idea of creating a Mandap in the middle of the pool became very famous and a lot of magazines spoke about this amazing pool-island wedding. Having an event with such an appealing Mandap can not only make the couple’s special day unique but also will make Lumevents gain more popularity.',
               'Wedding'),
@@ -36,8 +46,8 @@ class _WeddingsState extends State<Weddings> {
               scaffoldState,
               height,
               width,
-              'Catherine Zeta-Jones &Michael Douglas ‘s Wedding',
-              'images/background2.jpg',
+              'Catherine Zeta-Jones & Michael Douglas ‘s Wedding',
+              imageURLs[1],
               'Catherine Zeta-Jones & Michael Douglas‘s Wedding was “a twelve hour fantastic party at The Plaza in New York” as said by Catherine in her recent Instagram post.As one might expect from two seriously famous Hollywood performers, security was apparently incredibly strict at the wedding, with the BBC reporting that "guests had to show their hologrammed invitations before being allowed in and private photographs were banned. She looked beautiful in her White gown and the pictures just went viral after 20 years. ',
               'Weddings are all about making the couples day Joyous. And having a perfect gown and the function being held in one of the richest hotels gets brownie points in that matter. Organizing such marriages which make the customers happy and are spoken about even after years will not only increase the company’s goodwill but alsoit’s customers satisfaction.',
               'Wedding'),
@@ -46,7 +56,7 @@ class _WeddingsState extends State<Weddings> {
               height,
               width,
               'Brad Pitt and Jennifer Aniston’s Wedding',
-              'images/background2.jpg',
+              imageURLs[2],
               'The couple were surrounded by 50,000 flowers by exclusive Beverly Hills florist La Premiere, who laid tables with roses, wisteria and tulips to achieve the \'zen garden\' look.In a bid to ensure maximum privacy, airspace above the estate was restricted during the ceremony and the reception was held under the cover of a giant white marquee to stop thecircling helicopters getting a photo.',
               'When a person wants to do somethingunusual on their birthdays they hire planners to organize it. Having such distinct theme parties with something new such as their picture t-shirts,personalized Cutlery and smartly placed picture clicking spots Can make an event go very popular. This can increase the company’s popularity as well.',
               'Wedding'),
@@ -54,8 +64,8 @@ class _WeddingsState extends State<Weddings> {
               scaffoldState,
               height,
               width,
-              'Akshay and Twinkle khanna',
-              'images/background2.jpg',
+              'Akshay and Twinkle Khanna',
+              imageURLs[3],
               'Akshay Kumar and Twinkle Khanna tied the knot in a hush hush ceremony in Mumbai.',
               'from their wedding we get inspiration that everyplace can make memorable even in “terrace”.',
               'Wedding'),
@@ -64,7 +74,7 @@ class _WeddingsState extends State<Weddings> {
               height,
               width,
               'Jon Stewart and Tracey McShane’s Wedding',
-              'images/background2.jpg',
+              imageURLs[4],
               'Jon Stewart proposed to his wife Tracey McShane in a unique way: through a personalized crossword puzzle put together with the help of Will Shortz, a New York Times crossword editor. The unique proposal made their marriage even more special.',
               'By doing functions such as the proposal before the actual wedding can make the couple’s wedding extraordinary. And will also increase the word of mouth publicity of the company.',
               'Wedding'),
@@ -72,8 +82,8 @@ class _WeddingsState extends State<Weddings> {
               scaffoldState,
               height,
               width,
-              'Farah khan and shirish kunder wedding',
-              'images/background2.jpg',
+              'Farah Khan and Shirish Kunder wedding',
+              imageURLs[5],
               'it’s easy to forget the fact that theirs is an interfaith coupling and that Shirish is eight years younger than his wife. Neither of these facts seem to have affected the wonderful couple or their relationship, and we must say that we don’t think we’ll concern ourselves too much with those details either, apart from mentioning that it’s nice to see some “unconventional” couples in the limelight happily married.',
               'farah khan ans shirish\' s wedding set an example that age doesn’t matter in love',
               'Wedding'),
@@ -82,7 +92,7 @@ class _WeddingsState extends State<Weddings> {
               height,
               width,
               ' Karishma Kapoor And Sunjay Kapoor',
-              'images/background2.jpg',
+              imageURLs[6],
               'Karisma’s wedding was kept as low profile as possible, but when a Kapoor is getting married that’s next to impossible. The house inside was decorated with flowers. The garden that surrounded the house had been turned into a Sheesh Mahal that could accommodate 600 guests.',
               'Karishma’s pink lehemga and her beautiful diamond sandals were spoken about many magazines. Even a simple wedding in RK Cottage was made so special. By organising such events lumevents could get alot of public attention which would mke their brand popular.',
               'Wedding'),

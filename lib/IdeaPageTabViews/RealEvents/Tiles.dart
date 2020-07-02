@@ -104,7 +104,7 @@ Widget tiles(scaffoldState, height, width, name, image, descr, why, type) {
                 colorFilter: new ColorFilter.mode(
                     Colors.black.withOpacity(0.3), BlendMode.darken),
                 borderRadius: BorderRadius.all(Radius.circular(10)),
-                image: AssetImage('images/background2.jpg'),
+                image: NetworkImage(image),
               ),
             ),
           ),
