@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:getflutter/components/image/gf_image_overlay.dart';
-import 'package:lumevents/IdeaPageTabViews/RealEvents/weddingPullUpps.dart';
+import 'package:lumevents/IdeaPageTabViews/RealEvents/PullUps.dart';
 
 Widget tiles(scaffoldState, height, width, name, image, descr, why, type) {
   return InkWell(

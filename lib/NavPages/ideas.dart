@@ -18,22 +18,12 @@ class _IdeasPageState extends State<IdeasPage> {
       tabBarHeight: 70,
       indicatorColor: Colors.white,
       initialIndex: 0,
-      length: 2,
+      length: 1,
 //      shape: RoundedRectangleBorder(
 //          borderRadius: BorderRadius.only(
 //              bottomRight: Radius.circular(10),
 //              bottomLeft: Radius.circular(10))),
       tabs: <Widget>[
-        Tab(
-          child: Text(
-            "Ideas",
-            style: TextStyle(
-              fontSize: 24,
-              fontWeight: FontWeight.bold,
-              fontFamily: "nunito",
-            ),
-          ),
-        ),
         Tab(
           child: Text(
             "Real Events",
@@ -46,7 +36,7 @@ class _IdeasPageState extends State<IdeasPage> {
         ),
       ],
       tabBarView: GFTabBarView(
-        children: <Widget>[IdeasTab(), RealEventsTab()],
+        children: <Widget>[RealEventsTab()],
       ),
     ));
   }
