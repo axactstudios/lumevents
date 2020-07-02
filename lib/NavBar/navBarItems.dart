@@ -11,8 +11,8 @@ List<PersistentBottomNavBarItem> navBarItems = [
     inactiveColor: Colors.black87,
   ),
   PersistentBottomNavBarItem(
-    icon: Icon(FontAwesomeIcons.lightbulb),
-    title: ("Ideas"),
+    icon: Icon(FontAwesomeIcons.book),
+    title: ("Events"),
     activeColor: Color(0xFFFF0060),
     inactiveColor: Colors.black87,
   ),
