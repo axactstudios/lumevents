@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lumevents/IdeaPageTabViews/RealEvents/SpecialEventsPage.dart';
 import 'package:lumevents/IdeaPageTabViews/RealEvents/birthdayPage.dart';
 
 import 'RealEvents/WeddingsPage.dart';
@@ -73,14 +74,22 @@ class _RealEventsTabState extends State<RealEventsTab> {
                           style: TextStyle(color: Colors.white))),
                 ),
               ),
-              Card(
-                color: Colors.pinkAccent,
-                elevation: 8,
-                child: Container(
-                  height: 50,
-                  child: Center(
-                      child: Text('Special Events',
-                          style: TextStyle(color: Colors.white))),
+              InkWell(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => SpecialEvents()),
+                  );
+                },
+                child: Card(
+                  color: Colors.pinkAccent,
+                  elevation: 8,
+                  child: Container(
+                    height: 50,
+                    child: Center(
+                        child: Text('Special Events',
+                            style: TextStyle(color: Colors.white))),
+                  ),
                 ),
               ),
               Card(
