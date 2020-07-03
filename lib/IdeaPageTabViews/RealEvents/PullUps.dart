@@ -61,7 +61,7 @@ Widget UIWeddings(String eventName, image, desc, why, type,
                     Container(
                       child: ClipRRect(
                         borderRadius: BorderRadius.all(Radius.circular(5)),
-                        child: Image.asset(
+                        child: Image.network(
                           image,
                           alignment: Alignment.center,
                           fit: BoxFit.fill,

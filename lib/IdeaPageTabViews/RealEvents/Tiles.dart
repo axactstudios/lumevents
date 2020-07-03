@@ -3,7 +3,16 @@ import 'package:flutter/material.dart';
 import 'package:getflutter/components/image/gf_image_overlay.dart';
 import 'package:lumevents/IdeaPageTabViews/RealEvents/PullUps.dart';
 
-Widget tiles(scaffoldState, height, width, name, image, descr, why, type) {
+Widget tiles(
+  scaffoldState,
+  height,
+  width,
+  name,
+  image,
+  descr,
+  why,
+  type,
+) {
   return InkWell(
     splashColor: Colors.transparent,
     highlightColor: Colors.transparent,
@@ -17,7 +26,6 @@ Widget tiles(scaffoldState, height, width, name, image, descr, why, type) {
       });
     },
     child: Container(
-      padding: EdgeInsets.all(2),
       height: 274,
       decoration: BoxDecoration(
           boxShadow: [
@@ -33,14 +41,14 @@ Widget tiles(scaffoldState, height, width, name, image, descr, why, type) {
           ],
           color: Colors.white,
           borderRadius: BorderRadius.all(Radius.circular(10))),
-      margin: EdgeInsets.fromLTRB(20, 10, 10, 40),
+      margin: EdgeInsets.fromLTRB(width * 0.05, 20, width * 0.05, 20),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
           Container(
             padding: EdgeInsets.all(5),
             height: 60,
-            width: 310,
+            width: width * 0.9,
             child: Row(
               children: <Widget>[
                 SizedBox(
@@ -49,15 +57,17 @@ Widget tiles(scaffoldState, height, width, name, image, descr, why, type) {
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
-                    Text(
-                      type,
-                      style: TextStyle(
-                          color: Colors.black,
-                          fontFamily: 'nunito',
-                          fontSize: 18),
+                    FittedBox(
+                      child: Text(
+                        type,
+                        style: TextStyle(
+                            color: Colors.black,
+                            fontFamily: 'nunito',
+                            fontSize: 18),
+                      ),
                     ),
                     Container(
-                      width: 240,
+                      width: width * 0.85,
                       color: Colors.white,
                       child: Text(
                         name,
@@ -77,7 +87,7 @@ Widget tiles(scaffoldState, height, width, name, image, descr, why, type) {
           ),
           Container(
             height: 210,
-            width: 310,
+            width: width * 0.9,
             child: ClipRRect(
               borderRadius: BorderRadius.all(Radius.circular(10)),
               child: GFImageOverlay(
