@@ -1,4 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:lumevents/classes/DatabaseHelper.dart';
+import 'package:lumevents/classes/WishlistModel.dart';
+
+final dbHelper = DatabaseHelper.instance;
+
+void addToWishlist({String name, String extras}) async {
+  Map<String, dynamic> row = {
+    DatabaseHelper.columnName: name,
+    DatabaseHelper.columnExtras: extras,
+  };
+  WishlistModel item = WishlistModel.fromMap(row);
+  final id = await dbHelper.insert(item);
+  Fluttertoast.showToast(
+      msg: 'Added to wishlist', toastLength: Toast.LENGTH_SHORT);
+}
 
 Widget UITrends(String name, imageUrl, description, imageBy,
     BuildContext context, double height, width) {
@@ -114,7 +130,9 @@ Widget UITrends(String name, imageUrl, description, imageBy,
                       height: 30,
                     ),
                     InkWell(
-                      onTap: null,
+                      onTap: () {
+                        addToWishlist(name: imageBy, extras: 'All cities');
+                      },
                       child: Card(
                         color: Colors.pinkAccent,
                         shape: RoundedRectangleBorder(

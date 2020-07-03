@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:getflutter/components/image/gf_image_overlay.dart';
 import 'package:liquid_pull_to_refresh/liquid_pull_to_refresh.dart';
+import 'package:lumevents/classes/DatabaseHelper.dart';
 import 'package:lumevents/classes/Trending.dart';
 import 'package:lumevents/classes/Events.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
