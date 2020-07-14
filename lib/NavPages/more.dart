@@ -8,6 +8,8 @@ import 'package:lumevents/profilePage/ProfileSetup.dart';
 import 'package:lumevents/profilePage/User.dart';
 import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
 
+import '../theme.dart' as Theme;
+
 class MorePage extends StatefulWidget {
   @override
   _MorePageState createState() => _MorePageState();
@@ -48,7 +50,7 @@ class _MorePageState extends State<MorePage> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.pinkAccent.withOpacity(0.7),
+      color: Theme.MyColors.themeColor.withOpacity(0.7),
       child: SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(8.0),
@@ -71,6 +73,7 @@ class _MorePageState extends State<MorePage> {
 
                         mCurrentUser = await mAuth.currentUser();
                         mCurrentUser != null
+                            // ignore: unnecessary_statements
                             ? (doesExist()
                                 ? pushNewScreen(context,
                                     screen: ProfilePage(), withNavBar: true)
@@ -84,7 +87,7 @@ class _MorePageState extends State<MorePage> {
                         children: <Widget>[
                           Icon(
                             Icons.person,
-                            color: Colors.pinkAccent.withOpacity(0.7),
+                            color: Theme.MyColors.themeColor.withOpacity(0.7),
                             size: 30.0,
                           ),
                           SizedBox(
@@ -95,7 +98,8 @@ class _MorePageState extends State<MorePage> {
                             style: TextStyle(
                                 fontFamily: 'nunito',
                                 fontSize: 30.0,
-                                color: Colors.pinkAccent.withOpacity(0.7),
+                                color:
+                                    Theme.MyColors.themeColor.withOpacity(0.7),
                                 fontWeight: FontWeight.bold),
                           ),
                         ],

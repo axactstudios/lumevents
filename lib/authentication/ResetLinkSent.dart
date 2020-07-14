@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:lumevents/authentication/LoginPage.dart';
 
+import '../theme.dart' as Theme;
+
 class ResetLinkSent extends StatefulWidget {
   @override
   _ResetLinkSentState createState() => _ResetLinkSentState();
@@ -39,7 +41,7 @@ class _ResetLinkSentState extends State<ResetLinkSent> {
                   borderRadius: BorderRadius.circular(20.0),
                   side: BorderSide(color: Colors.white),
                 ),
-                color: Color(0xFFFF124D),
+                color: Theme.MyColors.themeColor,
                 child: Padding(
                   padding: const EdgeInsets.all(10.0),
                   child: Text(

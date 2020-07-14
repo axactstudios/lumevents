@@ -6,6 +6,8 @@ import 'package:lumevents/main.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:regexed_validator/regexed_validator.dart';
 
+import '../theme.dart' as Theme;
+
 class ProfileSetup extends StatefulWidget {
   @override
   _ProfileSetupState createState() => _ProfileSetupState();
@@ -52,7 +54,7 @@ class _ProfileSetupState extends State<ProfileSetup> {
                     fontWeight: FontWeight.bold,
                     fontSize: 30.0,
                     fontFamily: 'nunito',
-                    color: Color(0xFFFF124D),
+                    color: Theme.MyColors.themeColor,
                   ),
                 ),
                 const SizedBox(
@@ -60,7 +62,7 @@ class _ProfileSetupState extends State<ProfileSetup> {
                   width: 175.0,
                   child: Divider(
                     thickness: 0.8,
-                    color: Color(0xFFFF124D),
+                    color: Theme.MyColors.themeColor,
                   ),
                 ),
                 SizedBox(
@@ -80,7 +82,7 @@ class _ProfileSetupState extends State<ProfileSetup> {
                         borderRadius: BorderRadius.circular(28.0),
                       ),
                       hintStyle: TextStyle(
-                          color: Color(0xFFFF124D),
+                          color: Theme.MyColors.themeColor,
                           fontFamily: 'nunito',
                           fontWeight: FontWeight.bold),
                       hintText: "Enter your full name"),
@@ -102,7 +104,7 @@ class _ProfileSetupState extends State<ProfileSetup> {
                         borderRadius: BorderRadius.circular(28.0),
                       ),
                       hintStyle: TextStyle(
-                          color: Color(0xFFFF124D),
+                          color: Theme.MyColors.themeColor,
                           fontFamily: 'nunito',
                           fontWeight: FontWeight.bold),
                       hintText: "Enter your contact number"),
@@ -124,7 +126,7 @@ class _ProfileSetupState extends State<ProfileSetup> {
                         borderRadius: BorderRadius.circular(28.0),
                       ),
                       hintStyle: TextStyle(
-                          color: Color(0xFFFF124D),
+                          color: Theme.MyColors.themeColor,
                           fontFamily: 'nunito',
                           fontWeight: FontWeight.bold),
                       hintText: "Enter your email"),
@@ -139,7 +141,7 @@ class _ProfileSetupState extends State<ProfileSetup> {
                       'Select your role :',
                       style: TextStyle(
                           fontFamily: 'nunito',
-                          color: Color(0xFFFF124D),
+                          color: Theme.MyColors.themeColor,
                           fontWeight: FontWeight.bold,
                           fontSize: 15.0),
                     ),
@@ -154,7 +156,7 @@ class _ProfileSetupState extends State<ProfileSetup> {
                             dropdownStringItem,
                             style: TextStyle(
                                 fontFamily: 'nunito',
-                                color: Color(0xFFFF124D),
+                                color: Theme.MyColors.themeColor,
                                 fontWeight: FontWeight.bold,
                                 fontSize: 15.0),
                           ),
@@ -177,7 +179,7 @@ class _ProfileSetupState extends State<ProfileSetup> {
                     borderRadius: BorderRadius.circular(20.0),
                     side: BorderSide(color: Colors.white),
                   ),
-                  color: Color(0xFFFF124D),
+                  color: Theme.MyColors.themeColor,
                   child: Padding(
                     padding: const EdgeInsets.all(10.0),
                     child: Text(

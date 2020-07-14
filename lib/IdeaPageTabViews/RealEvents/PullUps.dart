@@ -3,6 +3,8 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:lumevents/classes/DatabaseHelper.dart';
 import 'package:lumevents/classes/WishlistModel.dart';
 
+import '../../theme.dart' as Theme;
+
 final dbHelper = DatabaseHelper.instance;
 
 void addToWishlist({String name, String extras}) async {
@@ -47,7 +49,7 @@ Widget UIWeddings(String eventName, image, desc, why, type,
               Text(
                 type,
                 style: TextStyle(
-                    color: Color(0xFFFF124D),
+                    color: Theme.MyColors.themeColor,
                     fontFamily: 'nunito',
                     fontSize: 30,
                     fontWeight: FontWeight.bold),
@@ -90,7 +92,7 @@ Widget UIWeddings(String eventName, image, desc, why, type,
                     Text(
                       eventName,
                       style: TextStyle(
-                          color: Color(0xFFFF124D),
+                          color: Theme.MyColors.themeColor,
                           fontFamily: 'nunito',
                           fontSize: 30,
                           fontWeight: FontWeight.bold),
@@ -143,7 +145,7 @@ Widget UIWeddings(String eventName, image, desc, why, type,
                         addToWishlist(name: eventName, extras: 'Event');
                       },
                       child: Card(
-                        color: Colors.pinkAccent,
+                        color: Theme.MyColors.themeColor,
                         shape: RoundedRectangleBorder(
                             borderRadius:
                                 BorderRadius.all(Radius.circular(10))),

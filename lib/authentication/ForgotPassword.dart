@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:lumevents/authentication/ResetLinkSent.dart';
 import 'package:regexed_validator/regexed_validator.dart';
 
+import '../theme.dart' as Theme;
+
 class ForgotPassword extends StatefulWidget {
   @override
   _ForgotPasswordState createState() => _ForgotPasswordState();
@@ -40,7 +42,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                     style: TextStyle(
                         fontFamily: 'nunito',
                         fontWeight: FontWeight.bold,
-                        color: Color(0xFFFF124D),
+                        color: Theme.MyColors.themeColor,
                         fontSize: 30.0),
                   ),
                   SizedBox(
@@ -51,7 +53,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                     width: 160.0,
                     child: Divider(
                       thickness: 0.8,
-                      color: Color(0xFFFF124D),
+                      color: Theme.MyColors.themeColor,
                     ),
                   ),
                   SizedBox(
@@ -72,11 +74,11 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                       ),
                       filled: false,
                       hintStyle: TextStyle(
-                          color: Color(0xFFFF124D),
+                          color: Theme.MyColors.themeColor,
                           fontFamily: 'nunito',
                           fontWeight: FontWeight.bold),
                       hintText: "Enter your email",
-                      fillColor: Colors.pinkAccent.shade200.withOpacity(0.7),
+                      fillColor: Theme.MyColors.themeColor.withOpacity(0.7),
                     ),
                   ),
                   const SizedBox(
@@ -87,7 +89,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                       borderRadius: BorderRadius.circular(20.0),
                       side: BorderSide(color: Colors.white),
                     ),
-                    color: Color(0xFFFF124D),
+                    color: Theme.MyColors.themeColor,
                     child: Padding(
                       padding: const EdgeInsets.all(10.0),
                       child: Text(

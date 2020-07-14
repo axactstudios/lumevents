@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:lumevents/NavPages/Wishlist.dart';
 
+import '../theme.dart' as Theme;
+
 class PlanPage extends StatefulWidget {
   @override
   _PlanPageState createState() => _PlanPageState();
@@ -11,7 +13,7 @@ class _PlanPageState extends State<PlanPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.pinkAccent.withOpacity(0.7),
+        backgroundColor: Theme.MyColors.themeColor.withOpacity(0.7),
         actions: <Widget>[
           InkWell(
             onTap: () {
@@ -30,7 +32,7 @@ class _PlanPageState extends State<PlanPage> {
           ),
         ],
       ),
-      backgroundColor: Colors.pinkAccent.withOpacity(0.3),
+      backgroundColor: Theme.MyColors.themeColor.withOpacity(0.3),
     );
   }
 }

@@ -3,6 +3,8 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:lumevents/classes/DatabaseHelper.dart';
 import 'package:lumevents/classes/WishlistModel.dart';
 
+import '../../theme.dart' as Theme;
+
 final dbHelper = DatabaseHelper.instance;
 
 void addToWishlist({String name, String extras}) async {
@@ -47,7 +49,7 @@ Widget UIVideos(String name, imageUrl, description, client, city,
               Text(
                 name,
                 style: TextStyle(
-                    color: Color(0xFFFF124D),
+                    color: Theme.MyColors.themeColor,
                     fontFamily: 'nunito',
                     fontSize: 30,
                     fontWeight: FontWeight.bold),
@@ -99,7 +101,7 @@ Widget UIVideos(String name, imageUrl, description, client, city,
                     Text(
                       client,
                       style: TextStyle(
-                          color: Color(0xFFFF124D),
+                          color: Theme.MyColors.themeColor,
                           fontFamily: 'nunito',
                           fontSize: 30,
                           fontWeight: FontWeight.bold),
@@ -117,7 +119,7 @@ Widget UIVideos(String name, imageUrl, description, client, city,
                     Text(
                       city,
                       style: TextStyle(
-                          color: Color(0xFFFF124D),
+                          color: Theme.MyColors.themeColor,
                           fontFamily: 'nunito',
                           fontSize: 26,
                           fontWeight: FontWeight.bold),
@@ -152,7 +154,7 @@ Widget UIVideos(String name, imageUrl, description, client, city,
                         addToWishlist(name: client, extras: city);
                       },
                       child: Card(
-                        color: Colors.pinkAccent,
+                        color: Theme.MyColors.themeColor,
                         shape: RoundedRectangleBorder(
                             borderRadius:
                                 BorderRadius.all(Radius.circular(10))),
@@ -176,7 +178,7 @@ Widget UIVideos(String name, imageUrl, description, client, city,
                     InkWell(
                       onTap: null,
                       child: Card(
-                        color: Colors.pinkAccent,
+                        color: Theme.MyColors.themeColor,
                         shape: RoundedRectangleBorder(
                             borderRadius:
                                 BorderRadius.all(Radius.circular(10))),

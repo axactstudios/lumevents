@@ -6,6 +6,7 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:getflutter/components/image/gf_image_overlay.dart';
 import 'package:liquid_pull_to_refresh/liquid_pull_to_refresh.dart';
 import 'package:lumevents/classes/Vendor.dart';
+import 'package:lumevents/theme.dart' as Theme;
 
 class CityVendorScreen extends StatefulWidget {
   String city, vendorType;
@@ -124,7 +125,7 @@ class _CityVendorScreenState extends State<CityVendorScreen> {
     return Scaffold(
       key: scaffoldState,
       appBar: AppBar(
-        backgroundColor: Colors.teal,
+        backgroundColor: Theme.MyColors.themeColor,
         actions: <Widget>[
           InkWell(
             onTap: () {
@@ -137,7 +138,7 @@ class _CityVendorScreenState extends State<CityVendorScreen> {
         ],
       ),
       body: LiquidPullToRefresh(
-        color: Colors.pink.withOpacity(0.5),
+        color: Theme.MyColors.themeColor.withOpacity(0.5),
         onRefresh: _handleRefresh,
         child: SingleChildScrollView(
           physics: AlwaysScrollableScrollPhysics(),
@@ -151,7 +152,7 @@ class _CityVendorScreenState extends State<CityVendorScreen> {
                   style: TextStyle(
                       fontSize: 24,
                       fontWeight: FontWeight.bold,
-                      color: Color(0xFFFF124D),
+                      color: Theme.MyColors.themeColor,
                       fontFamily: 'nunito'),
                 ),
               ),
@@ -162,7 +163,7 @@ class _CityVendorScreenState extends State<CityVendorScreen> {
                     ? Center(
                         child: SpinKitWave(
                           size: 30,
-                          color: Colors.pinkAccent.withOpacity(0.7),
+                          color: Theme.MyColors.themeColor.withOpacity(0.7),
                         ),
                       )
                     : ListView.builder(

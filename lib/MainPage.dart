@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:lumevents/authentication/LoginPage.dart';
 import 'package:lumevents/main.dart';
+import 'package:lumevents/theme.dart' as Theme;
 
 // ignore: must_be_immutable
 class MainPage extends StatelessWidget {
@@ -45,7 +46,7 @@ class MainPage extends StatelessWidget {
                   borderRadius: BorderRadius.circular(25.0),
                   side: BorderSide(color: Colors.white),
                 ),
-                color: Color(0xFFFF124D),
+                color: Theme.MyColors.themeColor,
                 child: Padding(
                   padding: const EdgeInsets.all(16.0),
                   child: Text(

@@ -3,6 +3,8 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:lumevents/classes/DatabaseHelper.dart';
 import 'package:lumevents/classes/WishlistModel.dart';
 
+import '../../theme.dart' as Theme;
+
 final dbHelper = DatabaseHelper.instance;
 
 void addToWishlist({String name, String extras}) async {
@@ -47,7 +49,7 @@ Widget UITrends(String name, imageUrl, description, imageBy,
               Text(
                 name,
                 style: TextStyle(
-                    color: Color(0xFFFF124D),
+                    color: Theme.MyColors.themeColor,
                     fontFamily: 'nunito',
                     fontSize: 30,
                     fontWeight: FontWeight.bold),
@@ -99,7 +101,7 @@ Widget UITrends(String name, imageUrl, description, imageBy,
                     Text(
                       imageBy,
                       style: TextStyle(
-                          color: Color(0xFFFF124D),
+                          color: Theme.MyColors.themeColor,
                           fontFamily: 'nunito',
                           fontSize: 30,
                           fontWeight: FontWeight.bold),
@@ -134,7 +136,7 @@ Widget UITrends(String name, imageUrl, description, imageBy,
                         addToWishlist(name: imageBy, extras: 'All cities');
                       },
                       child: Card(
-                        color: Colors.pinkAccent,
+                        color: Theme.MyColors.themeColor,
                         shape: RoundedRectangleBorder(
                             borderRadius:
                                 BorderRadius.all(Radius.circular(10))),
@@ -158,7 +160,7 @@ Widget UITrends(String name, imageUrl, description, imageBy,
                     InkWell(
                       onTap: null,
                       child: Card(
-                        color: Colors.pinkAccent,
+                        color: Theme.MyColors.themeColor,
                         shape: RoundedRectangleBorder(
                             borderRadius:
                                 BorderRadius.all(Radius.circular(10))),

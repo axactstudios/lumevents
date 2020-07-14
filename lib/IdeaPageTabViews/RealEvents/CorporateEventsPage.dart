@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import '../../theme.dart' as Theme;
+
 class CorporateEvents extends StatefulWidget {
   @override
   _CorporateEventsState createState() => _CorporateEventsState();
@@ -16,7 +18,7 @@ class _CorporateEventsState extends State<CorporateEvents> {
     return Scaffold(
       key: scaffoldState,
       appBar: AppBar(
-        backgroundColor: Colors.pinkAccent.withOpacity(0.7),
+        backgroundColor: Theme.MyColors.themeColor.withOpacity(0.7),
       ),
       body: ListView(
         children: [],

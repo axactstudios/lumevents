@@ -9,6 +9,7 @@ import 'package:lumevents/classes/Trending.dart';
 import 'package:lumevents/classes/Events.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 
+import '../theme.dart' as Theme;
 import 'DetailsPullUps/uiEvents.dart';
 import 'DetailsPullUps/uiIdeas.dart';
 import 'DetailsPullUps/uiTrends.dart';
@@ -104,7 +105,7 @@ class _AllCitiesScreenState extends State<AllCitiesScreen> {
     return Scaffold(
       key: scaffoldState,
       body: LiquidPullToRefresh(
-        color: Colors.pink.withOpacity(0.5),
+        color: Theme.MyColors.themeColor.withOpacity(0.5),
         onRefresh: _handleRefresh,
         child: SingleChildScrollView(
           physics: AlwaysScrollableScrollPhysics(),
@@ -117,7 +118,7 @@ class _AllCitiesScreenState extends State<AllCitiesScreen> {
                 'Trending',
                 style: TextStyle(
                     fontSize: 24,
-                    color: Color(0xFFFF124D),
+                    color: Theme.MyColors.themeColor,
                     fontFamily: 'nunito',
                     fontWeight: FontWeight.bold),
               ),
@@ -128,7 +129,7 @@ class _AllCitiesScreenState extends State<AllCitiesScreen> {
                   ? Center(
                       child: SpinKitWave(
                         size: 30,
-                        color: Colors.pinkAccent.withOpacity(0.7),
+                        color: Theme.MyColors.themeColor.withOpacity(0.7),
                       ),
                     )
                   : ListView.builder(
@@ -270,7 +271,7 @@ class _AllCitiesScreenState extends State<AllCitiesScreen> {
               child: Text(
                 'Top Ideas',
                 style: TextStyle(
-                    color: Color(0xFFFF124D),
+                    color: Theme.MyColors.themeColor,
                     fontSize: 24,
                     fontFamily: 'nunito',
                     fontWeight: FontWeight.bold),
@@ -282,7 +283,7 @@ class _AllCitiesScreenState extends State<AllCitiesScreen> {
                   ? Center(
                       child: SpinKitWave(
                         size: 30,
-                        color: Colors.pinkAccent.withOpacity(0.7),
+                        color: Theme.MyColors.themeColor.withOpacity(0.7),
                       ),
                     )
                   : ListView.builder(
@@ -423,7 +424,7 @@ class _AllCitiesScreenState extends State<AllCitiesScreen> {
               child: Text(
                 'Events Powered By Us',
                 style: TextStyle(
-                    color: Color(0xFFFF124D),
+                    color: Theme.MyColors.themeColor,
                     fontSize: 24,
                     fontFamily: 'nunito',
                     fontWeight: FontWeight.bold),
@@ -435,7 +436,7 @@ class _AllCitiesScreenState extends State<AllCitiesScreen> {
                   ? Center(
                       child: SpinKitWave(
                         size: 30,
-                        color: Colors.pinkAccent.withOpacity(0.7),
+                        color: Theme.MyColors.themeColor.withOpacity(0.7),
                       ),
                     )
                   : ListView.builder(
@@ -577,7 +578,7 @@ class _AllCitiesScreenState extends State<AllCitiesScreen> {
               child: Text(
                 'Featured Videos',
                 style: TextStyle(
-                    color: Color(0xFFFF124D),
+                    color: Theme.MyColors.themeColor,
                     fontSize: 24,
                     fontFamily: 'nunito',
                     fontWeight: FontWeight.bold),
@@ -589,7 +590,7 @@ class _AllCitiesScreenState extends State<AllCitiesScreen> {
                   ? Center(
                       child: SpinKitWave(
                         size: 30,
-                        color: Colors.pinkAccent.withOpacity(0.7),
+                        color: Theme.MyColors.themeColor.withOpacity(0.7),
                       ),
                     )
                   : ListView.builder(

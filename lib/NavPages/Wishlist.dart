@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:lumevents/classes/DatabaseHelper.dart';
 import 'package:lumevents/classes/WishlistModel.dart';
 
+import '../theme.dart' as Theme;
+
 class Wishlist extends StatefulWidget {
   @override
   _WishlistState createState() => _WishlistState();
@@ -41,9 +43,9 @@ class _WishlistState extends State<Wishlist> {
               fontWeight: FontWeight.w500,
               letterSpacing: 5),
         ),
-        backgroundColor: Colors.pink,
+        backgroundColor: Theme.MyColors.themeColor,
       ),
-      backgroundColor: Colors.pinkAccent.shade100,
+      backgroundColor: Theme.MyColors.themeColor.withOpacity(0.3),
       body: SafeArea(
         child: Container(
           margin: EdgeInsets.fromLTRB(0, 15, 0, 0),
@@ -59,7 +61,7 @@ class _WishlistState extends State<Wishlist> {
                         child: Container(
                           height: 70,
                           decoration: BoxDecoration(
-                              color: Colors.pink,
+                              color: Theme.MyColors.themeColor,
                               borderRadius: BorderRadius.circular(10)),
                           child: Padding(
                             padding: const EdgeInsets.all(20.0),

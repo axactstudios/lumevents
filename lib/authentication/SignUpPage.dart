@@ -7,6 +7,8 @@ import 'package:lumevents/main.dart';
 import 'package:lumevents/profilePage/ProfileSetup.dart';
 import 'package:regexed_validator/regexed_validator.dart';
 
+import '../theme.dart' as Theme;
+
 final FirebaseAuth mAuth = FirebaseAuth.instance;
 
 class SignUpPage extends StatefulWidget {
@@ -95,7 +97,7 @@ class _SignUpPageState extends State<SignUpPage> {
                       fontWeight: FontWeight.bold,
                       fontSize: 30.0,
                       fontFamily: 'nunito',
-                      color: Color(0xFFFF124D),
+                      color: Theme.MyColors.themeColor,
                     ),
                   ),
                   const SizedBox(
@@ -103,7 +105,7 @@ class _SignUpPageState extends State<SignUpPage> {
                     width: 75.0,
                     child: Divider(
                       thickness: 0.8,
-                      color: Color(0xFFFF124D),
+                      color: Theme.MyColors.themeColor,
                     ),
                   ),
                   SizedBox(
@@ -123,7 +125,7 @@ class _SignUpPageState extends State<SignUpPage> {
                           borderRadius: BorderRadius.circular(28.0),
                         ),
                         hintStyle: TextStyle(
-                            color: Color(0xFFFF124D),
+                            color: Theme.MyColors.themeColor,
                             fontFamily: 'nunito',
                             fontWeight: FontWeight.bold),
                         hintText: "Enter your email"),
@@ -146,7 +148,7 @@ class _SignUpPageState extends State<SignUpPage> {
                           borderRadius: BorderRadius.circular(28.0),
                         ),
                         hintStyle: TextStyle(
-                            color: Color(0xFFFF124D),
+                            color: Theme.MyColors.themeColor,
                             fontFamily: 'nunito',
                             fontWeight: FontWeight.bold),
                         hintText: "Enter your password (min. 6 characters)"),
@@ -159,7 +161,7 @@ class _SignUpPageState extends State<SignUpPage> {
                       borderRadius: BorderRadius.circular(20.0),
                       side: BorderSide(color: Colors.white),
                     ),
-                    color: Color(0xFFFF124D),
+                    color: Theme.MyColors.themeColor,
                     child: Padding(
                       padding: const EdgeInsets.all(10.0),
                       child: Text(

@@ -5,8 +5,10 @@ import 'package:getflutter/components/carousel/gf_carousel.dart';
 import 'package:getflutter/components/image/gf_image_overlay.dart';
 import 'package:lumevents/HomePageScreens/cityVendorScreen.dart';
 import 'package:lumevents/classes/Trending.dart';
+import 'package:lumevents/theme.dart' as Theme;
 import 'package:persistent_bottom_nav_bar/persistent-tab-view.widget.dart';
 
+// ignore: must_be_immutable
 class CitySpecificScreen extends StatefulWidget {
   String city;
   CitySpecificScreen(this.city);
@@ -72,7 +74,7 @@ class _CitySpecificScreenState extends State<CitySpecificScreen> {
                   fontFamily: 'nunito',
                   fontWeight: FontWeight.bold,
                   fontSize: 24,
-                  color: Color(0xFFFF124D),
+                  color: Theme.MyColors.themeColor,
                 ),
               ),
             ),
@@ -106,7 +108,7 @@ class _CitySpecificScreenState extends State<CitySpecificScreen> {
                 : Center(
                     child: SpinKitWave(
                       size: 30,
-                      color: Colors.pinkAccent.withOpacity(0.7),
+                      color: Theme.MyColors.themeColor.withOpacity(0.7),
                     ),
                   ),
             Padding(
@@ -118,7 +120,7 @@ class _CitySpecificScreenState extends State<CitySpecificScreen> {
                   fontFamily: 'nunito',
                   fontWeight: FontWeight.bold,
                   fontSize: 24,
-                  color: Color(0xFFFF124D),
+                  color: Theme.MyColors.themeColor,
                 ),
               ),
             ),

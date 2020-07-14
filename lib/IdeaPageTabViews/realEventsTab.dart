@@ -4,6 +4,7 @@ import 'package:lumevents/IdeaPageTabViews/RealEvents/SpecialEventsPage.dart';
 import 'package:lumevents/IdeaPageTabViews/RealEvents/birthdayPage.dart';
 import 'package:lumevents/IdeaPageTabViews/RealEvents/OthersPage.dart';
 
+import '../theme.dart' as Theme;
 import 'RealEvents/WeddingsPage.dart';
 
 class RealEventsTab extends StatefulWidget {
@@ -35,7 +36,7 @@ class _RealEventsTabState extends State<RealEventsTab> {
                   );
                 },
                 child: Card(
-                  color: Colors.pinkAccent,
+                  color: Theme.MyColors.themeColor,
                   elevation: 8,
                   child: Container(
                     height: 50,
@@ -55,7 +56,7 @@ class _RealEventsTabState extends State<RealEventsTab> {
                   );
                 },
                 child: Card(
-                  color: Colors.pinkAccent,
+                  color: Theme.MyColors.themeColor,
                   elevation: 8,
                   child: Container(
                     height: 50,
@@ -74,7 +75,7 @@ class _RealEventsTabState extends State<RealEventsTab> {
                   );
                 },
                 child: Card(
-                  color: Colors.pinkAccent,
+                  color: Theme.MyColors.themeColor,
                   elevation: 8,
                   child: Container(
                     height: 50,
@@ -92,7 +93,7 @@ class _RealEventsTabState extends State<RealEventsTab> {
                   );
                 },
                 child: Card(
-                  color: Colors.pinkAccent,
+                  color: Theme.MyColors.themeColor,
                   elevation: 8,
                   child: Container(
                     height: 50,
@@ -110,7 +111,7 @@ class _RealEventsTabState extends State<RealEventsTab> {
                   );
                 },
                 child: Card(
-                  color: Colors.pinkAccent,
+                  color: Theme.MyColors.themeColor,
                   elevation: 8,
                   child: Container(
                     height: 50,

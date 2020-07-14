@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:getflutter/getflutter.dart';
 import 'package:lumevents/IdeaPageTabViews/realEventsTab.dart';
 
+import '../theme.dart' as Theme;
+
 class IdeasPage extends StatefulWidget {
   @override
   _IdeasPageState createState() => _IdeasPageState();
@@ -13,7 +15,7 @@ class _IdeasPageState extends State<IdeasPage> {
   Widget build(BuildContext context) {
     return SafeArea(
         child: GFTabs(
-      tabBarColor: Color(0xFFFF4B8F),
+      tabBarColor: Theme.MyColors.themeColor,
       tabBarHeight: 70,
       indicatorColor: Colors.white,
       initialIndex: 0,

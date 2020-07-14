@@ -2,6 +2,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import '../theme.dart' as Theme;
+
 class Profile extends StatefulWidget {
   @override
   _ProfileState createState() => _ProfileState();
@@ -27,7 +29,7 @@ class _ProfileState extends State<Profile> {
                       width: 150.0,
                       height: 150.0,
                       decoration: BoxDecoration(
-                          color: Colors.red,
+                          color: Theme.MyColors.themeColor,
                           image: DecorationImage(
                               image: NetworkImage(
                                   'https://pixel.nymag.com/imgs/daily/vulture/2017/06/14/14-tom-cruise.w700.h700.jpg'),
@@ -79,8 +81,8 @@ class _ProfileState extends State<Profile> {
                       width: 95.0,
                       child: Material(
                         borderRadius: BorderRadius.circular(20.0),
-                        shadowColor: Colors.redAccent,
-                        color: Colors.red,
+                        shadowColor: Theme.MyColors.themeColor,
+                        color: Theme.MyColors.themeColor,
                         elevation: 7.0,
                         child: GestureDetector(
                           onTap: () {},

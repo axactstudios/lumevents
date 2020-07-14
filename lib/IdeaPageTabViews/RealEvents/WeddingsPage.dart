@@ -2,6 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:lumevents/IdeaPageTabViews/RealEvents/Tiles.dart';
 
+import '../../theme.dart' as Theme;
+
 class Weddings extends StatefulWidget {
   @override
   _WeddingsState createState() => _WeddingsState();
@@ -39,7 +41,7 @@ class _WeddingsState extends State<Weddings> {
     height = MediaQuery.of(context).size.height;
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.pinkAccent.withOpacity(0.7),
+        backgroundColor: Theme.MyColors.themeColor.withOpacity(0.7),
       ),
       key: scaffoldState,
       body: ListView(

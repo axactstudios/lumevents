@@ -8,6 +8,7 @@ import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
 
 import '../authentication/LoginPage.dart';
 import '../authentication/LoginPage.dart';
+import '../theme.dart' as Theme;
 import 'ProfileSetup.dart';
 import 'ProfileSetup.dart';
 import 'User.dart';
@@ -115,7 +116,7 @@ class _ProfilePageState extends State<ProfilePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.pinkAccent.withOpacity(0.7),
+        backgroundColor: Theme.MyColors.themeColor.withOpacity(0.7),
       ),
       body: ListView(
         shrinkWrap: true,
@@ -138,11 +139,11 @@ class _ProfilePageState extends State<ProfilePage> {
                             fontFamily: 'nunito',
                             fontWeight: FontWeight.bold,
                             fontSize: 40.0,
-                            color: Colors.pinkAccent),
+                            color: Theme.MyColors.themeColor),
                       ),
                       SizedBox(
                         child: Divider(
-                          color: Colors.pinkAccent,
+                          color: Theme.MyColors.themeColor,
                           thickness: 0.5,
                         ),
                         width: 150.0,
@@ -153,7 +154,7 @@ class _ProfilePageState extends State<ProfilePage> {
                       ),
                       userData.name != null
                           ? Card(
-                              color: Colors.pinkAccent,
+                              color: Theme.MyColors.themeColor,
                               child: Padding(
                                 padding: const EdgeInsets.all(12.0),
                                 child: Row(
@@ -188,7 +189,8 @@ class _ProfilePageState extends State<ProfilePage> {
                           : Center(
                               child: SpinKitWave(
                                 size: 30,
-                                color: Colors.pinkAccent.withOpacity(0.7),
+                                color:
+                                    Theme.MyColors.themeColor.withOpacity(0.7),
                               ),
                             ),
                       SizedBox(
@@ -196,7 +198,7 @@ class _ProfilePageState extends State<ProfilePage> {
                       ),
                       userData.number != null
                           ? Card(
-                              color: Colors.pinkAccent,
+                              color: Theme.MyColors.themeColor,
                               child: Padding(
                                 padding: const EdgeInsets.all(12.0),
                                 child: Row(
@@ -231,7 +233,8 @@ class _ProfilePageState extends State<ProfilePage> {
                           : Center(
                               child: SpinKitWave(
                                 size: 30,
-                                color: Colors.pinkAccent.withOpacity(0.7),
+                                color:
+                                    Theme.MyColors.themeColor.withOpacity(0.7),
                               ),
                             ),
                       SizedBox(
@@ -239,7 +242,7 @@ class _ProfilePageState extends State<ProfilePage> {
                       ),
                       userData.email != null
                           ? Card(
-                              color: Colors.pinkAccent,
+                              color: Theme.MyColors.themeColor,
                               child: Padding(
                                 padding: const EdgeInsets.all(12.0),
                                 child: Row(
@@ -274,7 +277,8 @@ class _ProfilePageState extends State<ProfilePage> {
                           : Center(
                               child: SpinKitWave(
                                 size: 30,
-                                color: Colors.pinkAccent.withOpacity(0.7),
+                                color:
+                                    Theme.MyColors.themeColor.withOpacity(0.7),
                               ),
                             ),
                       SizedBox(
@@ -282,7 +286,7 @@ class _ProfilePageState extends State<ProfilePage> {
                       ),
                       userData.role != null
                           ? Card(
-                              color: Colors.pinkAccent,
+                              color: Theme.MyColors.themeColor,
                               child: Padding(
                                 padding: const EdgeInsets.all(12.0),
                                 child: Row(
@@ -317,7 +321,8 @@ class _ProfilePageState extends State<ProfilePage> {
                           : Center(
                               child: SpinKitWave(
                                 size: 30,
-                                color: Colors.pinkAccent.withOpacity(0.7),
+                                color:
+                                    Theme.MyColors.themeColor.withOpacity(0.7),
                               ),
                             ),
                       SizedBox(
@@ -331,7 +336,7 @@ class _ProfilePageState extends State<ProfilePage> {
                               borderRadius: BorderRadius.circular(20.0),
                               side: BorderSide(color: Colors.white),
                             ),
-                            color: Colors.pinkAccent,
+                            color: Theme.MyColors.themeColor,
                             onPressed: () {
                               pushNewScreen(context,
                                   screen: ProfileSetup(), withNavBar: false);
@@ -353,7 +358,7 @@ class _ProfilePageState extends State<ProfilePage> {
                               borderRadius: BorderRadius.circular(20.0),
                               side: BorderSide(color: Colors.white),
                             ),
-                            color: Colors.pinkAccent,
+                            color: Theme.MyColors.themeColor,
                             onPressed: () {
                               signOut();
                             },

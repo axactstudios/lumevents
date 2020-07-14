@@ -2,6 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:lumevents/IdeaPageTabViews/RealEvents/Tiles.dart';
 
+import '../../theme.dart' as Theme;
+
 class Birthdays extends StatefulWidget {
   @override
   _BirthdaysState createState() => _BirthdaysState();
@@ -28,7 +30,7 @@ class _BirthdaysState extends State<Birthdays> {
     return Scaffold(
       key: scaffoldState,
       appBar: AppBar(
-        backgroundColor: Colors.pinkAccent.withOpacity(0.7),
+        backgroundColor: Theme.MyColors.themeColor.withOpacity(0.7),
       ),
       body: ListView(
         children: [

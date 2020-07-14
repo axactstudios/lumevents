@@ -1,7 +1,8 @@
+import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:lumevents/HomePageScreens/allCitiesScreen.dart';
 import 'package:lumevents/HomePageScreens/citySpecificScreen.dart';
-
+import 'package:lumevents/theme.dart' as Theme;
 import 'package:searchable_dropdown/searchable_dropdown.dart';
 
 class HomePage extends StatefulWidget {
@@ -9,17 +10,34 @@ class HomePage extends StatefulWidget {
   _HomePageState createState() => _HomePageState();
 }
 
-List<String> _cities = [
-  'All Cities',
-  'Delhi NCR',
-  'Jaipur',
-  'Kolkata',
-  'Udaipur',
-];
+List<String> _cities = ['AllCities'];
 
 class _HomePageState extends State<HomePage> {
-  String selectedValue, _currentItemSelected = 'All Cities';
+  String selectedValue, _currentItemSelected = 'AllCities';
   Widget _currentScreenToShow = AllCitiesScreen();
+  getCities() {
+    DatabaseReference citiesref =
+        FirebaseDatabase.instance.reference().child('Home');
+    citiesref.once().then((DataSnapshot snap) {
+      // ignore: non_constant_identifier_names
+      var KEYS = snap.value.keys;
+      // ignore: non_constant_identifier_names
+      var DATA = snap.value;
+      _cities.clear();
+      for (var key in KEYS) {
+        _cities.add(key);
+      }
+      setState(() {
+        print(_cities.length);
+      });
+    });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    getCities();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +45,7 @@ class _HomePageState extends State<HomePage> {
       child: Scaffold(
           appBar: AppBar(
             automaticallyImplyLeading: false,
-            backgroundColor: Color(0xFFFF4B8F),
+            backgroundColor: Theme.MyColors.themeColor,
             title: Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
@@ -38,14 +56,14 @@ class _HomePageState extends State<HomePage> {
                   ),
                   child: SearchableDropdown(
                     menuBackgroundColor: Colors.white,
-                    iconEnabledColor: Color(0xFFFF124D),
-                    iconDisabledColor: Color(0xFFFF124D),
+                    iconEnabledColor: Theme.MyColors.themeColor,
+                    iconDisabledColor: Theme.MyColors.themeColor,
                     items: _cities.map((String dropDownStringItem) {
                       return DropdownMenuItem<String>(
                         child: Text(
                           dropDownStringItem,
                           style: TextStyle(
-                              color: Color(0xFFFF124D),
+                              color: Theme.MyColors.themeColor,
                               fontFamily: 'nunito',
                               fontSize: 20,
                               fontWeight: FontWeight.bold),
@@ -56,16 +74,11 @@ class _HomePageState extends State<HomePage> {
                     onChanged: (String newValueSelected) {
                       setState(() {
                         _currentItemSelected = newValueSelected;
-                        if (_currentItemSelected == _cities[0]) {
+                        if (_currentItemSelected == 'AllCities') {
                           _currentScreenToShow = AllCitiesScreen();
-                        } else if (_currentItemSelected == _cities[1]) {
-                          _currentScreenToShow = CitySpecificScreen("DelhiNCR");
-                        } else if (_currentItemSelected == _cities[2]) {
-                          _currentScreenToShow = CitySpecificScreen(_cities[2]);
-                        } else if (_currentItemSelected == _cities[3]) {
-                          _currentScreenToShow = CitySpecificScreen(_cities[3]);
-                        } else if (_currentItemSelected == _cities[4]) {
-                          _currentScreenToShow = CitySpecificScreen(_cities[4]);
+                        } else {
+                          _currentScreenToShow =
+                              CitySpecificScreen(_currentItemSelected);
                         }
                       });
                     },
