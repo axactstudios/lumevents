@@ -37,6 +37,7 @@ dependencies:
   path: ^1.6.4
   email_validator: ^1.0.0
   regexed_validator: ^1.0.4
+  flutter_svg:
 
 dev_dependencies:
   flutter_test:

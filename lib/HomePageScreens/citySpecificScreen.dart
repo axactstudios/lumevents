@@ -60,7 +60,6 @@ class _CitySpecificScreenState extends State<CitySpecificScreen> {
     width = MediaQuery.of(context).size.width;
     height = MediaQuery.of(context).size.height;
     return Container(
-      color: Colors.white,
       child: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,

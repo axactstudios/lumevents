@@ -4,6 +4,7 @@ import 'package:lumevents/classes/DatabaseHelper.dart';
 import 'package:lumevents/classes/WishlistModel.dart';
 
 import '../../theme.dart' as Theme;
+import 'getVendors.dart';
 
 final dbHelper = DatabaseHelper.instance;
 
@@ -176,7 +177,13 @@ Widget UIVideos(String name, imageUrl, description, client, city,
                       height: 10,
                     ),
                     InkWell(
-                      onTap: null,
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => PlannerScreen()),
+                        );
+                      },
                       child: Card(
                         color: Theme.MyColors.themeColor,
                         shape: RoundedRectangleBorder(
@@ -185,7 +192,7 @@ Widget UIVideos(String name, imageUrl, description, client, city,
                         child: Padding(
                           padding: EdgeInsets.all(10),
                           child: Text(
-                            "View Vendor",
+                            "View Potential Vendors",
                             style: TextStyle(
                                 color: Colors.white,
                                 fontFamily: 'nunito',

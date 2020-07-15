@@ -45,10 +45,14 @@ class _HomePageState extends State<HomePage> {
       child: Scaffold(
           appBar: AppBar(
             automaticallyImplyLeading: false,
-            backgroundColor: Theme.MyColors.themeColor,
+            backgroundColor: Colors.white,
             title: Row(
-              mainAxisAlignment: MainAxisAlignment.end,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
+                Image.asset(
+                  'images/dreamthyeve.png',
+                  scale: 26,
+                ),
                 Container(
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.all(Radius.circular(15)),

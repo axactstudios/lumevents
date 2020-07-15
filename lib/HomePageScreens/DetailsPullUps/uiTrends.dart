@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:lumevents/HomePageScreens/DetailsPullUps/getVendors.dart';
 import 'package:lumevents/classes/DatabaseHelper.dart';
 import 'package:lumevents/classes/WishlistModel.dart';
 
@@ -158,7 +159,13 @@ Widget UITrends(String name, imageUrl, description, imageBy,
                       height: 10,
                     ),
                     InkWell(
-                      onTap: null,
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => PlannerScreen()),
+                        );
+                      },
                       child: Card(
                         color: Theme.MyColors.themeColor,
                         shape: RoundedRectangleBorder(
@@ -167,7 +174,7 @@ Widget UITrends(String name, imageUrl, description, imageBy,
                         child: Padding(
                           padding: EdgeInsets.all(10),
                           child: Text(
-                            "View Vendor",
+                            "View Potential Vendors",
                             style: TextStyle(
                                 color: Colors.white,
                                 fontFamily: 'nunito',

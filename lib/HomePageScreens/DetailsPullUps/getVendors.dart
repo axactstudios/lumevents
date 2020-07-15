@@ -1,3 +1,6 @@
+import 'package:firebase_database/firebase_database.dart';
+import 'package:lumevents/classes/Vendor.dart';
+
 import 'dart:async';
 
 import 'package:firebase_database/firebase_database.dart';
@@ -10,12 +13,9 @@ import 'package:lumevents/classes/Vendor.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:lumevents/theme.dart' as Theme;
 
-class CityVendorScreen extends StatefulWidget {
-  String city, vendorType;
-  CityVendorScreen(this.city, this.vendorType);
-
+class PlannerScreen extends StatefulWidget {
   @override
-  _CityVendorScreenState createState() => _CityVendorScreenState();
+  _PlannerScreenState createState() => _PlannerScreenState();
 }
 
 final scaffoldState = GlobalKey<ScaffoldState>();
@@ -35,7 +35,6 @@ List databaseIdentifiers = [
   "Foods"
 ];
 String _currentCategory = "";
-List<Vendor> availableVendors = [];
 void setIdentifier(String check) {
   print('To check $check');
   if (check == "Venues") {
@@ -67,43 +66,68 @@ void setIdentifier(String check) {
 
 double height, width;
 
-class _CityVendorScreenState extends State<CityVendorScreen> {
-  getDatabaseRef(List<Vendor> availableVendors) async {
-    DatabaseReference dbref = FirebaseDatabase.instance
-        .reference()
-        .child("Home")
-        .child(widget.city)
-        .child(_currentCategory);
-    await dbref.once().then((DataSnapshot snap) {
+class _PlannerScreenState extends State<PlannerScreen> {
+  List<String> _cities = [];
+
+  DatabaseReference newref, newref2;
+  List<Vendor> availableVendors = [];
+
+  getVendors() async {
+    DatabaseReference citiesref =
+        FirebaseDatabase.instance.reference().child('Home');
+    await citiesref.once().then((DataSnapshot snap) {
       // ignore: non_constant_identifier_names
       var KEYS = snap.value.keys;
       // ignore: non_constant_identifier_names
       var DATA = snap.value;
-      availableVendors.clear();
+      _cities.clear();
       for (var key in KEYS) {
-        Vendor d = new Vendor(
-          DATA[key]["Brand"],
-          DATA[key]['City'],
-          DATA[key]['Description'],
-          DATA[key]['ImageUrl'],
-          DATA[key]['Name'],
-          DATA[key]['NoOfClientsTillDate'],
-          DATA[key]['PriceRange'],
-          DATA[key]['Speciality'],
-        );
-        availableVendors.add(d);
-        print('Vendor Details${d.city}');
+        _cities.add(key);
       }
+      _cities.remove('AllCities');
       setState(() {
-        print(availableVendors.length);
+        print(_cities.length);
       });
     });
+    availableVendors.clear();
+    for (var i = 0; i < _cities.length; i++) {
+      print(_cities[i]);
+      DatabaseReference dbref = FirebaseDatabase.instance
+          .reference()
+          .child("Home")
+          .child(_cities[i])
+          .child('Planner');
+      await dbref.once().then((DataSnapshot snap) {
+        // ignore: non_constant_identifier_names
+        var KEYS = snap.value.keys;
+        // ignore: non_constant_identifier_names
+        var DATA = snap.value;
+
+        for (var key in KEYS) {
+          Vendor d = new Vendor(
+            DATA[key]["Brand"],
+            DATA[key]['City'],
+            DATA[key]['Description'],
+            DATA[key]['ImageUrl'],
+            DATA[key]['Name'],
+            DATA[key]['NoOfClientsTillDate'],
+            DATA[key]['PriceRange'],
+            DATA[key]['Speciality'],
+          );
+          availableVendors.add(d);
+          print('Vendor Details${d.city}');
+        }
+        setState(() {
+          print(availableVendors.length);
+        });
+      });
+    }
   }
 
   @override
   void initState() {
     super.initState();
-    getDatabaseRef(availableVendors);
+    getVendors();
   }
 
   Future<void> _handleRefresh() {
@@ -112,7 +136,7 @@ class _CityVendorScreenState extends State<CityVendorScreen> {
       completer.complete();
     });
     setState(() {
-      getDatabaseRef(availableVendors);
+      getVendors();
     });
 
     return completer.future.then<void>((_) {});
@@ -120,10 +144,9 @@ class _CityVendorScreenState extends State<CityVendorScreen> {
 
   @override
   Widget build(BuildContext context) {
-    getDatabaseRef(availableVendors);
     width = MediaQuery.of(context).size.width;
     height = MediaQuery.of(context).size.height;
-    setIdentifier(widget.vendorType);
+    setIdentifier("Planner");
     return Scaffold(
       key: scaffoldState,
       appBar: AppBar(
@@ -138,7 +161,7 @@ class _CityVendorScreenState extends State<CityVendorScreen> {
           Container(
             width: 200,
             child: Text(
-              '${widget.vendorType} Vendors',
+              'Similar Vendors',
               style: TextStyle(
                   fontSize: 22,
                   color: Theme.MyColors.themeColor,

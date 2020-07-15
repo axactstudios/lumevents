@@ -12,6 +12,7 @@ import 'package:persistent_bottom_nav_bar/models/persistent-nav-bar-scaffold.wid
 import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
 import 'package:persistent_bottom_nav_bar/persistent-tab-view.widget.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'theme.dart' as Theme;
 
 import 'MainPage.dart';
 
