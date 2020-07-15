@@ -134,7 +134,7 @@ Widget UITrends(String name, imageUrl, description, imageBy,
                     ),
                     InkWell(
                       onTap: () {
-                        addToWishlist(name: imageBy, extras: 'All cities');
+                        addToWishlist(name: imageBy, extras: 'Trending Photo');
                       },
                       child: Card(
                         color: Theme.MyColors.themeColor,

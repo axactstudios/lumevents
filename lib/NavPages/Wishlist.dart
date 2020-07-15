@@ -69,53 +69,59 @@ class _WishlistState extends State<Wishlist> {
             ),
           ]),
       body: SafeArea(
-        child: Container(
-          margin: EdgeInsets.fromLTRB(0, 15, 0, 0),
-          child: Column(
-            children: <Widget>[
-              Expanded(
-                child: ListView.builder(
-                    itemCount: wishlistItems.length,
-                    itemBuilder: (context, index) {
-                      var item = wishlistItems[index];
-                      return Padding(
-                        padding: const EdgeInsets.all(6.0),
-                        child: Container(
-                          height: 70,
-                          decoration: BoxDecoration(
-                              color: Theme.MyColors.themeColor,
-                              borderRadius: BorderRadius.circular(10)),
-                          child: Padding(
-                            padding: const EdgeInsets.all(20.0),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: <Widget>[
-                                Text(
-                                  item.name,
-                                  style: TextStyle(
-                                      fontFamily: 'nunito',
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.w500,
-                                      fontSize: 20),
-                                ),
-                                InkWell(
-                                  onTap: () {
-                                    removeItem(item.name);
-                                  },
-                                  child: Icon(
-                                    Icons.delete,
+        child: Padding(
+          padding: const EdgeInsets.all(20.0),
+          child: ListView.builder(
+              itemCount: wishlistItems.length,
+              itemBuilder: (context, index) {
+                var item = wishlistItems[index];
+                return Padding(
+                  padding: const EdgeInsets.all(6.0),
+                  child: Container(
+                    decoration: BoxDecoration(
+                        color: Theme.MyColors.themeColor,
+                        borderRadius: BorderRadius.circular(10)),
+                    child: Padding(
+                      padding: const EdgeInsets.all(20.0),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: <Widget>[
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                item.name,
+                                style: TextStyle(
+                                    fontFamily: 'nunito',
                                     color: Colors.white,
-                                  ),
-                                ),
-                              ],
+                                    fontWeight: FontWeight.w500,
+                                    fontSize: 20),
+                              ),
+                              Text(
+                                item.extras,
+                                style: TextStyle(
+                                    fontFamily: 'nunito',
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.w500,
+                                    fontSize: 15),
+                              ),
+                            ],
+                          ),
+                          InkWell(
+                            onTap: () {
+                              removeItem(item.name);
+                            },
+                            child: Icon(
+                              Icons.delete,
+                              color: Colors.white,
                             ),
                           ),
-                        ),
-                      );
-                    }),
-              ),
-            ],
-          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                );
+              }),
         ),
       ),
     );

@@ -2,11 +2,15 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_open_whatsapp/flutter_open_whatsapp.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:lumevents/MainPage.dart';
 import 'package:lumevents/authentication/LoginPage.dart';
 import 'package:lumevents/profilePage/ProfilePage.dart';
 import 'package:lumevents/profilePage/ProfileSetup.dart';
 import 'package:lumevents/profilePage/User.dart';
 import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../theme.dart' as Theme;
 
@@ -49,69 +53,293 @@ class _MorePageState extends State<MorePage> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: Theme.MyColors.themeColor.withOpacity(0.7),
-      child: SafeArea(
+    return Scaffold(
+      appBar: AppBar(
+          automaticallyImplyLeading: false,
+          backgroundColor: Colors.white,
+          title: Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              Image.asset(
+                'images/dreamthyeve.png',
+                scale: 26,
+              ),
+            ],
+          ),
+          actions: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                Container(
+                  width: 220,
+                  child: Text(
+                    'More Options',
+                    overflow: TextOverflow.fade,
+                    style: TextStyle(
+                        fontSize: 22,
+                        fontWeight: FontWeight.bold,
+                        color: Theme.MyColors.themeColor,
+                        fontFamily: 'nunito'),
+                    textAlign: TextAlign.left,
+                  ),
+                )
+              ],
+            ),
+          ]),
+      body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.all(8.0),
+          padding: const EdgeInsets.all(30.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
-              SizedBox(
-                height: 100.0,
-              ),
-              Card(
-                color: Colors.white,
-                elevation: 20.0,
-                child: Padding(
-                  padding: const EdgeInsets.all(20.0),
-                  child: Center(
-                    child: InkWell(
-                      splashColor: Colors.blueGrey,
-                      onTap: () async {
-                        final FirebaseUser user = await mAuth.currentUser();
+              InkWell(
+                onTap: () async {
+                  final FirebaseUser user = await mAuth.currentUser();
 
-                        mCurrentUser = await mAuth.currentUser();
-                        mCurrentUser != null
-                            // ignore: unnecessary_statements
-                            ? (doesExist()
-                                ? pushNewScreen(context,
-                                    screen: ProfilePage(), withNavBar: true)
-                                : pushNewScreen(context,
-                                    screen: ProfileSetup(), withNavBar: false))
-                            : pushNewScreen(context,
-                                screen: LoginPage(), withNavBar: false);
-                      },
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: <Widget>[
-                          Icon(
-                            Icons.person,
-                            color: Theme.MyColors.themeColor.withOpacity(0.7),
-                            size: 30.0,
-                          ),
-                          SizedBox(
-                            width: 20.0,
-                          ),
-                          Text(
+                  mCurrentUser = await mAuth.currentUser();
+                  mCurrentUser != null
+// ignore: unnecessary_statements
+                      ? (doesExist()
+                          ? pushNewScreen(context,
+                              screen: ProfilePage(), withNavBar: true)
+                          : pushNewScreen(context,
+                              screen: ProfileSetup(), withNavBar: false))
+                      : pushNewScreen(context,
+                          screen: LoginPage(), withNavBar: false);
+                },
+                child: Card(
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(20))),
+                  color: Theme.MyColors.themeColor,
+                  elevation: 8,
+                  child: Padding(
+                    padding: const EdgeInsets.all(20.0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Icon(
+                          Icons.person,
+                          color: Colors.white,
+                          size: 50,
+                        ),
+                        SizedBox(
+                          width: 50,
+                        ),
+                        Container(
+                          child: Center(
+                              child: Text(
                             'Profile',
                             style: TextStyle(
+                                color: Colors.white,
                                 fontFamily: 'nunito',
-                                fontSize: 30.0,
-                                color:
-                                    Theme.MyColors.themeColor.withOpacity(0.7),
+                                fontSize: 23,
                                 fontWeight: FontWeight.bold),
-                          ),
-                        ],
-                      ),
+                          )),
+                        ),
+                      ],
                     ),
                   ),
                 ),
+              ),
+              SizedBox(
+                height: 30,
+              ),
+              InkWell(
+                onTap: () {
+                  FlutterOpenWhatsapp.sendSingleMessage("919836262656",
+                      "Hello! I am a user of your supercool application.");
+                },
+                child: Card(
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(20))),
+                  color: Theme.MyColors.themeColor,
+                  elevation: 8,
+                  child: Padding(
+                    padding: const EdgeInsets.all(20.0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Icon(
+                          Icons.headset_mic,
+                          color: Colors.white,
+                          size: 50,
+                        ),
+                        SizedBox(
+                          width: 50,
+                        ),
+                        Container(
+                          child: Center(
+                              child: Text(
+                            'Contact Support',
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontFamily: 'nunito',
+                                fontSize: 23,
+                                fontWeight: FontWeight.bold),
+                          )),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+              SizedBox(
+                height: 30,
+              ),
+              InkWell(
+                onTap: () {
+                  _launchURL();
+                },
+                child: Card(
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(20))),
+                  color: Theme.MyColors.themeColor,
+                  elevation: 8,
+                  child: Padding(
+                    padding: const EdgeInsets.all(20.0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Icon(
+                          FontAwesomeIcons.googlePlay,
+                          color: Colors.white,
+                          size: 50,
+                        ),
+                        SizedBox(
+                          width: 50,
+                        ),
+                        Container(
+                          width: 200,
+                          child: Center(
+                              child: Text(
+                            'Rate us on Google Play Store',
+                            overflow: TextOverflow.fade,
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontFamily: 'nunito',
+                                fontSize: 23,
+                                fontWeight: FontWeight.bold),
+                          )),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+              SizedBox(
+                height: 30,
+              ),
+              InkWell(
+                onTap: () {
+                  _launchURL1();
+                },
+                child: Card(
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(20))),
+                  color: Theme.MyColors.themeColor,
+                  elevation: 8,
+                  child: Padding(
+                    padding: const EdgeInsets.all(20.0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Icon(
+                          FontAwesomeIcons.scroll,
+                          color: Colors.white,
+                          size: 50,
+                        ),
+                        SizedBox(
+                          width: 50,
+                        ),
+                        Container(
+                          child: Center(
+                              child: Text(
+                            'Information',
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontFamily: 'nunito',
+                                fontSize: 23,
+                                fontWeight: FontWeight.bold),
+                          )),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+              SizedBox(
+                height: 30,
+              ),
+              InkWell(
+                onTap: () {
+                  _signOut(context);
+                },
+                child: Card(
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(20))),
+                  color: Theme.MyColors.themeColor,
+                  elevation: 8,
+                  child: Padding(
+                    padding: const EdgeInsets.all(20.0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Icon(
+                          Icons.exit_to_app,
+                          color: Colors.white,
+                          size: 50,
+                        ),
+                        SizedBox(
+                          width: 50,
+                        ),
+                        Container(
+                          child: Center(
+                              child: Text(
+                            'Log Out',
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontFamily: 'nunito',
+                                fontSize: 23,
+                                fontWeight: FontWeight.bold),
+                          )),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+              SizedBox(
+                height: 30,
               ),
             ],
           ),
         ),
       ),
     );
+  }
+
+  _launchURL() async {
+    const url =
+        'https://play.google.com/store/apps/details?id=com.axactstudios.solvecase';
+    if (await canLaunch(url)) {
+      await launch(url);
+    } else {
+      throw 'Could not launch $url';
+    }
+  }
+
+  _launchURL1() async {
+    const url = 'https://dreamthyeve.blogspot.com';
+    if (await canLaunch(url)) {
+      await launch(url);
+    } else {
+      throw 'Could not launch $url';
+    }
+  }
+
+  void _signOut(BuildContext context) async {
+    await FirebaseAuth.instance.signOut();
+    Navigator.push(
+        context, MaterialPageRoute(builder: (context) => MainPage()));
   }
 }

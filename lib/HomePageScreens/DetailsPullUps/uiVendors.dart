@@ -19,7 +19,7 @@ void addToWishlist({String name, String extras}) async {
 }
 
 Widget UIVendors(String brand, city, description, imageUrl, pricing, specs,
-    BuildContext context, double height, width) {
+    type, BuildContext context, double height, width) {
   return Container(
     decoration: BoxDecoration(
         boxShadow: [
@@ -201,7 +201,7 @@ Widget UIVendors(String brand, city, description, imageUrl, pricing, specs,
         ),
         InkWell(
           onTap: () {
-            addToWishlist(name: brand, extras: 'All cities');
+            addToWishlist(name: brand, extras: type);
           },
           child: Card(
             color: Theme.MyColors.themeColor,

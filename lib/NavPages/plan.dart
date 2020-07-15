@@ -3,7 +3,6 @@ import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:lumevents/NavPages/Wishlist.dart';
 import 'package:lumevents/NavPages/planWidgets/formFields.dart';
-import 'package:flutter_email_sender/flutter_email_sender.dart';
 import 'package:lumevents/classes/DatabaseHelper.dart';
 import 'package:lumevents/classes/WishlistModel.dart';
 import 'package:lumevents/profilePage/User.dart';

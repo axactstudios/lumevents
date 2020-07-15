@@ -211,6 +211,7 @@ class _PlannerScreenState extends State<PlannerScreen> {
                                       availableVendors[index].imageurl,
                                       availableVendors[index].pricerange,
                                       availableVendors[index].speciality,
+                                      'Planners',
                                       context,
                                       height,
                                       width);

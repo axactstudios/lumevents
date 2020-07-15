@@ -38,8 +38,9 @@ dependencies:
   email_validator: ^1.0.0
   regexed_validator: ^1.0.4
   flutter_svg:
-  flutter_email_sender: ^3.0.1
   mailer2: 1.2.5
+  flutter_open_whatsapp: ^0.1.2
+  url_launcher: ^5.4.10
 
 dev_dependencies:
   flutter_test:

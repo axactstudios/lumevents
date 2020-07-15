@@ -53,6 +53,18 @@ class _HomePageState extends State<HomePage> {
                 scale: 26,
               ),
               Container(
+                child: Text(
+                  '     Home',
+                  overflow: TextOverflow.fade,
+                  style: TextStyle(
+                      fontSize: 23,
+                      fontWeight: FontWeight.bold,
+                      color: Theme.MyColors.themeColor,
+                      fontFamily: 'nunito'),
+                  textAlign: TextAlign.left,
+                ),
+              ),
+              Container(
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.all(Radius.circular(15)),
                   color: Colors.white.withOpacity(0.75),
@@ -68,7 +80,7 @@ class _HomePageState extends State<HomePage> {
                         style: TextStyle(
                             color: Theme.MyColors.themeColor,
                             fontFamily: 'nunito',
-                            fontSize: 20,
+                            fontSize: 16,
                             fontWeight: FontWeight.bold),
                       ),
                       value: dropDownStringItem,

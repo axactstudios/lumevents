@@ -188,6 +188,7 @@ class _CityVendorScreenState extends State<CityVendorScreen> {
                                       availableVendors[index].imageurl,
                                       availableVendors[index].pricerange,
                                       availableVendors[index].speciality,
+                                      _currentCategory,
                                       context,
                                       height,
                                       width);
