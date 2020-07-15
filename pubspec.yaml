@@ -51,6 +51,7 @@ flutter:
   uses-material-design: true
   assets:
     - images/
+    - images/dreamthyeve.png
 
 
   fonts:
