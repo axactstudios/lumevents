@@ -35,17 +35,39 @@ class _WishlistState extends State<Wishlist> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(
-          'MY WISHLIST',
-          style: TextStyle(
-              fontFamily: 'nunito',
-              color: Colors.white,
-              fontWeight: FontWeight.w500,
-              letterSpacing: 5),
-        ),
-        backgroundColor: Theme.MyColors.themeColor,
-      ),
-      backgroundColor: Theme.MyColors.themeColor.withOpacity(0.3),
+          iconTheme: IconThemeData(
+            color: Theme.MyColors.themeColor,
+          ),
+          backgroundColor: Colors.white,
+          title: Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              Image.asset(
+                'images/dreamthyeve.png',
+                scale: 26,
+              ),
+            ],
+          ),
+          actions: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                Container(
+                  width: 170,
+                  child: Text(
+                    'Wishlist',
+                    overflow: TextOverflow.fade,
+                    style: TextStyle(
+                        fontSize: 22,
+                        fontWeight: FontWeight.bold,
+                        color: Theme.MyColors.themeColor,
+                        fontFamily: 'nunito'),
+                    textAlign: TextAlign.left,
+                  ),
+                )
+              ],
+            ),
+          ]),
       body: SafeArea(
         child: Container(
           margin: EdgeInsets.fromLTRB(0, 15, 0, 0),

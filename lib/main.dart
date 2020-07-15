@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:lumevents/IdeaPageTabViews/realEventsTab.dart';
+import 'package:lumevents/NavPages/inspirations.dart';
 import 'package:lumevents/MainPage.dart';
 import 'package:lumevents/NavBar/navBarItems.dart';
 import 'package:lumevents/NavPages/Profile.dart';
 import 'package:lumevents/NavPages/home.dart';
-import 'package:lumevents/NavPages/ideas.dart';
 import 'package:lumevents/NavPages/more.dart';
 import 'package:lumevents/NavPages/plan.dart';
 import 'package:lumevents/profilePage/ProfilePage.dart';

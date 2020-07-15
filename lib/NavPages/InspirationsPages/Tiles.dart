@@ -1,7 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:getflutter/components/image/gf_image_overlay.dart';
-import 'package:lumevents/IdeaPageTabViews/RealEvents/PullUps.dart';
+
+import 'PullUps.dart';
 
 Widget tiles(
   scaffoldState,

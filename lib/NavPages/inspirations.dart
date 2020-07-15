@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:lumevents/IdeaPageTabViews/RealEvents/CorporateEventsPage.dart';
-import 'package:lumevents/IdeaPageTabViews/RealEvents/SpecialEventsPage.dart';
-import 'package:lumevents/IdeaPageTabViews/RealEvents/birthdayPage.dart';
-import 'package:lumevents/IdeaPageTabViews/RealEvents/OthersPage.dart';
 
 import '../theme.dart' as Theme;
-import 'RealEvents/WeddingsPage.dart';
+import 'InspirationsPages/CorporateEventsPage.dart';
+import 'InspirationsPages/OthersPage.dart';
+import 'InspirationsPages/SpecialEventsPage.dart';
+import 'InspirationsPages/WeddingsPage.dart';
+import 'InspirationsPages/birthdayPage.dart';
 
 class RealEventsTab extends StatefulWidget {
   @override

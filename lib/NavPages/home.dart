@@ -41,58 +41,56 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-          appBar: AppBar(
-            automaticallyImplyLeading: false,
-            backgroundColor: Colors.white,
-            title: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Image.asset(
-                  'images/dreamthyeve.png',
-                  scale: 26,
+    return Scaffold(
+        appBar: AppBar(
+          automaticallyImplyLeading: false,
+          backgroundColor: Colors.white,
+          title: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Image.asset(
+                'images/dreamthyeve.png',
+                scale: 26,
+              ),
+              Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.all(Radius.circular(15)),
+                  color: Colors.white.withOpacity(0.75),
                 ),
-                Container(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.all(Radius.circular(15)),
-                    color: Colors.white.withOpacity(0.75),
-                  ),
-                  child: SearchableDropdown(
-                    menuBackgroundColor: Colors.white,
-                    iconEnabledColor: Theme.MyColors.themeColor,
-                    iconDisabledColor: Theme.MyColors.themeColor,
-                    items: _cities.map((String dropDownStringItem) {
-                      return DropdownMenuItem<String>(
-                        child: Text(
-                          dropDownStringItem,
-                          style: TextStyle(
-                              color: Theme.MyColors.themeColor,
-                              fontFamily: 'nunito',
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold),
-                        ),
-                        value: dropDownStringItem,
-                      );
-                    }).toList(),
-                    onChanged: (String newValueSelected) {
-                      setState(() {
-                        _currentItemSelected = newValueSelected;
-                        if (_currentItemSelected == 'AllCities') {
-                          _currentScreenToShow = AllCitiesScreen();
-                        } else {
-                          _currentScreenToShow =
-                              CitySpecificScreen(_currentItemSelected);
-                        }
-                      });
-                    },
-                    value: _currentItemSelected,
-                  ),
+                child: SearchableDropdown(
+                  menuBackgroundColor: Colors.white,
+                  iconEnabledColor: Theme.MyColors.themeColor,
+                  iconDisabledColor: Theme.MyColors.themeColor,
+                  items: _cities.map((String dropDownStringItem) {
+                    return DropdownMenuItem<String>(
+                      child: Text(
+                        dropDownStringItem,
+                        style: TextStyle(
+                            color: Theme.MyColors.themeColor,
+                            fontFamily: 'nunito',
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold),
+                      ),
+                      value: dropDownStringItem,
+                    );
+                  }).toList(),
+                  onChanged: (String newValueSelected) {
+                    setState(() {
+                      _currentItemSelected = newValueSelected;
+                      if (_currentItemSelected == 'AllCities') {
+                        _currentScreenToShow = AllCitiesScreen();
+                      } else {
+                        _currentScreenToShow =
+                            CitySpecificScreen(_currentItemSelected);
+                      }
+                    });
+                  },
+                  value: _currentItemSelected,
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
-          body: _currentScreenToShow),
-    );
+        ),
+        body: _currentScreenToShow);
   }
 }

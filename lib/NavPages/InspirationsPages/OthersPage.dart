@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:lumevents/IdeaPageTabViews/RealEvents/Tiles.dart';
 
 import '../../theme.dart' as Theme;
+import 'Tiles.dart';
 
 class Others extends StatefulWidget {
   @override
