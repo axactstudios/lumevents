@@ -18,8 +18,39 @@ class _CorporateEventsState extends State<CorporateEvents> {
     return Scaffold(
       key: scaffoldState,
       appBar: AppBar(
-        backgroundColor: Theme.MyColors.themeColor.withOpacity(0.7),
-      ),
+          iconTheme: IconThemeData(
+            color: Theme.MyColors.themeColor,
+          ),
+          backgroundColor: Colors.white,
+          title: Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              Image.asset(
+                'images/dreamthyeve.png',
+                scale: 26,
+              ),
+            ],
+          ),
+          actions: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                Container(
+                  width: 170,
+                  child: Text(
+                    'Inspirations',
+                    overflow: TextOverflow.fade,
+                    style: TextStyle(
+                        fontSize: 22,
+                        fontWeight: FontWeight.bold,
+                        color: Theme.MyColors.themeColor,
+                        fontFamily: 'nunito'),
+                    textAlign: TextAlign.left,
+                  ),
+                )
+              ],
+            ),
+          ]),
       body: ListView(
         children: [],
       ),

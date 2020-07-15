@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lumevents/IdeaPageTabViews/realEventsTab.dart';
 import 'package:lumevents/MainPage.dart';
 import 'package:lumevents/NavBar/navBarItems.dart';
 import 'package:lumevents/NavPages/Profile.dart';
@@ -59,7 +60,7 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   List<Widget> _buildScreens() {
-    return [HomePage(), IdeasPage(), PlanPage(), MorePage()];
+    return [HomePage(), RealEventsTab(), PlanPage(), MorePage()];
   }
 }
 

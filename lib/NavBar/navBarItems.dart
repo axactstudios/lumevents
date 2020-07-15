@@ -13,13 +13,13 @@ List<PersistentBottomNavBarItem> navBarItems = [
     inactiveColor: Colors.black87,
   ),
   PersistentBottomNavBarItem(
-    icon: Icon(FontAwesomeIcons.book),
-    title: ("Events"),
+    icon: Icon(FontAwesomeIcons.lightbulb),
+    title: ("Inspirations"),
     activeColor: Theme.MyColors.themeColor,
     inactiveColor: Colors.black87,
   ),
   PersistentBottomNavBarItem(
-    icon: Icon(FontAwesomeIcons.lightbulb),
+    icon: Icon(FontAwesomeIcons.calendarAlt),
     title: ("Plan"),
     activeColor: Theme.MyColors.themeColor,
     inactiveColor: Colors.black87,
