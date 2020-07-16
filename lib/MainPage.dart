@@ -13,16 +13,19 @@ class MainPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        decoration: BoxDecoration(
-          image: const DecorationImage(
-              image: AssetImage('images/background2.jpg'), fit: BoxFit.cover),
-        ),
+      body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
-            SizedBox(height: 550),
+            Image.asset(
+              'images/dreamthyeve.png',
+              scale: 10,
+            ),
+            Image.asset(
+              'images/dreamthyeve1.png',
+              scale: 10,
+            ),
             Padding(
               padding: const EdgeInsets.all(45.0),
               child: RaisedButton(
@@ -37,10 +40,6 @@ class MainPage extends StatelessWidget {
                           context,
                           MaterialPageRoute(builder: (context) => LoginPage()),
                         );
-//                  Navigator.push(
-//                    context,
-//                    MaterialPageRoute(builder: (context) => LoginPage()),
-//                  );
                 },
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(25.0),
@@ -50,7 +49,7 @@ class MainPage extends StatelessWidget {
                 child: Padding(
                   padding: const EdgeInsets.all(16.0),
                   child: Text(
-                    'Explore the magic of Lum Events',
+                    'Explore the magic !',
                     style: TextStyle(
                         color: Colors.white,
                         fontFamily: 'nunito',

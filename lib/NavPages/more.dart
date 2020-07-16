@@ -339,7 +339,6 @@ class _MorePageState extends State<MorePage> {
 
   void _signOut(BuildContext context) async {
     await FirebaseAuth.instance.signOut();
-    Navigator.push(
-        context, MaterialPageRoute(builder: (context) => MainPage()));
+    pushNewScreen(context, screen: MainPage(), withNavBar: false);
   }
 }

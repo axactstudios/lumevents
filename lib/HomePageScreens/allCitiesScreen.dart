@@ -607,7 +607,6 @@ class _AllCitiesScreenState extends State<AllCitiesScreen> {
                                   (BuildContext context, StateSetter state) {
                                 return UIVideos(
                                     vids[index].name,
-//TODO:Change trends to vids
                                     trends[index].imageUrl,
                                     vids[index].description,
                                     vids[index].client,

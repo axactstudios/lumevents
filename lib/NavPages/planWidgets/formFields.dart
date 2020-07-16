@@ -33,6 +33,5 @@ class _FormFieldsState extends State<FormFields> {
         },
       ),
     );
-    ;
   }
 }

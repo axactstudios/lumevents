@@ -2,6 +2,7 @@ import 'package:email_validator/email_validator.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:lumevents/NavPages/planWidgets/formFields.dart';
 import 'package:lumevents/main.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:regexed_validator/regexed_validator.dart';
@@ -38,150 +39,64 @@ class _ProfileSetupState extends State<ProfileSetup> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.all(10.0),
-          child: Form(
-            key: _formKey,
-            child: Column(
-              children: <Widget>[
-                SizedBox(
-                  height: 250.0,
-                ),
-                Text(
-                  'Set up your profile',
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 30.0,
-                    fontFamily: 'nunito',
-                    color: Theme.MyColors.themeColor,
+      appBar: AppBar(
+          iconTheme: IconThemeData(color: Theme.MyColors.themeColor),
+          backgroundColor: Colors.white,
+          title: Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              Image.asset(
+                'images/dreamthyeve.png',
+                scale: 26,
+              ),
+            ],
+          ),
+          actions: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                Container(
+                  width: 170,
+                  child: Text(
+                    'Edit Profile',
+                    overflow: TextOverflow.fade,
+                    style: TextStyle(
+                        fontSize: 22,
+                        fontWeight: FontWeight.bold,
+                        color: Theme.MyColors.themeColor,
+                        fontFamily: 'nunito'),
+                    textAlign: TextAlign.left,
                   ),
-                ),
-                const SizedBox(
-                  height: 10.0,
-                  width: 175.0,
-                  child: Divider(
-                    thickness: 0.8,
-                    color: Theme.MyColors.themeColor,
-                  ),
-                ),
-                SizedBox(
-                  height: 10.0,
-                ),
-                TextFormField(
-                  validator: (value) {
-                    if (value.isEmpty) {
-                      return 'Please enter your name';
-                    } else {
-                      return null;
-                    }
-                  },
-                  controller: _nameController,
-                  decoration: InputDecoration(
-                      enabledBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(28.0),
-                      ),
-                      hintStyle: TextStyle(
-                          color: Theme.MyColors.themeColor,
-                          fontFamily: 'nunito',
-                          fontWeight: FontWeight.bold),
-                      hintText: "Enter your full name"),
-                ),
-                const SizedBox(
-                  height: 10.0,
-                ),
-                TextFormField(
-                  validator: (value) {
-                    if (value.length < 13) {
-                      return 'Invalid phone number';
-                    } else {
-                      return null;
-                    }
-                  },
-                  controller: _numberController,
-                  decoration: InputDecoration(
-                      enabledBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(28.0),
-                      ),
-                      hintStyle: TextStyle(
-                          color: Theme.MyColors.themeColor,
-                          fontFamily: 'nunito',
-                          fontWeight: FontWeight.bold),
-                      hintText: "Enter your contact number"),
-                ),
-                const SizedBox(
-                  height: 10.0,
-                ),
-                TextFormField(
-                  validator: (value) {
-                    if (!validator.email(value)) {
-                      return 'Invalid Email';
-                    } else {
-                      return null;
-                    }
-                  },
-                  controller: _emailController,
-                  decoration: InputDecoration(
-                      enabledBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(28.0),
-                      ),
-                      hintStyle: TextStyle(
-                          color: Theme.MyColors.themeColor,
-                          fontFamily: 'nunito',
-                          fontWeight: FontWeight.bold),
-                      hintText: "Enter your email"),
-                ),
-                const SizedBox(
-                  height: 10.0,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    Text(
-                      'Select your role :',
-                      style: TextStyle(
-                          fontFamily: 'nunito',
-                          color: Theme.MyColors.themeColor,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 15.0),
-                    ),
-                    SizedBox(
-                      width: 15.0,
-                    ),
-                    DropdownButton<String>(
-                      items: _selection.map((String dropdownStringItem) {
-                        return DropdownMenuItem<String>(
-                          value: dropdownStringItem,
-                          child: Text(
-                            dropdownStringItem,
-                            style: TextStyle(
-                                fontFamily: 'nunito',
-                                color: Theme.MyColors.themeColor,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 15.0),
-                          ),
-                        );
-                      }).toList(),
-                      onChanged: (String newValueSelected) {
-                        setState(() {
-                          role = newValueSelected;
-                        });
-                      },
-                      value: role,
-                    ),
-                  ],
-                ),
-                const SizedBox(
-                  height: 10.0,
-                ),
-                RaisedButton(
+                )
+              ],
+            ),
+          ]),
+      body: Padding(
+        padding: const EdgeInsets.all(10.0),
+        child: Form(
+          key: _formKey,
+          child: ListView(
+            children: <Widget>[
+              SizedBox(
+                height: 50.0,
+              ),
+              FormFields(_nameController, 'Your Name'),
+              FormFields(_numberController, 'Your Phone Number'),
+              FormFields(_emailController, "Your Email"),
+              SizedBox(
+                height: 30.0,
+              ),
+              Padding(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 100.0, vertical: 8),
+                child: RaisedButton(
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(20.0),
                     side: BorderSide(color: Colors.white),
                   ),
                   color: Theme.MyColors.themeColor,
                   child: Padding(
-                    padding: const EdgeInsets.all(10.0),
+                    padding: const EdgeInsets.all(15.0),
                     child: Text(
                       'Submit',
                       style: TextStyle(
@@ -201,8 +116,8 @@ class _ProfileSetupState extends State<ProfileSetup> {
                     }
                   },
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
         ),
       ),

@@ -2,7 +2,9 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:lumevents/NavPages/home.dart';
+import 'package:lumevents/NavPages/planWidgets/formFields.dart';
 import 'package:regexed_validator/regexed_validator.dart';
 import '../main.dart';
 import '../main.dart';
@@ -34,184 +36,177 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+          automaticallyImplyLeading: false,
+          backgroundColor: Colors.white,
+          title: Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              Image.asset(
+                'images/dreamthyeve.png',
+                scale: 26,
+              ),
+            ],
+          ),
+          actions: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                Container(
+                  width: 170,
+                  child: Text(
+                    'Login',
+                    overflow: TextOverflow.fade,
+                    style: TextStyle(
+                        fontSize: 22,
+                        fontWeight: FontWeight.bold,
+                        color: Theme.MyColors.themeColor,
+                        fontFamily: 'nunito'),
+                    textAlign: TextAlign.left,
+                  ),
+                )
+              ],
+            ),
+          ]),
       backgroundColor: Colors.white,
-      body: SingleChildScrollView(
+      body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(16.0),
-          child: Form(
-            key: _formKey,
-            child: Column(
-              children: <Widget>[
-                const SizedBox(
-                  height: 220.0,
-                ),
-                Text(
-                  'Login to your account',
-                  style: TextStyle(
-                    color: Theme.MyColors.themeColor,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 30.0,
-                    fontFamily: 'nunito',
+          child: SingleChildScrollView(
+            child: Form(
+              key: _formKey,
+              child: Column(
+                children: <Widget>[
+                  SizedBox(
+                    height: 30.0,
                   ),
-                ),
-                SizedBox(
-                  height: 10.0,
-                ),
-                SizedBox(
-                  height: 5.0,
-                  width: 210.0,
-                  child: Divider(
-                    thickness: 0.8,
-                    color: Theme.MyColors.themeColor,
-                  ),
-                ),
-                SizedBox(
-                  height: 30.0,
-                ),
-                TextFormField(
-                  validator: (value) {
-                    if (!validator.email(value)) {
-                      return 'Invalid email';
-                    } else {
-                      return null;
-                    }
-                  },
-                  controller: _emailController,
-                  decoration: InputDecoration(
-                    enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(28.0),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 19.5, vertical: 15.0),
+                    child: TextFormField(
+                      controller: _emailController,
+                      cursorColor: Colors.black,
+                      decoration: new InputDecoration(
+                          enabledBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(8),
+                          ),
+                          contentPadding: EdgeInsets.only(
+                              left: 15, bottom: 11, top: 11, right: 15),
+                          hintText: "Enter your email",
+                          hintStyle:
+                              TextStyle(color: Theme.MyColors.themeColor)),
+                      validator: (value) {
+                        if (!validator.email(value)) {
+                          return 'Invalid email';
+                        } else {
+                          return null;
+                        }
+                      },
                     ),
-                    filled: false,
-                    hintStyle: TextStyle(
-                        color: Theme.MyColors.themeColor,
-                        fontFamily: 'nunito',
-                        fontWeight: FontWeight.bold),
-                    hintText: "Enter your email",
-                    fillColor: Theme.MyColors.themeColor.withOpacity(0.7),
                   ),
-                ),
-                const SizedBox(
-                  height: 10.0,
-                ),
-                TextFormField(
-                  validator: (value) {
-                    if (value.length < 6) {
-                      return 'Invalid password (Min. 6 characters are required)';
-                    } else {
-                      return null;
-                    }
-                  },
-                  controller: _passwordController,
-                  obscureText: true,
-                  decoration: InputDecoration(
-                      enabledBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(28.0),
-                      ),
-                      filled: false,
-                      hintStyle: TextStyle(
-                          color: Theme.MyColors.themeColor,
-                          fontFamily: 'nunito',
-                          fontWeight: FontWeight.bold),
-                      hintText: "Enter your password",
-                      fillColor: Theme.MyColors.themeColor),
-                ),
-                SizedBox(
-                  height: 6.0,
-                ),
-                InkWell(
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => ForgotPassword()),
-                    );
-                  },
-                  child: Text(
-                    'Forgot Password?',
-                    style: TextStyle(fontFamily: 'nunito', fontSize: 15.0),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 19.5, vertical: 15.0),
+                    child: TextFormField(
+                      controller: _passwordController,
+                      cursorColor: Colors.black,
+                      decoration: new InputDecoration(
+                          enabledBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(8),
+                          ),
+                          contentPadding: EdgeInsets.only(
+                              left: 15, bottom: 11, top: 11, right: 15),
+                          hintText: "Enter your password",
+                          hintStyle:
+                              TextStyle(color: Theme.MyColors.themeColor)),
+                      validator: (value) {
+                        if (value.length < 6) {
+                          return 'Invalid password (Min. 6 characters are required)';
+                        } else {
+                          return null;
+                        }
+                      },
+                    ),
                   ),
-                ),
-                const SizedBox(
-                  height: 15.0,
-                ),
-                RaisedButton(
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(20.0),
-                    side: BorderSide(color: Colors.white),
+                  SizedBox(
+                    height: 6.0,
                   ),
-                  color: Theme.MyColors.themeColor,
-                  child: Padding(
-                    padding: const EdgeInsets.all(10.0),
+                  InkWell(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => ForgotPassword()),
+                      );
+                    },
                     child: Text(
-                      'Login',
+                      'Forgot Password?',
                       style: TextStyle(
-                          color: Colors.white,
+                          decoration: TextDecoration.underline,
                           fontFamily: 'nunito',
-                          fontWeight: FontWeight.bold,
-                          fontSize: 16),
+                          fontSize: 15.0),
                     ),
                   ),
-                  onPressed: () async {
-                    if (_formKey.currentState.validate()) {
-                      signIn();
-                    }
-                  },
-                ),
-                SizedBox(
-                  height: 6.0,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    SizedBox(
-                      width: 125.5,
-                      child: Divider(
-                        color: Theme.MyColors.themeColor,
-                      ),
-                      height: 5.0,
+                  const SizedBox(
+                    height: 15.0,
+                  ),
+                  RaisedButton(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12.0),
+                      side: BorderSide(color: Colors.white),
                     ),
-                    SizedBox(
-                      width: 4.0,
-                    ),
-                    Text(
-                      'Other methods',
-                      style: TextStyle(
-                        color: Theme.MyColors.themeColor,
-                        fontFamily: 'nunito',
+                    color: Theme.MyColors.themeColor,
+                    child: Padding(
+                      padding: const EdgeInsets.all(10.0),
+                      child: Text(
+                        'Login',
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontFamily: 'nunito',
+                            fontWeight: FontWeight.bold,
+                            fontSize: 16),
                       ),
                     ),
-                    SizedBox(
-                      width: 4.0,
-                    ),
-                    SizedBox(
-                      width: 125.5,
-                      child: Divider(
-                        color: Theme.MyColors.themeColor,
-                      ),
-                      height: 5.0,
-                    ),
-                  ],
-                ),
-                SizedBox(
-                  height: 8.0,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: <Widget>[
-                    RaisedButton(
+                    onPressed: () async {
+                      if (_formKey.currentState.validate()) {
+                        signIn();
+                      }
+                    },
+                  ),
+                  SizedBox(
+                    height: 6.0,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 50.0, vertical: 15),
+                    child: RaisedButton(
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(20.0),
                         side: BorderSide(color: Colors.white),
                       ),
                       color: Theme.MyColors.themeColor,
                       child: Padding(
-                        padding: const EdgeInsets.all(10.0),
-                        child: Text(
-                          'Google',
-                          style: TextStyle(
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 10.0, vertical: 15),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Icon(
+                              FontAwesomeIcons.google,
                               color: Colors.white,
-                              fontFamily: 'nunito',
-                              fontWeight: FontWeight.bold,
-                              fontSize: 16),
+                            ),
+                            SizedBox(
+                              width: 20.0,
+                            ),
+                            Text(
+                              'Login with Google',
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontFamily: 'nunito',
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 16),
+                            ),
+                          ],
                         ),
                       ),
                       onPressed: () async {
@@ -230,68 +225,33 @@ class _LoginPageState extends State<LoginPage> {
                         }
                       },
                     ),
-                    SizedBox(
-                      width: 0.2,
-                      child: Divider(
-                        thickness: 2.0,
+                  ),
+                  RaisedButton(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(15.0),
+                      side: BorderSide(color: Colors.white),
+                    ),
+                    color: Theme.MyColors.themeColor,
+                    child: Padding(
+                      padding: const EdgeInsets.all(16.0),
+                      child: Text(
+                        'New User? Sign Up',
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontFamily: 'nunito',
+                            fontWeight: FontWeight.bold,
+                            fontSize: 16),
                       ),
                     ),
-                    RaisedButton(
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(20.0),
-                        side: BorderSide(color: Colors.white),
-                      ),
-                      color: Theme.MyColors.themeColor,
-                      child: Padding(
-                        padding: const EdgeInsets.all(10.0),
-                        child: Text(
-                          'Phone',
-                          style: TextStyle(
-                              color: Colors.white,
-                              fontFamily: 'nunito',
-                              fontWeight: FontWeight.bold,
-                              fontSize: 16),
-                        ),
-                      ),
-                      onPressed: () {},
-                    )
-                  ],
-                ),
-                SizedBox(
-                  height: 180.0,
-                ),
-                Divider(
-                  thickness: 1.8,
-                  color: Theme.MyColors.themeColor,
-                ),
-                SizedBox(
-                  height: 15.0,
-                ),
-                RaisedButton(
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(25.0),
-                    side: BorderSide(color: Colors.white),
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => SignUpPage()),
+                      );
+                    },
                   ),
-                  color: Theme.MyColors.themeColor,
-                  child: Padding(
-                    padding: const EdgeInsets.all(16.0),
-                    child: Text(
-                      'New User? Sign Up',
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontFamily: 'nunito',
-                          fontWeight: FontWeight.bold,
-                          fontSize: 16),
-                    ),
-                  ),
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => SignUpPage()),
-                    );
-                  },
-                ),
-              ],
+                ],
+              ),
             ),
           ),
         ),

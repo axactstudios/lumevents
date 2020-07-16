@@ -3,8 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:lumevents/authentication/LoginPage.dart';
-import 'package:lumevents/main.dart';
-import 'package:lumevents/profilePage/ProfileSetup.dart';
 import 'package:regexed_validator/regexed_validator.dart';
 
 import '../theme.dart' as Theme;
@@ -80,6 +78,38 @@ class _SignUpPageState extends State<SignUpPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+          iconTheme: IconThemeData(color: Theme.MyColors.themeColor),
+          backgroundColor: Colors.white,
+          title: Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              Image.asset(
+                'images/dreamthyeve.png',
+                scale: 26,
+              ),
+            ],
+          ),
+          actions: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                Container(
+                  width: 170,
+                  child: Text(
+                    'Sign Up',
+                    overflow: TextOverflow.fade,
+                    style: TextStyle(
+                        fontSize: 22,
+                        fontWeight: FontWeight.bold,
+                        color: Theme.MyColors.themeColor,
+                        fontFamily: 'nunito'),
+                    textAlign: TextAlign.left,
+                  ),
+                )
+              ],
+            ),
+          ]),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(10.0),
@@ -89,76 +119,65 @@ class _SignUpPageState extends State<SignUpPage> {
               child: Column(
                 children: <Widget>[
                   const SizedBox(
-                    height: 240.0,
+                    height: 30.0,
                   ),
-                  Text(
-                    'Sign up',
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 30.0,
-                      fontFamily: 'nunito',
-                      color: Theme.MyColors.themeColor,
+                  Padding(
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 19.5, vertical: 15.0),
+                    child: TextFormField(
+                      controller: _emailController,
+                      cursorColor: Colors.black,
+                      decoration: new InputDecoration(
+                          enabledBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(8),
+                          ),
+                          contentPadding: EdgeInsets.only(
+                              left: 15, bottom: 11, top: 11, right: 15),
+                          hintText: "Enter your email",
+                          hintStyle:
+                              TextStyle(color: Theme.MyColors.themeColor)),
+                      validator: (value) {
+                        if (!validator.email(value)) {
+                          return 'Invalid email';
+                        } else {
+                          return null;
+                        }
+                      },
                     ),
                   ),
                   const SizedBox(
                     height: 10.0,
-                    width: 75.0,
-                    child: Divider(
-                      thickness: 0.8,
-                      color: Theme.MyColors.themeColor,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 19.5, vertical: 15.0),
+                    child: TextFormField(
+                      controller: _passwordController,
+                      cursorColor: Colors.black,
+                      decoration: new InputDecoration(
+                          enabledBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(8),
+                          ),
+                          contentPadding: EdgeInsets.only(
+                              left: 15, bottom: 11, top: 11, right: 15),
+                          hintText: "Enter your password",
+                          hintStyle:
+                              TextStyle(color: Theme.MyColors.themeColor)),
+                      validator: (value) {
+                        if (value.length < 6) {
+                          return 'Invalid password (Min. 6 characters are required)';
+                        } else {
+                          return null;
+                        }
+                      },
                     ),
-                  ),
-                  SizedBox(
-                    height: 10.0,
-                  ),
-                  TextFormField(
-                    validator: (value) {
-                      if (!validator.email(value)) {
-                        return 'Invalid email';
-                      } else {
-                        return null;
-                      }
-                    },
-                    controller: _emailController,
-                    decoration: InputDecoration(
-                        enabledBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(28.0),
-                        ),
-                        hintStyle: TextStyle(
-                            color: Theme.MyColors.themeColor,
-                            fontFamily: 'nunito',
-                            fontWeight: FontWeight.bold),
-                        hintText: "Enter your email"),
-                  ),
-                  const SizedBox(
-                    height: 10.0,
-                  ),
-                  TextFormField(
-                    validator: (value) {
-                      if (value.length < 6) {
-                        return 'Invalid password (Min. 6 characters are required';
-                      } else {
-                        return null;
-                      }
-                    },
-                    controller: _passwordController,
-                    obscureText: true,
-                    decoration: InputDecoration(
-                        enabledBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(28.0),
-                        ),
-                        hintStyle: TextStyle(
-                            color: Theme.MyColors.themeColor,
-                            fontFamily: 'nunito',
-                            fontWeight: FontWeight.bold),
-                        hintText: "Enter your password (min. 6 characters)"),
                   ),
                   const SizedBox(
                     height: 10.0,
                   ),
                   RaisedButton(
                     shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(20.0),
+                      borderRadius: BorderRadius.circular(12.0),
                       side: BorderSide(color: Colors.white),
                     ),
                     color: Theme.MyColors.themeColor,
