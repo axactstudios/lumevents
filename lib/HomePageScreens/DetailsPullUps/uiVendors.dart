@@ -193,30 +193,39 @@ Widget UIVendors(String brand, city, description, imageUrl, pricing, specs,
                       SizedBox(
                         height: 30,
                       ),
-                      Container(
-                        height: height * 0.5,
-                        width: double.infinity,
-                        child: StaggeredGridView.countBuilder(
-                          crossAxisCount: 4,
-                          itemCount: portfolio.length,
-                          itemBuilder: (BuildContext context, int index) =>
-                              new Container(
-                            child: ClipRRect(
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(5)),
-                              child: Image.network(
-                                portfolio[index].toString(),
-                                alignment: Alignment.center,
-                                fit: BoxFit.fill,
+                      portfolio != null
+                          ? Container(
+                              height: height * 0.5,
+                              width: double.infinity,
+                              child: StaggeredGridView.countBuilder(
+                                crossAxisCount: 4,
+                                itemCount: portfolio.length,
+                                itemBuilder:
+                                    (BuildContext context, int index) =>
+                                        new Container(
+                                  child: ClipRRect(
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(5)),
+                                    child: Image.network(
+                                      portfolio[index].toString(),
+                                      alignment: Alignment.center,
+                                      fit: BoxFit.fill,
+                                    ),
+                                  ),
+                                ),
+                                staggeredTileBuilder: (int index) =>
+                                    new StaggeredTile.fit(2),
+                                mainAxisSpacing: 4.0,
+                                crossAxisSpacing: 4.0,
                               ),
-                            ),
-                          ),
-                          staggeredTileBuilder: (int index) =>
-                              new StaggeredTile.fit(2),
-                          mainAxisSpacing: 4.0,
-                          crossAxisSpacing: 4.0,
-                        ),
-                      )
+                            )
+                          : Container(
+                              width: double.infinity,
+                              child: Text(
+                                'Vendor has not uploaded any images',
+                                textAlign: TextAlign.center,
+                              ),
+                            )
                     ],
                   ),
                 ),
