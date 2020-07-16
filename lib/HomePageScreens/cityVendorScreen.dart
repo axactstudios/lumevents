@@ -90,6 +90,7 @@ class _CityVendorScreenState extends State<CityVendorScreen> {
           DATA[key]['NoOfClientsTillDate'],
           DATA[key]['PriceRange'],
           DATA[key]['Speciality'],
+          DATA[key]["Images"],
         );
         availableVendors.add(d);
         print('Vendor Details${d.city}');
@@ -191,7 +192,8 @@ class _CityVendorScreenState extends State<CityVendorScreen> {
                                       _currentCategory,
                                       context,
                                       height,
-                                      width);
+                                      width,
+                                      availableVendors[index].portfolio);
                                 });
                               });
                             },

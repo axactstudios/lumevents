@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:lumevents/classes/DatabaseHelper.dart';
 import 'package:lumevents/classes/WishlistModel.dart';
@@ -19,7 +20,7 @@ void addToWishlist({String name, String extras}) async {
 }
 
 Widget UIVendors(String brand, city, description, imageUrl, pricing, specs,
-    type, BuildContext context, double height, width) {
+    type, BuildContext context, double height, width, List portfolio) {
   return Container(
     decoration: BoxDecoration(
         boxShadow: [
@@ -192,6 +193,30 @@ Widget UIVendors(String brand, city, description, imageUrl, pricing, specs,
                       SizedBox(
                         height: 30,
                       ),
+                      Container(
+                        height: height * 0.5,
+                        width: double.infinity,
+                        child: StaggeredGridView.countBuilder(
+                          crossAxisCount: 4,
+                          itemCount: portfolio.length,
+                          itemBuilder: (BuildContext context, int index) =>
+                              new Container(
+                            child: ClipRRect(
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(5)),
+                              child: Image.network(
+                                portfolio[index].toString(),
+                                alignment: Alignment.center,
+                                fit: BoxFit.fill,
+                              ),
+                            ),
+                          ),
+                          staggeredTileBuilder: (int index) =>
+                              new StaggeredTile.fit(2),
+                          mainAxisSpacing: 4.0,
+                          crossAxisSpacing: 4.0,
+                        ),
+                      )
                     ],
                   ),
                 ),

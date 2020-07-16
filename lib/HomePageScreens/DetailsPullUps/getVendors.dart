@@ -105,15 +105,15 @@ class _PlannerScreenState extends State<PlannerScreen> {
 
         for (var key in KEYS) {
           Vendor d = new Vendor(
-            DATA[key]["Brand"],
-            DATA[key]['City'],
-            DATA[key]['Description'],
-            DATA[key]['ImageUrl'],
-            DATA[key]['Name'],
-            DATA[key]['NoOfClientsTillDate'],
-            DATA[key]['PriceRange'],
-            DATA[key]['Speciality'],
-          );
+              DATA[key]["Brand"],
+              DATA[key]['City'],
+              DATA[key]['Description'],
+              DATA[key]['ImageUrl'],
+              DATA[key]['Name'],
+              DATA[key]['NoOfClientsTillDate'],
+              DATA[key]['PriceRange'],
+              DATA[key]['Speciality'],
+              DATA[key]['Images']);
           availableVendors.add(d);
           print('Vendor Details${d.city}');
         }
@@ -214,7 +214,8 @@ class _PlannerScreenState extends State<PlannerScreen> {
                                       'Planners',
                                       context,
                                       height,
-                                      width);
+                                      width,
+                                      availableVendors[index].portfolio);
                                 });
                               });
                             },
