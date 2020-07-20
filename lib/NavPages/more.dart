@@ -53,6 +53,8 @@ class _MorePageState extends State<MorePage> {
 
   @override
   Widget build(BuildContext context) {
+    final pHeight = MediaQuery.of(context).size.height;
+    final pWidth = MediaQuery.of(context).size.width;
     return Scaffold(
       appBar: AppBar(
           automaticallyImplyLeading: false,
@@ -91,6 +93,7 @@ class _MorePageState extends State<MorePage> {
           padding: const EdgeInsets.all(30.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
+            mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               InkWell(
                 onTap: () async {
@@ -115,26 +118,25 @@ class _MorePageState extends State<MorePage> {
                   child: Padding(
                     padding: const EdgeInsets.all(20.0),
                     child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.start,
                       children: [
                         Icon(
                           Icons.person,
                           color: Colors.white,
-                          size: 50,
+                          size: pHeight * 0.025,
                         ),
                         SizedBox(
-                          width: 50,
+                          width: pWidth * 0.1,
                         ),
                         Container(
-                          child: Center(
-                              child: Text(
+                          child: Text(
                             'Profile',
                             style: TextStyle(
                                 color: Colors.white,
                                 fontFamily: 'nunito',
-                                fontSize: 23,
+                                fontSize: pHeight * 0.025,
                                 fontWeight: FontWeight.bold),
-                          )),
+                          ),
                         ),
                       ],
                     ),
@@ -142,7 +144,7 @@ class _MorePageState extends State<MorePage> {
                 ),
               ),
               SizedBox(
-                height: 30,
+                height: pHeight * 0.02,
               ),
               InkWell(
                 onTap: () {
@@ -157,26 +159,25 @@ class _MorePageState extends State<MorePage> {
                   child: Padding(
                     padding: const EdgeInsets.all(20.0),
                     child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.start,
                       children: [
                         Icon(
                           Icons.headset_mic,
                           color: Colors.white,
-                          size: 50,
+                          size: pHeight * 0.025,
                         ),
                         SizedBox(
-                          width: 50,
+                          width: pWidth * 0.1,
                         ),
                         Container(
-                          child: Center(
-                              child: Text(
+                          child: Text(
                             'Contact Support',
                             style: TextStyle(
                                 color: Colors.white,
                                 fontFamily: 'nunito',
-                                fontSize: 23,
+                                fontSize: pHeight * 0.025,
                                 fontWeight: FontWeight.bold),
-                          )),
+                          ),
                         ),
                       ],
                     ),
@@ -184,7 +185,7 @@ class _MorePageState extends State<MorePage> {
                 ),
               ),
               SizedBox(
-                height: 30,
+                height: pHeight * 0.02,
               ),
               InkWell(
                 onTap: () {
@@ -198,26 +199,25 @@ class _MorePageState extends State<MorePage> {
                   child: Padding(
                     padding: const EdgeInsets.all(20.0),
                     child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.start,
                       children: [
                         Icon(
                           FontAwesomeIcons.googlePlay,
                           color: Colors.white,
-                          size: 50,
+                          size: pHeight * 0.025,
                         ),
                         SizedBox(
-                          width: 50,
+                          width: pWidth * 0.1,
                         ),
                         Container(
-                          width: 200,
                           child: Center(
                               child: Text(
-                            'Rate us on Google Play Store',
+                            'Rate us on Play Store',
                             overflow: TextOverflow.fade,
                             style: TextStyle(
                                 color: Colors.white,
                                 fontFamily: 'nunito',
-                                fontSize: 23,
+                                fontSize: pHeight * 0.025,
                                 fontWeight: FontWeight.bold),
                           )),
                         ),
@@ -227,7 +227,7 @@ class _MorePageState extends State<MorePage> {
                 ),
               ),
               SizedBox(
-                height: 30,
+                height: pHeight * 0.02,
               ),
               InkWell(
                 onTap: () {
@@ -241,15 +241,15 @@ class _MorePageState extends State<MorePage> {
                   child: Padding(
                     padding: const EdgeInsets.all(20.0),
                     child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.start,
                       children: [
                         Icon(
                           FontAwesomeIcons.scroll,
                           color: Colors.white,
-                          size: 50,
+                          size: pHeight * 0.025,
                         ),
                         SizedBox(
-                          width: 50,
+                          width: pWidth * 0.1,
                         ),
                         Container(
                           child: Center(
@@ -258,7 +258,7 @@ class _MorePageState extends State<MorePage> {
                             style: TextStyle(
                                 color: Colors.white,
                                 fontFamily: 'nunito',
-                                fontSize: 23,
+                                fontSize: pHeight * 0.025,
                                 fontWeight: FontWeight.bold),
                           )),
                         ),
@@ -268,7 +268,7 @@ class _MorePageState extends State<MorePage> {
                 ),
               ),
               SizedBox(
-                height: 30,
+                height: pHeight * 0.02,
               ),
               InkWell(
                 onTap: () {
@@ -282,15 +282,15 @@ class _MorePageState extends State<MorePage> {
                   child: Padding(
                     padding: const EdgeInsets.all(20.0),
                     child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.start,
                       children: [
                         Icon(
                           Icons.exit_to_app,
                           color: Colors.white,
-                          size: 50,
+                          size: pHeight * 0.025,
                         ),
                         SizedBox(
-                          width: 50,
+                          width: pWidth * 0.1,
                         ),
                         Container(
                           child: Center(
@@ -299,7 +299,7 @@ class _MorePageState extends State<MorePage> {
                             style: TextStyle(
                                 color: Colors.white,
                                 fontFamily: 'nunito',
-                                fontSize: 23,
+                                fontSize: pHeight * 0.025,
                                 fontWeight: FontWeight.bold),
                           )),
                         ),
