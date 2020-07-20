@@ -32,7 +32,8 @@ List databaseIdentifiers = [
   "GroomWear",
   "BridalWear",
   "Decoration",
-  "Foods"
+  "Foods",
+  "ArtistManagement"
 ];
 String _currentCategory = "";
 List<Vendor> availableVendors = [];
@@ -62,6 +63,8 @@ void setIdentifier(String check) {
     _currentCategory = databaseIdentifiers[10];
   } else if (check == "Food") {
     _currentCategory = databaseIdentifiers[11];
+  } else if (check == "Artists") {
+    _currentCategory = databaseIdentifiers[12];
   }
 }
 
@@ -93,7 +96,7 @@ class _CityVendorScreenState extends State<CityVendorScreen> {
           DATA[key]["Images"],
         );
         availableVendors.add(d);
-        print('Vendor Details${d.city}');
+        print('Vendor Details ${d.city}');
       }
       setState(() {
         print(availableVendors.length);

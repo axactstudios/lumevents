@@ -127,13 +127,19 @@ class _CitySpecificScreenState extends State<CitySpecificScreen> {
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: <Widget>[
                 _retCatrgory(
+                  'Artists',
+                  pUrl,
+                  widget.city,
+                  context,
+                  width,
+                ),
+                _retCatrgory(
                   'Venues',
                   pUrl,
                   widget.city,
                   context,
                   width,
                 ),
-                _retCatrgory('Mehendi', pUrl, widget.city, context, width)
               ],
             ),
             Row(
@@ -170,6 +176,12 @@ class _CitySpecificScreenState extends State<CitySpecificScreen> {
               children: <Widget>[
                 _retCatrgory('Decoration', pUrl, widget.city, context, width),
                 _retCatrgory('Food', pUrl, widget.city, context, width),
+              ],
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: <Widget>[
+                _retCatrgory('Mehendi', pUrl, widget.city, context, width)
               ],
             ),
             SizedBox(
