@@ -63,17 +63,23 @@ class _RealEventsTabState extends State<RealEventsTab> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
                 InkWell(
                   onTap: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => Weddings()),
+                      MaterialPageRoute(
+                        builder: (context) => Weddings(),
+                      ),
                     );
                   },
                   child: Card(
                     shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(10))),
+                      borderRadius: BorderRadius.all(
+                        Radius.circular(10),
+                      ),
+                    ),
                     elevation: 8,
                     color: Colors.white,
                     child: Padding(
@@ -148,7 +154,11 @@ class _RealEventsTabState extends State<RealEventsTab> {
                 ),
               ],
             ),
+            SizedBox(
+              height: height * 0.03,
+            ),
             Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
                 InkWell(
                   onTap: () {
@@ -235,7 +245,11 @@ class _RealEventsTabState extends State<RealEventsTab> {
                 ),
               ],
             ),
+            SizedBox(
+              height: height * 0.03,
+            ),
             Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
                 InkWell(
                   onTap: () {
