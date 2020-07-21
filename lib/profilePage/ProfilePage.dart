@@ -45,6 +45,7 @@ class _ProfilePageState extends State<ProfilePage> {
 
   @override
   Widget build(BuildContext context) {
+    final pHeight = MediaQuery.of(context).size.height;
     return Scaffold(
       appBar: AppBar(
         iconTheme: IconThemeData(color: Theme.MyColors.themeColor),
@@ -78,121 +79,109 @@ class _ProfilePageState extends State<ProfilePage> {
                     ? ListView(
                         children: <Widget>[
                           SizedBox(
-                            height: 10.0,
+                            height: pHeight * 0.015,
                           ),
                           Card(
-                            color: Theme.MyColors.themeColor,
+                            shape: RoundedRectangleBorder(
+                              side: BorderSide(
+                                  color: Theme.MyColors.themeColor, width: 1.2),
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                            elevation: 6,
+                            color: Colors.white,
                             child: Padding(
-                              padding: const EdgeInsets.all(12.0),
-                              child: Row(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Column(
                                 children: <Widget>[
-                                  Text(
-                                    'Name',
-                                    style: TextStyle(
-                                        fontFamily: 'nunito',
-                                        fontSize: 25.0,
-                                        fontWeight: FontWeight.bold,
-                                        color: Colors.white),
+                                  Image.asset(
+                                    'images/person.png',
+                                    height: pHeight * 0.12,
                                   ),
-                                  Text(
-                                    ' :  ',
-                                    style: TextStyle(
-                                        fontFamily: 'nunito',
-                                        fontSize: 25.0,
-                                        fontWeight: FontWeight.bold,
-                                        color: Colors.white),
+                                  SizedBox(
+                                    height: pHeight * 0.01,
                                   ),
                                   Text(
                                     userData.name,
                                     style: TextStyle(
                                         fontFamily: 'nunito',
-                                        fontSize: 20.0,
+                                        fontSize: pHeight * 0.025,
                                         fontWeight: FontWeight.bold,
-                                        color: Colors.white),
+                                        color: Theme.MyColors.themeColor),
                                   ),
                                 ],
                               ),
                             ),
                           ),
                           SizedBox(
-                            height: 15.0,
+                            height: pHeight * 0.02,
                           ),
                           Card(
-                            color: Theme.MyColors.themeColor,
+                            shape: RoundedRectangleBorder(
+                              side: BorderSide(
+                                  color: Theme.MyColors.themeColor, width: 1.2),
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                            elevation: 6,
+                            color: Colors.white,
                             child: Padding(
-                              padding: const EdgeInsets.all(12.0),
-                              child: Row(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Column(
                                 children: <Widget>[
-                                  Text(
-                                    'Phone',
-                                    style: TextStyle(
-                                        fontFamily: 'nunito',
-                                        fontSize: 20.0,
-                                        fontWeight: FontWeight.bold,
-                                        color: Colors.white),
+                                  Image.asset(
+                                    'images/phone(.png',
+                                    height: pHeight * 0.12,
                                   ),
-                                  Text(
-                                    ' :   ',
-                                    style: TextStyle(
-                                        fontFamily: 'nunito',
-                                        fontSize: 20.0,
-                                        fontWeight: FontWeight.bold,
-                                        color: Colors.white),
+                                  SizedBox(
+                                    height: pHeight * 0.01,
                                   ),
                                   Text(
                                     userData.number,
                                     style: TextStyle(
                                         fontFamily: 'nunito',
-                                        fontSize: 20.0,
+                                        fontSize: pHeight * 0.024,
                                         fontWeight: FontWeight.bold,
-                                        color: Colors.white),
+                                        color: Theme.MyColors.themeColor),
                                   ),
                                 ],
                               ),
                             ),
                           ),
                           SizedBox(
-                            height: 15.0,
+                            height: pHeight * 0.02,
                           ),
                           Card(
-                            color: Theme.MyColors.themeColor,
+                            shape: RoundedRectangleBorder(
+                              side: BorderSide(
+                                  color: Theme.MyColors.themeColor, width: 1.2),
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                            elevation: 6,
+                            color: Colors.white,
                             child: Padding(
-                              padding: const EdgeInsets.all(12.0),
-                              child: Row(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Column(
                                 children: <Widget>[
-                                  Text(
-                                    'Mail',
-                                    style: TextStyle(
-                                        fontFamily: 'nunito',
-                                        fontSize: 25.0,
-                                        fontWeight: FontWeight.bold,
-                                        color: Colors.white),
+                                  Image.asset(
+                                    'images/email.png',
+                                    height: pHeight * 0.12,
+                                  ),
+                                  SizedBox(
+                                    height: pHeight * 0.01,
                                   ),
                                   Text(
-                                    ' :   ',
+                                    userData.email,
                                     style: TextStyle(
                                         fontFamily: 'nunito',
-                                        fontSize: 25.0,
+                                        fontSize: pHeight * 0.025,
                                         fontWeight: FontWeight.bold,
-                                        color: Colors.white),
-                                  ),
-                                  Container(
-                                    width: 200,
-                                    child: Text(
-                                      userData.email,
-                                      style: TextStyle(
-                                          fontFamily: 'nunito',
-                                          fontSize: 18.0,
-                                          fontWeight: FontWeight.bold,
-                                          color: Colors.white),
-                                    ),
+                                        color: Theme.MyColors.themeColor),
                                   ),
                                 ],
                               ),
                             ),
                           ),
                           SizedBox(
-                            height: 15.0,
+                            height: pHeight * 0.02,
                           ),
                         ],
                       )
@@ -211,9 +200,9 @@ class _ProfilePageState extends State<ProfilePage> {
                     RaisedButton(
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(10.0),
-                        side: BorderSide(color: Colors.white),
+                        side: BorderSide(color: Theme.MyColors.themeColor),
                       ),
-                      color: Theme.MyColors.themeColor,
+                      color: Colors.white,
                       onPressed: () {
                         pushNewScreen(context,
                             screen: ProfileSetup(), withNavBar: false);
@@ -226,7 +215,7 @@ class _ProfilePageState extends State<ProfilePage> {
                               fontFamily: 'nunito',
                               fontWeight: FontWeight.bold,
                               fontSize: 20.0,
-                              color: Colors.white),
+                              color: Theme.MyColors.themeColor),
                         ),
                       ),
                     ),

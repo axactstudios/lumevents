@@ -89,10 +89,9 @@ class _RealEventsTabState extends State<RealEventsTab> {
                           ClipRRect(
                             borderRadius: BorderRadius.circular(10),
                             child: Image.asset(
-                              'images/background.jpg',
+                              'images/weddings.png',
                               height: height * 0.15,
                               width: width * 0.4,
-                              fit: BoxFit.cover,
                             ),
                           ),
                           SizedBox(
@@ -130,10 +129,9 @@ class _RealEventsTabState extends State<RealEventsTab> {
                           ClipRRect(
                             borderRadius: BorderRadius.circular(10),
                             child: Image.asset(
-                              'images/background.jpg',
+                              'images/bday.png',
                               height: height * 0.15,
                               width: width * 0.4,
-                              fit: BoxFit.cover,
                             ),
                           ),
                           SizedBox(
@@ -180,10 +178,9 @@ class _RealEventsTabState extends State<RealEventsTab> {
                           ClipRRect(
                             borderRadius: BorderRadius.circular(10),
                             child: Image.asset(
-                              'images/background.jpg',
+                              'images/corporate.png',
                               height: height * 0.15,
                               width: width * 0.4,
-                              fit: BoxFit.cover,
                             ),
                           ),
                           SizedBox(
@@ -221,10 +218,9 @@ class _RealEventsTabState extends State<RealEventsTab> {
                           ClipRRect(
                             borderRadius: BorderRadius.circular(10),
                             child: Image.asset(
-                              'images/background.jpg',
+                              'images/specialevents.png',
                               height: height * 0.15,
                               width: width * 0.4,
-                              fit: BoxFit.cover,
                             ),
                           ),
                           SizedBox(
@@ -270,10 +266,9 @@ class _RealEventsTabState extends State<RealEventsTab> {
                           ClipRRect(
                             borderRadius: BorderRadius.circular(10),
                             child: Image.asset(
-                              'images/background.jpg',
+                              'images/other.png',
                               height: height * 0.15,
                               width: width * 0.4,
-                              fit: BoxFit.cover,
                             ),
                           ),
                           SizedBox(
@@ -309,10 +304,9 @@ class _RealEventsTabState extends State<RealEventsTab> {
                           ClipRRect(
                             borderRadius: BorderRadius.circular(10),
                             child: Image.asset(
-                              'images/background.jpg',
+                              'images/artist.png',
                               height: height * 0.15,
                               width: width * 0.4,
-                              fit: BoxFit.cover,
                             ),
                           ),
                           SizedBox(
