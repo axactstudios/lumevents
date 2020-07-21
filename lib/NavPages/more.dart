@@ -73,7 +73,7 @@ class _MorePageState extends State<MorePage> {
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 Container(
-                  width: 220,
+                  width: pWidth * 0.4,
                   child: Text(
                     'More Options',
                     overflow: TextOverflow.fade,
@@ -84,233 +84,260 @@ class _MorePageState extends State<MorePage> {
                         fontFamily: 'nunito'),
                     textAlign: TextAlign.left,
                   ),
+                ),
+                SizedBox(
+                  width: pWidth * 0.06,
+                ),
+                InkWell(
+                  onTap: () => _signOut(context),
+                  child: Icon(
+                    Icons.exit_to_app,
+                    color: Theme.MyColors.themeColor,
+                  ),
+                ),
+                SizedBox(
+                  width: pWidth * 0.05,
                 )
               ],
             ),
           ]),
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.all(30.0),
+          padding: const EdgeInsets.all(10.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              InkWell(
-                onTap: () async {
-                  final FirebaseUser user = await mAuth.currentUser();
+              Row(
+                children: <Widget>[
+                  InkWell(
+                    onTap: () async {
+                      final FirebaseUser user = await mAuth.currentUser();
 
-                  mCurrentUser = await mAuth.currentUser();
-                  mCurrentUser != null
+                      mCurrentUser = await mAuth.currentUser();
+                      mCurrentUser != null
 // ignore: unnecessary_statements
-                      ? (doesExist()
-                          ? pushNewScreen(context,
-                              screen: ProfilePage(), withNavBar: true)
+                          ? (doesExist()
+                              ? pushNewScreen(context,
+                                  screen: ProfilePage(), withNavBar: true)
+                              : pushNewScreen(context,
+                                  screen: ProfileSetup(), withNavBar: false))
                           : pushNewScreen(context,
-                              screen: ProfileSetup(), withNavBar: false))
-                      : pushNewScreen(context,
-                          screen: LoginPage(), withNavBar: false);
-                },
-                child: Card(
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.all(Radius.circular(20))),
-                  color: Theme.MyColors.themeColor,
-                  elevation: 8,
-                  child: Padding(
-                    padding: const EdgeInsets.all(20.0),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        Icon(
-                          Icons.person,
-                          color: Colors.white,
-                          size: pHeight * 0.025,
+                              screen: LoginPage(), withNavBar: false);
+                    },
+                    child: Card(
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(20))),
+                      color: Colors.white,
+                      elevation: 8,
+                      child: Padding(
+                        padding: const EdgeInsets.all(20.0),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            Icon(
+                              Icons.person,
+                              color: Theme.MyColors.themeColor,
+                              size: pHeight * 0.1,
+                            ),
+                            SizedBox(
+                              height: pHeight * 0.02,
+                            ),
+                            Container(
+                              width: pWidth * 0.35,
+                              child: Center(
+                                child: Text(
+                                  'Profile',
+                                  style: TextStyle(
+                                      color: Theme.MyColors.themeColor,
+                                      fontFamily: 'nunito',
+                                      fontSize: pHeight * 0.025,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                              ),
+                            ),
+                          ],
                         ),
-                        SizedBox(
-                          width: pWidth * 0.1,
-                        ),
-                        Container(
-                          child: Text(
-                            'Profile',
-                            style: TextStyle(
-                                color: Colors.white,
-                                fontFamily: 'nunito',
-                                fontSize: pHeight * 0.025,
-                                fontWeight: FontWeight.bold),
-                          ),
-                        ),
-                      ],
+                      ),
                     ),
                   ),
-                ),
-              ),
-              SizedBox(
-                height: pHeight * 0.02,
-              ),
-              InkWell(
-                onTap: () {
-                  FlutterOpenWhatsapp.sendSingleMessage("919836262656",
-                      "Hello! I am a user of your supercool application.");
-                },
-                child: Card(
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.all(Radius.circular(20))),
-                  color: Theme.MyColors.themeColor,
-                  elevation: 8,
-                  child: Padding(
-                    padding: const EdgeInsets.all(20.0),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        Icon(
-                          Icons.headset_mic,
-                          color: Colors.white,
-                          size: pHeight * 0.025,
-                        ),
-                        SizedBox(
-                          width: pWidth * 0.1,
-                        ),
-                        Container(
-                          child: Text(
-                            'Contact Support',
-                            style: TextStyle(
-                                color: Colors.white,
-                                fontFamily: 'nunito',
-                                fontSize: pHeight * 0.025,
-                                fontWeight: FontWeight.bold),
-                          ),
-                        ),
-                      ],
-                    ),
+                  SizedBox(
+                    width: pWidth * 0.01,
                   ),
-                ),
-              ),
-              SizedBox(
-                height: pHeight * 0.02,
-              ),
-              InkWell(
-                onTap: () {
-                  _launchURL();
-                },
-                child: Card(
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.all(Radius.circular(20))),
-                  color: Theme.MyColors.themeColor,
-                  elevation: 8,
-                  child: Padding(
-                    padding: const EdgeInsets.all(20.0),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        Icon(
-                          FontAwesomeIcons.googlePlay,
-                          color: Colors.white,
-                          size: pHeight * 0.025,
-                        ),
-                        SizedBox(
-                          width: pWidth * 0.1,
-                        ),
-                        Container(
-                          child: Center(
+                  InkWell(
+                    onTap: () {
+                      FlutterOpenWhatsapp.sendSingleMessage("919836262656",
+                          "Hello! I am a user of your supercool application.");
+                    },
+                    child: Card(
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(20))),
+                      color: Colors.white,
+                      elevation: 8,
+                      child: Padding(
+                        padding: const EdgeInsets.all(20.0),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            Icon(
+                              Icons.headset_mic,
+                              color: Theme.MyColors.themeColor,
+                              size: pHeight * 0.1,
+                            ),
+                            SizedBox(
+                              height: pHeight * 0.02,
+                            ),
+                            Container(
+                              width: pWidth * 0.35,
                               child: Text(
-                            'Rate us on Play Store',
-                            overflow: TextOverflow.fade,
-                            style: TextStyle(
-                                color: Colors.white,
-                                fontFamily: 'nunito',
-                                fontSize: pHeight * 0.025,
-                                fontWeight: FontWeight.bold),
-                          )),
+                                'Contact Support',
+                                style: TextStyle(
+                                    color: Theme.MyColors.themeColor,
+                                    fontFamily: 'nunito',
+                                    fontSize: pHeight * 0.025,
+                                    fontWeight: FontWeight.bold),
+                              ),
+                            ),
+                          ],
                         ),
-                      ],
+                      ),
                     ),
                   ),
-                ),
+                ],
+              ),
+              SizedBox(
+                height: pHeight * 0.03,
+              ),
+              Row(
+                children: <Widget>[
+                  InkWell(
+                    onTap: () {
+                      _launchURL();
+                    },
+                    child: Card(
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(20))),
+                      color: Colors.white,
+                      elevation: 8,
+                      child: Padding(
+                        padding: const EdgeInsets.all(20.0),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            Icon(
+                              FontAwesomeIcons.googlePlay,
+                              color: Theme.MyColors.themeColor,
+                              size: pHeight * 0.1,
+                            ),
+                            SizedBox(
+                              height: pHeight * 0.02,
+                            ),
+                            Container(
+                              width: pWidth * 0.35,
+                              child: Center(
+                                  child: Text(
+                                'Rate us',
+                                overflow: TextOverflow.fade,
+                                style: TextStyle(
+                                    color: Theme.MyColors.themeColor,
+                                    fontFamily: 'nunito',
+                                    fontSize: pHeight * 0.025,
+                                    fontWeight: FontWeight.bold),
+                              )),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                  SizedBox(
+                    width: pWidth * 0.01,
+                  ),
+                  InkWell(
+                    onTap: () {
+                      _launchURL1();
+                    },
+                    child: Card(
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(20))),
+                      color: Colors.white,
+                      elevation: 8,
+                      child: Padding(
+                        padding: const EdgeInsets.all(20.0),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            Icon(
+                              FontAwesomeIcons.scroll,
+                              color: Theme.MyColors.themeColor,
+                              size: pHeight * 0.1,
+                            ),
+                            SizedBox(
+                              height: pHeight * 0.02,
+                            ),
+                            Container(
+                              width: pWidth * 0.35,
+                              child: Center(
+                                  child: Text(
+                                'Information',
+                                style: TextStyle(
+                                    color: Theme.MyColors.themeColor,
+                                    fontFamily: 'nunito',
+                                    fontSize: pHeight * 0.025,
+                                    fontWeight: FontWeight.bold),
+                              )),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
               ),
               SizedBox(
                 height: pHeight * 0.02,
               ),
-              InkWell(
-                onTap: () {
-                  _launchURL1();
-                },
-                child: Card(
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.all(Radius.circular(20))),
-                  color: Theme.MyColors.themeColor,
-                  elevation: 8,
-                  child: Padding(
-                    padding: const EdgeInsets.all(20.0),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        Icon(
-                          FontAwesomeIcons.scroll,
-                          color: Colors.white,
-                          size: pHeight * 0.025,
-                        ),
-                        SizedBox(
-                          width: pWidth * 0.1,
-                        ),
-                        Container(
-                          child: Center(
-                              child: Text(
-                            'Information',
-                            style: TextStyle(
-                                color: Colors.white,
-                                fontFamily: 'nunito',
-                                fontSize: pHeight * 0.025,
-                                fontWeight: FontWeight.bold),
-                          )),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-              ),
-              SizedBox(
-                height: pHeight * 0.02,
-              ),
-              InkWell(
-                onTap: () {
-                  _signOut(context);
-                },
-                child: Card(
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.all(Radius.circular(20))),
-                  color: Theme.MyColors.themeColor,
-                  elevation: 8,
-                  child: Padding(
-                    padding: const EdgeInsets.all(20.0),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        Icon(
-                          Icons.exit_to_app,
-                          color: Colors.white,
-                          size: pHeight * 0.025,
-                        ),
-                        SizedBox(
-                          width: pWidth * 0.1,
-                        ),
-                        Container(
-                          child: Center(
-                              child: Text(
-                            'Log Out',
-                            style: TextStyle(
-                                color: Colors.white,
-                                fontFamily: 'nunito',
-                                fontSize: pHeight * 0.025,
-                                fontWeight: FontWeight.bold),
-                          )),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-              ),
-              SizedBox(
-                height: 30,
-              ),
+//              InkWell(
+//                onTap: () {
+//                  _signOut(context);
+//                },
+//                child: Card(
+//                  shape: RoundedRectangleBorder(
+//                      borderRadius: BorderRadius.all(Radius.circular(20))),
+//                  color: Theme.MyColors.themeColor,
+//                  elevation: 8,
+//                  child: Padding(
+//                    padding: const EdgeInsets.all(20.0),
+//                    child: Row(
+//                      mainAxisAlignment: MainAxisAlignment.start,
+//                      children: [
+//                        Icon(
+//                          Icons.exit_to_app,
+//                          color: Colors.white,
+//                          size: pHeight * 0.025,
+//                        ),
+//                        SizedBox(
+//                          width: pWidth * 0.1,
+//                        ),
+//                        Container(
+//                          child: Center(
+//                              child: Text(
+//                            'Log Out',
+//                            style: TextStyle(
+//                                color: Colors.white,
+//                                fontFamily: 'nunito',
+//                                fontSize: pHeight * 0.025,
+//                                fontWeight: FontWeight.bold),
+//                          )),
+//                        ),
+//                      ],
+//                    ),
+//                  ),
+//                ),
+//              ),
+//              SizedBox(
+//                height: 30,
+//              ),
             ],
           ),
         ),
