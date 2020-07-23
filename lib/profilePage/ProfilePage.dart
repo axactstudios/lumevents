@@ -46,6 +46,8 @@ class _ProfilePageState extends State<ProfilePage> {
   @override
   Widget build(BuildContext context) {
     final pHeight = MediaQuery.of(context).size.height;
+
+    final pWidth = MediaQuery.of(context).size.width;
     return Scaffold(
       appBar: AppBar(
         iconTheme: IconThemeData(color: Theme.MyColors.themeColor),
@@ -76,107 +78,130 @@ class _ProfilePageState extends State<ProfilePage> {
             children: [
               Expanded(
                 child: userData.name != null
-                    ? ListView(
+                    ? Column(
                         children: <Widget>[
                           SizedBox(
                             height: pHeight * 0.015,
                           ),
-                          Card(
-                            shape: RoundedRectangleBorder(
-                              side: BorderSide(
-                                  color: Theme.MyColors.themeColor, width: 1.2),
-                              borderRadius: BorderRadius.circular(10),
-                            ),
-                            elevation: 6,
-                            color: Colors.white,
-                            child: Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Column(
-                                children: <Widget>[
-                                  Image.asset(
-                                    'images/person.png',
-                                    height: pHeight * 0.12,
-                                  ),
-                                  SizedBox(
-                                    height: pHeight * 0.01,
-                                  ),
-                                  Text(
-                                    userData.name,
-                                    style: TextStyle(
+                          Container(
+                            height: pHeight * 0.17,
+                            width: pWidth * 0.6,
+                            child: Card(
+                              shape: RoundedRectangleBorder(
+                                side: BorderSide(
+                                    color: Theme.MyColors.themeColor,
+                                    width: 1.2),
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                              elevation: 6,
+                              color: Colors.white,
+                              child: Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: <Widget>[
+                                    Image.asset(
+                                      'images/name.png',
+                                      height: pHeight * 0.08,
+                                    ),
+                                    SizedBox(
+                                      height: pHeight * 0.01,
+                                    ),
+                                    Text(
+                                      userData.name,
+                                      style: TextStyle(
                                         fontFamily: 'nunito',
-                                        fontSize: pHeight * 0.025,
+                                        fontSize: pHeight * 0.02,
                                         fontWeight: FontWeight.bold,
-                                        color: Theme.MyColors.themeColor),
-                                  ),
-                                ],
+                                        color: Colors.black.withOpacity(0.75),
+                                      ),
+                                    ),
+                                  ],
+                                ),
                               ),
                             ),
                           ),
                           SizedBox(
-                            height: pHeight * 0.02,
+                            height: pHeight * 0.04,
                           ),
-                          Card(
-                            shape: RoundedRectangleBorder(
-                              side: BorderSide(
-                                  color: Theme.MyColors.themeColor, width: 1.2),
-                              borderRadius: BorderRadius.circular(10),
-                            ),
-                            elevation: 6,
-                            color: Colors.white,
-                            child: Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Column(
-                                children: <Widget>[
-                                  Image.asset(
-                                    'images/phone(.png',
-                                    height: pHeight * 0.12,
-                                  ),
-                                  SizedBox(
-                                    height: pHeight * 0.01,
-                                  ),
-                                  Text(
-                                    userData.number,
-                                    style: TextStyle(
+                          Container(
+                            height: pHeight * 0.17,
+                            width: pWidth * 0.6,
+                            child: Card(
+                              shape: RoundedRectangleBorder(
+                                side: BorderSide(
+                                    color: Theme.MyColors.themeColor,
+                                    width: 1.2),
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                              elevation: 6,
+                              color: Colors.white,
+                              child: Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: <Widget>[
+                                    Image.asset(
+                                      'images/telephone.png',
+                                      height: pHeight * 0.08,
+                                    ),
+                                    SizedBox(
+                                      height: pHeight * 0.01,
+                                    ),
+                                    Text(
+                                      userData.number,
+                                      textAlign: TextAlign.center,
+                                      style: TextStyle(
                                         fontFamily: 'nunito',
-                                        fontSize: pHeight * 0.024,
+                                        fontSize: pHeight * 0.02,
                                         fontWeight: FontWeight.bold,
-                                        color: Theme.MyColors.themeColor),
-                                  ),
-                                ],
+                                        color: Colors.black.withOpacity(0.75),
+                                      ),
+                                    ),
+                                  ],
+                                ),
                               ),
                             ),
                           ),
                           SizedBox(
-                            height: pHeight * 0.02,
+                            height: pHeight * 0.04,
                           ),
-                          Card(
-                            shape: RoundedRectangleBorder(
-                              side: BorderSide(
-                                  color: Theme.MyColors.themeColor, width: 1.2),
-                              borderRadius: BorderRadius.circular(10),
-                            ),
-                            elevation: 6,
-                            color: Colors.white,
-                            child: Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Column(
-                                children: <Widget>[
-                                  Image.asset(
-                                    'images/email.png',
-                                    height: pHeight * 0.12,
-                                  ),
-                                  SizedBox(
-                                    height: pHeight * 0.01,
-                                  ),
-                                  Text(
-                                    userData.email,
-                                    style: TextStyle(
+                          Container(
+                            height: pHeight * 0.17,
+                            width: pWidth * 0.6,
+                            child: Card(
+                              shape: RoundedRectangleBorder(
+                                side: BorderSide(
+                                    color: Theme.MyColors.themeColor,
+                                    width: 1.2),
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                              elevation: 6,
+                              color: Colors.white,
+                              child: Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: <Widget>[
+                                    Image.asset(
+                                      'images/mail.png',
+                                      height: pHeight * 0.08,
+                                    ),
+                                    SizedBox(
+                                      height: pHeight * 0.01,
+                                    ),
+                                    Text(
+                                      userData.email,
+                                      textAlign: TextAlign.center,
+                                      style: TextStyle(
                                         fontFamily: 'nunito',
-                                        fontSize: pHeight * 0.025,
+                                        fontSize: pHeight * 0.02,
                                         fontWeight: FontWeight.bold,
-                                        color: Theme.MyColors.themeColor),
-                                  ),
-                                ],
+                                        color: Colors.black.withOpacity(0.75),
+                                      ),
+                                    ),
+                                  ],
+                                ),
                               ),
                             ),
                           ),
@@ -212,10 +237,11 @@ class _ProfilePageState extends State<ProfilePage> {
                         child: Text(
                           'Edit Profile',
                           style: TextStyle(
-                              fontFamily: 'nunito',
-                              fontWeight: FontWeight.bold,
-                              fontSize: 20.0,
-                              color: Theme.MyColors.themeColor),
+                            fontFamily: 'nunito',
+                            fontWeight: FontWeight.bold,
+                            fontSize: 20.0,
+                            color: Colors.black.withOpacity(0.75),
+                          ),
                         ),
                       ),
                     ),
