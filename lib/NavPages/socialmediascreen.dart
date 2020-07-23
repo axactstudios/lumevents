@@ -110,7 +110,8 @@ class _SocialMediaScreenState extends State<SocialMediaScreen> {
                   ),
                   InkWell(
                     onTap: () {
-                      _launchURL('https://www.instagram.com');
+                      _launchURL(
+                          'https://instagram.com/dreamthyeve?igshid=1jb2dhqnt1qc9');
                     },
                     child: Card(
                       shape: RoundedRectangleBorder(
@@ -155,7 +156,8 @@ class _SocialMediaScreenState extends State<SocialMediaScreen> {
                 children: <Widget>[
                   InkWell(
                     onTap: () {
-                      _launchURL('https://www.facebook.com');
+                      _launchURL(
+                          'https://www.facebook.com/Dreamthyeve-101778754964097/');
                     },
                     child: Card(
                       shape: RoundedRectangleBorder(
@@ -197,7 +199,7 @@ class _SocialMediaScreenState extends State<SocialMediaScreen> {
                   ),
                   InkWell(
                     onTap: () {
-                      _launchURL('https://www.linkedin.com');
+                      _launchURL('https://twitter.com/DreamTheEve1?s=09');
                     },
                     child: Card(
                       shape: RoundedRectangleBorder(
@@ -210,7 +212,7 @@ class _SocialMediaScreenState extends State<SocialMediaScreen> {
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: [
                             Image.asset(
-                              'images/linkedin.png',
+                              'images/twitter.png',
                               height: pHeight * 0.1,
                             ),
                             SizedBox(
@@ -220,7 +222,7 @@ class _SocialMediaScreenState extends State<SocialMediaScreen> {
                               width: pWidth * 0.35,
                               child: Center(
                                   child: Text(
-                                'Linkedin',
+                                'Twitter',
                                 style: TextStyle(
                                     color: Colors.black.withOpacity(0.75),
                                     fontFamily: 'nunito',
