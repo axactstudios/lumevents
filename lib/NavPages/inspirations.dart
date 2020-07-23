@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-
 import '../theme.dart' as Theme;
 import 'InspirationsPages/CorporateEventsPage.dart';
 import 'InspirationsPages/OthersPage.dart';
@@ -89,7 +88,7 @@ class _RealEventsTabState extends State<RealEventsTab> {
                           ClipRRect(
                             borderRadius: BorderRadius.circular(10),
                             child: Image.asset(
-                              'images/weddings.png',
+                              'images/wedding.png',
                               height: height * 0.15,
                               width: width * 0.4,
                             ),
@@ -100,7 +99,7 @@ class _RealEventsTabState extends State<RealEventsTab> {
                           Text(
                             'Weddings',
                             style: TextStyle(
-                                color: Theme.MyColors.themeColor,
+                                color: Colors.black.withOpacity(0.75),
                                 fontFamily: 'nunito',
                                 fontSize: height * 0.018,
                                 fontWeight: FontWeight.bold),
@@ -140,7 +139,7 @@ class _RealEventsTabState extends State<RealEventsTab> {
                           Text(
                             'Birthdays',
                             style: TextStyle(
-                                color: Theme.MyColors.themeColor,
+                                color: Colors.black.withOpacity(0.75),
                                 fontFamily: 'nunito',
                                 fontSize: height * 0.018,
                                 fontWeight: FontWeight.bold),
@@ -189,7 +188,7 @@ class _RealEventsTabState extends State<RealEventsTab> {
                           Text(
                             'Corporate Events',
                             style: TextStyle(
-                                color: Theme.MyColors.themeColor,
+                                color: Colors.black.withOpacity(0.75),
                                 fontFamily: 'nunito',
                                 fontSize: height * 0.018,
                                 fontWeight: FontWeight.bold),
@@ -218,7 +217,7 @@ class _RealEventsTabState extends State<RealEventsTab> {
                           ClipRRect(
                             borderRadius: BorderRadius.circular(10),
                             child: Image.asset(
-                              'images/specialevents.png',
+                              'images/special.png',
                               height: height * 0.15,
                               width: width * 0.4,
                             ),
@@ -229,7 +228,7 @@ class _RealEventsTabState extends State<RealEventsTab> {
                           Text(
                             'Special Events',
                             style: TextStyle(
-                                color: Theme.MyColors.themeColor,
+                                color: Colors.black.withOpacity(0.75),
                                 fontFamily: 'nunito',
                                 fontSize: height * 0.018,
                                 fontWeight: FontWeight.bold),
@@ -277,7 +276,7 @@ class _RealEventsTabState extends State<RealEventsTab> {
                           Text(
                             'Others',
                             style: TextStyle(
-                                color: Theme.MyColors.themeColor,
+                                color: Colors.black.withOpacity(0.75),
                                 fontFamily: 'nunito',
                                 fontSize: height * 0.018,
                                 fontWeight: FontWeight.bold),
@@ -315,7 +314,7 @@ class _RealEventsTabState extends State<RealEventsTab> {
                           Text(
                             'Artists',
                             style: TextStyle(
-                                color: Theme.MyColors.themeColor,
+                                color: Colors.black.withOpacity(0.75),
                                 fontFamily: 'nunito',
                                 fontSize: height * 0.018,
                                 fontWeight: FontWeight.bold),

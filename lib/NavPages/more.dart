@@ -5,11 +5,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_open_whatsapp/flutter_open_whatsapp.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:lumevents/MainPage.dart';
+import 'package:lumevents/NavPages/socialmediascreen.dart';
 import 'package:lumevents/authentication/LoginPage.dart';
 import 'package:lumevents/profilePage/ProfilePage.dart';
 import 'package:lumevents/profilePage/ProfileSetup.dart';
 import 'package:lumevents/profilePage/User.dart';
+import 'package:menu/menu.dart';
 import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
+import 'package:popup_box/popup_box.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../theme.dart' as Theme;
@@ -23,6 +26,8 @@ class _MorePageState extends State<MorePage> {
   final FirebaseAuth mAuth = FirebaseAuth.instance;
   final dbRef = FirebaseDatabase.instance.reference().child('Users');
   FirebaseUser mCurrentUser;
+
+  TextEditingController numberController = new TextEditingController(text: '');
 
   User userData = User();
 
@@ -73,7 +78,7 @@ class _MorePageState extends State<MorePage> {
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 Container(
-                  width: pWidth * 0.4,
+                  width: pWidth * 0.55,
                   child: Text(
                     'More Options',
                     overflow: TextOverflow.fade,
@@ -85,19 +90,6 @@ class _MorePageState extends State<MorePage> {
                     textAlign: TextAlign.left,
                   ),
                 ),
-                SizedBox(
-                  width: pWidth * 0.06,
-                ),
-                InkWell(
-                  onTap: () => _signOut(context),
-                  child: Icon(
-                    Icons.exit_to_app,
-                    color: Theme.MyColors.themeColor,
-                  ),
-                ),
-                SizedBox(
-                  width: pWidth * 0.05,
-                )
               ],
             ),
           ]),
@@ -135,10 +127,9 @@ class _MorePageState extends State<MorePage> {
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: [
-                            Icon(
-                              Icons.person,
-                              color: Theme.MyColors.themeColor,
-                              size: pHeight * 0.1,
+                            Image.asset(
+                              'images/profile.png',
+                              height: pHeight * 0.1,
                             ),
                             SizedBox(
                               height: pHeight * 0.02,
@@ -149,7 +140,7 @@ class _MorePageState extends State<MorePage> {
                                 child: Text(
                                   'Profile',
                                   style: TextStyle(
-                                      color: Theme.MyColors.themeColor,
+                                      color: Colors.black.withOpacity(0.75),
                                       fontFamily: 'nunito',
                                       fontSize: pHeight * 0.025,
                                       fontWeight: FontWeight.bold),
@@ -166,8 +157,8 @@ class _MorePageState extends State<MorePage> {
                   ),
                   InkWell(
                     onTap: () {
-                      FlutterOpenWhatsapp.sendSingleMessage("919836262656",
-                          "Hello! I am a user of your supercool application.");
+                      pushNewScreen(context,
+                          screen: SocialMediaScreen(), withNavBar: true);
                     },
                     child: Card(
                       shape: RoundedRectangleBorder(
@@ -179,10 +170,9 @@ class _MorePageState extends State<MorePage> {
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: [
-                            Icon(
-                              Icons.headset_mic,
-                              color: Theme.MyColors.themeColor,
-                              size: pHeight * 0.1,
+                            Image.asset(
+                              'images/contactus.png',
+                              height: pHeight * 0.1,
                             ),
                             SizedBox(
                               height: pHeight * 0.02,
@@ -192,7 +182,7 @@ class _MorePageState extends State<MorePage> {
                               child: Text(
                                 'Contact Support',
                                 style: TextStyle(
-                                    color: Theme.MyColors.themeColor,
+                                    color: Colors.black.withOpacity(0.75),
                                     fontFamily: 'nunito',
                                     fontSize: pHeight * 0.025,
                                     fontWeight: FontWeight.bold),
@@ -224,10 +214,9 @@ class _MorePageState extends State<MorePage> {
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: [
-                            Icon(
-                              FontAwesomeIcons.googlePlay,
-                              color: Theme.MyColors.themeColor,
-                              size: pHeight * 0.1,
+                            Image.asset(
+                              'images/rating.png',
+                              height: pHeight * 0.1,
                             ),
                             SizedBox(
                               height: pHeight * 0.02,
@@ -239,7 +228,7 @@ class _MorePageState extends State<MorePage> {
                                 'Rate us',
                                 overflow: TextOverflow.fade,
                                 style: TextStyle(
-                                    color: Theme.MyColors.themeColor,
+                                    color: Colors.black.withOpacity(0.75),
                                     fontFamily: 'nunito',
                                     fontSize: pHeight * 0.025,
                                     fontWeight: FontWeight.bold),
@@ -267,10 +256,9 @@ class _MorePageState extends State<MorePage> {
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: [
-                            Icon(
-                              FontAwesomeIcons.scroll,
-                              color: Theme.MyColors.themeColor,
-                              size: pHeight * 0.1,
+                            Image.asset(
+                              'images/information.png',
+                              height: pHeight * 0.1,
                             ),
                             SizedBox(
                               height: pHeight * 0.02,
@@ -281,7 +269,146 @@ class _MorePageState extends State<MorePage> {
                                   child: Text(
                                 'Information',
                                 style: TextStyle(
-                                    color: Theme.MyColors.themeColor,
+                                    color: Colors.black.withOpacity(0.75),
+                                    fontFamily: 'nunito',
+                                    fontSize: pHeight * 0.025,
+                                    fontWeight: FontWeight.bold),
+                              )),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+              SizedBox(
+                height: pHeight * 0.02,
+              ),
+              Row(
+                children: <Widget>[
+                  InkWell(
+                    onTap: () {
+                      showDialog(
+                        context: context,
+                        child: Dialog(
+                          backgroundColor: Colors.white,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          child: Padding(
+                            padding: const EdgeInsets.all(16.0),
+                            child: Column(
+                              mainAxisSize: MainAxisSize.min,
+                              children: <Widget>[
+                                TextFormField(
+                                  controller: numberController,
+                                  decoration: InputDecoration(
+                                      hintText: 'Enter your phone number',
+                                      enabledBorder: OutlineInputBorder(
+                                        borderSide: BorderSide(
+                                            color:
+                                                Colors.black.withOpacity(0.75),
+                                            width: 1),
+                                        borderRadius: BorderRadius.circular(10),
+                                      )),
+                                ),
+                                SizedBox(
+                                  height: pHeight * 0.01,
+                                ),
+                                RaisedButton(
+                                  shape: RoundedRectangleBorder(
+                                    side: BorderSide(
+                                        color: Theme.MyColors.themeColor,
+                                        width: 1.0),
+                                    borderRadius: BorderRadius.circular(10),
+                                  ),
+                                  color: Colors.white,
+                                  onPressed: () {
+                                    print(
+                                        '${numberController.text} requested callback');
+                                  },
+                                  child: Text(
+                                    'Request Callback',
+                                    style: TextStyle(
+                                        color: Colors.black.withOpacity(0.7),
+                                        fontFamily: 'nunito',
+                                        fontSize: pHeight * 0.022,
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      );
+                    },
+                    child: Card(
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(20))),
+                      color: Colors.white,
+                      elevation: 8,
+                      child: Padding(
+                        padding: const EdgeInsets.all(20.0),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            Image.asset(
+                              'images/callback.png',
+                              height: pHeight * 0.1,
+                            ),
+                            SizedBox(
+                              height: pHeight * 0.02,
+                            ),
+                            Container(
+                              width: pWidth * 0.35,
+                              child: Center(
+                                  child: Text(
+                                'Request a callback',
+                                overflow: TextOverflow.fade,
+                                style: TextStyle(
+                                    color: Colors.black.withOpacity(0.75),
+                                    fontFamily: 'nunito',
+                                    fontSize: pHeight * 0.022,
+                                    fontWeight: FontWeight.bold),
+                              )),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                  SizedBox(
+                    width: pWidth * 0.01,
+                  ),
+                  InkWell(
+                    onTap: () {
+                      _signOut(context);
+                    },
+                    child: Card(
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(20))),
+                      color: Colors.white,
+                      elevation: 8,
+                      child: Padding(
+                        padding: const EdgeInsets.all(20.0),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            Image.asset(
+                              'images/signout.png',
+                              height: pHeight * 0.1,
+                            ),
+                            SizedBox(
+                              height: pHeight * 0.02,
+                            ),
+                            Container(
+                              width: pWidth * 0.35,
+                              child: Center(
+                                  child: Text(
+                                'Sign out',
+                                style: TextStyle(
+                                    color: Colors.black.withOpacity(0.75),
                                     fontFamily: 'nunito',
                                     fontSize: pHeight * 0.025,
                                     fontWeight: FontWeight.bold),
