@@ -14,7 +14,7 @@ List<PersistentBottomNavBarItem> navBarItems = [
   ),
   PersistentBottomNavBarItem(
     icon: Icon(FontAwesomeIcons.lightbulb),
-    title: ("Inspirations"),
+    title: ("Dream It"),
     activeColor: Theme.MyColors.themeColor,
     inactiveColor: Colors.black87,
   ),

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_open_whatsapp/flutter_open_whatsapp.dart';
+import 'package:mailer2/mailer.dart';
 import 'package:url_launcher/url_launcher.dart';
-
 import '../theme.dart' as Theme;
 
 class SocialMediaScreen extends StatefulWidget {
@@ -24,7 +24,7 @@ class _SocialMediaScreenState extends State<SocialMediaScreen> {
     final pWidth = MediaQuery.of(context).size.width;
     return Scaffold(
       appBar: AppBar(
-        automaticallyImplyLeading: false,
+        iconTheme: IconThemeData(color: Theme.MyColors.themeColor),
         backgroundColor: Colors.white,
         title: Row(
           mainAxisAlignment: MainAxisAlignment.start,
@@ -40,7 +40,7 @@ class _SocialMediaScreenState extends State<SocialMediaScreen> {
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
               Container(
-                width: pWidth * 0.55,
+                width: pWidth * 0.47,
                 child: Text(
                   'Contact Us',
                   overflow: TextOverflow.fade,
@@ -67,8 +67,8 @@ class _SocialMediaScreenState extends State<SocialMediaScreen> {
                 children: <Widget>[
                   InkWell(
                     onTap: () {
-                      FlutterOpenWhatsapp.sendSingleMessage(
-                          '+919836262656', 'Hi! I use your app DreamThyEve!');
+                      FlutterOpenWhatsapp.sendSingleMessage('+919836262656',
+                          'Hi! I use your supercool app DreamThyEve!');
                     },
                     child: Card(
                       shape: RoundedRectangleBorder(
