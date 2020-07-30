@@ -68,7 +68,7 @@ Widget tiles(
                       ),
                     ),
                     Container(
-                      width: width * 0.85,
+                      width: width * 0.80,
                       color: Colors.white,
                       child: Text(
                         name,
