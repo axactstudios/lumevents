@@ -29,6 +29,19 @@ class _WeddingsState extends State<Weddings> {
     'https://media.architecturaldigest.in/wp-content/uploads/2017/12/Virushka-Wedding-Decor-866x487.jpg',
     'https://images.news18.com/ibnlive/uploads/2019/12/Manish-Pandey-Ashrita-Shettys-Wedding-Pictures-8.jpg?impolicy=website&width=400&height=0',
     'https://i.pinimg.com/originals/6d/43/01/6d4301f342637b296f017a07a96e7365.jpg'
+    'gs://lumevents-48ff2.appspot.com/Weddings/67.jpg'
+    'gs://lumevents-48ff2.appspot.com/Weddings/68.jpg'
+    'gs://lumevents-48ff2.appspot.com/Weddings/69.jpg'
+    'gs://lumevents-48ff2.appspot.com/Weddings/70.jpg'
+    'gs://lumevents-48ff2.appspot.com/Weddings/71.jpg'
+    'gs://lumevents-48ff2.appspot.com/Weddings/72.jpg'
+    'gs://lumevents-48ff2.appspot.com/Weddings/73.jpg'
+    'gs://lumevents-48ff2.appspot.com/Weddings/74.jpg'
+    'gs://lumevents-48ff2.appspot.com/Weddings/75.jpg'
+    'gs://lumevents-48ff2.appspot.com/Weddings/76.jpg'
+    'gs://lumevents-48ff2.appspot.com/Weddings/77.jpg'
+    'gs://lumevents-48ff2.appspot.com/Weddings/78.jpg'
+    'gs://lumevents-48ff2.appspot.com/Weddings/79.jpg'
   ];
   double height, width;
 
@@ -239,6 +252,132 @@ class _WeddingsState extends State<Weddings> {
               'Decked up in a cream, pastel green and pink lehenga paired with traditional kundan jewellery, Neeti captioned the pictures, “Love and Gratitude.” Nihar, too, complemented his bride in a cream and pink sherwani and a pink turban. On February 14, they had a Mehendi ceremony .It showed the couple posing amid hundreds of bulbs giving the impression of star. Earlier the bride had held pre- wedding photo -shoot with her sisters,which had the girl posing and having fun.',
               'lumevents are events professional with creative ideas and solutions which will turn your wedding to a wow memory.',
               'Wedding'),
+          tiles(
+              scaffoldState,
+              height,
+              width,
+              'Troian Bellisario	and	Patrick	J.Adams wedding',
+              imageURLs[19],
+              'Suits star Patrick J. Adams married his  longtime  girlfriend  and Pretty   Little Liars co-star, TroianBellisario, in a beautiful California wedding. The couple said "I do" in a stunning outdoor ceremony, with trees and candles as aisle décor. The weekend, which the couple dubbed "Fort Day," included glamorous camping, or "glamping." Guests all boarded a converted school bus that read "almost married" and stayed in tents during the weekend.',
+              'The wedding was allegedly inspired by nature. Having 3 days wedding and staying in tents is a very unique idea. Organizing such event will help lumevents gain popularity.',
+              'Wedding'),
+          tiles(
+              scaffoldState,
+              height,
+              width,
+              'Adrienne Bailon and Israel Houghton wedding',
+              imageURLs[20],
+              'AdrienneBailon to say "I do" with the most glamorous Parisian wedding you ever did see. She married her love, Israel , and their ballroom affair captured by Mon Conte de fees was one for the books. From the Eiffel Tower backdrop to her curve- hugging Walter mendez dress.',
+              'Paris is the most romantic city of the world and getting married there is a dream of many. So organizing this kind of destination wedding will make the day memorable for the couple.',
+              'Wedding'),
+
+
+          tiles(
+              scaffoldState,
+              height,
+              width,
+              'Katie Maloney and Tom Schwartz wedding',
+              imageURLs[21],
+              'The couple exchanged vows in front of nearly 100 guests Wednesday evening in an elegant, rustic wedding at the Twenty Mile House in Northern California. The bride and groom were wed underneath a ceremony arch of white drapery, with white flower petals at their feet and towering trees enveloping their ceremony space.',
+              'Weddings are all about making the couples day Joyous. And having a perfect destination and wonderful decoration of flowers matter. Organizing such marriages which make the customers happy and are spoken about even after years will not only increase the company’s goodwill but also its customer’s satisfaction.',
+              'Wedding'),
+
+
+          tiles(
+              scaffoldState,
+              height,
+              width,
+              'Prince Harry and Meghan Markle Wedding',
+              imageURLs[22],
+              'As everyone says their wedding was a fairytale wedding with the custom diamond engagement ring Prince Harry used to propose. Harry designed the piece, which was then made by court jewelers Cleave and Company using one diamond sourced from Botswana and two smaller stones from Princess Diana collection. Harry and Meghan wedding was televised and live streamed around the world. The formal wedding invitations were mailed out in late March.Immediately following the exchange of vows, Prince Harry and Meghan Markle took a carriage ride through Windsor. The route went go along High Street through town before returning back via the Long Walk. Like many details of Harry and Meghan royal wedding, the bouquet included a personal touch. The all white arrangement featured flowers picked by Prince Harry himself before the wedding. Blooms in the bouquet included Forget-Me-Nots, which were Princess Diana favorite flower, sweet peas, lily of the valley, astilbe, jasmine and astrantia. Like all royal wedding bouquets, it included a sprig of myrtle, which dates back to the wedding of Queen Victoria daughter, Princess Victoria. Myrtle symbolizes hope and love, making it a fitting addition to any bride bouquet, royal or not. ',
+              "Who doesn’t want a perfect castle wedding? Lum events can give them the dream wedding they desire. Wouldn’t it be a great idea to feature a wedding live on youtube especially during this lockdown? Instead of the tradition old way of newly wed going home in a car, Lum events can give ideas of a carriage procession at the end of the wedding.",
+              'Wedding'),
+          tiles(
+              scaffoldState,
+              height,
+              width,
+              "Pippa Middleton’s Wedding ",
+              imageURLs[23],
+              "Miss Middleton, 33, who is the younger sister of the duchess, married 41-year-old Mr Matthews at St Mark's Church in Englefield, Berkshire.The bride received a rousing cheer from around 100 royal fans and residents as she arrived.Guests filed out and walked to nearby Englefield House, where it is believed a champagne reception is being held.Miss Middleton wore a bespoke Giles Deacon dress. The dress was teamed with a Stephen Jones veil, a Maidenhair Fern tiara, and Manolo Blahnik ivory satin shoes. Pippa Middleton was driven to St Mark's Church alongside her father in a 1951 Jaguar.A group of local well-wishers were allowed to come close to the church and were able to see all the guests arrive - including tennis star, Roger Federer.Miss Middleton's diamond engagement ring is reported to have cost £250,000. The camera crews are from everywhere. ",
+              "Gorgeous wedding dress, diamond ring in the engagement, captures the attention of all the guests and cameramen, which were invited in their royal wedding. Pippa Middleton’s entry in the venue, along with her father, in a car makes the day memorable to the bride and all the guests. LumEvents can take ideas from the royal wedding of Pippa and James, can use cameramen and other telecasting techniques to make the event more memorable. LumEvents cam implement other ideas in their upcoming events.",
+              'Wedding'),
+          tiles(
+              scaffoldState,
+              height,
+              width,
+              "Kavita Kaushik weds Ronnit Biswas ",
+              imageURLs[24],
+              "Kavita Kaushik had a low-key wedding with Ronnit Biswas in Kedarnath, Uttarakhand. The wedding was an intimate affair with total of 15 guests gracing the occasion, including Kavita's close friend actress AashkaGoradia andBrent Goble.Kavita chose Himalayas as her wedding destination because both she and Ronnit are very fond of Shiva. Kavita’s love for mountains was also the reason, they decided to marry in Kedarnath. ",
+              "Wedding destination are nowadays one of the major concerns in today’s weddings. Kavita and Ronnit wedding in Kedarnath, depicts their love towards mountains and faith in Lord Shiva. Selecting a beautiful venue, according to the interest of the couples can be done by LumEvents. In their wedding, local people, were also invited, which made their wedding more amazing. LumEvents can take ideas from their weddings.",
+              'Wedding'),
+          tiles(
+              scaffoldState,
+              height,
+              width,
+              "Kate Upton and Justin Verlander's Wedding ",
+              imageURLs[25],
+              "The couple’s invitation suite, designed by Wiley Valentine, set the tone for their romantic, formal wedding—and even featured an illustration of the Tuscan countryside on the envelope liner. For the dinner that night, everyone traded their Under Armour team jerseys for something red—with Justin in a crimson tuxedo jacket and Kate in a scarlet Valentino gown. That dress was the first of two Valentinos she wore. Kate’s sisters wore silk gowns by Christy Rilling Studio while her other ‘maids looked pretty in pink beaded dresses by Needle & Thread. Her flower girl also sported a pink dress—along with a cardigan and flower crown.Guest were, of course, outfitted in custom attire. Kate made her grand entrance through a flower-covered gate before walking down an aisle covered in even more flowers.The couple exchanged vows overlooking the property’s gardens—in fact, they were the first couple to say “I do” in this location!! Tuscany Flowers created a statement display for the escort card table, incorporating pink dahlias, roses, olive branches, and berry accents ",
+              "LumEvents can organize a particular dress code for all the guests in their wedding. Beautiful flowers were in itself looks pretty and adorable. Kate arranged for a grand gesture of celebration: a firework display that lit up the Tuscan sky as they cut their cake. Such ideas in the upcoming weddings help LumEvents to organize the event in a much better way and in its own uniqueness.",
+              'Wedding'),
+          tiles(
+              scaffoldState,
+              height,
+              width,
+              "Neeti Mohan and Nihar Pandya.",
+              imageURLs[26],
+              "On February 14, they had a Mehendi ceremony .It showed the couple posing amid hundreds of bulbs giving the impression of stars. Earlier the bride had held pre- wedding photo -shoot with her sisters,which had the girl posing and having fun. ",
+              "lumevents are events professional with creative ideas and solutions which will turn your wedding to a wow memory.",
+              'Wedding'),
+          tiles(
+              scaffoldState,
+              height,
+              width,
+              "Prateik Babbar and Sanya",
+              imageURLs[27],
+              "A reception was also hosted in Lucknow and Sanya looked pretty in  a cream and brown-coloured lehenga, while Prateik went with a green bandhgala suit and white churidhar. The ceremony was attended by their families, and the pictures from the couple’s wedding have been shared on social media. Prateik and Sanya were married		in	a	Marathi-style	Hindu ceremony and Sanya was draped in an orange sari. Prateik was wearing a cream	coloured		sherwani	for		the occasion. ",
+              "lumevents are events professional with creative ideas and solutions which will turn your wedding to a wow memory.",
+              'Wedding'),
+
+          tiles(
+              scaffoldState,
+              height,
+              width,
+              "Bipasha Basu & Karan Singh Grover",
+              imageURLs[28],
+              "the country’s tallest hotel st. regis mumbai, located in mumbai’s premier entertainment and commercial district of lower parel. bipasha donn ed a red and gold  sabyasachi mukherjee lehenga saree for her bengali-punjabi-mix wedding at st. regis mumbai. she accesorized with a heavy mathapatti by kishandas jewellery and the traditional mukut and bengali bridal makeup. karan complimented bipasha in a pearl white sherwani by shyamli arora. karan added a fun element to his monkey wedding by entering the venue on a segway. ",
+              "the wedding venue is the one of the important factor of the wedding. Her wedding was held on tallest hotel in a very traditional way. The tadka of bengali-punjabi mix wedding was a remarkable in their wedding. Their weding was not so serious type but more of joyous and happily wedding ever. They enjoyed every moment whether it is ceremonies or parties . Organizing such events makes the guests and organizers feels happy and satisfied by seeing the happiness of bride and groom.",
+              'Wedding'),
+          tiles(
+              scaffoldState,
+              height,
+              width,
+              "Hailey Baldwin and Justin Bieber",
+              imageURLs[29],
+              "Hailey Baldwin and the Biebs got hitched. The pair said ‘I do’ in front of guests like Kendall and Kylie Jenner, at the Montage Palmetto Bluff hotel in south Carolina. The off-the-shoulder lace gown was designed by Virgil Abloh for Off-White.",
+              "their wedding was a private but joyous one. A perfect gown and the function being held on one of the famous hotel is another thing. Organizing such events make the customers happy and are spoken about even after ages. It will not only increase customer satisfaction but also the company’s goodwill",
+              'Wedding'),
+          tiles(
+              scaffoldState,
+              height,
+              width,
+              "Idris Elba And Sabrina Dhowre",
+              imageURLs[30],
+              "three-day celebration in Marrakesh. The couple exchanged vows at the ksar char bagh hotel in front of family and friends. While the bride wore two custom dresses, both by vera wang, with david morris jewellery. Elba chose a bespoke suit by ozwald boateng with asprey black and white diamond cufflinks.",
+              "a simple and classy wedding like Idris and Sabrina make a beautiful marriage that everyone will remember. It was a 3 day celebration wedding this type of wedding makes the moments to be cherished in a lifetime because mainly, every wedding lasts for 1 day which makes less enjoyment but by doing this kind of wedding makes each and every moment special for the bride and groom.",
+              'Wedding'),
+          tiles(
+              scaffoldState,
+              height,
+              width,
+              "Ellie Goulding and Caspar Jopling",
+              imageURLs[31],
+              "Ellie Goulding married art dealer Caspar Jopling at a lavish ceremony at York Minster. Wearing a custom- made Chloé gown featuring a high-neck, which took a reported 640 hours to make, Goulding arrived in a blue Volkswagen camper van to the cheers  of  the  waiting crowds lining the streets. High society and the A-list turned out in their dozens to celebrate the happy occasion - unsurprising considering how well- connected the bride and groom are",
+              "a lavish and a vintage styled wedding is a great ideas for all the upcoming brides. Having a perfect self customized gown and a church wedding is a perfect ideas for a wedding. Organizing such events will help the organizers gain popularity.",
+              'Wedding'),
+
+
+
+
         ],
       ),
     );
