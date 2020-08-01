@@ -29,19 +29,19 @@ class _WeddingsState extends State<Weddings> {
     'https://media.architecturaldigest.in/wp-content/uploads/2017/12/Virushka-Wedding-Decor-866x487.jpg',
     'https://images.news18.com/ibnlive/uploads/2019/12/Manish-Pandey-Ashrita-Shettys-Wedding-Pictures-8.jpg?impolicy=website&width=400&height=0',
     'https://i.pinimg.com/originals/6d/43/01/6d4301f342637b296f017a07a96e7365.jpg'
-    'gs://lumevents-48ff2.appspot.com/Weddings/67.jpg'
-    'gs://lumevents-48ff2.appspot.com/Weddings/68.jpg'
-    'gs://lumevents-48ff2.appspot.com/Weddings/69.jpg'
-    'gs://lumevents-48ff2.appspot.com/Weddings/70.jpg'
-    'gs://lumevents-48ff2.appspot.com/Weddings/71.jpg'
-    'gs://lumevents-48ff2.appspot.com/Weddings/72.jpg'
-    'gs://lumevents-48ff2.appspot.com/Weddings/73.jpg'
-    'gs://lumevents-48ff2.appspot.com/Weddings/74.jpg'
-    'gs://lumevents-48ff2.appspot.com/Weddings/75.jpg'
-    'gs://lumevents-48ff2.appspot.com/Weddings/76.jpg'
-    'gs://lumevents-48ff2.appspot.com/Weddings/77.jpg'
-    'gs://lumevents-48ff2.appspot.com/Weddings/78.jpg'
-    'gs://lumevents-48ff2.appspot.com/Weddings/79.jpg'
+    'https://firebasestorage.googleapis.com/v0/b/lumevents-48ff2.appspot.com/o/Weddings%2F67.jpg?alt=media&token=f185f186-2a9e-4eaf-bbb3-699cbb128856'
+    'https://firebasestorage.googleapis.com/v0/b/lumevents-48ff2.appspot.com/o/Weddings%2F68.jpg?alt=media&token=bc2c2484-c01a-4656-943e-d750394f4435'
+    'https://firebasestorage.googleapis.com/v0/b/lumevents-48ff2.appspot.com/o/Weddings%2F69.jpg?alt=media&token=a8e74395-b568-4086-83e0-d646e2079160'
+    'https://firebasestorage.googleapis.com/v0/b/lumevents-48ff2.appspot.com/o/Weddings%2F70.jpg?alt=media&token=1a0b946b-ed42-4d3c-9298-b93681ae5dbc'
+    'https://firebasestorage.googleapis.com/v0/b/lumevents-48ff2.appspot.com/o/Weddings%2F71.jpg?alt=media&token=8731b6cb-dc69-485c-a741-8c2ebae67038'
+    'https://firebasestorage.googleapis.com/v0/b/lumevents-48ff2.appspot.com/o/Weddings%2F72.jpg?alt=media&token=7b3f92af-ddb9-49f8-a1af-48a9a85f68b9'
+    'https://firebasestorage.googleapis.com/v0/b/lumevents-48ff2.appspot.com/o/Weddings%2F73.jpg?alt=media&token=07b619b8-8ae4-4be6-8121-df1307790235'
+    'https://firebasestorage.googleapis.com/v0/b/lumevents-48ff2.appspot.com/o/Weddings%2F74.jpeg?alt=media&token=d24718ca-093c-432b-a508-071c2e23a5c1'
+    'https://firebasestorage.googleapis.com/v0/b/lumevents-48ff2.appspot.com/o/Weddings%2F75.jpg?alt=media&token=7cdb45f2-e685-4187-90ed-a1ddffd62e5b'
+    'https://firebasestorage.googleapis.com/v0/b/lumevents-48ff2.appspot.com/o/Weddings%2F76.jpg?alt=media&token=d78bf079-50f8-4eef-a076-46d9ec499a9b'
+    'https://firebasestorage.googleapis.com/v0/b/lumevents-48ff2.appspot.com/o/Weddings%2F77.jpg?alt=media&token=343e291d-4037-45ee-92d3-369905ef53ff'
+    'https://firebasestorage.googleapis.com/v0/b/lumevents-48ff2.appspot.com/o/Weddings%2F78.jpg?alt=media&token=c0d9300c-95cb-451b-a69a-5251154c32cd'
+    'https://firebasestorage.googleapis.com/v0/b/lumevents-48ff2.appspot.com/o/Weddings%2F79.jpg?alt=media&token=c97a0938-9385-4a05-af88-6708c39065d3'
   ];
   double height, width;
 
