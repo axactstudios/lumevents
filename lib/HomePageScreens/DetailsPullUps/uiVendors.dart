@@ -1,13 +1,19 @@
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_open_whatsapp/flutter_open_whatsapp.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:lumevents/classes/DatabaseHelper.dart';
 import 'package:lumevents/classes/WishlistModel.dart';
+import 'package:lumevents/profilePage/User.dart';
+import 'package:mailer2/mailer.dart';
 
 import '../../theme.dart' as Theme;
 
 final dbHelper = DatabaseHelper.instance;
-
+final dbRef = FirebaseDatabase.instance.reference().child('Users');
+final FirebaseAuth mAuth = FirebaseAuth.instance;
 void addToWishlist({String name, String extras}) async {
   Map<String, dynamic> row = {
     DatabaseHelper.columnName: name,
@@ -19,8 +25,43 @@ void addToWishlist({String name, String extras}) async {
       msg: 'Added to wishlist', toastLength: Toast.LENGTH_SHORT);
 }
 
+User userData = User();
+
+send(numberv, namev) async {
+  FirebaseUser user = await mAuth.currentUser();
+  String uid = user.uid;
+  var ref = dbRef.child(uid);
+  DatabaseReference dbref =
+      FirebaseDatabase.instance.reference().child('Users').child(uid);
+  await dbref.once().then((DataSnapshot snap) async {
+    // ignore: non_constant_identifier_names
+    userData.name = await snap.value['name'];
+    userData.number = await snap.value['number'];
+    userData.email = await snap.value['email'];
+  });
+  var options = new GmailSmtpOptions()
+    ..username = 'axactstudios@gmail.com'
+    ..password = 'dranzer_axactstudios';
+
+  var emailTransport = new SmtpTransport(options);
+
+  // Create our mail/envelope.
+  var envelope = new Envelope()
+    ..from = 'axactstudios@gmail.com'
+    ..recipients.add('axactstudios@gmail.com')
+    ..subject = 'Vendor Enquiry  ${DateTime.now()}'
+    ..text =
+        'Vendor Name-$namev\nVendor Phone Number-$numberv\nCustomer Name-${userData.name}\nCustomer Number- ${userData.number}';
+
+  // Email it.
+  emailTransport
+      .send(envelope)
+      .then((envelope) => print('Email sent!'))
+      .catchError((e) => print('Error occurred: $e'));
+}
+
 Widget UIVendors(String brand, city, description, imageUrl, pricing, specs,
-    type, BuildContext context, double height, width, List portfolio) {
+    phone, type, BuildContext context, double height, width, List portfolio) {
   return Container(
     decoration: BoxDecoration(
         boxShadow: [
@@ -230,6 +271,30 @@ Widget UIVendors(String brand, city, description, imageUrl, pricing, specs,
                   ),
                 ),
               ],
+            ),
+          ),
+        ),
+        InkWell(
+          onTap: () async {
+            await send(phone, brand);
+            FlutterOpenWhatsapp.sendSingleMessage('+91$phone',
+                'Hi! I connected with you through the supercool app dream thy eve!');
+          },
+          child: Card(
+            color: Colors.green,
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.all(Radius.circular(10))),
+            child: Padding(
+              padding: EdgeInsets.all(10),
+              child: Text(
+                'Connect on Whatsapp',
+                style: TextStyle(
+                    color: Colors.white,
+                    fontFamily: 'nunito',
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold),
+                textAlign: TextAlign.center,
+              ),
             ),
           ),
         ),

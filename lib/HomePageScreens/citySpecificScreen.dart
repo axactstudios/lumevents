@@ -58,6 +58,7 @@ class _CitySpecificScreenState extends State<CitySpecificScreen> {
   @override
   void initState() {
     super.initState();
+    print(widget.city);
     getDatabaseRef(trends);
   }
 

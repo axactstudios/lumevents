@@ -6,8 +6,18 @@ class Vendor {
       name,
       noofclients,
       pricerange,
+      phone,
       speciality;
   List portfolio;
-  Vendor(this.brand, this.city, this.description, this.imageurl, this.name,
-      this.noofclients, this.pricerange, this.speciality, this.portfolio);
+  Vendor(
+      this.brand,
+      this.city,
+      this.description,
+      this.imageurl,
+      this.name,
+      this.noofclients,
+      this.pricerange,
+      this.phone,
+      this.speciality,
+      this.portfolio);
 }

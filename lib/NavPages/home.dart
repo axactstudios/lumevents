@@ -89,6 +89,7 @@ class _HomePageState extends State<HomePage> {
                   onChanged: (String newValueSelected) {
                     setState(() {
                       _currentItemSelected = newValueSelected;
+                      print(_currentItemSelected);
                       if (_currentItemSelected == 'AllCities') {
                         _currentScreenToShow = AllCitiesScreen();
                       } else {

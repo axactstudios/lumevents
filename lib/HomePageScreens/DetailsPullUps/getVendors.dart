@@ -112,6 +112,7 @@ class _PlannerScreenState extends State<PlannerScreen> {
               DATA[key]['Name'],
               DATA[key]['NoOfClientsTillDate'],
               DATA[key]['PriceRange'],
+              DATA[key]['Phone'],
               DATA[key]['Speciality'],
               DATA[key]['Images']);
           availableVendors.add(d);
@@ -210,6 +211,7 @@ class _PlannerScreenState extends State<PlannerScreen> {
                                       availableVendors[index].description,
                                       availableVendors[index].imageurl,
                                       availableVendors[index].pricerange,
+                                      availableVendors[index].phone,
                                       availableVendors[index].speciality,
                                       'Planners',
                                       context,

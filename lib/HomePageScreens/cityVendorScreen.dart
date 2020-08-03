@@ -64,7 +64,7 @@ void setIdentifier(String check) {
   } else if (check == "Food") {
     _currentCategory = databaseIdentifiers[11];
   } else if (check == "Artists") {
-    _currentCategory = databaseIdentifiers[12];
+    _currentCategory = 'ArtistManagement';
   }
 }
 
@@ -72,6 +72,7 @@ double height, width;
 
 class _CityVendorScreenState extends State<CityVendorScreen> {
   getDatabaseRef(List<Vendor> availableVendors) async {
+    availableVendors.clear();
     DatabaseReference dbref = FirebaseDatabase.instance
         .reference()
         .child("Home")
@@ -82,7 +83,6 @@ class _CityVendorScreenState extends State<CityVendorScreen> {
       var KEYS = snap.value.keys;
       // ignore: non_constant_identifier_names
       var DATA = snap.value;
-      availableVendors.clear();
       for (var key in KEYS) {
         Vendor d = new Vendor(
           DATA[key]["Brand"],
@@ -92,6 +92,7 @@ class _CityVendorScreenState extends State<CityVendorScreen> {
           DATA[key]['Name'],
           DATA[key]['NoOfClientsTillDate'],
           DATA[key]['PriceRange'],
+          DATA[key]['Phone'],
           DATA[key]['Speciality'],
           DATA[key]["Images"],
         );
@@ -106,6 +107,7 @@ class _CityVendorScreenState extends State<CityVendorScreen> {
 
   @override
   void initState() {
+    print(widget.city);
     super.initState();
     getDatabaseRef(availableVendors);
   }
@@ -124,7 +126,6 @@ class _CityVendorScreenState extends State<CityVendorScreen> {
 
   @override
   Widget build(BuildContext context) {
-    getDatabaseRef(availableVendors);
     width = MediaQuery.of(context).size.width;
     height = MediaQuery.of(context).size.height;
     setIdentifier(widget.vendorType);
@@ -168,10 +169,7 @@ class _CityVendorScreenState extends State<CityVendorScreen> {
                 width: width,
                 child: availableVendors.length == 0
                     ? Center(
-                        child: SpinKitWave(
-                          size: 30,
-                          color: Theme.MyColors.themeColor.withOpacity(0.7),
-                        ),
+                        child: Text('No vendors to display'),
                       )
                     : ListView.builder(
                         scrollDirection: Axis.vertical,
@@ -191,6 +189,7 @@ class _CityVendorScreenState extends State<CityVendorScreen> {
                                       availableVendors[index].description,
                                       availableVendors[index].imageurl,
                                       availableVendors[index].pricerange,
+                                      availableVendors[index].phone,
                                       availableVendors[index].speciality,
                                       _currentCategory,
                                       context,
@@ -246,7 +245,7 @@ class _CityVendorScreenState extends State<CityVendorScreen> {
                                               CrossAxisAlignment.start,
                                           children: <Widget>[
                                             Text(
-                                              'Presented By',
+                                              'Brand Name',
                                               style: TextStyle(
                                                   color: Colors.black,
                                                   fontFamily: 'nunito',

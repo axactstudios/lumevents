@@ -475,47 +475,6 @@ class _MorePageState extends State<MorePage> {
               SizedBox(
                 height: pHeight * 0.02,
               ),
-//              InkWell(
-//                onTap: () {
-//                  _signOut(context);
-//                },
-//                child: Card(
-//                  shape: RoundedRectangleBorder(
-//                      borderRadius: BorderRadius.all(Radius.circular(20))),
-//                  color: Theme.MyColors.themeColor,
-//                  elevation: 8,
-//                  child: Padding(
-//                    padding: const EdgeInsets.all(20.0),
-//                    child: Row(
-//                      mainAxisAlignment: MainAxisAlignment.start,
-//                      children: [
-//                        Icon(
-//                          Icons.exit_to_app,
-//                          color: Colors.white,
-//                          size: pHeight * 0.025,
-//                        ),
-//                        SizedBox(
-//                          width: pWidth * 0.1,
-//                        ),
-//                        Container(
-//                          child: Center(
-//                              child: Text(
-//                            'Log Out',
-//                            style: TextStyle(
-//                                color: Colors.white,
-//                                fontFamily: 'nunito',
-//                                fontSize: pHeight * 0.025,
-//                                fontWeight: FontWeight.bold),
-//                          )),
-//                        ),
-//                      ],
-//                    ),
-//                  ),
-//                ),
-//              ),
-//              SizedBox(
-//                height: 30,
-//              ),
             ],
           ),
         ),
