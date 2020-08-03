@@ -88,6 +88,7 @@ class _HomePageState extends State<HomePage> {
                   }).toList(),
                   onChanged: (String newValueSelected) {
                     setState(() {
+                      imageList.shuffle();
                       _currentItemSelected = newValueSelected;
                       print(_currentItemSelected);
                       if (_currentItemSelected == 'AllCities') {

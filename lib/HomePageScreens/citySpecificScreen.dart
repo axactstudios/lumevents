@@ -31,11 +31,8 @@ String decoUrl =
 
 class _CitySpecificScreenState extends State<CitySpecificScreen> {
   getDatabaseRef(List<Trending> trends) async {
-    DatabaseReference dbref = FirebaseDatabase.instance
-        .reference()
-        .child("Home")
-        .child(widget.city)
-        .child("Trending");
+    DatabaseReference dbref =
+        FirebaseDatabase.instance.reference().child("Trending");
     await dbref.once().then((DataSnapshot snap) {
       // ignore: non_constant_identifier_names
       var KEYS = snap.value.keys;
@@ -86,7 +83,7 @@ class _CitySpecificScreenState extends State<CitySpecificScreen> {
             ),
             trends.length != 0
                 ? GFCarousel(
-                    items: imageList.map(
+                    items: imageList.sublist(0, 5).map(
                       (url) {
                         return Container(
                           margin: EdgeInsets.all(8.0),

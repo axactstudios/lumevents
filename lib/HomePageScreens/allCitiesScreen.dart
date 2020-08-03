@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:math';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -27,14 +28,32 @@ List<Trending> trends = [];
 List<Trending> ideas = [];
 List<Events> events = [];
 List<Events> vids = [];
+List<int> indices = [];
 
 class _AllCitiesScreenState extends State<AllCitiesScreen> {
-  getDatabaseRef(String type, List<Trending> arr) async {
-    DatabaseReference dbref = FirebaseDatabase.instance
-        .reference()
-        .child("Home")
-        .child("AllCities")
-        .child(type);
+  getDatabaseRef(List<Trending> arr) async {
+    DatabaseReference dbref =
+        FirebaseDatabase.instance.reference().child("Trending");
+    await dbref.once().then((DataSnapshot snap) {
+      // ignore: non_constant_identifier_names
+      var KEYS = snap.value.keys;
+      // ignore: non_constant_identifier_names
+      var DATA = snap.value;
+      arr.clear();
+      for (var key in KEYS) {
+        Trending d = new Trending(DATA[key]['Name'], DATA[key]['ImageUrl'],
+            DATA[key]['Description'], DATA[key]['ImageBy']);
+        arr.add(d);
+      }
+      setState(() {
+        print(arr.length);
+      });
+    });
+  }
+
+  getDatabaseRef2(List<Trending> arr) async {
+    DatabaseReference dbref =
+        FirebaseDatabase.instance.reference().child("TopIdeas");
     await dbref.once().then((DataSnapshot snap) {
       // ignore: non_constant_identifier_names
       var KEYS = snap.value.keys;
@@ -75,14 +94,15 @@ class _AllCitiesScreenState extends State<AllCitiesScreen> {
     });
   }
 
+  Random random = new Random();
+
   @override
   void initState() {
     super.initState();
-
-    getDatabaseRef("Trending", trends);
-    getDatabaseRef("TopIdeas", ideas);
+    indices.clear();
+    getDatabaseRef(trends);
+    getDatabaseRef2(ideas);
     getDatabaseRef1("Events", events);
-    getDatabaseRef1("FeaturedVds", vids);
   }
 
   Future<void> _handleRefresh() {
@@ -91,8 +111,8 @@ class _AllCitiesScreenState extends State<AllCitiesScreen> {
       completer.complete();
     });
     setState(() {
-      getDatabaseRef("Trending", trends);
-      getDatabaseRef("TopIdeas", ideas);
+      getDatabaseRef(trends);
+      getDatabaseRef(ideas);
     });
 
     return completer.future.then<void>((_) {});
@@ -134,8 +154,15 @@ class _AllCitiesScreenState extends State<AllCitiesScreen> {
                     )
                   : ListView.builder(
                       scrollDirection: Axis.horizontal,
-                      itemCount: trends.length,
+                      itemCount: 10,
                       itemBuilder: (BuildContext context, int index) {
+                        int r = random.nextInt(10);
+                        if (indices.contains(r)) {
+                          r = random.nextInt(10);
+                        }
+                        indices.add(r);
+                        print(r);
+
                         return InkWell(
                           splashColor: Colors.transparent,
                           highlightColor: Colors.transparent,
@@ -145,10 +172,10 @@ class _AllCitiesScreenState extends State<AllCitiesScreen> {
                               return StatefulBuilder(builder:
                                   (BuildContext context, StateSetter state) {
                                 return UITrends(
-                                    trends[index].name,
-                                    trends[index].imageUrl,
-                                    trends[index].description,
-                                    trends[index].imageBy,
+                                    trends[r].name,
+                                    trends[r].imageUrl,
+                                    trends[r].description,
+                                    trends[r].imageBy,
                                     context,
                                     height,
                                     width);
@@ -185,7 +212,7 @@ class _AllCitiesScreenState extends State<AllCitiesScreen> {
                                     children: <Widget>[
                                       CircleAvatar(
                                         backgroundImage:
-                                            NetworkImage(ideas[index].imageUrl),
+                                            NetworkImage(ideas[r].imageUrl),
                                         backgroundColor: Colors.white,
                                       ),
                                       SizedBox(
@@ -206,7 +233,7 @@ class _AllCitiesScreenState extends State<AllCitiesScreen> {
                                             width: 240,
                                             color: Colors.white,
                                             child: Text(
-                                              '${trends[index].imageBy}',
+                                              '${trends[r].imageBy}',
                                               style: TextStyle(
                                                   color: Colors.black,
                                                   fontWeight: FontWeight.bold,
@@ -237,7 +264,7 @@ class _AllCitiesScreenState extends State<AllCitiesScreen> {
                                           Padding(
                                             padding: const EdgeInsets.all(8.0),
                                             child: Text(
-                                              trends[index].description,
+                                              trends[r].description,
                                               style: TextStyle(
                                                   color: Colors.white,
                                                   fontSize: 20,
@@ -254,8 +281,7 @@ class _AllCitiesScreenState extends State<AllCitiesScreen> {
                                           BlendMode.darken),
                                       borderRadius:
                                           BorderRadius.all(Radius.circular(10)),
-                                      image:
-                                          NetworkImage(trends[index].imageUrl),
+                                      image: NetworkImage(trends[r].imageUrl),
                                     ),
                                   ),
                                 ),
@@ -288,8 +314,14 @@ class _AllCitiesScreenState extends State<AllCitiesScreen> {
                     )
                   : ListView.builder(
                       scrollDirection: Axis.horizontal,
-                      itemCount: ideas.length,
+                      itemCount: 10,
                       itemBuilder: (BuildContext context, int index) {
+                        int r = random.nextInt(10);
+                        if (indices.contains(r)) {
+                          r = r + 1;
+                        }
+                        indices.add(r);
+                        print(r);
                         return InkWell(
                           splashColor: Colors.transparent,
                           highlightColor: Colors.transparent,
@@ -299,10 +331,10 @@ class _AllCitiesScreenState extends State<AllCitiesScreen> {
                               return StatefulBuilder(builder:
                                   (BuildContext context, StateSetter state) {
                                 return UIIdeas(
-                                    ideas[index].name,
-                                    ideas[index].imageUrl,
-                                    ideas[index].description,
-                                    ideas[index].imageBy,
+                                    ideas[r].name,
+                                    ideas[r].imageUrl,
+                                    ideas[r].description,
+                                    ideas[r].imageBy,
                                     context,
                                     height,
                                     width);
@@ -339,7 +371,7 @@ class _AllCitiesScreenState extends State<AllCitiesScreen> {
                                     children: <Widget>[
                                       CircleAvatar(
                                         backgroundImage:
-                                            NetworkImage(ideas[0].imageUrl),
+                                            NetworkImage(ideas[r].imageUrl),
                                         backgroundColor: Colors.white,
                                       ),
                                       SizedBox(
@@ -359,7 +391,7 @@ class _AllCitiesScreenState extends State<AllCitiesScreen> {
                                           Container(
                                             width: 240,
                                             child: Text(
-                                              '${ideas[index].imageBy}',
+                                              '${ideas[r].imageBy}',
                                               style: TextStyle(
                                                   color: Colors.black,
                                                   fontWeight: FontWeight.bold,
@@ -390,7 +422,7 @@ class _AllCitiesScreenState extends State<AllCitiesScreen> {
                                           Padding(
                                             padding: const EdgeInsets.all(8.0),
                                             child: Text(
-                                              ideas[index].description,
+                                              ideas[r].description,
                                               style: TextStyle(
                                                   color: Colors.white,
                                                   fontSize: 20,
@@ -407,8 +439,7 @@ class _AllCitiesScreenState extends State<AllCitiesScreen> {
                                           BlendMode.darken),
                                       borderRadius:
                                           BorderRadius.all(Radius.circular(10)),
-                                      image:
-                                          NetworkImage(ideas[index].imageUrl),
+                                      image: NetworkImage(ideas[r].imageUrl),
                                     ),
                                   ),
                                 ),
@@ -545,160 +576,6 @@ class _AllCitiesScreenState extends State<AllCitiesScreen> {
                                             padding: const EdgeInsets.all(8.0),
                                             child: Text(
                                               events[index].description,
-                                              style: TextStyle(
-                                                  color: Colors.white,
-                                                  fontSize: 20,
-                                                  fontWeight: FontWeight.bold,
-                                                  fontFamily: 'nunito'),
-                                              overflow: TextOverflow.fade,
-                                              softWrap: false,
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                      colorFilter: new ColorFilter.mode(
-                                          Colors.black.withOpacity(0.3),
-                                          BlendMode.darken),
-                                      borderRadius:
-                                          BorderRadius.all(Radius.circular(10)),
-                                      image:
-                                          NetworkImage(events[index].imageUrl),
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        );
-                      },
-                    ),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(top: 15.0, left: 15, bottom: 0),
-              child: Text(
-                'Featured Videos',
-                style: TextStyle(
-                    color: Theme.MyColors.themeColor,
-                    fontSize: 24,
-                    fontFamily: 'nunito',
-                    fontWeight: FontWeight.bold),
-              ),
-            ),
-            Container(
-              height: 330,
-              child: vids.length == 0
-                  ? Center(
-                      child: SpinKitWave(
-                        size: 30,
-                        color: Theme.MyColors.themeColor.withOpacity(0.7),
-                      ),
-                    )
-                  : ListView.builder(
-                      scrollDirection: Axis.horizontal,
-                      itemCount: vids.length,
-                      itemBuilder: (BuildContext context, int index) {
-                        return InkWell(
-                          splashColor: Colors.transparent,
-                          highlightColor: Colors.transparent,
-                          onTap: () {
-                            scaffoldState.currentState
-                                .showBottomSheet((context) {
-                              return StatefulBuilder(builder:
-                                  (BuildContext context, StateSetter state) {
-                                return UIVideos(
-                                    vids[index].name,
-                                    trends[index].imageUrl,
-                                    vids[index].description,
-                                    vids[index].client,
-                                    vids[index].city,
-                                    context,
-                                    height,
-                                    width);
-                              });
-                            });
-                          },
-                          child: Container(
-                            padding: EdgeInsets.all(2),
-                            height: 234,
-                            decoration: BoxDecoration(
-                                boxShadow: [
-                                  BoxShadow(
-                                    color: Colors.black26,
-                                    blurRadius: 20.0, // soften the shadow
-                                    spreadRadius: 3.0, //extend the shadow
-                                    offset: Offset(
-                                      10.0, // Move to right 10  horizontally
-                                      20.0, // Move to bottom 10 Vertically
-                                    ),
-                                  )
-                                ],
-                                color: Colors.white,
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(10))),
-                            margin: EdgeInsets.fromLTRB(20, 10, 10, 40),
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: <Widget>[
-                                Container(
-                                  padding: EdgeInsets.all(5),
-                                  height: 60,
-                                  width: 310,
-                                  child: Row(
-                                    children: <Widget>[
-                                      CircleAvatar(
-                                        backgroundImage:
-                                            NetworkImage(ideas[0].imageUrl),
-                                        backgroundColor: Colors.white,
-                                      ),
-                                      SizedBox(
-                                        width: 10,
-                                      ),
-                                      Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: <Widget>[
-                                          Text(
-                                            'Presented By',
-                                            style: TextStyle(
-                                                color: Colors.black,
-                                                fontFamily: 'nunito',
-                                                fontSize: 18),
-                                          ),
-                                          Container(
-                                            width: 240,
-                                            child: Text(
-                                              '${vids[index].client}',
-                                              style: TextStyle(
-                                                  color: Colors.black,
-                                                  fontWeight: FontWeight.bold,
-                                                  fontFamily: 'nunito',
-                                                  fontSize: 18),
-                                              overflow: TextOverflow.fade,
-                                              softWrap: false,
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                                Container(
-                                  height: 210,
-                                  width: 310,
-                                  child: ClipRRect(
-                                    borderRadius:
-                                        BorderRadius.all(Radius.circular(10)),
-                                    child: GFImageOverlay(
-                                      height: 200,
-                                      width: 300,
-                                      child: Column(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.end,
-                                        children: <Widget>[
-                                          Padding(
-                                            padding: const EdgeInsets.all(8.0),
-                                            child: Text(
-                                              vids[index].description,
                                               style: TextStyle(
                                                   color: Colors.white,
                                                   fontSize: 20,
