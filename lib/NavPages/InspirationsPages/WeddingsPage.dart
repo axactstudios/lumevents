@@ -28,20 +28,20 @@ class _WeddingsState extends State<Weddings> {
     'https://cdn.images.express.co.uk/img/dynamic/106/750x445/931966.jpg',
     'https://media.architecturaldigest.in/wp-content/uploads/2017/12/Virushka-Wedding-Decor-866x487.jpg',
     'https://images.news18.com/ibnlive/uploads/2019/12/Manish-Pandey-Ashrita-Shettys-Wedding-Pictures-8.jpg?impolicy=website&width=400&height=0',
-    'https://i.pinimg.com/originals/6d/43/01/6d4301f342637b296f017a07a96e7365.jpg'
-    'https://firebasestorage.googleapis.com/v0/b/lumevents-48ff2.appspot.com/o/Weddings%2F67.jpg?alt=media&token=f185f186-2a9e-4eaf-bbb3-699cbb128856'
-    'https://firebasestorage.googleapis.com/v0/b/lumevents-48ff2.appspot.com/o/Weddings%2F68.jpg?alt=media&token=bc2c2484-c01a-4656-943e-d750394f4435'
-    'https://firebasestorage.googleapis.com/v0/b/lumevents-48ff2.appspot.com/o/Weddings%2F69.jpg?alt=media&token=a8e74395-b568-4086-83e0-d646e2079160'
-    'https://firebasestorage.googleapis.com/v0/b/lumevents-48ff2.appspot.com/o/Weddings%2F70.jpg?alt=media&token=1a0b946b-ed42-4d3c-9298-b93681ae5dbc'
-    'https://firebasestorage.googleapis.com/v0/b/lumevents-48ff2.appspot.com/o/Weddings%2F71.jpg?alt=media&token=8731b6cb-dc69-485c-a741-8c2ebae67038'
-    'https://firebasestorage.googleapis.com/v0/b/lumevents-48ff2.appspot.com/o/Weddings%2F72.jpg?alt=media&token=7b3f92af-ddb9-49f8-a1af-48a9a85f68b9'
-    'https://firebasestorage.googleapis.com/v0/b/lumevents-48ff2.appspot.com/o/Weddings%2F73.jpg?alt=media&token=07b619b8-8ae4-4be6-8121-df1307790235'
-    'https://firebasestorage.googleapis.com/v0/b/lumevents-48ff2.appspot.com/o/Weddings%2F74.jpeg?alt=media&token=d24718ca-093c-432b-a508-071c2e23a5c1'
-    'https://firebasestorage.googleapis.com/v0/b/lumevents-48ff2.appspot.com/o/Weddings%2F75.jpg?alt=media&token=7cdb45f2-e685-4187-90ed-a1ddffd62e5b'
-    'https://firebasestorage.googleapis.com/v0/b/lumevents-48ff2.appspot.com/o/Weddings%2F76.jpg?alt=media&token=d78bf079-50f8-4eef-a076-46d9ec499a9b'
-    'https://firebasestorage.googleapis.com/v0/b/lumevents-48ff2.appspot.com/o/Weddings%2F77.jpg?alt=media&token=343e291d-4037-45ee-92d3-369905ef53ff'
-    'https://firebasestorage.googleapis.com/v0/b/lumevents-48ff2.appspot.com/o/Weddings%2F78.jpg?alt=media&token=c0d9300c-95cb-451b-a69a-5251154c32cd'
-    'https://firebasestorage.googleapis.com/v0/b/lumevents-48ff2.appspot.com/o/Weddings%2F79.jpg?alt=media&token=c97a0938-9385-4a05-af88-6708c39065d3'
+    'https://i.pinimg.com/originals/6d/43/01/6d4301f342637b296f017a07a96e7365.jpg',
+    'https://firebasestorage.googleapis.com/v0/b/lumevents-48ff2.appspot.com/o/Weddings%2F67.jpg?alt=media&token=f185f186-2a9e-4eaf-bbb3-699cbb128856',
+    'https://firebasestorage.googleapis.com/v0/b/lumevents-48ff2.appspot.com/o/Weddings%2F68.jpg?alt=media&token=bc2c2484-c01a-4656-943e-d750394f4435',
+    'https://firebasestorage.googleapis.com/v0/b/lumevents-48ff2.appspot.com/o/Weddings%2F69.jpg?alt=media&token=a8e74395-b568-4086-83e0-d646e2079160',
+    'https://firebasestorage.googleapis.com/v0/b/lumevents-48ff2.appspot.com/o/Weddings%2F70.jpg?alt=media&token=1a0b946b-ed42-4d3c-9298-b93681ae5dbc',
+    'https://firebasestorage.googleapis.com/v0/b/lumevents-48ff2.appspot.com/o/Weddings%2F71.jpg?alt=media&token=8731b6cb-dc69-485c-a741-8c2ebae67038',
+    'https://firebasestorage.googleapis.com/v0/b/lumevents-48ff2.appspot.com/o/Weddings%2F72.jpg?alt=media&token=7b3f92af-ddb9-49f8-a1af-48a9a85f68b9',
+    'https://firebasestorage.googleapis.com/v0/b/lumevents-48ff2.appspot.com/o/Weddings%2F73.jpg?alt=media&token=07b619b8-8ae4-4be6-8121-df1307790235',
+    'https://firebasestorage.googleapis.com/v0/b/lumevents-48ff2.appspot.com/o/Weddings%2F74.jpeg?alt=media&token=d24718ca-093c-432b-a508-071c2e23a5c1',
+    'https://firebasestorage.googleapis.com/v0/b/lumevents-48ff2.appspot.com/o/Weddings%2F75.jpg?alt=media&token=7cdb45f2-e685-4187-90ed-a1ddffd62e5b',
+    'https://firebasestorage.googleapis.com/v0/b/lumevents-48ff2.appspot.com/o/Weddings%2F76.jpg?alt=media&token=d78bf079-50f8-4eef-a076-46d9ec499a9b',
+    'https://firebasestorage.googleapis.com/v0/b/lumevents-48ff2.appspot.com/o/Weddings%2F77.jpg?alt=media&token=343e291d-4037-45ee-92d3-369905ef53ff',
+    'https://firebasestorage.googleapis.com/v0/b/lumevents-48ff2.appspot.com/o/Weddings%2F78.jpg?alt=media&token=c0d9300c-95cb-451b-a69a-5251154c32cd',
+    'https://firebasestorage.googleapis.com/v0/b/lumevents-48ff2.appspot.com/o/Weddings%2F79.jpg?alt=media&token=c97a0938-9385-4a05-af88-6708c39065d3',
   ];
   double height, width;
 
@@ -270,8 +270,6 @@ class _WeddingsState extends State<Weddings> {
               'AdrienneBailon to say "I do" with the most glamorous Parisian wedding you ever did see. She married her love, Israel , and their ballroom affair captured by Mon Conte de fees was one for the books. From the Eiffel Tower backdrop to her curve- hugging Walter mendez dress.',
               'Paris is the most romantic city of the world and getting married there is a dream of many. So organizing this kind of destination wedding will make the day memorable for the couple.',
               'Wedding'),
-
-
           tiles(
               scaffoldState,
               height,
@@ -281,8 +279,6 @@ class _WeddingsState extends State<Weddings> {
               'The couple exchanged vows in front of nearly 100 guests Wednesday evening in an elegant, rustic wedding at the Twenty Mile House in Northern California. The bride and groom were wed underneath a ceremony arch of white drapery, with white flower petals at their feet and towering trees enveloping their ceremony space.',
               'Weddings are all about making the couples day Joyous. And having a perfect destination and wonderful decoration of flowers matter. Organizing such marriages which make the customers happy and are spoken about even after years will not only increase the company’s goodwill but also its customer’s satisfaction.',
               'Wedding'),
-
-
           tiles(
               scaffoldState,
               height,
@@ -337,7 +333,6 @@ class _WeddingsState extends State<Weddings> {
               "A reception was also hosted in Lucknow and Sanya looked pretty in  a cream and brown-coloured lehenga, while Prateik went with a green bandhgala suit and white churidhar. The ceremony was attended by their families, and the pictures from the couple’s wedding have been shared on social media. Prateik and Sanya were married		in	a	Marathi-style	Hindu ceremony and Sanya was draped in an orange sari. Prateik was wearing a cream	coloured		sherwani	for		the occasion. ",
               "lumevents are events professional with creative ideas and solutions which will turn your wedding to a wow memory.",
               'Wedding'),
-
           tiles(
               scaffoldState,
               height,
@@ -374,10 +369,6 @@ class _WeddingsState extends State<Weddings> {
               "Ellie Goulding married art dealer Caspar Jopling at a lavish ceremony at York Minster. Wearing a custom- made Chloé gown featuring a high-neck, which took a reported 640 hours to make, Goulding arrived in a blue Volkswagen camper van to the cheers  of  the  waiting crowds lining the streets. High society and the A-list turned out in their dozens to celebrate the happy occasion - unsurprising considering how well- connected the bride and groom are",
               "a lavish and a vintage styled wedding is a great ideas for all the upcoming brides. Having a perfect self customized gown and a church wedding is a perfect ideas for a wedding. Organizing such events will help the organizers gain popularity.",
               'Wedding'),
-
-
-
-
         ],
       ),
     );

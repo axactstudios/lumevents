@@ -22,6 +22,12 @@ double height, width;
 final List<String> imageList = [];
 String pUrl =
     "https://firebasestorage.googleapis.com/v0/b/lumevents-48ff2.appspot.com/o/Home%2FAll%20Cities%2FTrending%2FUnknown-3.png?alt=media&token=9b6c8c33-73ac-4cf4-9b6f-8a93d3b79d92";
+String artistUrl =
+    "https://firebasestorage.googleapis.com/v0/b/lumevents-48ff2.appspot.com/o/CitySpecific%20Screen%20Images%2Fartist%201.jpg?alt=media&token=894b28c3-882b-4e5a-8bd6-8cbff8af14d2";
+String bridalUrl =
+    "https://firebasestorage.googleapis.com/v0/b/lumevents-48ff2.appspot.com/o/CitySpecific%20Screen%20Images%2Fbridal%20wear%201.jpg?alt=media&token=978d67d8-2403-45bd-baed-9d0f01137c70";
+String decoUrl =
+    "https://firebasestorage.googleapis.com/v0/b/lumevents-48ff2.appspot.com/o/CitySpecific%20Screen%20Images%2Fdecoration%202.jpg?alt=media&token=bac9a7e9-c4af-4a9e-bb46-b284a7e560d2";
 
 class _CitySpecificScreenState extends State<CitySpecificScreen> {
   getDatabaseRef(List<Trending> trends) async {
@@ -128,7 +134,7 @@ class _CitySpecificScreenState extends State<CitySpecificScreen> {
               children: <Widget>[
                 _retCatrgory(
                   'Artists',
-                  pUrl,
+                  artistUrl,
                   widget.city,
                   context,
                   width,
@@ -145,43 +151,89 @@ class _CitySpecificScreenState extends State<CitySpecificScreen> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: <Widget>[
-                _retCatrgory('Planner', pUrl, widget.city, context, width),
-                _retCatrgory('Photographer', pUrl, widget.city, context, width)
+                _retCatrgory(
+                    'Planner',
+                    'https://firebasestorage.googleapis.com/v0/b/lumevents-48ff2.appspot.com/o/CitySpecific%20Screen%20Images%2Fvenue%203.jpg?alt=media&token=0f54f124-8f33-44a7-9ca5-f34162be2404',
+                    widget.city,
+                    context,
+                    width),
+                _retCatrgory(
+                    'Photographer',
+                    'https://firebasestorage.googleapis.com/v0/b/lumevents-48ff2.appspot.com/o/CitySpecific%20Screen%20Images%2Fphotographer%201.jpg?alt=media&token=0c94d298-f887-493d-8dba-19d38af80451',
+                    widget.city,
+                    context,
+                    width)
               ],
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: <Widget>[
                 _retCatrgory(
-                    'Music/\nDancer', pUrl, widget.city, context, width),
-                _retCatrgory('Makeup', pUrl, widget.city, context, width),
+                    'Music/\nDancer',
+                    'https://firebasestorage.googleapis.com/v0/b/lumevents-48ff2.appspot.com/o/CitySpecific%20Screen%20Images%2Fdancer%201.jpg?alt=media&token=461f87ad-6bd6-406c-a8d8-d05ca8cdaf69',
+                    widget.city,
+                    context,
+                    width),
+                _retCatrgory(
+                    'Makeup',
+                    'https://firebasestorage.googleapis.com/v0/b/lumevents-48ff2.appspot.com/o/CitySpecific%20Screen%20Images%2Fmakeup%203.jpg?alt=media&token=7edac78c-36c0-40a3-8216-d81300f5ea59',
+                    widget.city,
+                    context,
+                    width),
               ],
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: <Widget>[
-                _retCatrgory('Jewellery', pUrl, widget.city, context, width),
-                _retCatrgory('Invites', pUrl, widget.city, context, width),
+                _retCatrgory(
+                    'Jewellery',
+                    'https://firebasestorage.googleapis.com/v0/b/lumevents-48ff2.appspot.com/o/CitySpecific%20Screen%20Images%2Fjewellery%201.jpg?alt=media&token=d55e6866-fdaf-44eb-a83f-032a5ef2d483',
+                    widget.city,
+                    context,
+                    width),
+                _retCatrgory(
+                    'Invites',
+                    'https://firebasestorage.googleapis.com/v0/b/lumevents-48ff2.appspot.com/o/CitySpecific%20Screen%20Images%2Finvites%201.jpg?alt=media&token=4ad5863b-54b9-4b6e-b590-e77c5e235dc5',
+                    widget.city,
+                    context,
+                    width),
               ],
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: <Widget>[
-                _retCatrgory('Groom Wear', pUrl, widget.city, context, width),
-                _retCatrgory('Bridal Wear', pUrl, widget.city, context, width),
+                _retCatrgory(
+                    'Groom Wear',
+                    'https://firebasestorage.googleapis.com/v0/b/lumevents-48ff2.appspot.com/o/CitySpecific%20Screen%20Images%2Fgroom%20wear%201.jpg?alt=media&token=ec4bd131-f325-4487-b44f-565cf37616a6',
+                    widget.city,
+                    context,
+                    width),
+                _retCatrgory(
+                    'Bridal Wear', bridalUrl, widget.city, context, width),
               ],
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: <Widget>[
-                _retCatrgory('Decoration', pUrl, widget.city, context, width),
-                _retCatrgory('Food', pUrl, widget.city, context, width),
+                _retCatrgory(
+                    'Decoration', decoUrl, widget.city, context, width),
+                _retCatrgory(
+                    'Food',
+                    'https://firebasestorage.googleapis.com/v0/b/lumevents-48ff2.appspot.com/o/CitySpecific%20Screen%20Images%2Ffood%201.jpg?alt=media&token=abc285e4-ce1a-4bf9-9b90-d0b852a6249d',
+                    widget.city,
+                    context,
+                    width),
               ],
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: <Widget>[
-                _retCatrgory('Mehendi', pUrl, widget.city, context, width)
+                _retCatrgory(
+                    'Mehendi',
+                    'https://firebasestorage.googleapis.com/v0/b/lumevents-48ff2.appspot.com/o/CitySpecific%20Screen%20Images%2Fmehendi%202.jpg?alt=media&token=98e509c5-787e-4cb9-94b4-c8c6e97babb7',
+                    widget.city,
+                    context,
+                    width)
               ],
             ),
             SizedBox(

@@ -49,7 +49,7 @@ class MainPage extends StatelessWidget {
                 child: Padding(
                   padding: const EdgeInsets.all(16.0),
                   child: Text(
-                    'Explore the magic !',
+                    'Delivering your dreams !',
                     style: TextStyle(
                         color: Colors.white,
                         fontFamily: 'nunito',
