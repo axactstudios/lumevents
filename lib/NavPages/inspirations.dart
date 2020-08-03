@@ -51,24 +51,28 @@ class _RealEventsTabState extends State<RealEventsTab> {
       appBar: AppBar(
         automaticallyImplyLeading: false,
         backgroundColor: Colors.white,
-        actions: [
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 8.0),
-            child: Image.asset(
-              'images/dreamthyeve.png',
-              scale: 26,
-            ),
-          )
-        ],
-        title: Text(
-          'Dream It',
-          overflow: TextOverflow.fade,
-          style: TextStyle(
-              fontSize: 24,
-              fontWeight: FontWeight.bold,
-              color: Theme.MyColors.themeColor,
-              fontFamily: 'nunito'),
-          textAlign: TextAlign.left,
+        title: Container(
+          width: double.infinity,
+          child: Row(
+            children: <Widget>[
+              Image.asset(
+                'images/dreamthyeve.png',
+                scale: 26,
+              ),
+              Spacer(),
+              Text(
+                'Dream It',
+                overflow: TextOverflow.fade,
+                style: TextStyle(
+                    fontSize: 24,
+                    fontWeight: FontWeight.bold,
+                    color: Theme.MyColors.themeColor,
+                    fontFamily: 'nunito'),
+                textAlign: TextAlign.left,
+              ),
+              Spacer()
+            ],
+          ),
         ),
       ),
       key: scaffoldState,

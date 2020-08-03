@@ -84,26 +84,53 @@ class _MorePageState extends State<MorePage> {
       appBar: AppBar(
         automaticallyImplyLeading: false,
         backgroundColor: Colors.white,
-        actions: [
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 8.0),
-            child: Image.asset(
-              'images/dreamthyeve.png',
-              scale: 26,
-            ),
-          )
-        ],
-        title: Text(
-          'More Options',
-          overflow: TextOverflow.fade,
-          style: TextStyle(
-              fontSize: 24,
-              fontWeight: FontWeight.bold,
-              color: Theme.MyColors.themeColor,
-              fontFamily: 'nunito'),
-          textAlign: TextAlign.left,
+        title: Container(
+          width: double.infinity,
+          child: Row(
+            children: <Widget>[
+              Image.asset(
+                'images/dreamthyeve.png',
+                scale: 26,
+              ),
+              Spacer(),
+              Text(
+                'More options',
+                overflow: TextOverflow.fade,
+                style: TextStyle(
+                    fontSize: 24,
+                    fontWeight: FontWeight.bold,
+                    color: Theme.MyColors.themeColor,
+                    fontFamily: 'nunito'),
+                textAlign: TextAlign.left,
+              ),
+              Spacer()
+            ],
+          ),
         ),
       ),
+//      appBar: AppBar(
+//        automaticallyImplyLeading: false,
+//        backgroundColor: Colors.white,
+//        actions: [
+//          Padding(
+//            padding: const EdgeInsets.symmetric(horizontal: 8.0),
+//            child: Image.asset(
+//              'images/dreamthyeve.png',
+//              scale: 26,
+//            ),
+//          )
+//        ],
+//        title: Text(
+//          'More Options',
+//          overflow: TextOverflow.fade,
+//          style: TextStyle(
+//              fontSize: 24,
+//              fontWeight: FontWeight.bold,
+//              color: Theme.MyColors.themeColor,
+//              fontFamily: 'nunito'),
+//          textAlign: TextAlign.left,
+//        ),
+//      ),
 //      appBar: AppBar(
 //          automaticallyImplyLeading: false,
 //          backgroundColor: Colors.white,

@@ -98,15 +98,7 @@ class _AllCitiesScreenState extends State<AllCitiesScreen> {
   fillIndices() async {
     await indices.clear();
     int r;
-    for (int i = 0; i < 10; i++) {
-      r = await random.nextInt(10);
-      if (indices.contains(r)) {
-        do {
-          r = await random.nextInt(20);
-        } while (indices.contains(r));
-      }
-      await indices.add(r);
-    }
+    for (int i = 0; i < 10; i++) {}
     setState(() {
       print(indices);
     });
@@ -174,6 +166,13 @@ class _AllCitiesScreenState extends State<AllCitiesScreen> {
                       scrollDirection: Axis.horizontal,
                       itemCount: 10,
                       itemBuilder: (BuildContext context, int index) {
+                        int r = random.nextInt(10);
+                        if (indices.contains(r)) {
+                          do {
+                            r = random.nextInt(20);
+                          } while (indices.contains(r));
+                        }
+                        indices.add(r);
 //                        int r = random.nextInt(10);
 //                        if (indices.contains(r)) {
 //                          while (!indices.contains(r)) {
@@ -192,10 +191,10 @@ class _AllCitiesScreenState extends State<AllCitiesScreen> {
                               return StatefulBuilder(builder:
                                   (BuildContext context, StateSetter state) {
                                 return UITrends(
-                                    trends[indices[index]].name,
-                                    trends[indices[index]].imageUrl,
-                                    trends[indices[index]].description,
-                                    trends[indices[index]].imageBy,
+                                    trends[r].name,
+                                    trends[r].imageUrl,
+                                    trends[r].description,
+                                    trends[r].imageBy,
                                     context,
                                     height,
                                     width);
@@ -231,8 +230,8 @@ class _AllCitiesScreenState extends State<AllCitiesScreen> {
                                   child: Row(
                                     children: <Widget>[
                                       CircleAvatar(
-                                        backgroundImage: NetworkImage(
-                                            ideas[indices[index]].imageUrl),
+                                        backgroundImage:
+                                            NetworkImage(ideas[r].imageUrl),
                                         backgroundColor: Colors.white,
                                       ),
                                       SizedBox(
@@ -253,7 +252,7 @@ class _AllCitiesScreenState extends State<AllCitiesScreen> {
                                             width: 240,
                                             color: Colors.white,
                                             child: Text(
-                                              '${trends[indices[index]].imageBy}',
+                                              '${trends[r].imageBy}',
                                               style: TextStyle(
                                                   color: Colors.black,
                                                   fontWeight: FontWeight.bold,
@@ -284,8 +283,7 @@ class _AllCitiesScreenState extends State<AllCitiesScreen> {
                                           Padding(
                                             padding: const EdgeInsets.all(8.0),
                                             child: Text(
-                                              trends[indices[index]]
-                                                  .description,
+                                              trends[r].description,
                                               style: TextStyle(
                                                   color: Colors.white,
                                                   fontSize: 20,
@@ -302,8 +300,7 @@ class _AllCitiesScreenState extends State<AllCitiesScreen> {
                                           BlendMode.darken),
                                       borderRadius:
                                           BorderRadius.all(Radius.circular(10)),
-                                      image: NetworkImage(
-                                          trends[indices[index]].imageUrl),
+                                      image: NetworkImage(trends[r].imageUrl),
                                     ),
                                   ),
                                 ),

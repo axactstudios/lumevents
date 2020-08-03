@@ -177,24 +177,28 @@ class _PlanPageState extends State<PlanPage> {
       appBar: AppBar(
         automaticallyImplyLeading: false,
         backgroundColor: Colors.white,
-        actions: [
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 8.0),
-            child: Image.asset(
-              'images/dreamthyeve.png',
-              scale: 26,
-            ),
-          )
-        ],
-        title: Text(
-          'Plan Your Event',
-          overflow: TextOverflow.fade,
-          style: TextStyle(
-              fontSize: 24,
-              fontWeight: FontWeight.bold,
-              color: Theme1.MyColors.themeColor,
-              fontFamily: 'nunito'),
-          textAlign: TextAlign.left,
+        title: Container(
+          width: double.infinity,
+          child: Row(
+            children: <Widget>[
+              Image.asset(
+                'images/dreamthyeve.png',
+                scale: 26,
+              ),
+              Spacer(),
+              Text(
+                'Plan Your Event',
+                overflow: TextOverflow.fade,
+                style: TextStyle(
+                    fontSize: 24,
+                    fontWeight: FontWeight.bold,
+                    color: Theme1.MyColors.themeColor,
+                    fontFamily: 'nunito'),
+                textAlign: TextAlign.left,
+              ),
+              Spacer()
+            ],
+          ),
         ),
       ),
 //      appBar: AppBar(
