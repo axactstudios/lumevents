@@ -15,6 +15,42 @@ List<String> _cities = ['AllCities'];
 class _HomePageState extends State<HomePage> {
   String selectedValue, _currentItemSelected = 'AllCities';
   Widget _currentScreenToShow = AllCitiesScreen();
+  // function to delete all the vendors of all the cities
+//  delete() {
+//    print('1');
+//    DatabaseReference ref = FirebaseDatabase.instance.reference().child('Home');
+//    ref.once().then((DataSnapshot snap) {
+//      // ignore: non_constant_identifier_names
+//      var KEYS = snap.value.keys;
+//      // ignore: non_constant_identifier_names
+//      var DATA = snap.value;
+//
+//      for (var key in KEYS) {
+//        DatabaseReference newref = ref.child(key);
+//        print('2');
+//        ref.child(key).once().then((DataSnapshot snap) {
+//          // ignore: non_constant_identifier_names
+//          var KEYS = snap.value.keys;
+//          // ignore: non_constant_identifier_names
+//          var DATA = snap.value;
+//
+//          for (var key1 in KEYS) {
+//            print('3');
+//            if (key1 != 'Venues') {
+//              newref.child(key1).remove();
+//            }
+//          }
+//          setState(() {
+//            print('done');
+//          });
+//        });
+//      }
+//      setState(() {
+//        print('done');
+//      });
+//    });
+//  }
+
   getCities() {
     DatabaseReference citiesref =
         FirebaseDatabase.instance.reference().child('Home');
@@ -36,6 +72,7 @@ class _HomePageState extends State<HomePage> {
   @override
   void initState() {
     super.initState();
+//    delete();
     getCities();
   }
 

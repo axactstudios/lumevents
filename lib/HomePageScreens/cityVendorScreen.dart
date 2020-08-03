@@ -107,6 +107,7 @@ class _CityVendorScreenState extends State<CityVendorScreen> {
 
   @override
   void initState() {
+    availableVendors.clear();
     print(widget.city);
     super.initState();
     getDatabaseRef(availableVendors);
