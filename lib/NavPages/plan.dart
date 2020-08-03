@@ -175,37 +175,60 @@ class _PlanPageState extends State<PlanPage> {
     return Scaffold(
       key: _scaffoldKey,
       appBar: AppBar(
-          automaticallyImplyLeading: false,
-          backgroundColor: Colors.white,
-          title: Row(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              Image.asset(
-                'images/dreamthyeve.png',
-                scale: 26,
-              ),
-            ],
-          ),
-          actions: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                Container(
-                  width: 220,
-                  child: Text(
-                    'Plan Your Event',
-                    overflow: TextOverflow.fade,
-                    style: TextStyle(
-                        fontSize: 22,
-                        fontWeight: FontWeight.bold,
-                        color: Theme1.MyColors.themeColor,
-                        fontFamily: 'nunito'),
-                    textAlign: TextAlign.left,
-                  ),
-                )
-              ],
+        automaticallyImplyLeading: false,
+        backgroundColor: Colors.white,
+        actions: [
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 8.0),
+            child: Image.asset(
+              'images/dreamthyeve.png',
+              scale: 26,
             ),
-          ]),
+          )
+        ],
+        title: Text(
+          'Plan Your Event',
+          overflow: TextOverflow.fade,
+          style: TextStyle(
+              fontSize: 24,
+              fontWeight: FontWeight.bold,
+              color: Theme1.MyColors.themeColor,
+              fontFamily: 'nunito'),
+          textAlign: TextAlign.left,
+        ),
+      ),
+//      appBar: AppBar(
+//          automaticallyImplyLeading: false,
+//          backgroundColor: Colors.white,
+//          title: Row(
+//            mainAxisAlignment: MainAxisAlignment.start,
+//            children: [
+//              Image.asset(
+//                'images/dreamthyeve.png',
+//                scale: 26,
+//              ),
+//            ],
+//          ),
+//          actions: [
+//            Row(
+//              mainAxisAlignment: MainAxisAlignment.end,
+//              children: [
+//                Container(
+//                  width: 220,
+//                  child: Text(
+//                    'Plan Your Event',
+//                    overflow: TextOverflow.fade,
+//                    style: TextStyle(
+//                        fontSize: 22,
+//                        fontWeight: FontWeight.bold,
+//                        color: Theme1.MyColors.themeColor,
+//                        fontFamily: 'nunito'),
+//                    textAlign: TextAlign.left,
+//                  ),
+//                )
+//              ],
+//            ),
+//          ]),
       body: Form(
         key: _formKey,
         child: ListView(

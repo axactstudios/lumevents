@@ -82,37 +82,60 @@ class _MorePageState extends State<MorePage> {
     final pWidth = MediaQuery.of(context).size.width;
     return Scaffold(
       appBar: AppBar(
-          automaticallyImplyLeading: false,
-          backgroundColor: Colors.white,
-          title: Row(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              Image.asset(
-                'images/dreamthyeve.png',
-                scale: 26,
-              ),
-            ],
-          ),
-          actions: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                Container(
-                  width: pWidth * 0.55,
-                  child: Text(
-                    'More Options',
-                    overflow: TextOverflow.fade,
-                    style: TextStyle(
-                        fontSize: 22,
-                        fontWeight: FontWeight.bold,
-                        color: Theme.MyColors.themeColor,
-                        fontFamily: 'nunito'),
-                    textAlign: TextAlign.left,
-                  ),
-                ),
-              ],
+        automaticallyImplyLeading: false,
+        backgroundColor: Colors.white,
+        actions: [
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 8.0),
+            child: Image.asset(
+              'images/dreamthyeve.png',
+              scale: 26,
             ),
-          ]),
+          )
+        ],
+        title: Text(
+          'More Options',
+          overflow: TextOverflow.fade,
+          style: TextStyle(
+              fontSize: 24,
+              fontWeight: FontWeight.bold,
+              color: Theme.MyColors.themeColor,
+              fontFamily: 'nunito'),
+          textAlign: TextAlign.left,
+        ),
+      ),
+//      appBar: AppBar(
+//          automaticallyImplyLeading: false,
+//          backgroundColor: Colors.white,
+//          title: Row(
+//            mainAxisAlignment: MainAxisAlignment.start,
+//            children: [
+//              Image.asset(
+//                'images/dreamthyeve.png',
+//                scale: 26,
+//              ),
+//            ],
+//          ),
+//          actions: [
+//            Row(
+//              mainAxisAlignment: MainAxisAlignment.end,
+//              children: [
+//                Container(
+//                  width: pWidth * 0.55,
+//                  child: Text(
+//                    'More Options',
+//                    overflow: TextOverflow.fade,
+//                    style: TextStyle(
+//                        fontSize: 22,
+//                        fontWeight: FontWeight.bold,
+//                        color: Theme.MyColors.themeColor,
+//                        fontFamily: 'nunito'),
+//                    textAlign: TextAlign.left,
+//                  ),
+//                ),
+//              ],
+//            ),
+//          ]),
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(10.0),

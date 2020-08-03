@@ -49,37 +49,28 @@ class _RealEventsTabState extends State<RealEventsTab> {
     height = MediaQuery.of(context).size.height;
     return Scaffold(
       appBar: AppBar(
-          automaticallyImplyLeading: false,
-          backgroundColor: Colors.white,
-          title: Row(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              Image.asset(
-                'images/dreamthyeve.png',
-                scale: 26,
-              ),
-            ],
-          ),
-          actions: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                Container(
-                  width: 170,
-                  child: Text(
-                    'Dream It',
-                    overflow: TextOverflow.fade,
-                    style: TextStyle(
-                        fontSize: 22,
-                        fontWeight: FontWeight.bold,
-                        color: Theme.MyColors.themeColor,
-                        fontFamily: 'nunito'),
-                    textAlign: TextAlign.left,
-                  ),
-                )
-              ],
+        automaticallyImplyLeading: false,
+        backgroundColor: Colors.white,
+        actions: [
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 8.0),
+            child: Image.asset(
+              'images/dreamthyeve.png',
+              scale: 26,
             ),
-          ]),
+          )
+        ],
+        title: Text(
+          'Dream It',
+          overflow: TextOverflow.fade,
+          style: TextStyle(
+              fontSize: 24,
+              fontWeight: FontWeight.bold,
+              color: Theme.MyColors.themeColor,
+              fontFamily: 'nunito'),
+          textAlign: TextAlign.left,
+        ),
+      ),
       key: scaffoldState,
       body: listOfUrls.length != 0
           ? Padding(
