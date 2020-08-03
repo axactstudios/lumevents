@@ -18,60 +18,61 @@ class CityVendorScreen extends StatefulWidget {
   _CityVendorScreenState createState() => _CityVendorScreenState();
 }
 
-final scaffoldState = GlobalKey<ScaffoldState>();
-
-List databaseIdentifiers = [
-  "Venues",
-  "Mehndi",
-  "Planner",
-  "Photographer",
-  "MusicDance",
-  "MakeUp",
-  "Jewellery",
-  "Invites",
-  "GroomWear",
-  "BridalWear",
-  "Decoration",
-  "Foods",
-  "ArtistManagement"
-];
-String _currentCategory = "";
-List<Vendor> availableVendors = [];
-void setIdentifier(String check) {
-  print('To check $check');
-  if (check == "Venues") {
-    _currentCategory = databaseIdentifiers[0];
-  } else if (check == "Mehendi") {
-    _currentCategory = databaseIdentifiers[1];
-  } else if (check == "Planner") {
-    _currentCategory = databaseIdentifiers[2];
-  } else if (check == "Photographer") {
-    _currentCategory = databaseIdentifiers[3];
-  } else if (check == "Music/\nDancer") {
-    _currentCategory = databaseIdentifiers[4];
-  } else if (check == "Makeup") {
-    _currentCategory = databaseIdentifiers[5];
-  } else if (check == "Jewellery") {
-    _currentCategory = databaseIdentifiers[6];
-  } else if (check == "Invites") {
-    _currentCategory = databaseIdentifiers[7];
-  } else if (check == "Groom Wear") {
-    _currentCategory = databaseIdentifiers[8];
-  } else if (check == "Bridal Wear") {
-    _currentCategory = databaseIdentifiers[9];
-  } else if (check == "Decoration") {
-    _currentCategory = databaseIdentifiers[10];
-  } else if (check == "Food") {
-    _currentCategory = databaseIdentifiers[11];
-  } else if (check == "Artists") {
-    _currentCategory = 'ArtistManagement';
-  }
-}
-
 double height, width;
 
 class _CityVendorScreenState extends State<CityVendorScreen> {
-  getDatabaseRef(List<Vendor> availableVendors) async {
+  final scaffoldState = GlobalKey<ScaffoldState>();
+
+  List databaseIdentifiers = [
+    "Venues",
+    "Mehndi",
+    "Planner",
+    "Photographer",
+    "MusicDance",
+    "MakeUp",
+    "Jewellery",
+    "Invites",
+    "GroomWear",
+    "BridalWear",
+    "Decoration",
+    "Foods",
+    "ArtistManagement"
+  ];
+  String _currentCategory = "";
+  List<Vendor> availableVendors = [];
+
+  void setIdentifier(String check) {
+    print('To check $check');
+    if (check == "Venues") {
+      _currentCategory = databaseIdentifiers[0];
+    } else if (check == "Mehendi") {
+      _currentCategory = databaseIdentifiers[1];
+    } else if (check == "Planner") {
+      _currentCategory = databaseIdentifiers[2];
+    } else if (check == "Photographer") {
+      _currentCategory = databaseIdentifiers[3];
+    } else if (check == "Music/\nDancer") {
+      _currentCategory = databaseIdentifiers[4];
+    } else if (check == "Makeup") {
+      _currentCategory = databaseIdentifiers[5];
+    } else if (check == "Jewellery") {
+      _currentCategory = databaseIdentifiers[6];
+    } else if (check == "Invites") {
+      _currentCategory = databaseIdentifiers[7];
+    } else if (check == "Groom Wear") {
+      _currentCategory = databaseIdentifiers[8];
+    } else if (check == "Bridal Wear") {
+      _currentCategory = databaseIdentifiers[9];
+    } else if (check == "Decoration") {
+      _currentCategory = databaseIdentifiers[10];
+    } else if (check == "Food") {
+      _currentCategory = databaseIdentifiers[11];
+    } else if (check == "Artists") {
+      _currentCategory = 'ArtistManagement';
+    }
+  }
+
+  getDatabaseRef() async {
     availableVendors.clear();
     DatabaseReference dbref = FirebaseDatabase.instance
         .reference()
@@ -110,7 +111,8 @@ class _CityVendorScreenState extends State<CityVendorScreen> {
     availableVendors.clear();
     print(widget.city);
     super.initState();
-    getDatabaseRef(availableVendors);
+    setIdentifier(widget.vendorType);
+    getDatabaseRef();
   }
 
   Future<void> _handleRefresh() {
@@ -119,7 +121,7 @@ class _CityVendorScreenState extends State<CityVendorScreen> {
       completer.complete();
     });
     setState(() {
-      getDatabaseRef(availableVendors);
+      getDatabaseRef();
     });
 
     return completer.future.then<void>((_) {});
