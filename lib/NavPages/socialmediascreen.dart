@@ -25,6 +25,7 @@ class _SocialMediaScreenState extends State<SocialMediaScreen> {
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
+        iconTheme: IconThemeData(color: Theme.MyColors.themeColor),
         backgroundColor: Colors.white,
         title: Container(
           width: double.infinity,
@@ -61,7 +62,7 @@ class _SocialMediaScreenState extends State<SocialMediaScreen> {
                 children: <Widget>[
                   InkWell(
                     onTap: () {
-                      FlutterOpenWhatsapp.sendSingleMessage('+919836262656',
+                      FlutterOpenWhatsapp.sendSingleMessage('+918967695914',
                           'Hi! I use your supercool app DreamThyEve!');
                     },
                     child: Card(

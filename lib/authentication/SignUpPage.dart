@@ -4,6 +4,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:lumevents/authentication/LoginPage.dart';
 import 'package:regexed_validator/regexed_validator.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../theme.dart' as Theme;
 
@@ -114,7 +115,7 @@ class _SignUpPageState extends State<SignUpPage> {
               child: Column(
                 children: <Widget>[
                   const SizedBox(
-                    height: 30.0,
+                    height: 100.0,
                   ),
                   Padding(
                     padding: const EdgeInsets.symmetric(
@@ -194,6 +195,21 @@ class _SignUpPageState extends State<SignUpPage> {
                       }
                     },
                   ),
+                  SizedBox(
+                    height: 100,
+                  ),
+                  InkWell(
+                    onTap: () {
+                      _launchURL();
+                    },
+                    child: Text(
+                      'Looking for a Business Account?',
+                      style: TextStyle(
+                          decoration: TextDecoration.underline,
+                          fontFamily: 'nunito',
+                          fontSize: 18.0),
+                    ),
+                  ),
                 ],
               ),
             ),
@@ -201,5 +217,15 @@ class _SignUpPageState extends State<SignUpPage> {
         ),
       ),
     );
+  }
+
+  _launchURL() async {
+    const url =
+        'https://play.google.com/store/apps/details?id=com.axactstudios.lumeventsbussiness';
+    if (await canLaunch(url)) {
+      await launch(url);
+    } else {
+      throw 'Could not launch $url';
+    }
   }
 }

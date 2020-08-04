@@ -84,7 +84,7 @@ class _PlanPageState extends State<PlanPage> {
     // Create our mail/envelope.
     var envelope = new Envelope()
       ..from = 'axactstudios@gmail.com'
-      ..recipients.add('axactstudios@gmail.com')
+      ..recipients.add('lumevent@gmail.com')
       ..subject = '$dropdownValue ${userData.name} ${DateTime.now()}'
       ..text =
           'Name-${userData.name}\nPhone-${phoneController.text}\nCity-${cityController.text}\nEvent-$dropdownValue\nBudget-${budgetBday.text}\nEvent Date-$finaldate\nOverview- ${overview.text}\nMy Wishlist- ${wishes}';
@@ -106,7 +106,7 @@ class _PlanPageState extends State<PlanPage> {
     // Create our mail/envelope.
     var envelope = new Envelope()
       ..from = 'axactstudios@gmail.com'
-      ..recipients.add('axactstudios@gmail.com')
+      ..recipients.add('lumevent@gmail.com')
       ..subject = '$dropdownValue ${userData.name} ${DateTime.now()}'
       ..text =
           'Name-${userData.name}\nPhone-${phoneController.text}\nCity-${cityController.text}\nEvent-$dropdownValue\nBudget-$dropdownValue3\nI am-$dropdownValue1\nEvent Date-$finaldate\nMy Wishlist- ${wishes}';

@@ -37,7 +37,9 @@ class _MorePageState extends State<MorePage> {
     // Create our mail/envelope.
     var envelope = new Envelope()
       ..from = 'axactstudios@gmail.com'
-      ..recipients.add('axactstudios@gmail.com')
+      ..recipients.add(
+        'lumevent@gmail.com',
+      )
       ..subject = 'Callback Request ${DateTime.now()}'
       ..text =
           'Phone Number-${numberController.text}\nEvent-${eventController.text}\nBudget-${budgetController.text}';

@@ -6,6 +6,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:lumevents/NavPages/home.dart';
 import 'package:lumevents/NavPages/planWidgets/formFields.dart';
 import 'package:regexed_validator/regexed_validator.dart';
+import 'package:url_launcher/url_launcher.dart';
 import '../main.dart';
 import '../main.dart';
 import '../theme.dart' as Theme;
@@ -67,189 +68,194 @@ class _LoginPageState extends State<LoginPage> {
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(16.0),
-          child: SingleChildScrollView(
-            child: Form(
-              key: _formKey,
-              child: Column(
-                children: <Widget>[
-                  SizedBox(
-                    height: 30.0,
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 19.5, vertical: 15.0),
-                    child: TextFormField(
-                      controller: _emailController,
-                      cursorColor: Colors.black,
-                      decoration: new InputDecoration(
-                          enabledBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(8),
-                          ),
-                          contentPadding: EdgeInsets.only(
-                              left: 15, bottom: 11, top: 11, right: 15),
-                          hintText: "Enter your email",
-                          hintStyle:
-                              TextStyle(color: Theme.MyColors.themeColor)),
-                      validator: (value) {
-                        if (!validator.email(value)) {
-                          return 'Invalid email';
-                        } else {
-                          return null;
-                        }
-                      },
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 19.5, vertical: 15.0),
-                    child: TextFormField(
-                      controller: _passwordController,
-                      cursorColor: Colors.black,
-                      decoration: new InputDecoration(
-                          enabledBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(8),
-                          ),
-                          contentPadding: EdgeInsets.only(
-                              left: 15, bottom: 11, top: 11, right: 15),
-                          hintText: "Enter your password",
-                          hintStyle:
-                              TextStyle(color: Theme.MyColors.themeColor)),
-                      validator: (value) {
-                        if (value.length < 6) {
-                          return 'Invalid password (Min. 6 characters are required)';
-                        } else {
-                          return null;
-                        }
-                      },
-                    ),
-                  ),
-                  SizedBox(
-                    height: 6.0,
-                  ),
-                  InkWell(
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => ForgotPassword()),
-                      );
-                    },
-                    child: Text(
-                      'Forgot Password?',
-                      style: TextStyle(
-                          decoration: TextDecoration.underline,
-                          fontFamily: 'nunito',
-                          fontSize: 15.0),
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 15.0,
-                  ),
-                  RaisedButton(
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(12.0),
-                      side: BorderSide(color: Colors.white),
-                    ),
-                    color: Theme.MyColors.themeColor,
-                    child: Padding(
-                      padding: const EdgeInsets.all(10.0),
-                      child: Text(
-                        'Login',
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontFamily: 'nunito',
-                            fontWeight: FontWeight.bold,
-                            fontSize: 16),
-                      ),
-                    ),
-                    onPressed: () async {
-                      if (_formKey.currentState.validate()) {
-                        signIn();
+          child: Form(
+            key: _formKey,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                SizedBox(
+                  height: 90.0,
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(
+                      horizontal: 19.5, vertical: 15.0),
+                  child: TextFormField(
+                    controller: _emailController,
+                    cursorColor: Colors.black,
+                    decoration: new InputDecoration(
+                        enabledBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                        contentPadding: EdgeInsets.only(
+                            left: 15, bottom: 11, top: 11, right: 15),
+                        hintText: "Enter your email",
+                        hintStyle: TextStyle(color: Theme.MyColors.themeColor)),
+                    validator: (value) {
+                      if (!validator.email(value)) {
+                        return 'Invalid email';
+                      } else {
+                        return null;
                       }
                     },
                   ),
-                  SizedBox(
-                    height: 6.0,
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 50.0, vertical: 15),
-                    child: RaisedButton(
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(20.0),
-                        side: BorderSide(color: Colors.white),
-                      ),
-                      color: Theme.MyColors.themeColor,
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(
-                            horizontal: 10.0, vertical: 15),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Icon(
-                              FontAwesomeIcons.google,
-                              color: Colors.white,
-                            ),
-                            SizedBox(
-                              width: 20.0,
-                            ),
-                            Text(
-                              'Login with Google',
-                              style: TextStyle(
-                                  color: Colors.white,
-                                  fontFamily: 'nunito',
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 16),
-                            ),
-                          ],
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(
+                      horizontal: 19.5, vertical: 15.0),
+                  child: TextFormField(
+                    controller: _passwordController,
+                    cursorColor: Colors.black,
+                    decoration: new InputDecoration(
+                        enabledBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(8),
                         ),
-                      ),
-                      onPressed: () async {
-                        bool res = await AuthProvider().loginWithGoogle();
-
-                        if (!res) {
-                          Fluttertoast.showToast(
-                              msg: 'Login failed',
-                              toastLength: Toast.LENGTH_LONG);
-                        } else {
-                          Navigator.pushReplacement(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => MyHomePage()),
-                          );
-                        }
-                      },
+                        contentPadding: EdgeInsets.only(
+                            left: 15, bottom: 11, top: 11, right: 15),
+                        hintText: "Enter your password",
+                        hintStyle: TextStyle(color: Theme.MyColors.themeColor)),
+                    validator: (value) {
+                      if (value.length < 6) {
+                        return 'Invalid password (Min. 6 characters are required)';
+                      } else {
+                        return null;
+                      }
+                    },
+                  ),
+                ),
+                SizedBox(
+                  height: 6.0,
+                ),
+                InkWell(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => ForgotPassword()),
+                    );
+                  },
+                  child: Text(
+                    'Forgot Password?',
+                    style: TextStyle(
+                        decoration: TextDecoration.underline,
+                        fontFamily: 'nunito',
+                        fontSize: 15.0),
+                  ),
+                ),
+                const SizedBox(
+                  height: 15.0,
+                ),
+                RaisedButton(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(12.0),
+                    side: BorderSide(color: Colors.white),
+                  ),
+                  color: Theme.MyColors.themeColor,
+                  child: Padding(
+                    padding: const EdgeInsets.all(10.0),
+                    child: Text(
+                      'Login',
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontFamily: 'nunito',
+                          fontWeight: FontWeight.bold,
+                          fontSize: 16),
                     ),
                   ),
-                  RaisedButton(
+                  onPressed: () async {
+                    if (_formKey.currentState.validate()) {
+                      signIn();
+                    }
+                  },
+                ),
+                SizedBox(
+                  height: 6.0,
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(
+                      horizontal: 50.0, vertical: 15),
+                  child: RaisedButton(
                     shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(15.0),
+                      borderRadius: BorderRadius.circular(20.0),
                       side: BorderSide(color: Colors.white),
                     ),
                     color: Theme.MyColors.themeColor,
                     child: Padding(
-                      padding: const EdgeInsets.all(16.0),
-                      child: Text(
-                        'New User? Sign Up',
-                        style: TextStyle(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 10.0, vertical: 15),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Icon(
+                            FontAwesomeIcons.google,
                             color: Colors.white,
-                            fontFamily: 'nunito',
-                            fontWeight: FontWeight.bold,
-                            fontSize: 16),
+                          ),
+                          SizedBox(
+                            width: 20.0,
+                          ),
+                          Text(
+                            'Login with Google',
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontFamily: 'nunito',
+                                fontWeight: FontWeight.bold,
+                                fontSize: 16),
+                          ),
+                        ],
                       ),
                     ),
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => SignUpPage()),
-                      );
+                    onPressed: () async {
+                      bool res = await AuthProvider().loginWithGoogle();
+
+                      if (!res) {
+                        Fluttertoast.showToast(
+                            msg: 'Login failed',
+                            toastLength: Toast.LENGTH_LONG);
+                      } else {
+                        Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(builder: (context) => MyHomePage()),
+                        );
+                      }
                     },
                   ),
-                  Spacer(),
-                  Text('Looking for a Business Account?'),
-                  Spacer()
-                ],
-              ),
+                ),
+                RaisedButton(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(15.0),
+                    side: BorderSide(color: Colors.white),
+                  ),
+                  color: Theme.MyColors.themeColor,
+                  child: Padding(
+                    padding: const EdgeInsets.all(16.0),
+                    child: Text(
+                      'New User? Sign Up',
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontFamily: 'nunito',
+                          fontWeight: FontWeight.bold,
+                          fontSize: 16),
+                    ),
+                  ),
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => SignUpPage()),
+                    );
+                  },
+                ),
+                Spacer(),
+                InkWell(
+                  onTap: () {
+                    _launchURL();
+                  },
+                  child: Text(
+                    'Looking for a Business Account?',
+                    style: TextStyle(
+                        decoration: TextDecoration.underline,
+                        fontFamily: 'nunito',
+                        fontSize: 18.0),
+                  ),
+                ),
+              ],
             ),
           ),
         ),
@@ -330,5 +336,15 @@ class _LoginPageState extends State<LoginPage> {
             });
       }
     });
+  }
+
+  _launchURL() async {
+    const url =
+        'https://play.google.com/store/apps/details?id=com.axactstudios.lumeventsbussiness';
+    if (await canLaunch(url)) {
+      await launch(url);
+    } else {
+      throw 'Could not launch $url';
+    }
   }
 }

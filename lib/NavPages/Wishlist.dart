@@ -36,6 +36,7 @@ class _WishlistState extends State<Wishlist> {
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
+        iconTheme: IconThemeData(color: Theme.MyColors.themeColor),
         backgroundColor: Colors.white,
         title: Container(
           width: double.infinity,
