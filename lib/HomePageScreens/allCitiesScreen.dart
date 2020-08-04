@@ -139,40 +139,40 @@ class _AllCitiesScreenState extends State<AllCitiesScreen> {
         onRefresh: _handleRefresh,
         child: SingleChildScrollView(
           physics: AlwaysScrollableScrollPhysics(),
-          child:
-              Column(crossAxisAlignment: CrossAxisAlignment.start, children: <
-                  Widget>[
-            Padding(
-              padding: const EdgeInsets.only(top: 15.0, left: 15, bottom: 0),
-              child: Text(
-                'Trending',
-                style: TextStyle(
-                    fontSize: 24,
-                    color: Theme.MyColors.themeColor,
-                    fontFamily: 'nunito',
-                    fontWeight: FontWeight.bold),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              Padding(
+                padding: const EdgeInsets.only(top: 15.0, left: 15, bottom: 0),
+                child: Text(
+                  'Trending',
+                  style: TextStyle(
+                      fontSize: 24,
+                      color: Theme.MyColors.themeColor,
+                      fontFamily: 'nunito',
+                      fontWeight: FontWeight.bold),
+                ),
               ),
-            ),
-            Container(
-              height: 330,
-              child: trends.length == 0
-                  ? Center(
-                      child: SpinKitWave(
-                        size: 30,
-                        color: Theme.MyColors.themeColor.withOpacity(0.7),
-                      ),
-                    )
-                  : ListView.builder(
-                      scrollDirection: Axis.horizontal,
-                      itemCount: 10,
-                      itemBuilder: (BuildContext context, int index) {
-                        int r = random.nextInt(10);
-                        if (indices.contains(r)) {
-                          do {
-                            r = random.nextInt(20);
-                          } while (indices.contains(r));
-                        }
-                        indices.add(r);
+              Container(
+                height: 330,
+                child: trends.length == 0
+                    ? Center(
+                        child: SpinKitWave(
+                          size: 30,
+                          color: Theme.MyColors.themeColor.withOpacity(0.7),
+                        ),
+                      )
+                    : ListView.builder(
+                        scrollDirection: Axis.horizontal,
+                        itemCount: 10,
+                        itemBuilder: (BuildContext context, int index) {
+                          int r = random.nextInt(10);
+                          if (indices.contains(r)) {
+                            do {
+                              r = random.nextInt(20);
+                            } while (indices.contains(r));
+                          }
+                          indices.add(r);
 //                        int r = random.nextInt(10);
 //                        if (indices.contains(r)) {
 //                          while (!indices.contains(r)) {
@@ -182,448 +182,457 @@ class _AllCitiesScreenState extends State<AllCitiesScreen> {
 //                        indices.add(r);
 //                        print(r);
 
-                        return InkWell(
-                          splashColor: Colors.transparent,
-                          highlightColor: Colors.transparent,
-                          onTap: () {
-                            scaffoldState.currentState
-                                .showBottomSheet((context) {
-                              return StatefulBuilder(builder:
-                                  (BuildContext context, StateSetter state) {
-                                return UITrends(
-                                    trends[r].name,
-                                    trends[r].imageUrl,
-                                    trends[r].description,
-                                    trends[r].imageBy,
-                                    context,
-                                    height,
-                                    width);
+                          return InkWell(
+                            splashColor: Colors.transparent,
+                            highlightColor: Colors.transparent,
+                            onTap: () {
+                              scaffoldState.currentState
+                                  .showBottomSheet((context) {
+                                return StatefulBuilder(builder:
+                                    (BuildContext context, StateSetter state) {
+                                  return UITrends(
+                                      trends[r].name,
+                                      trends[r].imageUrl,
+                                      trends[r].description,
+                                      trends[r].imageBy,
+                                      context,
+                                      height,
+                                      width);
+                                });
                               });
-                            });
-                          },
-                          child: Container(
-                            padding: EdgeInsets.all(2),
-                            height: 234,
-                            decoration: BoxDecoration(
-                                boxShadow: [
-                                  BoxShadow(
-                                    color: Colors.black26,
-                                    blurRadius: 20.0, // soften the shadow
-                                    spreadRadius: 3.0, //extend the shadow
-                                    offset: Offset(
-                                      10.0, // Move to right 10  horizontally
-                                      20.0, // Move to bottom 10 Vertically
-                                    ),
-                                  )
-                                ],
-                                color: Colors.white,
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(10))),
-                            margin: EdgeInsets.fromLTRB(20, 10, 10, 40),
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: <Widget>[
-                                Container(
-                                  padding: EdgeInsets.all(5),
-                                  height: 60,
-                                  width: 310,
-                                  child: Row(
-                                    children: <Widget>[
-                                      CircleAvatar(
-                                        backgroundImage:
-                                            NetworkImage(ideas[r].imageUrl),
-                                        backgroundColor: Colors.white,
+                            },
+                            child: Container(
+                              padding: EdgeInsets.all(2),
+                              height: 234,
+                              decoration: BoxDecoration(
+                                  boxShadow: [
+                                    BoxShadow(
+                                      color: Colors.black26,
+                                      blurRadius: 20.0, // soften the shadow
+                                      spreadRadius: 3.0, //extend the shadow
+                                      offset: Offset(
+                                        10.0, // Move to right 10  horizontally
+                                        20.0, // Move to bottom 10 Vertically
                                       ),
-                                      SizedBox(
-                                        width: 10,
-                                      ),
-                                      Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: <Widget>[
-                                          Text(
-                                            'Presented By',
-                                            style: TextStyle(
-                                                color: Colors.black,
-                                                fontFamily: 'nunito',
-                                                fontSize: 18),
-                                          ),
-                                          Container(
-                                            width: 240,
-                                            color: Colors.white,
-                                            child: Text(
-                                              '${trends[r].imageBy}',
+                                    )
+                                  ],
+                                  color: Colors.white,
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(10))),
+                              margin: EdgeInsets.fromLTRB(20, 10, 10, 40),
+                              child: Column(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: <Widget>[
+                                  Container(
+                                    padding: EdgeInsets.all(5),
+                                    height: 60,
+                                    width: 310,
+                                    child: Row(
+                                      children: <Widget>[
+                                        CircleAvatar(
+                                          backgroundImage:
+                                              NetworkImage(ideas[r].imageUrl),
+                                          backgroundColor: Colors.white,
+                                        ),
+                                        SizedBox(
+                                          width: 10,
+                                        ),
+                                        Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: <Widget>[
+                                            Text(
+                                              'Presented By',
                                               style: TextStyle(
                                                   color: Colors.black,
-                                                  fontWeight: FontWeight.bold,
                                                   fontFamily: 'nunito',
                                                   fontSize: 18),
-                                              overflow: TextOverflow.fade,
-                                              softWrap: false,
                                             ),
-                                          ),
-                                        ],
-                                      ),
-                                    ],
+                                            Container(
+                                              width: 240,
+                                              color: Colors.white,
+                                              child: Text(
+                                                '${trends[r].imageBy}',
+                                                style: TextStyle(
+                                                    color: Colors.black,
+                                                    fontWeight: FontWeight.bold,
+                                                    fontFamily: 'nunito',
+                                                    fontSize: 18),
+                                                overflow: TextOverflow.fade,
+                                                softWrap: false,
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ],
+                                    ),
                                   ),
-                                ),
-                                Container(
-                                  height: 210,
-                                  width: 310,
-                                  child: ClipRRect(
-                                    borderRadius:
-                                        BorderRadius.all(Radius.circular(10)),
-                                    child: GFImageOverlay(
-                                      height: 200,
-                                      width: 300,
-                                      child: Column(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.end,
-                                        children: <Widget>[
-                                          Padding(
-                                            padding: const EdgeInsets.all(8.0),
-                                            child: Text(
-                                              trends[r].description,
-                                              style: TextStyle(
-                                                  color: Colors.white,
-                                                  fontSize: 20,
-                                                  fontWeight: FontWeight.bold,
-                                                  fontFamily: 'nunito'),
-                                              overflow: TextOverflow.fade,
-                                              softWrap: false,
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                      colorFilter: new ColorFilter.mode(
-                                          Colors.black.withOpacity(0.3),
-                                          BlendMode.darken),
+                                  Container(
+                                    height: 210,
+                                    width: 310,
+                                    child: ClipRRect(
                                       borderRadius:
                                           BorderRadius.all(Radius.circular(10)),
-                                      image: NetworkImage(trends[r].imageUrl),
+                                      child: GFImageOverlay(
+                                        height: 200,
+                                        width: 300,
+                                        child: Column(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.end,
+                                          children: <Widget>[
+                                            Padding(
+                                              padding:
+                                                  const EdgeInsets.all(8.0),
+                                              child: Text(
+                                                trends[r].description,
+                                                style: TextStyle(
+                                                    color: Colors.white,
+                                                    fontSize: 20,
+                                                    fontWeight: FontWeight.bold,
+                                                    fontFamily: 'nunito'),
+                                                overflow: TextOverflow.fade,
+                                                softWrap: false,
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                        colorFilter: new ColorFilter.mode(
+                                            Colors.black.withOpacity(0.3),
+                                            BlendMode.darken),
+                                        borderRadius: BorderRadius.all(
+                                            Radius.circular(10)),
+                                        image: NetworkImage(trends[r].imageUrl),
+                                      ),
                                     ),
                                   ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        );
-                      },
-                    ),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(top: 15.0, left: 15, bottom: 0),
-              child: Text(
-                'Top Ideas',
-                style: TextStyle(
-                    color: Theme.MyColors.themeColor,
-                    fontSize: 24,
-                    fontFamily: 'nunito',
-                    fontWeight: FontWeight.bold),
-              ),
-            ),
-            Container(
-              height: 330,
-              child: ideas.length == 0
-                  ? Center(
-                      child: SpinKitWave(
-                        size: 30,
-                        color: Theme.MyColors.themeColor.withOpacity(0.7),
-                      ),
-                    )
-                  : ListView.builder(
-                      scrollDirection: Axis.horizontal,
-                      itemCount: 10,
-                      itemBuilder: (BuildContext context, int index) {
-                        int r = random.nextInt(10);
-                        if (indices.contains(r)) {
-                          r = r + 1;
-                        }
-                        indices.add(r);
-                        print(r);
-                        return InkWell(
-                          splashColor: Colors.transparent,
-                          highlightColor: Colors.transparent,
-                          onTap: () {
-                            scaffoldState.currentState
-                                .showBottomSheet((context) {
-                              return StatefulBuilder(builder:
-                                  (BuildContext context, StateSetter state) {
-                                return UIIdeas(
-                                    ideas[r].name,
-                                    ideas[r].imageUrl,
-                                    ideas[r].description,
-                                    ideas[r].imageBy,
-                                    context,
-                                    height,
-                                    width);
-                              });
-                            });
-                          },
-                          child: Container(
-                            padding: EdgeInsets.all(2),
-                            height: 234,
-                            decoration: BoxDecoration(
-                                boxShadow: [
-                                  BoxShadow(
-                                    color: Colors.black26,
-                                    blurRadius: 20.0, // soften the shadow
-                                    spreadRadius: 3.0, //extend the shadow
-                                    offset: Offset(
-                                      10.0, // Move to right 10  horizontally
-                                      20.0, // Move to bottom 10 Vertically
-                                    ),
-                                  )
                                 ],
-                                color: Colors.white,
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(10))),
-                            margin: EdgeInsets.fromLTRB(20, 10, 10, 40),
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: <Widget>[
-                                Container(
-                                  padding: EdgeInsets.all(5),
-                                  height: 60,
-                                  width: 310,
-                                  child: Row(
-                                    children: <Widget>[
-                                      CircleAvatar(
-                                        backgroundImage:
-                                            NetworkImage(ideas[r].imageUrl),
-                                        backgroundColor: Colors.white,
+                              ),
+                            ),
+                          );
+                        },
+                      ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(top: 15.0, left: 15, bottom: 0),
+                child: Text(
+                  'Top Ideas',
+                  style: TextStyle(
+                      color: Theme.MyColors.themeColor,
+                      fontSize: 24,
+                      fontFamily: 'nunito',
+                      fontWeight: FontWeight.bold),
+                ),
+              ),
+              Container(
+                height: 330,
+                child: ideas.length == 0
+                    ? Center(
+                        child: SpinKitWave(
+                          size: 30,
+                          color: Theme.MyColors.themeColor.withOpacity(0.7),
+                        ),
+                      )
+                    : ListView.builder(
+                        scrollDirection: Axis.horizontal,
+                        itemCount: 10,
+                        itemBuilder: (BuildContext context, int index) {
+                          int r = random.nextInt(10);
+                          if (indices.contains(r)) {
+                            do {
+                              r = random.nextInt(20);
+                            } while (indices.contains(r));
+                          }
+                          indices.add(r);
+                          print(r);
+                          return InkWell(
+                            splashColor: Colors.transparent,
+                            highlightColor: Colors.transparent,
+                            onTap: () {
+                              scaffoldState.currentState
+                                  .showBottomSheet((context) {
+                                return StatefulBuilder(builder:
+                                    (BuildContext context, StateSetter state) {
+                                  return UIIdeas(
+                                      ideas[r].name,
+                                      ideas[r].imageUrl,
+                                      ideas[r].description,
+                                      ideas[r].imageBy,
+                                      context,
+                                      height,
+                                      width);
+                                });
+                              });
+                            },
+                            child: Container(
+                              padding: EdgeInsets.all(2),
+                              height: 234,
+                              decoration: BoxDecoration(
+                                  boxShadow: [
+                                    BoxShadow(
+                                      color: Colors.black26,
+                                      blurRadius: 20.0, // soften the shadow
+                                      spreadRadius: 3.0, //extend the shadow
+                                      offset: Offset(
+                                        10.0, // Move to right 10  horizontally
+                                        20.0, // Move to bottom 10 Vertically
                                       ),
-                                      SizedBox(
-                                        width: 10,
-                                      ),
-                                      Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: <Widget>[
-                                          Text(
-                                            'Presented By',
-                                            style: TextStyle(
-                                                color: Colors.black,
-                                                fontFamily: 'nunito',
-                                                fontSize: 18),
-                                          ),
-                                          Container(
-                                            width: 240,
-                                            child: Text(
-                                              '${ideas[r].imageBy}',
+                                    )
+                                  ],
+                                  color: Colors.white,
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(10))),
+                              margin: EdgeInsets.fromLTRB(20, 10, 10, 40),
+                              child: Column(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: <Widget>[
+                                  Container(
+                                    padding: EdgeInsets.all(5),
+                                    height: 60,
+                                    width: 310,
+                                    child: Row(
+                                      children: <Widget>[
+                                        CircleAvatar(
+                                          backgroundImage:
+                                              NetworkImage(ideas[r].imageUrl),
+                                          backgroundColor: Colors.white,
+                                        ),
+                                        SizedBox(
+                                          width: 10,
+                                        ),
+                                        Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: <Widget>[
+                                            Text(
+                                              'Presented By',
                                               style: TextStyle(
                                                   color: Colors.black,
-                                                  fontWeight: FontWeight.bold,
                                                   fontFamily: 'nunito',
                                                   fontSize: 18),
-                                              overflow: TextOverflow.fade,
-                                              softWrap: false,
                                             ),
-                                          ),
-                                        ],
-                                      ),
-                                    ],
+                                            Container(
+                                              width: 240,
+                                              child: Text(
+                                                '${ideas[r].imageBy}',
+                                                style: TextStyle(
+                                                    color: Colors.black,
+                                                    fontWeight: FontWeight.bold,
+                                                    fontFamily: 'nunito',
+                                                    fontSize: 18),
+                                                overflow: TextOverflow.fade,
+                                                softWrap: false,
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ],
+                                    ),
                                   ),
-                                ),
-                                Container(
-                                  height: 210,
-                                  width: 310,
-                                  child: ClipRRect(
-                                    borderRadius:
-                                        BorderRadius.all(Radius.circular(10)),
-                                    child: GFImageOverlay(
-                                      height: 200,
-                                      width: 300,
-                                      child: Column(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.end,
-                                        children: <Widget>[
-                                          Padding(
-                                            padding: const EdgeInsets.all(8.0),
-                                            child: Text(
-                                              ideas[r].description,
-                                              style: TextStyle(
-                                                  color: Colors.white,
-                                                  fontSize: 20,
-                                                  fontWeight: FontWeight.bold,
-                                                  fontFamily: 'nunito'),
-                                              overflow: TextOverflow.fade,
-                                              softWrap: false,
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                      colorFilter: new ColorFilter.mode(
-                                          Colors.black.withOpacity(0.3),
-                                          BlendMode.darken),
+                                  Container(
+                                    height: 210,
+                                    width: 310,
+                                    child: ClipRRect(
                                       borderRadius:
                                           BorderRadius.all(Radius.circular(10)),
-                                      image: NetworkImage(ideas[r].imageUrl),
+                                      child: GFImageOverlay(
+                                        height: 200,
+                                        width: 300,
+                                        child: Column(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.end,
+                                          children: <Widget>[
+                                            Padding(
+                                              padding:
+                                                  const EdgeInsets.all(8.0),
+                                              child: Text(
+                                                ideas[r].description,
+                                                style: TextStyle(
+                                                    color: Colors.white,
+                                                    fontSize: 20,
+                                                    fontWeight: FontWeight.bold,
+                                                    fontFamily: 'nunito'),
+                                                overflow: TextOverflow.fade,
+                                                softWrap: false,
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                        colorFilter: new ColorFilter.mode(
+                                            Colors.black.withOpacity(0.3),
+                                            BlendMode.darken),
+                                        borderRadius: BorderRadius.all(
+                                            Radius.circular(10)),
+                                        image: NetworkImage(ideas[r].imageUrl),
+                                      ),
                                     ),
                                   ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        );
-                      },
-                    ),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(top: 15.0, left: 15, bottom: 0),
-              child: Text(
-                'Events Powered By Us',
-                style: TextStyle(
-                    color: Theme.MyColors.themeColor,
-                    fontSize: 24,
-                    fontFamily: 'nunito',
-                    fontWeight: FontWeight.bold),
-              ),
-            ),
-            Container(
-              height: 330,
-              child: events.length == 0
-                  ? Center(
-                      child: SpinKitWave(
-                        size: 30,
-                        color: Theme.MyColors.themeColor.withOpacity(0.7),
-                      ),
-                    )
-                  : ListView.builder(
-                      scrollDirection: Axis.horizontal,
-                      itemCount: events.length,
-                      itemBuilder: (BuildContext context, int index) {
-                        return InkWell(
-                          splashColor: Colors.transparent,
-                          highlightColor: Colors.transparent,
-                          onTap: () {
-                            scaffoldState.currentState
-                                .showBottomSheet((context) {
-                              return StatefulBuilder(builder:
-                                  (BuildContext context, StateSetter state) {
-                                return UIEvents(
-                                    events[index].name,
-                                    events[index].imageUrl,
-                                    events[index].description,
-                                    events[index].client,
-                                    events[index].city,
-                                    context,
-                                    height,
-                                    width);
-                              });
-                            });
-                          },
-                          child: Container(
-                            padding: EdgeInsets.all(2),
-                            height: 234,
-                            decoration: BoxDecoration(
-                                boxShadow: [
-                                  BoxShadow(
-                                    color: Colors.black26,
-                                    blurRadius: 20.0, // soften the shadow
-                                    spreadRadius: 3.0, //extend the shadow
-                                    offset: Offset(
-                                      10.0, // Move to right 10  horizontally
-                                      20.0, // Move to bottom 10 Vertically
-                                    ),
-                                  )
                                 ],
-                                color: Colors.white,
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(10))),
-                            margin: EdgeInsets.fromLTRB(20, 10, 10, 40),
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: <Widget>[
-                                Container(
-                                  padding: EdgeInsets.all(5),
-                                  height: 60,
-                                  width: 310,
-                                  child: Row(
-                                    children: <Widget>[
-                                      CircleAvatar(
-                                        backgroundImage: NetworkImage(
+                              ),
+                            ),
+                          );
+                        },
+                      ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(top: 15.0, left: 15, bottom: 0),
+                child: Text(
+                  'Events Powered By Us',
+                  style: TextStyle(
+                      color: Theme.MyColors.themeColor,
+                      fontSize: 24,
+                      fontFamily: 'nunito',
+                      fontWeight: FontWeight.bold),
+                ),
+              ),
+              Container(
+                height: 330,
+                child: events.length == 0
+                    ? Center(
+                        child: SpinKitWave(
+                          size: 30,
+                          color: Theme.MyColors.themeColor.withOpacity(0.7),
+                        ),
+                      )
+                    : ListView.builder(
+                        scrollDirection: Axis.horizontal,
+                        itemCount: events.length,
+                        itemBuilder: (BuildContext context, int index) {
+                          return InkWell(
+                            splashColor: Colors.transparent,
+                            highlightColor: Colors.transparent,
+                            onTap: () {
+                              scaffoldState.currentState
+                                  .showBottomSheet((context) {
+                                return StatefulBuilder(builder:
+                                    (BuildContext context, StateSetter state) {
+                                  return UIEvents(
+                                      events[index].name,
+                                      events[index].imageUrl,
+                                      events[index].description,
+                                      events[index].client,
+                                      events[index].city,
+                                      context,
+                                      height,
+                                      width);
+                                });
+                              });
+                            },
+                            child: Container(
+                              padding: EdgeInsets.all(2),
+                              height: 234,
+                              decoration: BoxDecoration(
+                                  boxShadow: [
+                                    BoxShadow(
+                                      color: Colors.black26,
+                                      blurRadius: 20.0, // soften the shadow
+                                      spreadRadius: 3.0, //extend the shadow
+                                      offset: Offset(
+                                        10.0, // Move to right 10  horizontally
+                                        20.0, // Move to bottom 10 Vertically
+                                      ),
+                                    )
+                                  ],
+                                  color: Colors.white,
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(10))),
+                              margin: EdgeInsets.fromLTRB(20, 10, 10, 40),
+                              child: Column(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: <Widget>[
+                                  Container(
+                                    padding: EdgeInsets.all(5),
+                                    height: 60,
+                                    width: 310,
+                                    child: Row(
+                                      children: <Widget>[
+                                        CircleAvatar(
+                                          backgroundImage: NetworkImage(
+                                              events[index].imageUrl),
+                                          backgroundColor: Colors.white,
+                                        ),
+                                        SizedBox(
+                                          width: 10,
+                                        ),
+                                        Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: <Widget>[
+                                            Text(
+                                              'Presented By',
+                                              style: TextStyle(
+                                                  color: Colors.black,
+                                                  fontFamily: 'nunito',
+                                                  fontSize: 18),
+                                            ),
+                                            Container(
+                                              width: 240,
+                                              child: Text(
+                                                '${events[index].client}',
+                                                style: TextStyle(
+                                                    color: Colors.black,
+                                                    fontWeight: FontWeight.bold,
+                                                    fontFamily: 'nunito',
+                                                    fontSize: 18),
+                                                overflow: TextOverflow.fade,
+                                                softWrap: false,
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                  Container(
+                                    height: 210,
+                                    width: 310,
+                                    child: ClipRRect(
+                                      borderRadius:
+                                          BorderRadius.all(Radius.circular(10)),
+                                      child: GFImageOverlay(
+                                        height: 200,
+                                        width: 300,
+                                        child: Column(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.end,
+                                          children: <Widget>[
+                                            Padding(
+                                              padding:
+                                                  const EdgeInsets.all(8.0),
+                                              child: Text(
+                                                events[index].description,
+                                                style: TextStyle(
+                                                    color: Colors.white,
+                                                    fontSize: 20,
+                                                    fontWeight: FontWeight.bold,
+                                                    fontFamily: 'nunito'),
+                                                overflow: TextOverflow.fade,
+                                                softWrap: false,
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                        colorFilter: new ColorFilter.mode(
+                                            Colors.black.withOpacity(0.3),
+                                            BlendMode.darken),
+                                        borderRadius: BorderRadius.all(
+                                            Radius.circular(10)),
+                                        image: NetworkImage(
                                             events[index].imageUrl),
-                                        backgroundColor: Colors.white,
                                       ),
-                                      SizedBox(
-                                        width: 10,
-                                      ),
-                                      Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: <Widget>[
-                                          Text(
-                                            'Presented By',
-                                            style: TextStyle(
-                                                color: Colors.black,
-                                                fontFamily: 'nunito',
-                                                fontSize: 18),
-                                          ),
-                                          Container(
-                                            width: 240,
-                                            child: Text(
-                                              '${events[index].client}',
-                                              style: TextStyle(
-                                                  color: Colors.black,
-                                                  fontWeight: FontWeight.bold,
-                                                  fontFamily: 'nunito',
-                                                  fontSize: 18),
-                                              overflow: TextOverflow.fade,
-                                              softWrap: false,
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                                Container(
-                                  height: 210,
-                                  width: 310,
-                                  child: ClipRRect(
-                                    borderRadius:
-                                        BorderRadius.all(Radius.circular(10)),
-                                    child: GFImageOverlay(
-                                      height: 200,
-                                      width: 300,
-                                      child: Column(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.end,
-                                        children: <Widget>[
-                                          Padding(
-                                            padding: const EdgeInsets.all(8.0),
-                                            child: Text(
-                                              events[index].description,
-                                              style: TextStyle(
-                                                  color: Colors.white,
-                                                  fontSize: 20,
-                                                  fontWeight: FontWeight.bold,
-                                                  fontFamily: 'nunito'),
-                                              overflow: TextOverflow.fade,
-                                              softWrap: false,
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                      colorFilter: new ColorFilter.mode(
-                                          Colors.black.withOpacity(0.3),
-                                          BlendMode.darken),
-                                      borderRadius:
-                                          BorderRadius.all(Radius.circular(10)),
-                                      image:
-                                          NetworkImage(events[index].imageUrl),
                                     ),
                                   ),
-                                ),
-                              ],
+                                ],
+                              ),
                             ),
-                          ),
-                        );
-                      },
-                    ),
-            ),
-          ]),
+                          );
+                        },
+                      ),
+              ),
+            ],
+          ),
         ),
       ),
     );

@@ -24,37 +24,31 @@ class _SocialMediaScreenState extends State<SocialMediaScreen> {
     final pWidth = MediaQuery.of(context).size.width;
     return Scaffold(
       appBar: AppBar(
-        iconTheme: IconThemeData(color: Theme.MyColors.themeColor),
+        automaticallyImplyLeading: false,
         backgroundColor: Colors.white,
-        title: Row(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            Image.asset(
-              'images/dreamthyeve.png',
-              scale: 26,
-            ),
-          ],
-        ),
-        actions: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: [
-              Container(
-                width: pWidth * 0.47,
-                child: Text(
-                  'Contact Us',
-                  overflow: TextOverflow.fade,
-                  style: TextStyle(
-                      fontSize: 22,
-                      fontWeight: FontWeight.bold,
-                      color: Theme.MyColors.themeColor,
-                      fontFamily: 'nunito'),
-                  textAlign: TextAlign.left,
-                ),
+        title: Container(
+          width: double.infinity,
+          child: Row(
+            children: <Widget>[
+              Image.asset(
+                'images/dreamthyeve.png',
+                scale: 26,
               ),
+              Spacer(),
+              Text(
+                'Contact Us',
+                overflow: TextOverflow.fade,
+                style: TextStyle(
+                    fontSize: 24,
+                    fontWeight: FontWeight.bold,
+                    color: Theme.MyColors.themeColor,
+                    fontFamily: 'nunito'),
+                textAlign: TextAlign.left,
+              ),
+              Spacer()
             ],
           ),
-        ],
+        ),
       ),
       body: SafeArea(
         child: Padding(

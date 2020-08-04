@@ -79,37 +79,32 @@ class _SignUpPageState extends State<SignUpPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-          iconTheme: IconThemeData(color: Theme.MyColors.themeColor),
-          backgroundColor: Colors.white,
-          title: Row(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
+        automaticallyImplyLeading: false,
+        backgroundColor: Colors.white,
+        title: Container(
+          width: double.infinity,
+          child: Row(
+            children: <Widget>[
               Image.asset(
                 'images/dreamthyeve.png',
                 scale: 26,
               ),
+              Spacer(),
+              Text(
+                'Sign Up',
+                overflow: TextOverflow.fade,
+                style: TextStyle(
+                    fontSize: 24,
+                    fontWeight: FontWeight.bold,
+                    color: Theme.MyColors.themeColor,
+                    fontFamily: 'nunito'),
+                textAlign: TextAlign.left,
+              ),
+              Spacer()
             ],
           ),
-          actions: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                Container(
-                  width: 170,
-                  child: Text(
-                    'Sign Up',
-                    overflow: TextOverflow.fade,
-                    style: TextStyle(
-                        fontSize: 22,
-                        fontWeight: FontWeight.bold,
-                        color: Theme.MyColors.themeColor,
-                        fontFamily: 'nunito'),
-                    textAlign: TextAlign.left,
-                  ),
-                )
-              ],
-            ),
-          ]),
+        ),
+      ),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(10.0),
